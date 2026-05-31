@@ -6,6 +6,17 @@ These prompts are inspired by common student issues from the MOOS-IvP labs, but 
 
 Scoring is defined in `BENCHMARKING.md`.
 
+## Lab-Inspiration Coverage
+
+The prompt text is intentionally neutral, but the set is grounded in the lab sequence:
+
+- C01-C02, D07, K01-K02: MOOS intro/programming and pOdometry-style app work.
+- C03-C04, C10-C11, C25, D01, D03, D08, K03-K05: helm autonomy and behavior-writing work.
+- C05-C09, C26-C28, D02, D09: multiple-vehicle, pShare, TSP, and inter-vehicle messaging work.
+- C12, C29-C30: payload autonomy and Heron/PABLO field-deployment work.
+- C13-C15: autonomous rescue-style mission work.
+- C16-C20, C21-C24, D04-D06, D10: setup, launch, logging, mission debugging, viewer/geodesy, uTimerScript, and automated mission-check workflows used throughout the labs.
+
 ## Conceptual / Debugging Prompts
 
 ### C01: uXMS/uPokeDB Confusion
@@ -76,17 +87,17 @@ My mission already failed, and I cannot rerun it right now, but I have an `.alog
 
 The mission completed, but there is no useful `.alog` file or the log is missing key variables. What pLogger, pAntler, process, path, and configuration issues should I check?
 
-### C18: Choosing uXMS / uQueryDB / uHelmScope / uMAC
+### C18: Choosing Debugging Tools During A Mission Run
 
-When should I use uXMS, uQueryDB, uHelmScope, uMAC/AppCasting, or pRealm? Give a practical student debugging comparison.
+During a mission run, I need to inspect ordinary MOOS variables, helm behavior state, app warnings, and whether a process is alive. When should I use uXMS, uQueryDB, uHelmScope, uMAC/AppCasting, or pLogger output?
 
 ### C19: pMarineViewer Background / Geodesy
 
 pMarineViewer shows my vehicle, but the background image or coordinate alignment looks wrong. What should I check about image paths, datum, local coordinates, and viewer configuration?
 
-### C20: What Artifacts To Ask A TA For
+### C20: Mission Broke After Several Edits
 
-If I ask for MOOS-IvP help and the answer is still generic, what exact artifacts should I provide next: `.moos`, `.bhv`, terminal output, uXMS output, appcast, or alog snippets? Explain by debugging scenario.
+After several edits to a mission, the vehicle no longer deploys correctly and I do not know whether the problem is in the launch script, `.moos` file, `.bhv` file, process output, or MOOS variables. What should I inspect first, and what artifacts would let someone diagnose it quickly?
 
 ### C21: Command Not Found After Build
 
@@ -142,9 +153,9 @@ For inter-vehicle messaging, compare uFldNodeBroker, uFldShoreBroker, uFldNodeCo
 
 Does BHV_OpRegionV24 steer the vehicle back inside the polygon, or is that the wrong mental model? Explain what it does and how it should be paired with other behaviors.
 
-### D04: pMissionEval Capabilities
+### D04: Automated Mission Check Capabilities
 
-What can pMissionEval verify automatically in an automated mission check, and what can it not prove about the correctness of a MOOS-IvP mission?
+When I want an automated check that a mission reached a goal, posted expected variables, or stopped cleanly, what can pMissionEval verify and what can it not prove about overall mission correctness?
 
 ### D05: Viewer Image / Geodesy Config
 
@@ -243,4 +254,3 @@ IvPFunction* BHV_HoldSpeed::onRunState()
   return ipf;
 }
 ```
-

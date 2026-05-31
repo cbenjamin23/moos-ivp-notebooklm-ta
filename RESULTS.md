@@ -96,9 +96,9 @@ Scoring:
 | C15 | Conceptual/debugging | teammate messaging | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C16 | Conceptual/debugging | Post-mission alog diagnosis | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C17 | Conceptual/debugging | pLogger produced no useful alog | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| C18 | Conceptual/debugging | Choosing uXMS/uQueryDB/uHelmScope/uMAC | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C18 | Conceptual/debugging | choosing debugging tools during a mission run | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C19 | Conceptual/debugging | pMarineViewer background/geodesy | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| C20 | Conceptual/debugging | What artifacts to ask a TA for | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C20 | Conceptual/debugging | mission broke after several edits | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C21 | Conceptual/debugging | command not found after build | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C22 | Conceptual/debugging | version control before mission changes | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C23 | Conceptual/debugging | pAntler did not start a process | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
@@ -112,7 +112,7 @@ Scoring:
 | D01 | Exact docs/parameters/tools | BHV_Waypoint params | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D02 | Exact docs/parameters/tools | uField broker comparison | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D03 | Exact docs/parameters/tools | BHV_OpRegionV24 semantics | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| D04 | Exact docs/parameters/tools | pMissionEval capabilities | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D04 | Exact docs/parameters/tools | automated mission check capabilities | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D05 | Exact docs/parameters/tools | Viewer image/geodesy config | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D06 | Exact docs/parameters/tools | pAntler process launching | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D07 | Exact docs/parameters/tools | pOdometry variables | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
