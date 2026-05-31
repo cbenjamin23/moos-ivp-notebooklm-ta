@@ -4,19 +4,19 @@ Run ID: 2026-05-31_organic_beginner_tier_clean2
 
 Status: in progress
 
-Last updated: 2026-05-31T20:12:15.799Z
+Last updated: 2026-05-31T20:16:22.121Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":8,"not_started":192}
+Counts: {"captured":20,"not_started":180}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
 | C01 | conceptual_debugging | Command Not Found After Build | captured | captured | captured | captured |
 | C02 | conceptual_debugging | Version Control Before Mission Changes | captured | captured | captured | captured |
-| C03 | conceptual_debugging | uXMS/uPokeDB Confusion | not_started | not_started | not_started | not_started |
-| C04 | conceptual_debugging | App Not Publishing | not_started | not_started | not_started | not_started |
-| C05 | conceptual_debugging | pAntler Did Not Start A Process | not_started | not_started | not_started | not_started |
+| C03 | conceptual_debugging | uXMS/uPokeDB Confusion | captured | captured | captured | captured |
+| C04 | conceptual_debugging | App Not Publishing | captured | captured | captured | captured |
+| C05 | conceptual_debugging | pAntler Did Not Start A Process | captured | captured | captured | captured |
 | C06 | conceptual_debugging | Launch Arguments Not Reaching Config Files | not_started | not_started | not_started | not_started |
 | C07 | conceptual_debugging | Helm Remains PARKED | not_started | not_started | not_started | not_started |
 | C08 | conceptual_debugging | No Desired Outputs | not_started | not_started | not_started | not_started |
