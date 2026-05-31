@@ -1,0 +1,303 @@
+{
+  "bodyTail": "\n\n\nNew chat\n\nChats\n\nProjects\n\nArtifacts\n\nCode\n\nCustomize\nRecents\n\nNODE_MESSAGE_LOCAL payload not received\nNODE_MESSAGE_LOCAL payload not received\n\nMulti-machine MOOS network connectivity issues\nMulti-machine MOOS network connectivity issues\nMulti-vehicle route planning imbalance\nMulti-vehicle route planning imbalance\nMOOS app routing vs helm waypoint steering\nMOOS app routing vs helm waypoint steering\nVehicle and shoreside community variable sharing\nVehicle and shoreside community variable sharing\nMulti-vehicle mission display issues\nMulti-vehicle mission display issues\nDebugging multi-community MOOSDB connection issues\nDebugging multi-community MOOSDB connection issues\nDebugging uSimMarine autonomy behavior\nDebugging uSimMarine autonomy behavior\nMissing DESIRED_HEADING and DESIRED_SPEED variables\nMissing DESIRED_HEADING and DESIRED_SPEED variables\npHelmIvP stuck in PARKED state\npHelmIvP stuck in PARKED state\nDebugging stale configuration in generated missions\nDebugging stale configuration in generated missions\nDebugging missing MOOS process at mission launch\nDebugging missing MOOS process at mission launch\nDebugging missing MOOS odometry publication\nDebugging missing MOOS odometry publication\nDebugging MOOSDB variable visibility in uXMS\nDebugging MOOSDB variable visibility in uXMS\nGit workflow for safe experimentation\nGit workflow for safe experimentation\nMOOS-IvP binaries not found in PATH\nMOOS-IvP binaries not found in PATH\nDebugging MOOSDB variable visibility in uXMS\nDebugging MOOSDB variable visibility in uXMS\nGit workflow for safe experimentation\nGit workflow for safe experimentation\nMOOS-IvP binaries not found in PATH\nMOOS-IvP binaries not found in PATH\nMOOS-IvP binaries not found in PATH\nMOOS-IvP binaries not found in PATH\nNBA starting lineup salary comparison\nNBA starting lineup salary comparison\nCreating a final exam cheat sheet\nCreating a final exam cheat sheet\nFinding the definition of innovation\nFinding the definition of innovation\nKalman Lecture 13\nKalman Lecture 13\nLocalization/ParticleFiltering Lecture 12\nLocalization/ParticleFiltering Lecture 12\nSensing, Estimation, Mapping Lecture 10\nSensing, Estimation, Mapping Lecture 10\nODEs Lecture 10\nODEs Lecture 10\nLarge Robotic Control Lecture 9\nLarge Robotic Control Lecture 9\nRL2 Lecture 8\nRL2 Lecture 8\nIntro RL Lecture 7\nIntro RL Lecture 7\nTest preparation study guide\nTest preparation study guide\nArm-launched dart drone with pop-out wings\nArm-launched dart drone with pop-out wings\nIsrael's right to exist\nIsrael's right to exist\nClarification request\nClarification request\nMoos-ivp overview and visualization\nMoos-ivp overview and visualization\nExplanation request\nExplanation request\nHow compound interest works\nHow compound interest works\nMassachusetts amended tax return signature requirement\nMassachusetts amended tax return signature requirement\n\nCB\nCharles Benjamin\nFree plan\nNODE_MESSAGE_LOCAL payload not received\nFree plan\nUpgrade\nClaude finished the response\nYou said: I post NODEMESSAGELOCAL on one vehicle, but the receiving vehicle never sees the payload variable.\n\nI post NODE_MESSAGE_LOCAL on one vehicle, but the receiving vehicle never sees the payload variable. Walk through the message path and what to check.\n\n4:29 PM\n\n\n\n\nClaude responded: Let me ask a couple of quick questions to make sure I point you at the right layer of the stack.\n\nLet me ask a couple of quick questions to make sure I point you at the right layer of the stack.\n\n\n\n\n\n\nWhat middleware / transport are you using?\n1 of 2\n1\nROS 1 (roscpp/rospy)\n→\n2\nROS 2 (rclcpp/rclpy)\n3\nCustom UDP/TCP\n4\nDDS directly\n5\nOther / not sure\nSkip\n\n\n\n\n\nSonnet 4.6 High\n↑ ↓ to navigate·Enter to select·or type below\nShare",
+  "inputs": [
+    {
+      "aria": "More options for ODEs Lecture 10",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 0,
+      "text": ""
+    },
+    {
+      "aria": "More options for Large Robotic Control Lecture 9",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 1,
+      "text": ""
+    },
+    {
+      "aria": "More options for RL2 Lecture 8",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 2,
+      "text": ""
+    },
+    {
+      "aria": "More options for Intro RL Lecture 7",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 3,
+      "text": ""
+    },
+    {
+      "aria": "More options for Test preparation study guide",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 4,
+      "text": ""
+    },
+    {
+      "aria": "More options for Arm-launched dart drone with pop-out wings",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 5,
+      "text": ""
+    },
+    {
+      "aria": "More options for Israel's right to exist",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 6,
+      "text": ""
+    },
+    {
+      "aria": "More options for Clarification request",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 7,
+      "text": ""
+    },
+    {
+      "aria": "More options for Moos-ivp overview and visualization",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 8,
+      "text": ""
+    },
+    {
+      "aria": "More options for Explanation request",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 9,
+      "text": ""
+    },
+    {
+      "aria": "More options for How compound interest works",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 10,
+      "text": ""
+    },
+    {
+      "aria": "More options for Massachusetts amended tax return signature requirement",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 11,
+      "text": ""
+    },
+    {
+      "aria": "Charles Benjamin, Settings",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 12,
+      "text": "CB\nCharles Benjamin\nFree plan"
+    },
+    {
+      "aria": "NODE_MESSAGE_LOCAL payload not received, rename chat",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 13,
+      "text": "NODE_MESSAGE_LOCAL payload not received"
+    },
+    {
+      "aria": "More options for NODE_MESSAGE_LOCAL payload not received",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 14,
+      "text": ""
+    },
+    {
+      "aria": "Dismiss upgrade banner",
+      "cls": "ml-1 -mr-1 flex size-5 items-center justify-center rounded-[4px] hover:bg-bg-400",
+      "disabled": null,
+      "i": 15,
+      "text": ""
+    },
+    {
+      "aria": "Retry",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 16,
+      "text": ""
+    },
+    {
+      "aria": "Edit",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 17,
+      "text": ""
+    },
+    {
+      "aria": "Copy",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 18,
+      "text": "\n"
+    },
+    {
+      "aria": "Copy",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 19,
+      "text": "\n"
+    },
+    {
+      "aria": "Give positive feedback",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 20,
+      "text": ""
+    },
+    {
+      "aria": "Give negative feedback",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 21,
+      "text": ""
+    },
+    {
+      "aria": "Retry",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 22,
+      "text": ""
+    },
+    {
+      "aria": "Scroll to bottom",
+      "cls": "z-[1] size-9 inline-flex items-center justify-center absolute -top-8 left-1/2 -t",
+      "disabled": null,
+      "i": 23,
+      "text": ""
+    },
+    {
+      "aria": "Previous question",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": true,
+      "i": 24,
+      "text": ""
+    },
+    {
+      "aria": "Next question",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 25,
+      "text": ""
+    },
+    {
+      "aria": "Minimize",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 26,
+      "text": ""
+    },
+    {
+      "aria": null,
+      "cls": "group/row flex w-full items-center gap-2.5 h-11 px-2.5 text-left cursor-pointer ",
+      "disabled": null,
+      "i": 27,
+      "text": "1\nROS 1 (roscpp/rospy)\n→"
+    },
+    {
+      "aria": null,
+      "cls": "group/row flex w-full items-center gap-2.5 h-11 px-2.5 text-left cursor-pointer ",
+      "disabled": null,
+      "i": 28,
+      "text": "2\nROS 2 (rclcpp/rclpy)"
+    },
+    {
+      "aria": null,
+      "cls": "group/row flex w-full items-center gap-2.5 h-11 px-2.5 text-left cursor-pointer ",
+      "disabled": null,
+      "i": 29,
+      "text": "3\nCustom UDP/TCP"
+    },
+    {
+      "aria": null,
+      "cls": "group/row flex w-full items-center gap-2.5 h-11 px-2.5 text-left cursor-pointer ",
+      "disabled": null,
+      "i": 30,
+      "text": "4\nDDS directly"
+    },
+    {
+      "aria": null,
+      "cls": "group/row flex w-full items-center gap-2.5 h-11 px-2.5 text-left cursor-pointer ",
+      "disabled": null,
+      "i": 31,
+      "text": "5\nOther / not sure"
+    },
+    {
+      "aria": null,
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 32,
+      "text": "Skip"
+    },
+    {
+      "aria": "Write your prompt to Claude",
+      "cls": "tiptap ProseMirror",
+      "disabled": null,
+      "i": 33,
+      "text": ""
+    },
+    {
+      "aria": "Add files, connectors, and more",
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 34,
+      "text": ""
+    },
+    {
+      "aria": "Model: Sonnet 4.6 High",
+      "cls": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+      "disabled": null,
+      "i": 35,
+      "text": "Sonnet 4.6 High"
+    },
+    {
+      "aria": "Settings",
+      "cls": "h-8 w-8 rounded-lg flex items-center justify-center opacity-0 transition-all dur",
+      "disabled": null,
+      "i": 36,
+      "text": ""
+    },
+    {
+      "aria": "Press and hold to record",
+      "cls": "h-8 rounded-lg overflow-hidden flex items-center justify-center gap-1 transition",
+      "disabled": null,
+      "i": 37,
+      "text": ""
+    },
+    {
+      "aria": "Use voice mode",
+      "cls": "h-8 rounded-lg overflow-hidden flex items-center justify-center font-base-bold t",
+      "disabled": null,
+      "i": 38,
+      "text": ""
+    },
+    {
+      "aria": null,
+      "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+      "disabled": null,
+      "i": 39,
+      "text": "Share"
+    }
+  ],
+  "nodes": [
+    {
+      "cls": "font-large !font-user-message py-0.5 grid grid-cols-1 gap-2 relative [&_ul]:!space-y-0 [&_ol]:!space-y-0 [&_ul]:pl-8 [&_",
+      "i": 0,
+      "len": 149,
+      "tag": "DIV",
+      "text": "I post NODE_MESSAGE_LOCAL on one vehicle, but the receiving vehicle never sees the payload variable. Walk through the message path and what to check."
+    },
+    {
+      "cls": "font-claude-response relative leading-[1.65rem] [&_pre>div]:bg-bg-000/50 [&_pre>div]:border-0.5 [&_pre>div]:border-borde",
+      "i": 1,
+      "len": 96,
+      "tag": "DIV",
+      "text": "Let me ask a couple of quick questions to make sure I point you at the right layer of the stack."
+    }
+  ],
+  "title": "NODE_MESSAGE_LOCAL payload not received - Claude",
+  "url": "https://claude.ai/chat/4505a4aa-862f-4531-975d-c927fae3198e"
+}

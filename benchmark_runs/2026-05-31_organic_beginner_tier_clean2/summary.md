@@ -4,11 +4,11 @@ Run ID: 2026-05-31_organic_beginner_tier_clean2
 
 Status: in progress
 
-Last updated: 2026-05-31T20:28:47.905Z
+Last updated: 2026-05-31T20:36:02.499Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":60,"not_started":140}
+Counts: {"captured":80,"not_started":120}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -27,11 +27,11 @@ Counts: {"captured":60,"not_started":140}
 | C13 | conceptual_debugging | TSP App / Behavior Boundary | captured | captured | captured | captured |
 | C14 | conceptual_debugging | Distributed Route Assignment Problem | captured | captured | captured | captured |
 | C15 | conceptual_debugging | Multi-Machine Networking Problem | captured | captured | captured | captured |
-| C16 | conceptual_debugging | Message Does Not Arrive | not_started | not_started | not_started | not_started |
-| C17 | conceptual_debugging | Node Names / Destinations | not_started | not_started | not_started | not_started |
-| C18 | conceptual_debugging | Behavior Never Runs | not_started | not_started | not_started | not_started |
-| C19 | conceptual_debugging | `.moos` vs `.bhv` Mistake | not_started | not_started | not_started | not_started |
-| C20 | conceptual_debugging | Payload Event Not Affecting Autonomy | not_started | not_started | not_started | not_started |
+| C16 | conceptual_debugging | Message Does Not Arrive | captured | captured | captured | captured |
+| C17 | conceptual_debugging | Node Names / Destinations | captured | captured | captured | captured |
+| C18 | conceptual_debugging | Behavior Never Runs | captured | captured | captured | captured |
+| C19 | conceptual_debugging | `.moos` vs `.bhv` Mistake | captured | captured | captured | captured |
+| C20 | conceptual_debugging | Payload Event Not Affecting Autonomy | captured | captured | captured | captured |
 | C21 | conceptual_debugging | Simulation to Heron/PABLO | not_started | not_started | not_started | not_started |
 | C22 | conceptual_debugging | Field Deployment Sanity Check | not_started | not_started | not_started | not_started |
 | C23 | conceptual_debugging | Rescue Path Planning | not_started | not_started | not_started | not_started |
