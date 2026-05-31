@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress
+Status: stopped - Claude quota at C27
 
-Last updated: 2026-05-31T20:42:14.321Z
+Last updated: 2026-05-31T20:45:43.150Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":100,"not_started":100}
+Counts: {"captured":107,"quota_or_block":1,"not_started":92}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -37,8 +37,8 @@ Counts: {"captured":100,"not_started":100}
 | C23 | conceptual_debugging | Rescue Path Planning | captured | captured | captured | captured |
 | C24 | conceptual_debugging | Adversarial Rescue Updates | captured | captured | captured | captured |
 | C25 | conceptual_debugging | Teammate Messaging | captured | captured | captured | captured |
-| C26 | conceptual_debugging | Post-Mission Alog Diagnosis | not_started | not_started | not_started | not_started |
-| C27 | conceptual_debugging | pLogger Produced No Useful Alog | not_started | not_started | not_started | not_started |
+| C26 | conceptual_debugging | Post-Mission Alog Diagnosis | captured | captured | captured | captured |
+| C27 | conceptual_debugging | pLogger Produced No Useful Alog | captured | captured | quota_or_block | captured |
 | C28 | conceptual_debugging | Choosing Debugging Tools During A Mission Run | not_started | not_started | not_started | not_started |
 | C29 | conceptual_debugging | pMarineViewer Background / Geodesy | not_started | not_started | not_started | not_started |
 | C30 | conceptual_debugging | Mission Broke After Several Edits | not_started | not_started | not_started | not_started |
@@ -62,3 +62,10 @@ Counts: {"captured":100,"not_started":100}
 | K08 | code_config_advice | `setParam()` Pattern | not_started | not_started | not_started | not_started |
 | K09 | code_config_advice | `addInfoVars()` / InfoBuffer | not_started | not_started | not_started | not_started |
 | K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
+
+
+## Stop Reason
+
+Claude quota stop: You are out of free messages until 7:50 PM. Limits will reset at 7:50 PM. Benchmark stopped per instruction; no further prompts run on subset of tools.
+
+Completed fully through C26. C27 has NotebookLM, ChatGPT, and Gemini captured, with Claude quota-blocked. No later prompts were run.

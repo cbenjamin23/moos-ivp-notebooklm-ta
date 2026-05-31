@@ -273,20 +273,20 @@
       "category": "conceptual_debugging",
       "title": "Post-Mission Alog Diagnosis",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C27": {
       "category": "conceptual_debugging",
       "title": "pLogger Produced No Useful Alog",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "quota_or_block",
+        "gemini": "captured"
       }
     },
     "C28": {
@@ -520,8 +520,12 @@
       }
     }
   },
-  "last_updated_at": "2026-05-31T20:42:14.321Z",
+  "last_updated_at": "2026-05-31T20:45:43.150Z",
   "notes": [
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing."
-  ]
+  ],
+  "stopped_at": "2026-05-31T20:45:43.150Z",
+  "stop_reason": "Claude quota stop: You are out of free messages until 7:50 PM. Limits will reset at 7:50 PM. Benchmark stopped per instruction; no further prompts run on subset of tools.",
+  "last_completed_prompt": "C26",
+  "partial_prompt_at_stop": "C27"
 }
