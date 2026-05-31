@@ -520,12 +520,18 @@
       }
     }
   },
-  "last_updated_at": "2026-05-31T20:45:43.150Z",
+  "last_updated_at": "2026-05-31T23:55:17.835Z",
   "notes": [
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing."
   ],
   "stopped_at": "2026-05-31T20:45:43.150Z",
-  "stop_reason": "Claude quota stop: You are out of free messages until 7:50 PM. Limits will reset at 7:50 PM. Benchmark stopped per instruction; no further prompts run on subset of tools.",
+  "stop_reason": "Claude quota still active after scheduled 7:50 PM retry. Benchmark remains stopped per instruction; no further prompts run on subset of tools.",
   "last_completed_prompt": "C26",
-  "partial_prompt_at_stop": "C27"
+  "partial_prompt_at_stop": "C27",
+  "resume_attempts": [
+    {
+      "at": "2026-05-31T23:55:17.834Z",
+      "result": "Claude still quota-blocked after scheduled 7:50 PM retry; benchmark remains stopped at C27."
+    }
+  ]
 }
