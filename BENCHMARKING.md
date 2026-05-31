@@ -32,11 +32,11 @@ Optional later comparison:
 
 ## Prompt Set
 
-Use 45 fixed prompts grounded in the lab sequence:
+Use 50 fixed prompts grounded in the lab sequence:
 
 - 30 conceptual/debugging prompts
 - 10 exact documentation/parameter/tool prompts
-- 5 code-advice/code-correction prompts
+- 10 code-advice/code-correction prompts
 
 This split reflects the intended use case. The benchmark should mainly test conceptual TA value for lab students, while still measuring whether the notebook is better or worse than normal LLMs on code-adjacent MOOS-IvP tasks.
 
@@ -77,6 +77,7 @@ These prompts should be small code-adjacent student questions, not requests for 
 
 - App lifecycle: `OnStartUp()`, `OnNewMail()`, `Iterate()`, AppCasting reports.
 - pOdometry-style mail handling and state updates.
+- Mission configuration snippets: uTimerScript setup, behavior blocks, pShare routes, and inter-vehicle message strings.
 - Behavior `setParam()` and standard behavior params.
 - `addInfoVars()` and missing/stale InfoBuffer data.
 - Simple ZAIC / `OF_Coupler` / `setPWT(m_priority_wt)` correction.
@@ -143,7 +144,7 @@ It should contain:
 3. Score table by category
 4. Hard-failure table
 5. Main interpretation
-6. Prompt-by-prompt results for all 45 prompts
+6. Prompt-by-prompt results for all 50 prompts
 7. Appendix with grading notes and reference checks
 
 The root `README.md` should only include a concise summary:
