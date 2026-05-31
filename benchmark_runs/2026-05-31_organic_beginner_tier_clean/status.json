@@ -1,0 +1,516 @@
+{
+  "run_id": "2026-05-31_organic_beginner_tier_clean",
+  "mode": "organic_beginner_tier_browser_ui_clean_prompt_context",
+  "started_at": "2026-05-31T19:59:30.942Z",
+  "models": [
+    "NotebookLM TA",
+    "ChatGPT",
+    "Claude",
+    "Gemini"
+  ],
+  "instructions": "Use only the prompt text. No special instructions. Default platform behavior allowed. Stop the whole run if any model hits quota/blocking state. Use clean prompt context where practical: fresh ChatGPT/Gemini/Claude chat per prompt; NotebookLM chat history deleted between prompts after raw output capture.",
+  "prompt_count": 50,
+  "status": {
+    "C01": {
+      "category": "conceptual_debugging",
+      "title": "Command Not Found After Build",
+      "models": {
+        "notebook": "submitted",
+        "chatgpt": "submitted",
+        "claude": "submitted",
+        "gemini": "submitted"
+      }
+    },
+    "C02": {
+      "category": "conceptual_debugging",
+      "title": "Version Control Before Mission Changes",
+      "models": {
+        "notebook": "submitted",
+        "chatgpt": "submitted",
+        "claude": "submitted",
+        "gemini": "submitted"
+      }
+    },
+    "C03": {
+      "category": "conceptual_debugging",
+      "title": "uXMS/uPokeDB Confusion",
+      "models": {
+        "notebook": "submitted",
+        "chatgpt": "submitted",
+        "claude": "submitted",
+        "gemini": "submitted"
+      }
+    },
+    "C04": {
+      "category": "conceptual_debugging",
+      "title": "App Not Publishing",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C05": {
+      "category": "conceptual_debugging",
+      "title": "pAntler Did Not Start A Process",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C06": {
+      "category": "conceptual_debugging",
+      "title": "Launch Arguments Not Reaching Config Files",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C07": {
+      "category": "conceptual_debugging",
+      "title": "Helm Remains PARKED",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C08": {
+      "category": "conceptual_debugging",
+      "title": "No Desired Outputs",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C09": {
+      "category": "conceptual_debugging",
+      "title": "Vehicle Moves In Simulation But Autonomy Looks Wrong",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C10": {
+      "category": "conceptual_debugging",
+      "title": "Multi-Vehicle Ports",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C11": {
+      "category": "conceptual_debugging",
+      "title": "Shoreside Missing Vehicle",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C12": {
+      "category": "conceptual_debugging",
+      "title": "pShare Route Confusion",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C13": {
+      "category": "conceptual_debugging",
+      "title": "TSP App / Behavior Boundary",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C14": {
+      "category": "conceptual_debugging",
+      "title": "Distributed Route Assignment Problem",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C15": {
+      "category": "conceptual_debugging",
+      "title": "Multi-Machine Networking Problem",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C16": {
+      "category": "conceptual_debugging",
+      "title": "Message Does Not Arrive",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C17": {
+      "category": "conceptual_debugging",
+      "title": "Node Names / Destinations",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C18": {
+      "category": "conceptual_debugging",
+      "title": "Behavior Never Runs",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C19": {
+      "category": "conceptual_debugging",
+      "title": "`.moos` vs `.bhv` Mistake",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C20": {
+      "category": "conceptual_debugging",
+      "title": "Payload Event Not Affecting Autonomy",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C21": {
+      "category": "conceptual_debugging",
+      "title": "Simulation to Heron/PABLO",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C22": {
+      "category": "conceptual_debugging",
+      "title": "Field Deployment Sanity Check",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C23": {
+      "category": "conceptual_debugging",
+      "title": "Rescue Path Planning",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C24": {
+      "category": "conceptual_debugging",
+      "title": "Adversarial Rescue Updates",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C25": {
+      "category": "conceptual_debugging",
+      "title": "Teammate Messaging",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C26": {
+      "category": "conceptual_debugging",
+      "title": "Post-Mission Alog Diagnosis",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C27": {
+      "category": "conceptual_debugging",
+      "title": "pLogger Produced No Useful Alog",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C28": {
+      "category": "conceptual_debugging",
+      "title": "Choosing Debugging Tools During A Mission Run",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C29": {
+      "category": "conceptual_debugging",
+      "title": "pMarineViewer Background / Geodesy",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "C30": {
+      "category": "conceptual_debugging",
+      "title": "Mission Broke After Several Edits",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D01": {
+      "category": "exact_docs_tools",
+      "title": "pOdometry Variables",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D02": {
+      "category": "exact_docs_tools",
+      "title": "pAntler Process Launching",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D03": {
+      "category": "exact_docs_tools",
+      "title": "uTimerScript Usage",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D04": {
+      "category": "exact_docs_tools",
+      "title": "Helm Deploy Variables",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D05": {
+      "category": "exact_docs_tools",
+      "title": "BHV_Waypoint Params",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D06": {
+      "category": "exact_docs_tools",
+      "title": "BHV_OpRegionV24 Semantics",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D07": {
+      "category": "exact_docs_tools",
+      "title": "Viewer Image / Geodesy Config",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D08": {
+      "category": "exact_docs_tools",
+      "title": "pShare Configuration",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D09": {
+      "category": "exact_docs_tools",
+      "title": "uField Broker Comparison",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "D10": {
+      "category": "exact_docs_tools",
+      "title": "pLogger And Alog Verification",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K01": {
+      "category": "code_config_advice",
+      "title": "pOdometry Mail Handling",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K02": {
+      "category": "code_config_advice",
+      "title": "Missing Registration Pattern",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K03": {
+      "category": "code_config_advice",
+      "title": "AppCasting Config Warnings",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K04": {
+      "category": "code_config_advice",
+      "title": "uTimerScript Trigger Setup",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K05": {
+      "category": "code_config_advice",
+      "title": "Behavior Config File Boundary",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K06": {
+      "category": "code_config_advice",
+      "title": "pShare Route Config",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K07": {
+      "category": "code_config_advice",
+      "title": "Inter-Vehicle Message Payload",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K08": {
+      "category": "code_config_advice",
+      "title": "`setParam()` Pattern",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K09": {
+      "category": "code_config_advice",
+      "title": "`addInfoVars()` / InfoBuffer",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    },
+    "K10": {
+      "category": "code_config_advice",
+      "title": "ZAIC Speed Function",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "not_started",
+        "gemini": "not_started"
+      }
+    }
+  },
+  "last_updated_at": "2026-05-31T20:05:53.276Z"
+}

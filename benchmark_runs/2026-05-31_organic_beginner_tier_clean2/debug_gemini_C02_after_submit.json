@@ -1,0 +1,241 @@
+{
+  "bodyTail": "Upgrade\nConversation with Gemini\nAny new ideas to explore?\n\nI am about to modify several mission and source files, and I want to avoid losing a working baseline. What simple Git workflow should I use before experimenting, and what files should I be careful not to treat as source?\n\nNew\nFlash\n\n\n\n\nSubmit",
+  "buttons": [
+    {
+      "aria": "Google Account: Charlie Benjamin  \n(chbenj36@gmail.com)",
+      "cls": "gb_C gb_5a gb_6",
+      "disabled": null,
+      "href": "https://accounts.google.com/SignOutOptions?hl=en&continue=https://gemini.google.com/%3Fis_sa%3D1%26is_sa%3D1%26android-min-version%3D301356232%26ios-min-version%3D322.0%26campaign_id%3Dbkws%26utm_source%3Dsem%26utm_medium%3Dpaid-media%26utm_campaign%3Dbkws%26pt%3D9008%26mt%3D8%26ct%3Dp-growth-sem-bkws%26gclsrc%3Daw.ds%26gad_source%3D1%26gad_campaignid%3D20108148196%26gbraid%3D0AAAAApk5BhncsHd1VeeXHa-pjruolleFJ%26gclid%3DCjwKCAjwuO_QBhAWEiwAIkVhU0TPyqKa0kC-WTkC6cYqDexVhfaFy3v0SVo8tk4FBpT7IZoa6GUsVRoCVjIQAvD_BwE&ec=GBRAkgU",
+      "i": 0,
+      "role": "button",
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "New chat",
+      "cls": "side-nav-sparkle-button",
+      "disabled": null,
+      "href": "/",
+      "i": 1,
+      "role": null,
+      "tag": "A",
+      "text": "Gemini"
+    },
+    {
+      "aria": "Open sidebar",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger side-nav-sparkle-but",
+      "disabled": null,
+      "href": null,
+      "i": 2,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "aria": "",
+      "cls": "mdc-button mat-mdc-button-base mdc-button--unelevated mat-mdc-unelevated-button gds-button-tonal mat",
+      "disabled": null,
+      "href": null,
+      "i": 3,
+      "role": "link",
+      "tag": "BUTTON",
+      "text": "Upgrade"
+    },
+    {
+      "aria": "Listen",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger tts-button mat-unthe",
+      "disabled": null,
+      "href": null,
+      "i": 4,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "aria": "Temporary chat",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": null,
+      "i": 5,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "aria": "New chat",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": "/app",
+      "i": 6,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Search chats",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": "/search",
+      "i": 7,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Images",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": "/images",
+      "i": 8,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Library",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": "library",
+      "i": 9,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Images",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": "/images",
+      "i": 10,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Library",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": "library",
+      "i": 11,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Toggle Notebooks",
+      "cls": "expandable-section-header",
+      "disabled": null,
+      "href": null,
+      "i": 12,
+      "role": null,
+      "tag": "BUTTON",
+      "text": "Notebooks"
+    },
+    {
+      "aria": "New notebook",
+      "cls": "mat-mdc-list-item mdc-list-item mat-mdc-tooltip-trigger gem-nav-list-item gmat-override mat-mdc-list",
+      "disabled": "false",
+      "href": "/notebooks/create",
+      "i": 13,
+      "role": null,
+      "tag": "A",
+      "text": "New notebook"
+    },
+    {
+      "aria": "Toggle Recents",
+      "cls": "expandable-section-header",
+      "disabled": null,
+      "href": null,
+      "i": 14,
+      "role": null,
+      "tag": "BUTTON",
+      "text": "Recents"
+    },
+    {
+      "aria": "Google Account: Charlie Benjamin (chbenj36@gmail.com)",
+      "cls": "mavatar-footer-left ng-star-inserted",
+      "disabled": null,
+      "href": "https://accounts.google.com/SignOutOptions?continue=https://gemini.google.com",
+      "i": 15,
+      "role": null,
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "aria": "Settings",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger mat-mdc-menu-trigger",
+      "disabled": null,
+      "href": null,
+      "i": 16,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "aria": "Upload & tools",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": null,
+      "i": 17,
+      "role": null,
+      "tag": "BUTTON",
+      "text": "New"
+    },
+    {
+      "aria": "Expand input to Fullscreen",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger fullscreen-button ng",
+      "disabled": null,
+      "href": null,
+      "i": 18,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "aria": "Open mode picker, currently Flash",
+      "cls": "mdc-button mat-mdc-button-base input-area-switch mat-mdc-button mat-unthemed",
+      "disabled": "false",
+      "href": null,
+      "i": 19,
+      "role": null,
+      "tag": "BUTTON",
+      "text": "Flash"
+    },
+    {
+      "aria": "Microphone",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": null,
+      "i": 20,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "aria": "Send message",
+      "cls": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed mat-badge-overlap mat",
+      "disabled": null,
+      "href": null,
+      "i": 21,
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    }
+  ],
+  "edits": [
+    {
+      "aria": "Enter a prompt for Gemini",
+      "cls": "ql-editor textarea new-input-ui",
+      "i": 0,
+      "text": "I am about to modify several mission and source files, and I want to avoid losing a working baseline. What simple Git workflow should I use before experimenting, and what files should I be careful not to treat as source?"
+    },
+    {
+      "aria": null,
+      "cls": "ql-clipboard",
+      "i": 1,
+      "text": ""
+    }
+  ],
+  "title": "Google Gemini",
+  "url": "https://gemini.google.com/app?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&utm_source=sem&utm_medium=paid-media&utm_campaign=bkws&pt=9008&mt=8&ct=p-growth-sem-bkws&gclsrc=aw.ds&gad_source=1&gad_campaignid=20108148196&gbraid=0AAAAApk5BhncsHd1VeeXHa-pjruolleFJ&gclid=CjwKCAjwuO_QBhAWEiwAIkVhU0TPyqKa0kC-WTkC6cYqDexVhfaFy3v0SVo8tk4FBpT7IZoa6GUsVRoCVjIQAvD_BwE"
+}

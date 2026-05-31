@@ -1,0 +1,2297 @@
+{
+  "notebook": {
+    "assistant": [],
+    "bodyTail": "to reportUnhandledConfigWarning()\n3\n. This function is intelligent: it checks the line against standard superclass parameters (like AppTick or CommsTick) and, if it still finds no match, posts a warning that appears in green in uMAC or pMarineViewer. This allows you to instantly see that a parameter like threshhold = 0.5 is being ignored due to a typo\n4\n5\n.\nSuperclass Bookkeeping: For AppCasting to function, you must call the superclass versions of OnStartUp() and RegisterVariables(). These calls handle essential \"behind-the-scenes\" tasks, such as registering the app for APPCAST_REQ messages so it can respond to user requests for status reports\n1\n6\n.\nString Parsing Utilities: While biteStringX is not a standard utility in the provided sources, the recommended pattern uses MOOSChomp and toupper to ensure configuration parameters are parsed robustly and case-insensitively\n3\n.\nSmallest Next Artifact Needed: To ensure your app is healthy, please provide your OnNewMail and Iterate functions; these also require specific superclass calls to maintain iteration counters and trigger on-demand reporting\n6\n7\n.\nkeep_pin\nSave to note\ncopy_all\nthumb_up\nthumb_down\nHow do iSay priority levels affect the utterance queue?\nExplain the difference between RealmCast and WatchCast reports.\nHow can I toggle realmcast formatting in pMarineViewer?\n\nI built MOOS-IvP successfully, but commands such as pAntler, uXMS, or pMarineViewer are not found from my terminal. What should I check about the build, shell environment, PATH, and where the binaries are installed?\n\nIf you have successfully built MOOS-IvP but your terminal cannot find commands like pAntler or uXMS, the issue is almost certainly that your shell's PATH environment variable has not been updated to include the directory where these binaries reside\n1\n2\n.\nFollow this diagnostic checklist to resolve the issue:\n1. Verify the Build Output\nFirst, confirm that the executables were actually created during the build process.\nCheck the bin directory: Navigate to your moos-ivp/bin/ directory. You should see approximately 100 executables, including MOOSDB, pAntler, pHelmIvP, uXMS, and pMarineViewer\n3\n4\n.\nCommand: ls ~/moos-ivp/bin | wc -l (the count should be around 107)\n2\n3\n.\nIf the directory is empty: Your build did not complete successfully. Return to the moos-ivp/ folder and re-run ./build-moos.sh followed by ./build-ivp.sh\n3\n5\n.\n2. Check Your Current PATH\nThe PATH is a colon-separated list of directories your shell searches when you type a command\n6\n.\nInspect the variable: Type echo $PATH in your terminal\n7\n8\n.\nLook for the entry: Look for /Users/you/moos-ivp/bin (macOS) or /home/you/moos-ivp/bin (Linux) in the output\n7\n9\n.\nVerification tool: You can use the which command to see where the shell expects to find a program. If it returns nothing, the path is missing\n10\nmore_horiz\n.\nExample: which pAntler\n3. Augment the PATH Permanently\nTo fix this, you must edit your shell's configuration file (usually .bashrc for Linux/macOS Bash users or .zshrc for macOS Zsh users)\n13\n14\n.\nOpen the file: Use a text editor (e.g., nano ~/.bashrc or emacs ~/.bashrc)\n10\n15\n.\nAdd the following lines at the end of the file:\n(Note: Using ~/ or $HOME/ ensures the path is correct regardless of your current directory\n16\n17\n.)\n4. Reload the Environment\nChanges to configuration files do not take effect in existing terminal windows automatically\n18\n.\nApply the changes: Type source ~/.bashrc in your current terminal\n15\n19\n.\nAlternative: Simply close the terminal and open a new one\n18\n.\n5. Final Diagnostic Checklist\nOnce you have updated the path and reloaded the shell, verify success with these commands:\nwhich MOOSDB: Should return the full path to the binary in your bin/ folder\n9\nmore_horiz\n.\npath_shell.sh: If you have added the scripts/ folder to your path, this utility will list your PATH in a human-readable one-line-per-directory format\n8\n21\n.\nLaunch a test: Try launching a simple mission like Alpha to confirm all processes (Viewer, Helm, etc.) can be found by pAntler\n11\n22\n.\nkeep_pin\nSave to note\ncopy_all\nthumb_up\nthumb_down\nHow do I configure pRealm to reduce communication bandwidth?\nWhat are the priority queue features in the iSay application?\nHow does uSimCurrent interact with the uSimMarine simulator?\nToday • 11:36 PM\n49 sources\narrow_forward\nStudio\ndock_to_left\naudio_magic_eraser\nAudio Overview\nchevron_forward\ntablet\nBETA\nSlide Deck\nchevron_forward\nsubscriptions\nVideo Overview\nchevron_forward\nflowchart\nMind Map\nchevron_forward\nauto_tab_group\nReports\nchevron_forward\ncards_star\nFlashcards\nchevron_forward\nquiz\nQuiz\nchevron_forward\nstacked_bar_chart\nBETA\nInfographic\nchevron_forward\ntable_view\nData Table\nchevron_forward\nauto_tab_group\nStudy Guide: Autonomous Rescue Challenge and MOOS-IvP Mission Utilities\nStudy Guide · 49 sources · 13h ago\nmore_vert\ncards_star\nMOOS-IvP Flashcards\n49 sources · 11h ago\nmore_vert\nsticky_note_2\nAdd note\nNotebookLM can be inaccurate; please double check its responses.\nReply ready.",
+    "inputs": [
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 0,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "1"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 1,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "6"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 2,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "3"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 3,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "6"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 4,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "7"
+      },
+      {
+        "aria": "Save message to a note",
+        "classes": "mdc-button mat-mdc-button-base pin-button pin-button-extended mat-mdc-button mat",
+        "disabled": null,
+        "i": 5,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "keep_pin\nSave to note"
+      },
+      {
+        "aria": "Copy model response to clipboard",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base xap-copy-to-clipboard ac",
+        "disabled": null,
+        "i": 6,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "copy_all"
+      },
+      {
+        "aria": "Rate response as good",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base action-button mat-unthem",
+        "disabled": null,
+        "i": 7,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "thumb_up"
+      },
+      {
+        "aria": "Rate response as bad",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base action-button mat-unthem",
+        "disabled": null,
+        "i": 8,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "thumb_down"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 9,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "1"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 10,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "2"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 11,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "3"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 12,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "4"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 13,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "2"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 14,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "3"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 15,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "3"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 16,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "5"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 17,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "6"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 18,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "7"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 19,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "8"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 20,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "7"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 21,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "9"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 22,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "10"
+      },
+      {
+        "aria": null,
+        "classes": "citation-marker",
+        "disabled": null,
+        "i": 23,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "more_horiz"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 24,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "13"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 25,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "14"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 26,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "10"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 27,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "15"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 28,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "16"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 29,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "17"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 30,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "18"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 31,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "15"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 32,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "19"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 33,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "18"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 34,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "9"
+      },
+      {
+        "aria": null,
+        "classes": "citation-marker",
+        "disabled": null,
+        "i": 35,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "more_horiz"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 36,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "8"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 37,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "21"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 38,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "11"
+      },
+      {
+        "aria": null,
+        "classes": "xap-inline-dialog citation-marker ng-star-inserted",
+        "disabled": null,
+        "i": 39,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "22"
+      },
+      {
+        "aria": "Save message to a note",
+        "classes": "mdc-button mat-mdc-button-base pin-button pin-button-extended mat-mdc-button mat",
+        "disabled": null,
+        "i": 40,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "keep_pin\nSave to note"
+      },
+      {
+        "aria": "Copy model response to clipboard",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base xap-copy-to-clipboard ac",
+        "disabled": null,
+        "i": 41,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "copy_all"
+      },
+      {
+        "aria": "Rate response as good",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base action-button mat-unthem",
+        "disabled": null,
+        "i": 42,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "thumb_up"
+      },
+      {
+        "aria": "Rate response as bad",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base action-button mat-unthem",
+        "disabled": null,
+        "i": 43,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "thumb_down"
+      },
+      {
+        "aria": "Scrolls the chat panel to the bottom",
+        "classes": "mdc-fab mat-mdc-fab-base mat-mdc-fab mat-mdc-button-base mat-mdc-tooltip-trigger",
+        "disabled": null,
+        "i": 44,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "keyboard_arrow_down"
+      },
+      {
+        "aria": "Query box",
+        "classes": "cdk-textarea-autosize mat-mdc-autocomplete-trigger query-box-input ng-touched ng",
+        "disabled": null,
+        "i": 45,
+        "role": null,
+        "tag": "TEXTAREA",
+        "text": "I launched a MOOSDB, poked a variable with uPokeDB, and expected to see it in uXMS, but I do not see what I expected. Wh"
+      },
+      {
+        "aria": "Submit",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base submit-button outset-foc",
+        "disabled": true,
+        "i": 46,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "arrow_forward"
+      },
+      {
+        "aria": "Collapse studio panel",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger ",
+        "disabled": null,
+        "i": 47,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "dock_to_left"
+      },
+      {
+        "aria": "Customize Audio Overview",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 48,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": "Customize Slide Deck",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 49,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": "Customize Mind Map",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 50,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": "Customize Flashcards",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 51,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": "Customize Quiz",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 52,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": "Customize Infographic",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 53,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": "Customize Data Table",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base edit-button edit-button-",
+        "disabled": null,
+        "i": 54,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "chevron_forward"
+      },
+      {
+        "aria": null,
+        "classes": "mdc-button mat-mdc-button-base artifact-stretched-button mat-mdc-button mat-unth",
+        "disabled": null,
+        "i": 55,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-menu-trigger mat",
+        "disabled": null,
+        "i": 56,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "more_vert"
+      },
+      {
+        "aria": null,
+        "classes": "mdc-button mat-mdc-button-base artifact-stretched-button mat-mdc-button mat-unth",
+        "disabled": null,
+        "i": 57,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-menu-trigger mat",
+        "disabled": null,
+        "i": 58,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "more_vert"
+      },
+      {
+        "aria": null,
+        "classes": "mdc-button mat-mdc-button-base add-note-button mdc-button--outlined mat-mdc-outl",
+        "disabled": null,
+        "i": 59,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "sticky_note_2\nAdd note"
+      }
+    ],
+    "kind": "notebook",
+    "title": "MOOS-IvP Virtual TA - NotebookLM",
+    "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012"
+  },
+  "chatgpt": {
+    "assistant": [
+      {
+        "i": 0,
+        "len": 191,
+        "tag": "DIV",
+        "text": "I’ll treat this as a terminal/build-path debugging checklist: first confirm the binaries exist, then confirm your shell is sourcing the right environment, then make the PATH change permanent."
+      },
+      {
+        "i": 1,
+        "len": 4356,
+        "tag": "DIV",
+        "text": "This usually means MOOS-IvP compiled, but your terminal cannot see the installed executables. Check in this order.\n\n1. Confirm the binaries were actually built\n\nFrom the root of your moos-ivp tree:\n\nB"
+      },
+      {
+        "i": 2,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      }
+    ],
+    "bodyTail": "rom my terminal. What should I check about the build, shell environment, PATH, and where the binaries are installed?\n\nI’ll treat this as a terminal/build-path debugging checklist: first confirm the binaries exist, then confirm your shell is sourcing the right environment, then make the PATH change permanent.\n\nThought for 4s\n\nThis usually means MOOS-IvP compiled, but your terminal cannot see the installed executables. Check in this order.\n\n1. Confirm the binaries were actually built\n\nFrom the root of your moos-ivp tree:\n\nBash\ncd ~/moos-ivp\nfind . -type f \\( -name pAntler -o -name uXMS -o -name pMarineViewer \\)\n\nYou should see paths like:\n\nBash\n./bin/pAntler\n./bin/uXMS\n./bin/pMarineViewer\n\nor possibly under a build/install directory depending on how you built it.\n\nAlso run:\n\nBash\nls -l ~/moos-ivp/bin | grep -E 'pAntler|uXMS|pMarineViewer'\n\nIf pAntler and uXMS exist but pMarineViewer does not, that often means the non-GUI MOOS tools built, but FLTK/OpenGL GUI dependencies were missing, so pMarineViewer did not compile. The official docs describe uXMS as a command-line MOOSDB scope tool, while pMarineViewer is an FLTK/OpenGL GUI app, so it has extra graphics dependencies. \noceanai.mit.edu\n+1\n\n2. Run the build checker\n\nMOOS-IvP includes a build-check.sh script that reports missing MOOS/IvP apps and libraries:\n\nBash\ncd ~/moos-ivp\n./build-check.sh\n\nFor a terse version:\n\nBash\n./build-check.sh --terse\n\nThis is useful because “build completed” can still mean “some optional apps failed,” especially GUI tools. The script explicitly checks missing MOOS apps, IvP apps, MOOS libs, and IvP libs. \nGitHub\n\n3. Check whether your shell can see them\n\nTry:\n\nBash\nwhich pAntler\nwhich uXMS\nwhich pMarineViewer\n\nor:\n\nBash\ncommand -v pAntler\ncommand -v uXMS\ncommand -v pMarineViewer\n\nIf those return nothing, your PATH does not include the MOOS-IvP bin directory.\n\nYou can still test the binary directly:\n\nBash\n~/moos-ivp/bin/pAntler --help\n~/moos-ivp/bin/uXMS --help\n~/moos-ivp/bin/pMarineViewer --help\n\nIf direct execution works, the build is fine and this is purely a PATH issue.\n\n4. Add MOOS-IvP binaries to PATH for the current terminal\n\nRun:\n\nBash\nexport PATH=$PATH:$HOME/moos-ivp/bin\n\nThen test:\n\nBash\nwhich pAntler\nwhich uXMS\nwhich pMarineViewer\n\nThe MOOS-IvP extend documentation gives the same general instruction: after building, add the relevant bin directory to your shell path so apps can be launched normally, including through pAntler. \noceanai.mit.edu\n\n5. Make the PATH change permanent\n\nFirst check your shell:\n\nBash\necho $SHELL\n\nIf it says zsh, edit ~/.zshrc:\n\nBash\necho 'export PATH=$PATH:$HOME/moos-ivp/bin' >> ~/.zshrc\nsource ~/.zshrc\n\nIf it says bash, edit ~/.bashrc:\n\nBash\necho 'export PATH=$PATH:$HOME/moos-ivp/bin' >> ~/.bashrc\nsource ~/.bashrc\n\nOn some Linux login shells, you may also need ~/.profile or ~/.bash_profile, but for normal terminal use ~/.bashrc/~/.zshrc is usually the right place.\n\n6. Check for shell hash caching\n\nSometimes the shell remembers old command locations. After editing PATH, run:\n\nBash\nhash -r\n\nThen retry:\n\nBash\npAntler --help\nuXMS --help\npMarineViewer --help\n7. If using moos-ivp-extend, add that bin too\n\nIf you also built an extend tree, add both:\n\nBash\nexport PATH=$PATH:$HOME/moos-ivp/bin:$HOME/moos-ivp-extend/bin\n\nPermanent version:\n\nBash\necho 'export PATH=$PATH:$HOME/moos-ivp/bin:$HOME/moos-ivp-extend/bin' >> ~/.zshrc\nsource ~/.zshrc\n\nUse ~/.bashrc instead if your shell is bash.\n\nThe extend tree docs specifically say its executables land in moos-ivp-extend/bin/, and that this directory should be added to PATH. \noceanai.mit.edu\n\n8. Check the common “wrong terminal / wrong environment” issue\n\nRun:\n\nBash\necho $PATH\npwd\nls ~/moos-ivp/bin\n\nCommon mistakes:\n\nBash\n# You built here:\n~/Documents/moos-ivp\n\n# But added this to PATH:\n~/moos-ivp/bin\n\nor:\n\nBash\n# You added PATH in macOS terminal,\n# but are now inside WSL, Docker, SSH, or another shell.\n\nEach environment needs its own PATH setup.\n\n9. Minimal known-good setup block\n\nFor your case, this is probably the block you want in ~/.zshrc or ~/.bashrc:\n\nBash\n# MOOS-IvP\nexport MOOSIVP_HOME=$HOME/moos-ivp\nexport PATH=$PATH:$MOOSIVP_HOME/bin\n\n# Optional extend tree\nexport MOOSIVP_EXTEND_HOME=$HOME/moos-ivp-extend\nexport PATH=$PATH:$MOOSIVP_EXTEND_HOME/bin\n\nThen:\n\nBash\nsource ~/.zshrc   # or source ~/.bashrc\nhash -r\nwhich pAntler uXMS pMarineViewer\nLikely diagnosis\n\nIf ~/moos-ivp/bin/pAntler works but pAntler does not, your build is fine; your PATH is missing ~/moos-ivp/bin.\n\nIf pAntler and uXMS exist but pMarineViewer does not, your core build likely succeeded but the GUI app did not build, usually because FLTK/OpenGL-related dependencies were missing.\n\nSources\n\nThinking\nI am about to modify..\nShow in text field\nI launched a MOOSDB,..\nShow in text field\nChatGPT can make mistakes. Check important info.\nNEW\nLarge pastes are now attachments\nLong text is added as a file to keep the composer tidy. Click Show in text field if you want to move it back into your message.",
+    "inputs": [
+      {
+        "aria": "Open conversation options for Radio and Receiver Compatibility",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 0,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Pixhawk 6C vs 6X",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 1,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Clamp Assembly Explanation",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 2,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Pymoos 2 vs Pymoos 1",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 3,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for 1 Credit Course Options",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 4,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Logo Design Request",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 5,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for McGill 330 vs 350",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 6,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Time per Credit Comparison",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 7,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for McGill Degree Credit Limit",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 8,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Emacs Fabparts Entries",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 9,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for rcfpvdrone.com legitimacy review",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 10,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for Commercial Offerings Inquiry",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 11,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open conversation options for DIY Contact Charging X650",
+        "classes": "__menu-item-trailing-btn",
+        "disabled": null,
+        "i": 12,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download apps",
+        "classes": "__menu-item-trailing-btn no-draggable hover:*:bg-token-interactive-bg-secondary-",
+        "disabled": null,
+        "i": 13,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Share",
+        "classes": "btn relative group-focus-within/dialog:focus-visible:[outline-width:1.5px] group",
+        "disabled": null,
+        "i": 14,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Share"
+      },
+      {
+        "aria": "Open conversation options",
+        "classes": "text-token-text-primary contrast-high:not-dark:keyboard-focused:focus-ring no-dr",
+        "disabled": null,
+        "i": 15,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy message",
+        "classes": "text-token-text-secondary hover:bg-token-bg-secondary rounded-lg",
+        "disabled": null,
+        "i": 16,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Edit message",
+        "classes": "text-token-text-secondary hover:bg-token-bg-secondary rounded-lg",
+        "disabled": null,
+        "i": 17,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "classes": "text-token-text-tertiary hover:text-token-text-primary dark:hover:text-token-tex",
+        "disabled": null,
+        "i": 18,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Thought for 4s"
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 19,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 20,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 21,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 22,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 23,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 24,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 25,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 26,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 27,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 28,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 29,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 30,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 31,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 32,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 33,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 34,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 35,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 36,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 37,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 38,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 39,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "flex gap-1 items-center select-none py-2 text-sm font-medium hover:bg-black/5 da",
+        "disabled": null,
+        "i": 40,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy response",
+        "classes": "text-token-text-secondary hover:bg-token-bg-secondary rounded-lg",
+        "disabled": null,
+        "i": 41,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Share",
+        "classes": "text-token-text-secondary hover:bg-token-bg-secondary rounded-lg",
+        "disabled": null,
+        "i": 42,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Switch model",
+        "classes": "cursor-pointer touch:px-2.5 text-token-text-secondary hover:bg-token-bg-secondar",
+        "disabled": null,
+        "i": 43,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More actions",
+        "classes": "text-token-text-secondary hover:bg-token-bg-secondary touch:w-10 flex h-8 w-8 it",
+        "disabled": null,
+        "i": 44,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Sources",
+        "classes": "group/footnote bg-token-bg-primary hover:bg-token-bg-tertiary dark:bg-transparen",
+        "disabled": null,
+        "i": 45,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Sources"
+      },
+      {
+        "aria": null,
+        "classes": "relative flex h-8 w-8 cursor-pointer items-center justify-center overflow-hidden",
+        "disabled": null,
+        "i": 46,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Add files and more",
+        "classes": "composer-btn",
+        "disabled": null,
+        "i": 47,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Chat with ChatGPT",
+        "classes": "wcDTda_fallbackTextarea",
+        "disabled": null,
+        "i": 48,
+        "role": null,
+        "tag": "TEXTAREA",
+        "text": ""
+      },
+      {
+        "aria": "Chat with ChatGPT",
+        "classes": "ProseMirror ProseMirror-focused",
+        "disabled": null,
+        "i": 49,
+        "role": "textbox",
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "classes": "__composer-pill __composer-pill--neutral group/pill",
+        "disabled": null,
+        "i": 50,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Thinking"
+      },
+      {
+        "aria": "Start dictation",
+        "classes": "composer-btn h-9 min-h-9 w-9 min-w-9",
+        "disabled": null,
+        "i": 51,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Send prompt",
+        "classes": "composer-submit-btn composer-submit-button-color h-9 w-9",
+        "disabled": null,
+        "i": 52,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "I am about to modify..",
+        "classes": "interactive-bg-secondary border-token-interactive-border-secondary-default corne",
+        "disabled": null,
+        "i": 53,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Show in text field",
+        "classes": "tap-padding-auto group focus-visible:outline-token-text-primary interactive-labe",
+        "disabled": null,
+        "i": 54,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Show in text field"
+      },
+      {
+        "aria": "Remove file 1: I am about to modify..",
+        "classes": "behavior-btn interactive-bg-primary interactive-label-primary aspect-square flex",
+        "disabled": null,
+        "i": 55,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "I launched a MOOSDB,..",
+        "classes": "interactive-bg-secondary border-token-interactive-border-secondary-default corne",
+        "disabled": null,
+        "i": 56,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Show in text field",
+        "classes": "tap-padding-auto group focus-visible:outline-token-text-primary interactive-labe",
+        "disabled": null,
+        "i": 57,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Show in text field"
+      },
+      {
+        "aria": "Remove file 2: I launched a MOOSDB,..",
+        "classes": "behavior-btn interactive-bg-primary interactive-label-primary aspect-square flex",
+        "disabled": null,
+        "i": 58,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Close",
+        "classes": "-m-1 p-1 leading-[0] opacity-70 transition hover:opacity-100",
+        "disabled": null,
+        "i": 59,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      }
+    ],
+    "kind": "chatgpt",
+    "title": "MOOS-IvP Build Troubleshooting",
+    "url": "https://chatgpt.com/c/6a1c8435-57d4-8332-8e03-10c01dcaeb79"
+  },
+  "claude": {
+    "assistant": [
+      {
+        "i": 0,
+        "len": 2825,
+        "tag": "DIV",
+        "text": "Here's a systematic checklist to diagnose why the MOOS-IvP binaries aren't on your PATH:\n\n1. Confirm the binaries actually exist\n\nFirst, check whether the build produced any executables at all:\n\nbash\n"
+      },
+      {
+        "i": 1,
+        "len": 10466,
+        "tag": "DIV",
+        "text": "These are solid MOOS-IvP debugging questions. I'll work through them — let me know if you want any expanded into a deeper dive.\n\nC03 — uXMS/uPokeDB Confusion\nCheck the MOOSDB is actually running. uPok"
+      }
+    ],
+    "bodyTail": "ty name mismatch — the shoreside pMarineViewer identifies vehicles by community/node name. If the missing vehicle's community name is wrong or duplicated, its reports may overwrite or be ignored.\nShoreside subscription — confirm the shoreside MOOSDB is receiving the NODE_REPORT (use uXMS on the shoreside community).\nC12 — pShare Route Confusion\n\nMental model: each variable lives in the community where it was posted. pShare routes explicitly bridge communities.\n\nVehicle → Shoreside (typical): NODE_REPORT, NODE_MESSAGE, sensor summary variables.\n\nShoreside → Vehicle (typical): DEPLOY, MOOS_MANUAL_OVERRIDE, mission commands, VISIT_POINT assignments.\n\nStays local: NAV_X/Y/HEADING/SPEED, helm internals, DESIRED_HEADING/SPEED, behavior state — these are local control-loop variables that shoreside doesn't need and shouldn't overwrite.\n\nA common mistake is sharing too little (missing NODE_REPORT) or too much (accidentally sharing DEPLOY back to itself, causing loops).\n\nC13 — TSP App / Behavior Boundary\n\nClear division of responsibility:\n\nYour MOOS app computes the ordered waypoint list and posts it as an updates string to the helm, e.g.: Notify(\"SURVEY_UPDATES\", \"points=10,20:30,40:50,60\").\nBHV_Waypoint receives that update string via its updates parameter in the .bhv file: updates = SURVEY_UPDATES.\nThe helm reads the update on the next iterate cycle and reconfigures BHV_Waypoint's point list.\n\nIf the vehicle doesn't follow the path: confirm the updates variable name matches exactly, confirm BHV_Waypoint is in a running (not idle/completed) state in uHelmScope, and confirm the condition for BHV_Waypoint is satisfied.\n\nC14 — Distributed Route Assignment\nVehicle identity — each vehicle must know its own name (usually from the community name or a VNAME variable). If two vehicles share a name or a vehicle reads the wrong assignment, one gets both routes.\nAssignment message format — confirm the variable name, destination field, and payload format all match what the receiving vehicle's app expects.\nTiming — if assignments are sent before the receiving vehicle's app is registered, the message is dropped. Use uTimerScript delays or condition the assignment on a vehicle-ready variable.\nActivation condition — BHV_Waypoint won't start until its condition (e.g. DEPLOY == true AND ASSIGNED == true) is satisfied. Confirm the assignment variable is reaching the vehicle and is spelled correctly.\nC15 — Multi-Machine Networking\nIP addresses — in pShare routes, localhost only works when both communities are on the same machine. Use explicit IPs for cross-machine routing.\nMOOSDB ServerHost — on each machine, the MOOSDB must bind to the machine's actual IP (or 0.0.0.0), not just localhost.\nFirewall / UFW — MOOS ports (typically 9000-range) and pShare ports must be open on both machines. Test with nc -zv <ip> <port>.\nLaunch timing — the shoreside MOOSDB must be up before vehicles try to connect via pShare. Add a delay in vehicle launch scripts when on separate machines.\nClock sync — MOOS timestamps can cause issues if machines' clocks diverge significantly. Use NTP.\nC16 — Message Does Not Arrive\n\nThe path for NODE_MESSAGE_LOCAL:\n\nYour app posts NODE_MESSAGE_LOCAL locally.\nuFldNodeComms (on shoreside) or uFldMessageHandler receives it, processes destination routing, and re-posts the payload variable to the destination vehicle's community via pShare.\nThe payload variable appears in the destination vehicle's MOOSDB.\n\nCheck: Is uFldNodeComms actually running on shoreside? Is the src_node name recognized (does it match the vehicle's community name)? Is dest_node spelled correctly? Is pShare carrying the result back to the destination vehicle?\n\nC17 — Node Names / Destinations\nsrc_node must match the community name of the sending vehicle exactly — this is how the broker knows who sent it.\ndest_node must match the community name of the receiving vehicle exactly — a single character difference means no delivery.\nUse uXMS on the shoreside to see if NODE_MESSAGE is arriving there, then check if the broker is re-posting the payload. This isolates whether the problem is in the send, the broker, or the final delivery.\nC18 — Behavior Never Runs\ncondition = — use uHelmScope to see why the behavior is idle. It shows which conditions are unsatisfied.\npwt (priority weight) — if pwt = 0, the behavior participates in the IvP solve but with zero weight, producing no effect.\nInfoBuffer — the behavior's onRunState() r\n\nClaude works directly with your codebase\n\nLet Claude edit files, run commands, and ship changes from the desktop app, your terminal, or your IDE.\n\nInstall\n\nI launched a MOOSDB, poked a variable with uPokeDB, and expected to see it in uXMS, but I do not see what I expected. What should I check first? Explain the debugging steps. ### C04: App Not Publishing My pOdometry-style MOOS app is supposed to publish `ODOMETRY_DIST`, but I do not see it in uXMS.\n\nPASTED\n\n\n\n\n\nSonnet 4.6 High\nClaude is AI and can make mistakes. Please double-check responses.",
+    "inputs": [
+      {
+        "aria": "Open sidebar",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 0,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "\n"
+      },
+      {
+        "aria": "More options for MOOS-IvP binaries not found in PATH",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 1,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for NBA starting lineup salary comparison",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 2,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Creating a final exam cheat sheet",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 3,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Finding the definition of innovation",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 4,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Kalman Lecture 13",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 5,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Localization/ParticleFiltering Lecture 12",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 6,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Sensing, Estimation, Mapping Lecture 10",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 7,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for ODEs Lecture 10",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 8,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Large Robotic Control Lecture 9",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 9,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for RL2 Lecture 8",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 10,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Intro RL Lecture 7",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 11,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Test preparation study guide",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 12,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Arm-launched dart drone with pop-out wings",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 13,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Israel's right to exist",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 14,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Clarification request",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 15,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Moos-ivp overview and visualization",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 16,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Explanation request",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 17,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for How compound interest works",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 18,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options for Massachusetts amended tax return signature requirement",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 19,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Charles Benjamin, Settings",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 20,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "CB\nCharles Benjamin\nFree plan"
+      },
+      {
+        "aria": "MOOS-IvP binaries not found in PATH, rename chat",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 21,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "MOOS-IvP binaries not found in PATH"
+      },
+      {
+        "aria": "More options for MOOS-IvP binaries not found in PATH",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 22,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Dismiss upgrade banner",
+        "classes": "ml-1 -mr-1 flex size-5 items-center justify-center rounded-[4px] hover:bg-bg-400",
+        "disabled": null,
+        "i": 23,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Edit",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 24,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 25,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "\n"
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 26,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 27,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 28,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 29,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 30,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 31,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 32,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 33,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 34,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 35,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 36,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "\n"
+      },
+      {
+        "aria": "Give positive feedback",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 37,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Give negative feedback",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 38,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Pasted Text, pasted, 302 lines",
+        "classes": "rounded-lg text-left block cursor-pointer font-ui transition-all rounded-lg bord",
+        "disabled": null,
+        "i": 39,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "I am about to modify several mission and source files, and I want to avoid losing a working baseline. What simple Git wo"
+      },
+      {
+        "aria": "Edit",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 40,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 41,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "\n"
+      },
+      {
+        "aria": "Copy to clipboard",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 42,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Scroll to bottom",
+        "classes": "z-[1] size-9 inline-flex items-center justify-center absolute -top-8 left-1/2 -t",
+        "disabled": null,
+        "i": 43,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 44,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Install"
+      },
+      {
+        "aria": "Dismiss",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 45,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Pasted Text, pasted, 298 lines",
+        "classes": "rounded-lg text-left block cursor-pointer font-ui transition-all rounded-lg bord",
+        "disabled": null,
+        "i": 46,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "I launched a MOOSDB, poked a variable with uPokeDB, and expected to see it in uXMS, but I do not see what I expected. Wh"
+      },
+      {
+        "aria": "Remove Pasted Text, pasted, 298 lines",
+        "classes": "transition-all hover:bg-bg-000/50 text-text-500 hover:text-text-200 group-focus-",
+        "disabled": null,
+        "i": 47,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Write your prompt to Claude",
+        "classes": "tiptap ProseMirror ProseMirror-focused",
+        "disabled": null,
+        "i": 48,
+        "role": "textbox",
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "aria": "Add files, connectors, and more",
+        "classes": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-c",
+        "disabled": null,
+        "i": 49,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Model: Sonnet 4.6 High",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 50,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Sonnet 4.6 High"
+      },
+      {
+        "aria": "Settings",
+        "classes": "h-8 w-8 rounded-lg flex items-center justify-center opacity-0 transition-all dur",
+        "disabled": null,
+        "i": 51,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Press and hold to record",
+        "classes": "h-8 rounded-lg overflow-hidden flex items-center justify-center gap-1 transition",
+        "disabled": null,
+        "i": 52,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Stop response",
+        "classes": "inline-flex\n  items-center\n  justify-center\n  relative\n  isolate\n  shrink-0\n  ca",
+        "disabled": null,
+        "i": 53,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      }
+    ],
+    "kind": "claude",
+    "title": "MOOS-IvP binaries not found in PATH - Claude",
+    "url": "https://claude.ai/chat/7ebeab56-b159-44f8-a8ad-6b2037cbb874"
+  },
+  "gemini": {
+    "assistant": [
+      {
+        "i": 8,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 9,
+        "len": 2740,
+        "tag": "DIV",
+        "text": "Gemini said\n\nThis is a classic post-build issue with MOOS-IvP. If the compilation completed without errors, the binaries exist, but your terminal simply doesn't know where to look for them.\n\nHere is e"
+      },
+      {
+        "i": 10,
+        "len": 2740,
+        "tag": "DIV",
+        "text": "Gemini said\n\nThis is a classic post-build issue with MOOS-IvP. If the compilation completed without errors, the binaries exist, but your terminal simply doesn't know where to look for them.\n\nHere is e"
+      },
+      {
+        "i": 11,
+        "len": 2740,
+        "tag": "DIV",
+        "text": "Gemini said\n\nThis is a classic post-build issue with MOOS-IvP. If the compilation completed without errors, the binaries exist, but your terminal simply doesn't know where to look for them.\n\nHere is e"
+      },
+      {
+        "i": 12,
+        "len": 2727,
+        "tag": "MESSAGE-CONTENT",
+        "text": "This is a classic post-build issue with MOOS-IvP. If the compilation completed without errors, the binaries exist, but your terminal simply doesn't know where to look for them.\n\nHere is exactly what y"
+      },
+      {
+        "i": 13,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 14,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 15,
+        "len": 46010,
+        "tag": "MODEL-RESPONSE",
+        "text": "Gemini said\n\nHere is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore maki"
+      },
+      {
+        "i": 16,
+        "len": 46010,
+        "tag": "RESPONSE-CONTAINER",
+        "text": "Gemini said\n\nHere is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore maki"
+      },
+      {
+        "i": 17,
+        "len": 46010,
+        "tag": "DIV",
+        "text": "Gemini said\n\nHere is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore maki"
+      },
+      {
+        "i": 18,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 19,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 20,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 21,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 22,
+        "len": 46010,
+        "tag": "DIV",
+        "text": "Gemini said\n\nHere is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore maki"
+      },
+      {
+        "i": 23,
+        "len": 46010,
+        "tag": "DIV",
+        "text": "Gemini said\n\nHere is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore maki"
+      },
+      {
+        "i": 24,
+        "len": 46010,
+        "tag": "DIV",
+        "text": "Gemini said\n\nHere is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore maki"
+      },
+      {
+        "i": 25,
+        "len": 45997,
+        "tag": "MESSAGE-CONTENT",
+        "text": "Here is a comprehensive diagnostic guide addressing all your MOOS-IvP development, debugging, and configuration questions.\n\n1. Baseline Management & Git Workflow\nGit Workflow\n\nBefore making risky or e"
+      },
+      {
+        "i": 26,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "i": 27,
+        "len": 0,
+        "tag": "DIV",
+        "text": ""
+      }
+    ],
+    "bodyTail": "er behaviors.\n\n\n\n\n### D07: Viewer Image / Geodesy Config\n\n\n\n\nWhich MOOS-IvP tools or configuration areas should I inspect when pMarineViewer has a wrong background image, wrong datum, or confusing local coordinate frame?\n\n\n\n\n### D08: pShare Configuration\n\n\n\n\nWhat configuration choices determine whether a variable is shared between MOOS communities, and what symptoms suggest the route, host, port, or variable name is wrong?\n\n\n\n\n### D09: uField Broker Comparison\n\n\n\n\nFor inter-vehicle messaging, compare uFldNodeBroker, uFldShoreBroker, uFldNodeComms, and uFldMessageHandler. What does each one do, and what is a common symptom when each is misconfigured?\n\n\n\n\n### D10: pLogger And Alog Verification\n\n\n\n\nWhen I need to verify after a mission that generated points, assignments, or behavior events were posted, how should I use pLogger output, aloggrep, alogview, and variable history?\n\n\n\n\n## Code Advice / Correction Prompts\n\n\n\n\nThese prompts are included to measure limits. They should not be used to market the NotebookLM TA as a coding agent.\n\n\n\n\n### K01: pOdometry Mail Handling\n\n\n\n\nI am writing a pOdometry-style MOOS app. This code is fragile. Correct the pattern conceptually and explain what belongs in `OnNewMail()` versus `Iterate()`:\n\n\n\n\n```cpp\n\nbool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)\n\n{\n\n  for(auto msg : NewMail) {\n\n    if(msg.GetKey() == \"NAV_X\")\n\n      m_x = msg.GetDouble();\n\n    if(msg.GetKey() == \"NAV_Y\")\n\n      m_y = msg.GetDouble();\n\n  }\n\n  m_total += hypot(m_x - m_prev_x, m_y - m_prev_y);\n\n  Notify(\"ODOM_DIST\", m_total);\n\n  return true;\n\n}\n\n```\n\n\n\n\n### K02: Missing Registration Pattern\n\n\n\n\nThis pOdometry-style app sometimes receives no `NAV_X` or `NAV_Y` mail after reconnecting. Correct the pattern conceptually and explain where registration should happen:\n\n\n\n\n```cpp\n\nbool Odometry::OnStartUp()\n\n{\n\n  Register(\"NAV_X\", 0);\n\n  Register(\"NAV_Y\", 0);\n\n  return true;\n\n}\n\n\n\n\nbool Odometry::OnConnectToServer()\n\n{\n\n  return true;\n\n}\n\n```\n\n\n\n\n### K03: AppCasting Config Warnings\n\n\n\n\nThis `OnStartUp()` parser silently ignores typoed mission-file parameters, and the app sometimes never receives mail. Correct the pattern conceptually in MOOS-IvP/AppCasting style:\n\n\n\n\n```cpp\n\nbool MyApp::OnStartUp()\n\n{\n\n  list<string> params;\n\n  m_MissionReader.GetConfiguration(GetAppName(), params);\n\n  for(string line : params) {\n\n    string param = biteStringX(line, '=');\n\n    if(param == \"threshold\")\n\n      m_threshold = atof(line.c_str());\n\n  }\n\n  return true;\n\n}\n\n```\n\n\n\n\n### K04: uTimerScript Trigger Setup\n\n\n\n\nThis timer script is supposed to deploy the vehicle after launch, but it is fragile and hard to debug. Correct the setup conceptually and explain what should be checked in uXMS:\n\n\n\n\n```text\n\nProcessConfig = uTimerScript\n\n{\n\n  AppTick   = 4\n\n  CommsTick = 4\n\n  event = var=DEPLOY, val=true, time=10\n\n  event = var=MOOS_MANUAL_OVERRIDE, val=false, time=10\n\n}\n\n```\n\n\n\n\n### K05: Behavior Config File Boundary\n\n\n\n\nThis mission tries to configure a behavior in the app config file. Correct the file-boundary mistake conceptually and explain where the behavior block belongs:\n\n\n\n\n```text\n\nProcessConfig = pHelmIvP\n\n{\n\n  AppTick = 4\n\n  CommsTick = 4\n\n\n\n\n  Behavior = BHV_Waypoint\n\n  {\n\n    name      = waypt_survey\n\n    condition = DEPLOY == true\n\n    points    = 0,0:50,0:50,50\n\n  }\n\n}\n\n```\n\n\n\n\n### K06: pShare Route Config\n\n\n\n\nThis multi-community config is intended to get vehicle reports to the shoreside, but the data never appears there. Correct the pattern conceptually and explain what host, port, and variable details must match:\n\n\n\n\n```text\n\nProcessConfig = pShare\n\n{\n\n  AppTick   = 4\n\n  CommsTick = 4\n\n  output = src_name=NODE_REPORT, dest_name=NODE_REPORT, route=localhost:9200\n\n}\n\n```\n\n\n\n\n### K07: Inter-Vehicle Message Payload\n\n\n\n\nThis app posts a message intended for another vehicle, but the receiver never sees the payload variable. Correct the message-format pattern conceptually and explain what names must match:\n\n\n\n\n```cpp\n\nNotify(\"NODE_MESSAGE_LOCAL\",\n\n       \"src_node=alpha,dest_node=bravo,var_name=VISIT_POINT,string_val=12,45\");\n\n```\n\n\n\n\n### K08: `setParam()` Pattern\n\n\n\n\nThis custom behavior `setParam()` is probably wrong. Correct it and explain the MOOS-IvP-specific reason:\n\n\n\n\n```cpp\n\nbool BHV_Survey::setParam(string param, string val)\n\n{\n\n  if(param == \"survey_radius\") {\n\n    m_radius = atof(val.c_str());\n\n    return true;\n\n  }\n\n  return false;\n\n}\n\n```\n\n\n\n\n### K09: `addInfoVars()` / InfoBuffer\n\n\n\n\nMy custom behavior reads `NAV_X` and `NAV_Y` in `onRunState()` but I never declared them in the constructor and I do not check whether they exist. What should I change?\n\n\n\n\n### K10: ZAIC Speed Function\n\n\n\n\nThis speed-only IvP function is wrong or incomplete. Correct it using the normal MOOS-IvP pattern:\n\n\n\n\n```cpp\n\nIvPFunction* BHV_HoldSpeed::onRunState()\n\n{\n\n  ZAIC_PEAK zaic(\"speed\");\n\n  zaic.setSummit(m_speed);\n\n  IvPFunction* ipf = zaic.extractIvPFunction();\n\n  return ipf;\n\n}\n\n```\n\nNew\nFlash\n\nGemini is AI and can make mistakes.",
+    "inputs": [
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 0,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 1,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 2,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 3,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 4,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 5,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 6,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 7,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 8,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 9,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 10,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 11,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 12,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 13,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 14,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 15,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 16,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 17,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 18,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 19,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 20,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "More options",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 21,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 22,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 23,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 24,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 25,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 26,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 27,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 28,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 29,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 30,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 31,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 32,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 33,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 34,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 35,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 36,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 37,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 38,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 39,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 40,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 41,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 42,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 43,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 44,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 45,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Download code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 46,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 47,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Good response",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 48,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Bad response",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 49,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Redo",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 50,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Copy",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 51,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Show more options",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 52,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Enter a prompt for Gemini",
+        "classes": "ql-editor textarea new-input-ui",
+        "disabled": null,
+        "i": 53,
+        "role": "textbox",
+        "tag": "DIV",
+        "text": "I launched a MOOSDB, poked a variable with uPokeDB, and expected to see it in uXMS, but I do not see what I expected. Wh"
+      },
+      {
+        "aria": null,
+        "classes": "ql-clipboard",
+        "disabled": null,
+        "i": 54,
+        "role": null,
+        "tag": "DIV",
+        "text": ""
+      },
+      {
+        "aria": "Upload & tools",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 55,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "New"
+      },
+      {
+        "aria": "Expand input to Fullscreen",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger ",
+        "disabled": null,
+        "i": 56,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Open mode picker, currently Flash",
+        "classes": "mdc-button mat-mdc-button-base input-area-switch mat-mdc-button mat-unthemed",
+        "disabled": "false",
+        "i": 57,
+        "role": null,
+        "tag": "BUTTON",
+        "text": "Flash"
+      },
+      {
+        "aria": "Microphone",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 58,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      },
+      {
+        "aria": "Send message",
+        "classes": "mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-badge mat-unthemed m",
+        "disabled": null,
+        "i": 59,
+        "role": null,
+        "tag": "BUTTON",
+        "text": ""
+      }
+    ],
+    "kind": "gemini",
+    "title": "MOOS-IvP Binaries Not Found Fix - Google Gemini",
+    "url": "https://gemini.google.com/app/2e58ecfa6f91a7fa?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&utm_source=sem&utm_medium=paid-media&utm_campaign=bkws&pt=9008&mt=8&ct=p-growth-sem-bkws&gclsrc=aw.ds&gad_source=1&gad_campaignid=20108148196&gbraid=0AAAAApk5BhncsHd1VeeXHa-pjruolleFJ&gclid=CjwKCAjwuO_QBhAWEiwAIkVhU0TPyqKa0kC-WTkC6cYqDexVhfaFy3v0SVo8tk4FBpT7IZoa6GUsVRoCVjIQAvD_BwE"
+  }
+}
