@@ -36,8 +36,8 @@ Secondary question:
 
 | Category | Prompt Count | NotebookLM TA | ChatGPT | Claude | Gemini | Notes |
 |---|---:|---:|---:|---:|---:|---|
-| Conceptual/debugging | 20 | TBD | TBD | TBD | TBD | Intended core use case. |
-| Exact docs/parameters/tools | 5 | TBD | TBD | TBD | TBD | Tests source-grounded specificity. |
+| Conceptual/debugging | 30 | TBD | TBD | TBD | TBD | Intended core use case. |
+| Exact docs/parameters/tools | 10 | TBD | TBD | TBD | TBD | Tests source-grounded specificity. |
 | Code advice/correction | 5 | TBD | TBD | TBD | TBD | Stress test, not primary product claim. |
 
 ## Hard Failures
@@ -69,7 +69,7 @@ Questions to answer:
 
 ## Prompt-by-Prompt Results
 
-Use this table for all 30 prompts.
+Use this table for all 45 prompts.
 
 Scoring:
 
@@ -99,11 +99,26 @@ Scoring:
 | C18 | Conceptual/debugging | Choosing uXMS/uQueryDB/uHelmScope/uMAC | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C19 | Conceptual/debugging | pMarineViewer background/geodesy | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | C20 | Conceptual/debugging | What artifacts to ask a TA for | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C21 | Conceptual/debugging | command not found after build | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C22 | Conceptual/debugging | version control before mission changes | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C23 | Conceptual/debugging | pAntler did not start a process | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C24 | Conceptual/debugging | launch arguments not reaching config files | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C25 | Conceptual/debugging | vehicle moves in simulation but autonomy looks wrong | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C26 | Conceptual/debugging | pShare route confusion | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C27 | Conceptual/debugging | distributed route assignment problem | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C28 | Conceptual/debugging | multi-machine networking problem | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C29 | Conceptual/debugging | payload event not affecting autonomy | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| C30 | Conceptual/debugging | field deployment sanity check | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D01 | Exact docs/parameters/tools | BHV_Waypoint params | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D02 | Exact docs/parameters/tools | uField broker comparison | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D03 | Exact docs/parameters/tools | BHV_OpRegionV24 semantics | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D04 | Exact docs/parameters/tools | pMissionEval capabilities | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D05 | Exact docs/parameters/tools | Viewer image/geodesy config | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D06 | Exact docs/parameters/tools | pAntler process launching | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D07 | Exact docs/parameters/tools | pOdometry variables | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D08 | Exact docs/parameters/tools | helm deploy variables | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D09 | Exact docs/parameters/tools | pShare configuration | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D10 | Exact docs/parameters/tools | uTimerScript usage | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | K01 | Code advice/correction | pOdometry mail handling | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | K02 | Code advice/correction | AppCasting config warnings | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | K03 | Code advice/correction | `setParam()` pattern | TBD | TBD | TBD | TBD | TBD | TBD | TBD |

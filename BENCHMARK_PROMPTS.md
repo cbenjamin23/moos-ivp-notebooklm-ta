@@ -88,6 +88,46 @@ pMarineViewer shows my vehicle, but the background image or coordinate alignment
 
 If I ask for MOOS-IvP help and the answer is still generic, what exact artifacts should I provide next: `.moos`, `.bhv`, terminal output, uXMS output, appcast, or alog snippets? Explain by debugging scenario.
 
+### C21: Command Not Found After Build
+
+I built MOOS-IvP successfully, but commands such as `pAntler`, `uXMS`, or `pMarineViewer` are not found from my terminal. What should I check about the build, shell environment, PATH, and where the binaries are installed?
+
+### C22: Version Control Before Mission Changes
+
+I am about to modify several mission and source files, and I want to avoid losing a working baseline. What simple Git workflow should I use before experimenting, and what files should I be careful not to treat as source?
+
+### C23: pAntler Did Not Start A Process
+
+My mission launches, but one expected MOOS process never appears in the community. How should I debug the `ProcessConfig` block, the pAntler launch section, app names, executable names, terminal output, and process registration?
+
+### C24: Launch Arguments Not Reaching Config Files
+
+I changed a launch argument for vehicle name, port, speed, or start position, but the generated mission still behaves like it has the old value. How should I reason about launch scripts, template files, generated files, and stale configuration?
+
+### C25: Vehicle Moves In Simulation But Autonomy Looks Wrong
+
+uSimMarine is updating position, but the autonomy behavior looks wrong or inconsistent with what I expected. What should I check about `NAV_X`, `NAV_Y`, `NAV_HEADING`, `NAV_SPEED`, helm inputs, behavior conditions, and viewer state?
+
+### C26: pShare Route Confusion
+
+I have vehicle and shoreside communities running, but I am unsure which variables should cross between them. How should I think about pShare routes, what belongs in local vehicle communities, and what the shoreside needs to receive?
+
+### C27: Distributed Route Assignment Problem
+
+In a multi-vehicle route-planning mission, one vehicle gets all the work or no vehicle gets a useful route. What should I inspect about task generation, vehicle identity, assignment messages, route updates, and behavior activation?
+
+### C28: Multi-Machine Networking Problem
+
+The mission works when all communities run on one laptop, but fails when vehicles or shoreside run on separate machines. What should I check about IP addresses, hostnames, MOOS ports, pShare ports, firewalls, and time of launch?
+
+### C29: Payload Event Not Affecting Autonomy
+
+A payload or sensor process appears to be posting useful information, but the vehicle behavior does not react to it. How should I trace the variable from the payload app through the MOOSDB into helm conditions, behavior updates, or a coordinating app?
+
+### C30: Field Deployment Sanity Check
+
+Before running a mission on a real vehicle, how should I verify that simulation-only processes are disabled, real navigation and control interfaces are active, safety variables are understood, and the mission is ready for cautious deployment?
+
 ## Exact Documentation / Parameter / Tool Prompts
 
 ### D01: BHV_Waypoint Params
@@ -109,6 +149,26 @@ What can pMissionEval verify automatically in an automated mission check, and wh
 ### D05: Viewer Image / Geodesy Config
 
 Which MOOS-IvP tools or configuration areas should I inspect when pMarineViewer has a wrong background image, wrong datum, or confusing local coordinate frame?
+
+### D06: pAntler Process Launching
+
+What parts of a mission configuration determine whether pAntler launches a MOOS app, and how can I distinguish an app that never launched from an app that launched but never registered with the MOOSDB?
+
+### D07: pOdometry Variables
+
+For a pOdometry-style app, what input variables should it normally consume, what output variable should it publish, and what debugging tools can confirm whether the mail and publication path is working?
+
+### D08: Helm Deploy Variables
+
+What are the roles of `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and the helm state variables when a vehicle is expected to start autonomous behavior?
+
+### D09: pShare Configuration
+
+What configuration choices determine whether a variable is shared between MOOS communities, and what symptoms suggest the route, host, port, or variable name is wrong?
+
+### D10: uTimerScript Usage
+
+What is uTimerScript useful for in a mission, what kinds of variables should it post, and what are common mistakes when using it to initialize or trigger autonomy?
 
 ## Code Advice / Correction Prompts
 
@@ -183,5 +243,4 @@ IvPFunction* BHV_HoldSpeed::onRunState()
   return ipf;
 }
 ```
-
 

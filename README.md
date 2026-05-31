@@ -49,10 +49,10 @@ The intended product claim is narrow:
 
 It should not be marketed as a MOOS-IvP coding agent.
 
-The planned benchmark uses 30 fixed, lab-grounded prompts:
+The planned benchmark uses 45 fixed, lab-grounded prompts:
 
-- 20 conceptual/debugging prompts
-- 5 exact documentation/parameter/tool prompts
+- 30 conceptual/debugging prompts
+- 10 exact documentation/parameter/tool prompts
 - 5 code-advice/code-correction prompts
 
 Each answer will be graded with a simple score:

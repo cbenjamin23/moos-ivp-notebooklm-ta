@@ -32,10 +32,10 @@ Optional later comparison:
 
 ## Prompt Set
 
-Use 30 fixed prompts grounded in the lab sequence:
+Use 45 fixed prompts grounded in the lab sequence:
 
-- 20 conceptual/debugging prompts
-- 5 exact documentation/parameter/tool prompts
+- 30 conceptual/debugging prompts
+- 10 exact documentation/parameter/tool prompts
 - 5 code-advice/code-correction prompts
 
 This split reflects the intended use case. The benchmark should mainly test conceptual TA value for lab students, while still measuring whether the notebook is better or worse than normal LLMs on code-adjacent MOOS-IvP tasks.
@@ -54,7 +54,9 @@ These should be phrased as student questions inspired by lab work, without namin
 - "My inter-vehicle message does not arrive. How should I trace it through uFldNodeBroker, uFldNodeComms, uFldShoreBroker, and uFldMessageHandler?"
 - "My custom behavior appears configured but never runs. How should I inspect conditions, InfoBuffer variables, and helm life events?"
 - "What changes when moving from simulation to a Heron/PABLO field deployment?"
-- "In autonomous rescue, how should I reason about swimmer reports, path replanning, teammate/opponent state, and uField messages?"
+- "My launch argument changed, but the generated mission still behaves like it has the old value. What should I inspect?"
+- "A payload process posts useful data, but the vehicle behavior does not react to it. How should I trace the data path?"
+- "The mission works on one laptop but fails across machines. What should I check about hosts, ports, and pShare?"
 
 ### Category 2: Exact Documentation/Parameter/Tool
 
@@ -62,9 +64,12 @@ These should still be framed as natural student questions, without asking for ci
 
 - "What are the actual BHV_Waypoint arrival/capture parameters I should use in my `.bhv` file?"
 - "Does BHV_OpRegionV24 steer me back inside the polygon, or does it mainly detect/enforce region constraints?"
-- "In the messaging lab, what is the difference between uFldNodeBroker, uFldShoreBroker, and uFldNodeComms?"
-- "What can pMissionEval prove in an automated lab check, and what can it not prove?"
+- "In a multi-vehicle messaging setup, what is the difference between uFldNodeBroker, uFldShoreBroker, and uFldNodeComms?"
+- "What can pMissionEval prove in an automated mission check, and what can it not prove?"
 - "Why does pMarineViewer show vehicles in the wrong place relative to the background image?"
+- "What determines whether pAntler launches a process, and how do I tell launch failure from registration failure?"
+- "What variables and tools matter for a pOdometry-style app?"
+- "What is uTimerScript useful for, and what are common initialization mistakes?"
 
 ### Category 3: Code Advice/Correction
 
@@ -138,7 +143,7 @@ It should contain:
 3. Score table by category
 4. Hard-failure table
 5. Main interpretation
-6. Prompt-by-prompt results for all 30 prompts
+6. Prompt-by-prompt results for all 45 prompts
 7. Appendix with grading notes and reference checks
 
 The root `README.md` should only include a concise summary:
