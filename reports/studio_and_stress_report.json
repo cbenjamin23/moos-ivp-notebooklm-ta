@@ -1,0 +1,321 @@
+{
+  "notebook": "MOOS-IvP Virtual TA",
+  "sourceCount": 49,
+  "sourceType": "PDF sources",
+  "studio": {
+    "tested": [
+      "Infographic",
+      "Mind Map",
+      "Quiz",
+      "Flashcards",
+      "Reports / Study Guide"
+    ],
+    "assessment": {
+      "best": [
+        "Quiz",
+        "Flashcards",
+        "Study Guide"
+      ],
+      "mixed": [
+        "Mind Map"
+      ],
+      "weakest": [
+        "Infographic"
+      ],
+      "note": "Studio artifacts generated successfully, but several were biased toward recent autonomous-rescue chat context rather than the whole corpus."
+    }
+  },
+  "stress": {
+    "completed": [
+      {
+        "idx": 1,
+        "id": "false_var_override",
+        "prompt": "Stress 1/20: A student says MOOS_MANUAL_OVERRIDE is false and DEPLOY is true, but pHelmIvP stays PARKED. Is that enough evidence to conclude the helm is broken? Give a careful debugging answer with citations.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 19,
+          "chars": 3637
+        },
+        "excerpt": "Stress 1/20: A student says MOOS_MANUAL_OVERRIDE is false and DEPLOY is true, but pHelmIvP stays PARKED. Is that enough evidence to conclude the helm is broken? Give a careful debugging answer with citations.\n\nNo, this is not enough evidence to conclude the IvP Helm is broken. While the student has correctly identified the two most common variables for a \"hand-off\" from manual to autonomous control, there are several architectural and configuration reasons why the helm might remain in the PARK state despite these values.\n1. Distinguish between Helm State and Behavior Conditions\nIn MOOS-IvP, it is critical to distinguish between the high-level helm state and individual behavior run conditions\n1\n2\n:\nMOOS_MANUAL_OVERRIDE: This variable (or the legacy misspelling MOOS_MANUAL_OVERIDE) is the \"gear shift.\" Setting it to false is the specific trigger intended to transition the helm from PARK to DRIVE\n3\nmore_horiz\n.\nDEPLOY: This is typically a user-defined variable used as a condition in a behavior file (e.g., condition = DEPLOY=true). Even if the helm transitions to DRIVE, behaviors will remain Idle unless their specific conditions are met\n2\nmore_horiz\n.\n2. Likely Causes for remaining in PARK\nIf MOOS_MANUAL_OVERRIDE is false but the helm stays parked, the student should investigate these possibilities in order of likelihood:\nHelm \"MALCONFIG\" State: If there is a syntax error in the .moos file or a duplicate behavior name in the .bhv file, the helm will enter a MALCONFIG state rather than PARK or DRIVE\n9\n10\n. It will disconnect from the MOOSDB and refuse to run until the configuration is fixed\n9\n11\n.\nAutomatic Auto-Parking: If the mission file has park_on_allstop = true configured in the pHelmIvP block, any event that triggers an all-stop (such as \"NothingToDo\" because no behaviors are active) will cause the helm to immediately transition itself back to PARK\n12\nmore_horiz\n.\nVariable/Spelling Conflicts: The helm respects both MOOS_MANUAL_OVERRIDE and the legacy misspelling MOOS_MANUAL_OVERIDE\n5\n. If one is false and the other is true, the helm follows whichever was posted most recently\n5\n.\nStale or Unread Variables: If the student \"poked\" the variable but the helm is not",
+        "capturedAt": "2026-05-31T04:02:29.056Z"
+      },
+      {
+        "idx": 2,
+        "id": "nonexistent_param",
+        "prompt": "Stress 2/20: Does BHV_Waypoint have a parameter named magic_arrival_radius? If not, explain how to verify the correct arrival/radius parameters from the sources and avoid inventing config names. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 14,
+          "chars": 3054
+        },
+        "excerpt": "Stress 2/20: Does BHV_Waypoint have a parameter named magic_arrival_radius? If not, explain how to verify the correct arrival/radius parameters from the sources and avoid inventing config names. Cite sources.\n\nNo, BHV_Waypoint does not have a parameter named magic_arrival_radius\n1\n2\n. Inventing configuration names like this will lead to mission failures or \"MALCONFIG\" states during startup.\nHow to Verify Correct Parameters\nTo verify the correct arrival and radius parameters for the Waypoint behavior (or any other behavior), you should use the following steps based on the sources:\nConsult the Behavior-Specific Documentation: Every behavior has a dedicated manual (e.g., bhv_waypoint.pdf) with a section explicitly titled \"Configuration Parameters\"\n3\n4\n.\nCheck the Specific Parameter Table: For BHV_Waypoint, look at Listing 1.2, which provides a comprehensive list of behavior-specific parameters\n1\n. The actual arrival-related parameters are:\ncapture_radius: The radius tolerance (in meters) for satisfying arrival at a waypoint\n1\n.\nradius: A commonly used alias for capture_radius\n2\n5\n.\nslip_radius: An \"outer\" radius used to declare arrival if the vehicle misses the capture radius but its distance to the waypoint begins to increase\n6\n7\n.\ncapture_line: An alternative arrival criteria that triggers when the vehicle crosses a line perpendicular to its approach path\n1\n8\n.\nInspect Example Configuration Blocks: Sources typically include an \"Example Configuration Block\" (e.g., Listing 1.3 in the Waypoint source) that demonstrates the correct syntax and default values for these parameters in a .bhv file\n9\n10\n.\nHow to Avoid Inventing Config Names\nTo ensure you are using valid parameters and avoid guesswork:\nDifferentiate Between General and Specific Parameters: Remember that behaviors inherit general parameters (like name, pwt, and condition) from the IvPBehavior superclass, but parameters like radius are defined only at the subclass level\n11\n12\n.\nMonitor Startup Output: If you use an invented or misspelled parameter at launch, pHelmIvP will detect it during its initialization phase (onHelmStart)\n13\n14\n. The helm will immediately disconnect from the MOOSDB and exit, reporting th",
+        "capturedAt": "2026-05-31T04:02:29.056Z"
+      },
+      {
+        "idx": 3,
+        "id": "wrong_file_boundary",
+        "prompt": "Stress 3/20: A student put BHV_Loiter configuration in the .moos file instead of the .bhv file. Explain the likely failure and the .moos vs .bhv boundary. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 14,
+          "chars": 3175
+        },
+        "excerpt": "Stress 3/20: A student put BHV_Loiter configuration in the .moos file instead of the .bhv file. Explain the likely failure and the .moos vs .bhv boundary. Cite sources.\n\nPutting behavior-specific configuration into a .moos file instead of a .bhv file is a violation of the fundamental architectural boundary in MOOS-IvP. This error will result in the behavior failing to exist or run, and the helm will likely report unhandled configuration warnings.\nThe .moos vs. .bhv Boundary\nThe two file types serve distinct purposes in an autonomy mission:\n.moos (Mission Configuration): This file is used to configure MOOS applications (the \"processes\"). It defines how the \"larger autonomy system\" is structured, including the MOOSDB connection, AppTick frequencies, and parameters for apps like pMarinePID or uSimMarine\n1\nmore_horiz\n.\n.bhv (Behavior Configuration): This file is used specifically to configure the IvP Helm's behaviors (the \"mini expert systems\"). It defines the mission logic, such as waypoints, loiter polygons, and the conditions under which those tasks should execute\n3\nmore_horiz\n.\nLikely Failure and Consequences\nIf a student places a BHV_Loiter block in a .moos file, the following failures will occur:\nThe Behavior Will Not Spawn: pHelmIvP only searches for behaviors in the files explicitly named in its .moos configuration block via the behaviors parameter (e.g., behaviors = alpha.bhv)\n7\n8\n. Since the helm does not look inside its own .moos configuration block for behavior definitions, it will never find or initialize the loiter behavior\n9\n10\n.\nUnhandled Parameter Warnings: pHelmIvP is a MOOS application that inherits from AppCastingMOOSApp. During its OnStartUp() phase, it reads its configuration block in the .moos file\n1\n11\n. If it finds parameters meant for a behavior (like polygon or clockwise), it will not recognize them as app-level parameters. It will report these as \"Unhandled Configuration Warnings\" in the appcast output (visible in pMarineViewer or uMAC)\n12\n.\nSilent Mission Failure: Because the behavior was never correctly declared in a .bhv file, it will be missing from the helm's internal list of behaviors. When the vehicle is put into DRIVE, it will hav",
+        "capturedAt": "2026-05-31T04:02:29.056Z"
+      },
+      {
+        "idx": 4,
+        "id": "missing_nav",
+        "prompt": "Stress 4/20: pHelmIvP starts and behaviors appear configured, but no DESIRED_HEADING or DESIRED_SPEED is produced. Build a checklist around NAV_X/NAV_Y, helm state, behavior conditions, and behavior errors. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 26,
+          "chars": 3690
+        },
+        "excerpt": "Stress 4/20: pHelmIvP starts and behaviors appear configured, but no DESIRED_HEADING or DESIRED_SPEED is produced. Build a checklist around NAV_X/NAV_Y, helm state, behavior conditions, and behavior errors. Cite sources.\n\nIf pHelmIvP starts but fails to produce DESIRED_HEADING or DESIRED_SPEED, the system is likely in an all-stop state or the behaviors are not transitioning to Active. Follow this checklist to identify the bottleneck:\n1. Verify Helm State (IVPHELM_STATE)\nIs the state DRIVE? The helm must be in DRIVE to execute behavior code\n1\n2\n. If it is in PARK, the Iterate() loop is truncated, and no behaviors are queried for decisions\n3\n.\nCheck Manual Override: Ensure MOOS_MANUAL_OVERRIDE (or the legacy MOOS_MANUAL_OVERIDE) is set to false. If it is true, the helm will transition to PARK\n2\n4\n.\nCheck for MALCONFIG: If IVPHELM_STATE reports MALCONFIG, the helm detected a syntax error, a negative priority weight, or a duplicate behavior name during startup and disconnected from the MOOSDB\n1\nmore_horiz\n.\n2. Inspect All-Stop Status (IVPHELM_ALLSTOP)\nIf the helm is in DRIVE but produces no commands, it will publish an all-stop reason to this variable\n7\n.\n\"NothingToDo\": This occurs when no behaviors are currently in the Active state\n8\n.\n\"MissingDecVars\": This indicates behaviors are running, but they have failed to provide a decision for one or more mandatory variables (e.g., course or speed) defined in the helm's domain\n8\n9\n.\n\"BehaviorError\": A specific behavior has encountered a fatal error and requested an emergency stop\n8\n.\n3. Check Navigation Data (NAV_X and NAV_Y)\nVariable Presence: Most navigation-based behaviors (like BHV_Waypoint) cannot function without ownship position data\n10\n. Use uXMS to verify that NAV_X and NAV_Y are being published by the simulator (uSimMarine) or a front-seat interface\n11\nmore_horiz\n.\nStaleness Monitoring: Use the nostarve parameter in your behavior configuration to set a maximum tolerated staleness for navigation variables\n14\n15\n. If the data is older than this threshold, the behavior will trigger a failure condition and the helm will issue an all-stop\n15\n16\n.\n4. Verify Behavior Run Conditions\nUse uHelmScope to inspect the status ",
+        "capturedAt": "2026-05-31T04:02:29.056Z"
+      },
+      {
+        "idx": 5,
+        "id": "pShare_ports",
+        "prompt": "Stress 5/20: Two vehicle communities on one laptop cannot share data with shoreside. Explain the difference between MOOSDB ServerPort and pShare routes/ports, and what conflicts to check. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 24,
+          "chars": 3723
+        },
+        "excerpt": "Stress 5/20: Two vehicle communities on one laptop cannot share data with shoreside. Explain the difference between MOOSDB ServerPort and pShare routes/ports, and what conflicts to check. Cite sources.\n\nWhen simulating multiple MOOS communities on a single machine, correctly managing port assignments is the most critical step for establishing inter-community communication. If data is not sharing, it is likely due to a collision or mismatch between the ports used for local client communication and those used for inter-community bridging.\n1. MOOSDB ServerPort vs. pShare Routes/Ports\nIt is essential to distinguish between the \"internal\" communication within a vehicle and the \"external\" communication between vehicles.\nMOOSDB ServerPort (TCP): This parameter (typically found at the top of a .moos file) defines the port used by the central MOOSDB to communicate with its local clients (e.g., pHelmIvP, pNodeReporter) in a star topology\n1\nmore_horiz\n. This communication happens via TCP and is typically high-bandwidth with negligible latency\n4\n5\n.\npShare Input Routes/Ports (UDP): The pShare application handles inter-community communication\n6\n7\n. Each instance of pShare is configured with an input route (e.g., input = route = localhost:9201), which defines the UDP port where it listens for incoming data from remote communities\n8\nmore_horiz\n.\n2. Common Conflicts to Check\nWhen running two vehicles and a shoreside community on one laptop, you must verify the following uniqueness and matching requirements:\nUnique MOOSDB ServerPorts\nEvery independent MOOS community on the machine must have a unique ServerPort\n11\n12\n. If two communities both attempt to use the default port (9000), the second one will fail to launch its MOOSDB correctly\n13\n.\nExample: Shoreside uses 9000, Vehicle A uses 9001, and Vehicle B uses 9002\n14\n15\n.\nUnique pShare Input Listener Ports\nEach community's pShare must listen on a unique UDP port\n8\nmore_horiz\n.\nExample: Shoreside listens on 9200, Vehicle A on 9201, and Vehicle B on 9202\n15\nmore_horiz\n.\nNo Overlap Between DB and pShare Ports\nA pShare listener port cannot be the same as a MOOSDB server port within the same community or across the machine\n12\nmore_ho",
+        "capturedAt": "2026-05-31T04:02:29.056Z"
+      },
+      {
+        "idx": 6,
+        "id": "uFld_message_not_arrive",
+        "prompt": "Stress 6/20: NODE_MESSAGE_LOCAL is posted on one vehicle but the receiving vehicle never sees the payload variable. Walk through uFldMessageHandler, node names, destination fields, and broker/bridge checks. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 23,
+          "chars": 4060
+        },
+        "excerpt": "Stress 6/20: NODE_MESSAGE_LOCAL is posted on one vehicle but the receiving vehicle never sees the payload variable. Walk through uFldMessageHandler, node names, destination fields, and broker/bridge checks. Cite sources.\n\nTo debug why a NODE_MESSAGE_LOCAL post on one vehicle is not resulting in a payload variable appearing on a receiving vehicle, you must trace the message through the \"uField\" topology. This pipeline involves local posting, shoreside arbitration, and finally, local injection by a message handler.\n1. The Inter-Vehicle Messaging Sequence\nThe failure can occur at any of the following steps:\nStep 1 (Source Vehicle): The message is posted locally to NODE_MESSAGE_LOCAL\n1\n.\nStep 2 (Vehicle-to-Shore Bridge): uFldNodeBroker on the source vehicle must be configured to bridge NODE_MESSAGE_LOCAL to the shoreside community, typically aliased as NODE_MESSAGE\n1\n2\n.\nStep 3 (Shoreside Arbitration): uFldNodeComms on the shoreside receives the message. It uses its situational awareness (from NODE_REPORT data) to check if the vehicles are within comms_range and if the message complies with min_msg_interval and max_msg_length limits\n3\nmore_horiz\n.\nStep 4 (Shore-to-Vehicle Bridge): If allowed, uFldNodeComms publishes the message to a variable unique to the target (e.g., NODE_MESSAGE_BRAVO)\n1\n7\n. uFldShoreBroker must then bridge this back to the destination vehicle, aliasing it as NODE_MESSAGE\n8\n9\n.\nStep 5 (Destination Vehicle): uFldMessageHandler on the target vehicle parses the NODE_MESSAGE and injects the payload into the local MOOSDB\n8\nmore_horiz\n.\n\n--------------------------------------------------------------------------------\n\n2. Diagnostic Checklist\nA. Verify Payload Construction\nThe message string must contain four mandatory fields. Check for typos in the keys or values:\nsrc_node: Must be the name of the originating vehicle\n12\n13\n.\ndest_node: Must match the Community name of the receiver (or \"all\")\n12\n14\n.\nvar_name: The variable to be written in the receiver's community\n1\n15\n.\nstring_val or double_val: The actual content\n13\n15\n.\nCaution: If the string_val contains commas (e.g., pts={60,10:99,-71}), it must be wrapped in double quotes to prevent the parser fro",
+        "capturedAt": "2026-05-31T04:02:29.056Z"
+      },
+      {
+        "idx": 7,
+        "id": "alog_no_runtime",
+        "prompt": "Stress 7/20: You cannot run the mission now, but you have an .alog. What exact alog tools and query strategy should you use to diagnose a behavior that never ran? Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 22,
+          "chars": 3546
+        },
+        "excerpt": "Stress 7/20: You cannot run the mission now, but you have an .alog. What exact alog tools and query strategy should you use to diagnose a behavior that never ran? Cite sources.\n\nTo diagnose a behavior that never ran using only an .alog file, you should employ a strategy that traces the behavior’s lifecycle from its attempted spawning through its state transitions and run conditions.\n1. Primary Tools to Use\naloghelm: This is the primary CLI tool for autonomy debugging. It provides specialized reports on the IvP Helm’s internal activity, including behavior spawning, state changes, and mode transitions\n1\n2\n.\nalogview: This GUI tool allows you to visually replay the mission. Its HelmPlot window is essential for viewing the history of behavior states (Active, Running, Idle, or Completed) and \"Life Events\"\n3\nmore_horiz\n.\naloggrep: This tool is used to extract the specific MOOS variables identified as \"culprits\" during your investigation for closer inspection\n1\n6\n.\n\n--------------------------------------------------------------------------------\n\n2. Diagnostic Query Strategy\nStep 1: Check for Spawning (The \"Life\" Check)\nDetermine if the helm ever successfully initialized the behavior.\nQuery: Run aloghelm --life (or check the LifeEvents pane in alogview)\n7\n8\n.\nWhat to look for:\nMissing Entry: The behavior was never declared in the .bhv file or the helm never read that file\n9\n.\nabort: The helm tried to spawn it but failed due to a syntax error, a name collision, or an invalid parameter (e.g., an invented config name)\n7\nmore_horiz\n.\nspawn: If it appears as \"spawned,\" it existed in memory, and you must check why it never became \"Active\"\n11\n.\nStep 2: Inspect Behavior State Transitions\nIf the behavior was spawned, identify which state it remained in.\nQuery: Run aloghelm --bhvs --watch=<behavior_name>\n12\n13\n.\nWhat to look for:\nIdle: The behavior's condition parameters were never met\n14\n15\n.\nRunning (but not Active): The conditions were met, but the behavior opted not to produce an objective function (e.g., a collision avoidance behavior where the contact is too far away)\n14\n15\n.\nCompleted: The behavior finished immediately due to a duration that was too short or a completion ",
+        "capturedAt": "2026-05-31T04:03:02.107Z"
+      },
+      {
+        "idx": 8,
+        "id": "appcast_vs_scope",
+        "prompt": "Stress 8/20: Compare appcasting/uMAC, pRealm, and uXMS for debugging a live multi-vehicle mission. When is each one the right tool? Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 36,
+          "chars": 3395
+        },
+        "excerpt": "Stress 8/20: Compare appcasting/uMAC, pRealm, and uXMS for debugging a live multi-vehicle mission. When is each one the right tool? Cite sources.\n\nFor debugging a live multi-vehicle mission, uXMS, appcasting/uMAC, and pRealm offer different vantage points into the system. While uXMS provides raw variable monitoring, the others are \"lazy,\" on-demand services designed specifically to handle the bandwidth constraints of multi-vehicle operations\n1\nmore_horiz\n.\nComparison of Live Debugging Tools\nFeature\n\t\nuXMS\n\t\nAppCasting / uMAC\n\t\npRealm (RealmCasting)\n\n\nPrimary Focus\n\t\nRaw variable values and history\n4\n5\n.\n\t\nHigh-level health, warnings, and app-specific events\n6\n7\n.\n\t\nPublish-Subscribe interface (all subs/pubs) for any app\n8\n9\n.\n\n\nInterface\n\t\nCLI (Terminal)\n4\n.\n\t\nCLI (uMAC) or GUI (uMACView, pMarineViewer)\n10\n11\n.\n\t\nGUI (pMarineViewer or uMACView)\n8\n12\n.\n\n\nMulti-Vehicle\n\t\nRequires explicit IP/Port per community\n13\n.\n\t\nNative; aggregates all remote node reports/warnings\n10\n14\n.\n\t\nNative; allows peering into any node and any app\n15\n16\n.\n\n\nBandwidth\n\t\nLow (can be zero if paused)\n5\n.\n\t\nVery low (on-demand/lazy)\n17\n18\n.\n\t\nVery low (on-demand/lazy)\n2\n3\n.\n\n\nUnique Power\n\t\nDisplays \"auxiliary source\" (e.g., behavior names)\n5\n19\n.\n\t\nDisplays run/config warnings in red/green for visibility\n6\nmore_horiz\n.\n\t\n\"Watch Clusters\" to monitor fleet-wide telemetry in one table\n21\n22\n.\n\n--------------------------------------------------------------------------------\n\nWhen to Use Each Tool\n1. Use uXMS when...\nYou need to see the history of a single variable to identify how its value is changing over time\n4\n5\n.\nYou are debugging the IvP Helm and need to see the auxiliary source of a variable to confirm which specific behavior (e.g., waypt_survey) posted it\n5\n19\n.\nYou are performing a basic test in a single MOOS community and want a quick, color-coded terminal view of specific variables\n4\nmore_horiz\n.\n2. Use AppCasting (uMAC) when...\nYou need to monitor system health across a large fleet. The uMAC tools highlight vehicles in red for run warnings or green for configuration errors, allowing you to ignore healthy nodes\n6\nmore_horiz\n.\nYou need to ssh into a remote vehicle and see what is happ",
+        "capturedAt": "2026-05-31T04:03:45.217Z"
+      },
+      {
+        "idx": 9,
+        "id": "contact_behavior_spawn",
+        "prompt": "Stress 9/20: A contact behavior template exists, but no contact-specific behavior seems to spawn. Explain BCM_ALERT_REQUEST, contact manager setup, NODE_REPORT, and helm life-event checks. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 26,
+          "chars": 3595
+        },
+        "excerpt": "Stress 9/20: A contact behavior template exists, but no contact-specific behavior seems to spawn. Explain BCM_ALERT_REQUEST, contact manager setup, NODE_REPORT, and helm life-event checks. Cite sources.\n\nIf a contact-aware behavior template (such as BHV_AvoidCollision) is defined but no contact-specific behavior instances are spawning, the issue typically lies in the \"handshake\" between the behavior template, the Contact Manager, and the incoming navigation data\n1\n2\n.\nFollow this pipeline to diagnose the failure:\n1. Incoming Data: The NODE_REPORT\nThe spawning process is triggered by the presence of other vehicles. The Contact Manager (pContactMgrV20) cannot act unless it receives a NODE_REPORT\n3\n4\n.\nVerification: Use uXMS to verify that NODE_REPORT is appearing in the vehicle’s local MOOS community\n5\n.\nLikely Failure: If the reports are appearing on the shoreside pMarineViewer but not in the vehicle's MOOSDB, there is a bridging issue with uFldShoreBroker or pShare\n5\n6\n.\n2. Behavior Registration: BCM_ALERT_REQUEST\nContact-aware behaviors are often configured as templates using templating = spawn\n7\n8\n. To \"wake up\" when a contact appears, the template must first tell the Contact Manager what to look for.\nThe Mechanism: At startup, even as a template, the behavior briefly instantiates and invokes onHelmStart()\n9\n. This function posts a BCM_ALERT_REQUEST to the MOOSDB\n8\n10\n.\nContent: This request contains the alert_range, cpa_range, and an on_flag (the message the manager should post to trigger a spawn)\n11\n12\n.\nDebugging: Check uXMS for the variable BCM_ALERT_REQUEST. If it's missing, the behavior template is not correctly calling its startup function or is configured with no_alert_request = true\n9\n12\n.\n3. Manager Coordination: pContactMgrV20\nThe Contact Manager is the arbiter that decides when a contact is a threat\n2\n3\n.\nSetup: Ensure pContactMgrV20 is running and subscribed to both NODE_REPORT and BCM_ALERT_REQUEST\n4\n13\n.\nTriggering: When a contact enters the alert_range (or its CPA falls within it), the manager expands macros like $[VNAME] to create a unique alert\n14\n15\n.\nVerification: Scope on the variables CONTACTS_LIST or CONTACTS_RECAP to see if the manager ",
+        "capturedAt": "2026-05-31T04:04:13.235Z"
+      },
+      {
+        "idx": 10,
+        "id": "opregion_misuse",
+        "prompt": "Stress 10/20: A student expects BHV_OpRegionV24 to steer the vehicle back inside the polygon. Is that the right mental model? Explain what it does and how to pair it with other behaviors. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 21,
+          "chars": 3207
+        },
+        "excerpt": "Stress 10/20: A student expects BHV_OpRegionV24 to steer the vehicle back inside the polygon. Is that the right mental model? Explain what it does and how to pair it with other behaviors. Cite sources.\n\nThe student's mental model is partially correct. While BHV_OpRegionV24 does steer the vehicle back, it is important to distinguish between its monitoring functions and its active influence functions. Unlike the legacy OpRegion behavior, which was strictly a pass-fail check resulting in an all-stop, BHV_OpRegionV24 is designed to actively influence the vehicle back into the operation area before an emergency stop occurs\n1\n.\n1. The Three-Polygon Model\nThe behavior operates using three nested convex polygons to manage safety boundaries:\nCore Polygon (core_poly): The intended operation area for the mission\n2\n.\nSave Polygon (save_poly): Defines a buffer zone around the core area\n2\n. As soon as the vehicle exits the save polygon, the behavior produces an IvP objective function to influence the vehicle back toward the polygon\n2\nmore_horiz\n.\nHalt Polygon (halt_poly): The final boundary\n2\n. If the vehicle breaches this limit, the behavior triggers an all-stop state\n2\n5\n.\n2. What it Does (Beyond Steering)\nWhile steering back is its most visible feature, BHV_OpRegionV24 also monitors three other critical operational envelopes:\nMaximum Mission Time: Enforces a hard stop after a configured duration, which is critical for reducing search areas for missing vehicles\n6\n7\n.\nMaximum Depth: Triggers an all-stop if an underwater vehicle exceeds a safe depth\n6\n7\n.\nMinimum Altitude: Prevents bottom-collision for vehicles equipped with altitude sensors\n6\n7\n.\n3. How to Pair it with Other Behaviors\nBHV_OpRegionV24 is not intended to be used in isolation; it is designed to be a global safety guard that works in conjunction with mission-oriented behaviors\n6\n.\nGlobal Presence: It is typically configured to be running in every helm mode of a mission to ensure the vehicle never drifts out of bounds regardless of the current task\n6\n.\nIvP Reconciliation: When the vehicle exits the save polygon, the behavior's objective function (preferring headings toward the polygon and a safe recover_spd) is s",
+        "capturedAt": "2026-05-31T04:04:45.421Z"
+      },
+      {
+        "idx": 11,
+        "id": "sim_vs_real",
+        "prompt": "Stress 11/20: Explain how a mission changes moving from full simulation with uSimMarine to a Heron/PABLO in-water deployment. Mention what should and should not be running. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 25,
+          "chars": 3680
+        },
+        "excerpt": "Stress 11/20: Explain how a mission changes moving from full simulation with uSimMarine to a Heron/PABLO in-water deployment. Mention what should and should not be running. Cite sources.\n\nMoving from a full simulation to an in-water deployment on a Heron USV using a PABLO payload computer involves transitioning from a self-contained virtual environment to a \"front-seat, back-seat\" architecture\n1\n. In this paradigm, the PABLO acts as the \"back-seat driver,\" handling autonomy and decision-making, while the vehicle’s main computer (the \"front-seat\") handles motor control and sensing\n1\n2\n.\n1. What Should NOT Be Running\nWhen you move to the water, you must disable any applications or settings meant only for simulation:\nuSimMarine / uSimMarineV22: In simulation, this app provides the \"virtual reality\" by updating vehicle position based on actuator commands\n3\n4\n. On the water, it must be stopped\n5\n. The physical vehicle and the iM300 interface act as its one-for-one replacement\n6\n.\nTime Warp > 1: Simulations often run at 10x or 20x real-time for speed\n7\n. Physical deployments must run at real-time (Time Warp = 1) to sync with real sensors and motor hardware\n8\n9\n.\nLocal pMarineViewer: While essential for simulation, you should not run the viewer on the PABLO to conserve CPU\n10\n. The viewer should only run on your shoreside laptop\n11\n12\n.\nHard-coded Start Positions: Parameters like start_x and start_y in your .moos file are ignored on the water, as the vehicle’s actual position is determined by its on-board GPS\n13\n14\n.\n2. What SHOULD Be Running\nNew interface and brokering applications are required to connect your autonomy code to the physical hardware and the shoreside:\niM300: This application is the bridge between MOOS and the Heron's front-seat computer\n6\n15\n. It parses NMEA messages from the front-seat (navigation/battery) into MOOS variables and sends thrust commands back to the motors\n2\n.\nuFldNodeBroker: This is critical for connecting the vehicle to the shoreside. It sends a \"ping\" containing the vehicle’s IP and port to the shore so that inter-community communication can be established\n16\n17\n.\npHostInfo: This app must run to detect the PABLO’s current IP address o",
+        "capturedAt": "2026-05-31T04:05:16.194Z"
+      },
+      {
+        "idx": 12,
+        "id": "rescue_specific",
+        "prompt": "Stress 12/20: In the autonomous rescue labs, how should a student think about swimmer reports, path replanning, and adversarial competition? Cite sources and avoid overclaiming beyond the lab docs.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 25,
+          "chars": 3906
+        },
+        "excerpt": "Stress 12/20: In the autonomous rescue labs, how should a student think about swimmer reports, path replanning, and adversarial competition? Cite sources and avoid overclaiming beyond the lab docs.\n\nIn the autonomous rescue labs (Labs 13–17), you should think of the mission as a dynamic, adversarial \"Easter egg hunt\" that moves beyond the static path planning of earlier labs\n1\n2\n. Your autonomy system must transition from simply following a pre-calculated list to a system that continuously re-evaluates its priorities based on live field reports and opponent actions.\n1. Understanding Swimmer Reports\nUnlike the \"bookend\" messages (start/last point) in Lab 7, the uFldRescueMgr (shoreside) uses a more persistent reporting style to ensure reliability in field conditions\n3\n4\n.\nSWIMMER_ALERT: These are \"man overboard\" messages containing a swimmer’s ID and X,Y coordinates\n4\n5\n. They are repeated every 15 seconds to ensure all vehicles receive them, regardless of when they start\n6\n. You must implement logic in your pGenRescue app to note the ID and ignore redundant alerts for swimmers you already know about\n6\n.\nFOUND_SWIMMER: These indicate a rescue has occurred\n7\n. The payload includes the swimmer ID and the finder (the vehicle name or \"nature\" if simulated via GUI)\n8\nmore_horiz\n. These reports are critical for both your own score and for knowing what to remove from your plan\n11\n.\n2. The Logic of Path Replanning\nReplanning is no longer a one-time event at the start of a mission. Your pGenRescue application must act as a strategy engine that continuously updates a BHV_Waypoint behavior via its updates parameter\n12\n13\n.\nTriggers for Replanning: You should trigger a path regeneration whenever a new swimmer ID is received via SWIMMER_ALERT or whenever a FOUND_SWIMMER message indicates a competitor has rescued one of your targets\n7\nmore_horiz\n.\nEdge Case Handling: If your vehicle is transiting to its final target and that swimmer is rescued by an opponent, your system must handle the empty list immediately\n14\n. The expected behavior is for the vehicle to transition into a return-home state\n14\n15\n.\nGreedy vs. Efficient: While a greedy algorithm (next closest point) is a func",
+        "capturedAt": "2026-05-31T04:05:44.528Z"
+      },
+      {
+        "idx": 13,
+        "id": "missioneval_limits",
+        "prompt": "Stress 13/20: What can pMissionEval verify automatically, and what can it not prove about a MOOS-IvP mission? Give a balanced answer. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 16,
+          "chars": 3712
+        },
+        "excerpt": "Stress 13/20: What can pMissionEval verify automatically, and what can it not prove about a MOOS-IvP mission? Give a balanced answer. Cite sources.\n\npMissionEval is a specialized utility designed for automated, headless mission testing. It acts as an automated \"grader\" that evaluates mission performance based on logic conditions. While it is powerful for objective assessment, it has distinct boundaries regarding what it can prove about an autonomy system.\nWhat pMissionEval Can Verify Automatically\npMissionEval excels at verifying discrete mission objectives and numerical performance metrics that can be represented as MOOS variables.\nObjective Satisfaction: It can verify if specific mission milestones were reached by monitoring \"lead conditions\" (e.g., lead_condition = ARRIVED=true)\n1\n2\n.\nSafety Envelope Compliance: It can automatically fail a mission if safety thresholds are breached, such as detecting any collisions (fail_condition = COLLISIONS > 0) or excessive near-misses\n2\n3\n.\nNumerical Performance: It can evaluate efficiency by checking variables like ODOMETRY against a maximum threshold to ensure the vehicle did not take an unnecessarily long path\n2\n4\n.\nMulti-Stage Logic Sequences: It can verify that a vehicle followed a required sequence of tasks (e.g., Transit -> Loiter -> Return) by checking different \"aspects\" of the mission in order\n5\n6\n.\nEvent Flag Consistency: In missions like Alpha, it can verify that behaviors posted the correct number of cycle or waypoint flags, ensuring the underlying behavior logic executed the intended number of repetitions\n7\nmore_horiz\n.\nCompetition Results: In adversarial labs (like Autonomous Rescue), it automatically captures scores and winners from the competition manager (uFldRescueMgr) for logging in Monte Carlo trials\n10\nmore_horiz\n.\nWhat pMissionEval Cannot Prove\nDespite its utility, pMissionEval is an observer of data, not a formal verification tool or a complete debugger.\nCode Correctness/Formal Proofs: It cannot prove that code is \"correct\" or bug-free in all possible states; it only verifies that specific conditions were met during a particular run. Testing complements, but does not replace, formal methods or good",
+        "capturedAt": "2026-05-31T04:06:17.053Z"
+      },
+      {
+        "idx": 14,
+        "id": "zaic_when_not",
+        "prompt": "Stress 14/20: When should a new behavior writer use a ZAIC, and when might they need reflector tools or a more complex IvP function? Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 21,
+          "chars": 3242
+        },
+        "excerpt": "Stress 14/20: When should a new behavior writer use a ZAIC, and when might they need reflector tools or a more complex IvP function? Cite sources.\n\nFor a new behavior writer, the choice between ZAIC tools and Reflector tools depends entirely on the dimensionality and complexity of the decision space their behavior needs to influence. Both tools are part of the IvP Build Toolbox, a C++ library used to create the piecewise linear IvP Functions required by the solver\n1\n2\n.\n1. When to use ZAIC Tools\nYou should use ZAIC tools when your behavior is designed to express a preference over one dimension of the vehicle’s decision space (e.g., just heading, just speed, or just depth)\n2\n.\nSetpoint Behaviors: ZAIC tools are the standard choice for simple setpoint behaviors like BHV_ConstantSpeed, BHV_ConstantHeading, or BHV_ConstantDepth\n3\nmore_horiz\n.\nZAIC_PEAK: This is the most common tool. It allows you to define a \"summit\" (the most preferred value) with a \"peak width\" and \"base width\" to describe how utility decreases for values further from that setpoint\n3\nmore_horiz\n.\nEfficiency: Because they are designed for the special case of 1D functions, they are highly efficient and easy to configure with a few numerical parameters\n2\n3\n.\n2. When to use Reflector Tools\nYou should use Reflector tools when your behavior needs to influence N dimensions simultaneously (typically 2D, such as heading and speed) and the utility of those variables is coupled\n2\n9\n.\nCoupled Logic: Use a Reflector when a candidate maneuver's utility depends on a complex relationship between multiple variables that cannot be separated into independent preferences\n9\n10\n.\nSampling an \"Underlying Function\": The Reflector works by repetitively sampling an internal \"underlying function\" provided by the developer to create a piecewise linear approximation\n2\n9\n.\nPerformance Note: Sampling is typically the \"long pole in the tent\" for behavior execution time, so you only use Reflector tools if your underlying function is fast and you truly need N-dimensional reasoning\n9\n.\n3. The \"Middle Ground\": Function Coupling\nIn many cases, even multi-dimensional behaviors (like BHV_Waypoint or BHV_OpRegionV24) do not use Reflecto",
+        "capturedAt": "2026-05-31T04:06:42.653Z"
+      },
+      {
+        "idx": 15,
+        "id": "student_code_boundary",
+        "prompt": "Stress 15/20: A student asks you to debug their custom C++ behavior from memory but provides no code. Give the best source-grounded answer and state what artifact you need next. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 12,
+          "chars": 2595
+        },
+        "excerpt": "Stress 15/20: A student asks you to debug their custom C++ behavior from memory but provides no code. Give the best source-grounded answer and state what artifact you need next. Cite sources.\n\nSince I cannot see your code, I can only provide a high-level diagnostic checklist based on the standard IvPBehavior architecture. Debugging a behavior from memory usually involves tracing the path from data registration to the production of an objective function.\nHigh-Level Diagnostic Checklist for Custom Behaviors\nVariable Registration: Does your constructor call addInfoVars()? If a behavior does not explicitly request variables from the helm, they will not be populated in the InfoBuffer, and queries like getBufferDoubleVal() will fail\n1\n2\n.\nThe Run State Subtlety: Is your behavior Running but not Active?\nRunning: The condition parameters in the .bhv file are met, and the helm is invoking your onRunState() function\n3\n4\n.\nActive: Your behavior has successfully returned a non-null IvPFunction. If onRunState() returns a nullptr, the behavior is not participating in the final decision\n4\n.\nObjective Function Construction:\nIf you are using ZAIC or Reflector tools, did you call setPWT() on the resulting function before returning it? Functions without a priority weight are ignored by the IvP solver\n5\n.\nEnsure the domain variables used in your function (e.g., \"course\", \"speed\") exactly match the domain defined in the pHelmIvP mission configuration\n6\n.\nParameter Handling: Does your setParam(string param, string value) function return true for your custom parameters? If it returns false or is missing a case, the helm will likely report a \"MALCONFIG\" error at startup and exit\n7\nmore_horiz\n.\nThe Information Buffer: Are you checking the boolean result of your buffer queries?\nExample: double val = getBufferDoubleVal(\"NAV_X\", result);\nIf result is false, the variable hasn't been received yet, and your logic should likely return a null pointer for that iteration\n1\n10\n.\nLoading and Pathing: If the behavior doesn't appear in uHelmScope at all:\nVerify the library is compiled into your moos-ivp-extend/lib directory\n11\n.\nEnsure your IVP_BEHAVIOR_DIRS environment variable includes that path\n11",
+        "capturedAt": "2026-05-31T04:07:08.311Z"
+      },
+      {
+        "idx": 16,
+        "id": "uQueryDB_script",
+        "prompt": "Stress 16/20: Show how uQueryDB differs from uXMS when used in shell scripts or automated mission checks. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 22,
+          "chars": 3513
+        },
+        "excerpt": "Stress 16/20: Show how uQueryDB differs from uXMS when used in shell scripts or automated mission checks. Cite sources.\n\nWhile both uXMS and uQueryDB allow a user to peer into a running MOOSDB, they are designed for fundamentally different roles. uXMS is a continuous monitoring tool intended for a human at a terminal, whereas uQueryDB is a \"one-shot\" logical tester designed to provide programmatic feedback to shell scripts and automated testing pipelines\n1\n2\n.\nThe key differences when used for automation are as follows:\n1. Programmatic Return Values\nThe most critical difference is how they communicate results back to the operating system.\nuQueryDB: It evaluates a logic condition provided on the command line (e.g., --condition=\"DEPLOY=true\") and immediately exits with a return value of 0 for success or 1 for failure\n2\n3\n. This allows a shell script to use the standard $? variable to take immediate action\n4\n.\nuXMS: It is designed to run indefinitely, continuously refreshing its terminal report\n5\n6\n. It does not evaluate logic or return exit codes based on variable values, making it unsuitable for driving script flow.\n2. Wait and Timeout Mechanisms\nuQueryDB is built to synchronize script execution with mission events.\nBlocking for Success: uQueryDB can be configured to wait for a specific condition to become true before exiting. By default, it will wait 10 seconds if variables are missing, but the --wait=N parameter allows a script to \"poll\" the DB for a specific duration\n2\n7\n.\nPolling in Scripts: A common pattern is to place uQueryDB inside a while true loop. The script \"sleeps\" for a few seconds, then calls uQueryDB to check for a termination criterion (like CYCLE_INDEX > 2). If uQueryDB returns 0, the script kills the mission and exits\n8\n.\n3. Check Variables and .checkvars\nWhile uXMS is excellent for visually inspecting history, uQueryDB can extract data for later script processing\n9\n10\n.\nAutomated Extraction: uQueryDB can be configured with check_var parameters. When it exits, it writes the current values of those specific variables to a file named .checkvars in a format (CSV, whitespace, or equals-separated) that is easy for other shell utilities to parse\n10\nm",
+        "capturedAt": "2026-05-31T04:07:45.475Z"
+      },
+      {
+        "idx": 17,
+        "id": "pLogger_missing_alog",
+        "prompt": "Stress 17/20: A mission completed but no useful .alog was produced. What pLogger/process/launch/config issues should be checked? Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 14,
+          "chars": 3393
+        },
+        "excerpt": "Stress 17/20: A mission completed but no useful .alog was produced. What pLogger/process/launch/config issues should be checked? Cite sources.\n\nIf a mission completes but fails to produce a useful .alog file, the issue is typically rooted in the configuration of pLogger, filesystem permissions, or errors in the mission launch process.\nThe following issues should be checked, ranked from most to least common:\n1. Process and Launch Issues\nThe most basic failure is that the logging process was never started or was terminated prematurely.\nVerify pAntler Launch: Check the ProcessConfig = ANTLER block in your .moos file. Ensure it contains a line like Run = pLogger @ NewConsole = false\n1\nmore_horiz\n.\nConfirm Execution via DB_CLIENTS: Use uXMS or uMAC to check the DB_CLIENTS variable while the mission is running. If pLogger is not listed, the process has either failed to launch or crashed\n1\n4\n.\nCheck for Silent Fails: If a launch script redirects output to /dev/null, error messages such as \"Logger has quit\" or \"Logger unable to start\" will be hidden\n5\n6\n.\n2. Configuration Settings in the .moos File\nIf pLogger is running but the .alog is missing or empty, the internal settings are likely incorrect.\nAsyncLog = true: This is mandatory for producing .alog files. If set to false, the logger will not record asynchronous data\n1\nmore_horiz\n.\nWildCardLogging = true: Without this (or explicit Log = varname @ period lines), the logger will not record any variables. If you use wildcard logging, ensure WildCardOmitPattern is not accidentally masking the variables you need\n1\n9\n.\nFileTimeStamp = true: If this is false, pLogger will overwrite the same log file every time the mission is run, potentially destroying data from previous successful runs\n10\n.\nInadequate AppTick: If AppTick or CommsTick are set too low, the logger may not be able to keep up with high-frequency data bursts\n11\n12\n.\n3. Path and Filesystem Issues\npLogger requires a valid destination to write data.\nPre-existing Path: The Path parameter (or the global GlobalLogPath) specifies the root directory for logs. pLogger will not create this root directory if it does not already exist. If the path is missing, it will attempt",
+        "capturedAt": "2026-05-31T04:08:16.205Z"
+      },
+      {
+        "idx": 18,
+        "id": "viewer_background",
+        "prompt": "Stress 18/20: pMarineViewer shows vehicles but the background image or georeference is wrong. What docs/tools explain image paths, datum/local coordinates, and viewer config? Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 19,
+          "chars": 3289
+        },
+        "excerpt": "Stress 18/20: pMarineViewer shows vehicles but the background image or georeference is wrong. What docs/tools explain image paths, datum/local coordinates, and viewer config? Cite sources.\n\nIf pMarineViewer renders vehicles but the background image is incorrect or improperly aligned, the issue is typically a mismatch between the georeference metadata in the image's information file and the global datum defined in the mission configuration.\n1. Documentation and Tools for Background Images\nPrimary Documentation: The most comprehensive source is the pMarineViewer manual, specifically Section 4, \"Background Region Images\"\n1\n2\n.\nKey Tool: pMarineViewer appcasting is the best diagnostic tool. The top few lines of its appcast report show exactly which image file was loaded and its full path on your system\n3\n4\n.\nShell Environment: The variable IVP_IMAGE_DIRS is used to define a colon-separated list of directories where the viewer should search for .tif and .info files\n5\n6\n.\n2. The Relationship Between TIF and INFO Files\nBackground images are provided as two-file pairs. The file names must be identical except for the suffix (e.g., mit_sp.tif and mit_sp.info)\n7\n8\n.\n.tif File: A TIFF format image file\n9\n.\n.info File: A text file that correlates the image pixels to earth coordinates. It must contain\n8\n10\n:\nlat_north, lat_south, lon_west, lon_east: These define the latitude/longitude boundaries of the image edges\n10\n.\ndatum_lat, datum_lon: These indicate where (0,0) in local coordinates is intended to be located on that specific image\n8\n10\n.\n3. Datum and Local Coordinates\nA common source of \"wrong\" georeferencing is a conflict between the image's intended datum and the mission's actual datum.\nGlobal Mission Datum: This is set at the top of a .moos file using the LatOrigin and LongOrigin parameters\n11\n12\n. All MOOS applications, including the simulator (uSimMarine) and the helm (pHelmIvP), use this to convert between (x,y) meters and earth coordinates\n13\n14\n.\nViewer Alignment: pMarineViewer uses the global LatOrigin/LongOrigin to anchor its local coordinate system\n10\n. If the image’s .info file specifies a different datum than the .moos file, the image will appear shifted rel",
+        "capturedAt": "2026-05-31T04:08:44.350Z"
+      },
+      {
+        "idx": 19,
+        "id": "student_trick_names",
+        "prompt": "Stress 19/20: A student mixes up uFldNodeComms, uFldNodeBroker, and uFldShoreBroker. Give a crisp comparison and a common failure symptom for each. Cite sources.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 14,
+          "chars": 2690
+        },
+        "excerpt": "Stress 19/20: A student mixes up uFldNodeComms, uFldNodeBroker, and uFldShoreBroker. Give a crisp comparison and a common failure symptom for each. Cite sources.\n\nThe three uField applications manage different stages of the communication pipeline between vehicles and the shoreside. While uFldNodeBroker and uFldShoreBroker work together to establish the connection, uFldNodeComms is responsible for simulating the physics of that connection (e.g., range limits).\nCrisp Comparison Table\nApplication\n\t\nLocation\n\t\nPrimary Role\n\t\nKey Responsibility\n\n\nuFldNodeBroker\n\t\nVehicle\n\t\nDiscovery\n\t\nSends a \"ping\" to the shore with the vehicle’s IP/Port info\n1\n2\n.\n\n\nuFldShoreBroker\n\t\nShoreside\n\t\nBridging\n\t\nListens for pings and establishes pShare routes to send data back to vehicles\n3\n4\n.\n\n\nuFldNodeComms\n\t\nShoreside\n\t\nPhysics Simulation\n\t\nArbiter that drops messages if vehicles are out of range or sending too fast\n5\nmore_horiz\n.\n\n--------------------------------------------------------------------------------\n\nCommon Failure Symptoms\n1. uFldNodeBroker (The \"Ping\" Failure)\nSymptom: The vehicle is completely invisible to the shoreside. It does not appear in pMarineViewer, and the shoreside MOOSDB contains no variables from that vehicle community\n2\n.\nLikely Cause: The broker cannot find the shoreside IP/Port.\nHow to Verify: View the uFldNodeBroker appcast on the vehicle. If it is stuck in Phase 3, it is sending pings but never receiving a NODE_BROKER_ACK from the shore\n8\n9\n.\n2. uFldShoreBroker (The \"Command\" Failure)\nSymptom: The vehicle is visible on the shoreside map, but it ignores commands. For example, hitting the \"DEPLOY\" button in pMarineViewer results in no state change on the vehicle\n10\n11\n.\nLikely Cause: The variable (e.g., DEPLOY) is not listed in a bridge or qbridge parameter in the shoreside configuration\n12\n13\n.\nHow to Verify: Check the uFldShoreBroker appcast on the shoreside. Verify that the vehicle name appears under \"Vehicle Node Information\" and that the expected variables are successfully bridged\n14\n.\n3. uFldNodeComms (The \"Physics\" Failure)\nSymptom: Vehicles are both \"connected\" to the shore, but inter-vehicle messaging fails. A vehicle posts NODE_MESSAGE_LOCAL, b",
+        "capturedAt": "2026-05-31T04:09:21.467Z"
+      },
+      {
+        "idx": 20,
+        "id": "limitations",
+        "prompt": "Stress 20/20: What are the limits of this NotebookLM TA? Explain when a student must run tools, inspect source code, or provide logs/config rather than trusting a natural-language answer. Cite sources where possible.",
+        "score": {
+          "ok": true,
+          "missing": [],
+          "redFlags": [],
+          "citationCount": 19,
+          "chars": 3845,
+          "automatedOk": false,
+          "manualOverride": "Accepted: answer used config/configs, .moos/.bhv, and .alog artifacts; literal keyword check only missed full word configuration."
+        },
+        "excerpt": "Stress 20/20: What are the limits of this NotebookLM TA? Explain when a student must run tools, inspect source code, or provide logs/config rather than trusting a natural-language answer. Cite sources where possible.\n\nAs a NotebookLM TA, I am a specialized interface for the provided MOOS-IvP documentation, but I operate under several critical architectural and operational limits. Understanding these boundaries is essential for effective debugging, as natural-language explanations can provide likely causes but cannot confirm the ground truth of your specific execution.\n1. Operational Limits: I Cannot Run Your Mission\nThe most fundamental limit is that I have no access to your local machine, your shell environment, or a running MOOS community.\nLikely Causes vs. Evidence: While I can explain why a helm might stay PARKED, I cannot see your actual IVPHELM_STATE. I can suggest what to inspect, but I cannot \"run\" your mission to verify the outcome\n1\n.\nThe \"Black Box\" of Local Code: If you are writing a custom C++ behavior or app, I cannot identify a logic error or a memory leak unless you provide the specific code snippets\n1\n2\n.\nSimulation Environment: I cannot detect if your machine is struggling with a high Time Warp or if a local firewall is blocking pShare traffic\n3\n4\n.\n2. When a Student Must Run Tools\nNatural language can explain the intended flow of data, but only the MOOS-IvP toolset can confirm the actual flow. You must run tools when:\nVerifying Variables: If a behavior isn't triggering, you must use uXMS or uQueryDB to confirm that the required MOOS variables are actually reaching the MOOSDB with the correct values\n5\n6\n.\nChecking Helm Health: To see if a behavior is Idle, Running, or Active, you must use uHelmScope or appcasting (uMAC). I can only tell you the conditions for those states, not which one your behavior is in\n7\n8\n.\nPost-Mission Forensic Analysis: If a mission failed in the past, a natural-language query is useless without an .alog file. You must use aloghelm, aloggrep, or alogview to reconstruct the timeline of events\n5\nmore_horiz\n.\n3. When a Student Must Inspect Source Code\nYou must go beyond documentation and inspect source code (or the class AP",
+        "capturedAt": "2026-05-31T04:09:54.951Z"
+      }
+    ],
+    "summary": {
+      "totalCompleted": 20,
+      "passed": 20,
+      "failed": 0,
+      "nextIndex": 21
+    }
+  },
+  "updatedAt": "2026-05-31T04:10:23.348Z"
+}

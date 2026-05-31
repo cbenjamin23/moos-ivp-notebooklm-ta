@@ -1,0 +1,206 @@
+{
+  "notebookTitle": "MOOS-IvP Virtual TA - NotebookLM",
+  "sourceCount": 49,
+  "hasWebSource": false,
+  "hasHelmPdf": true,
+  "labels": [
+    "Core Architecture",
+    "Examples",
+    "IvP Helm Behaviors",
+    "MOOS Applications",
+    "MOOS-IvP Lab Guides",
+    "Tools and Visualization",
+    "uField Toolbox"
+  ],
+  "validationCount": 20,
+  "passedKeywordChecks": 20,
+  "passedCitationChecks": 20,
+  "results": [
+    {
+      "id": "moos_pubsub",
+      "checks": {
+        "MOOSDB": true,
+        "publish": true,
+        "subscribe": true,
+        "variable": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "pantler_launch",
+      "checks": {
+        "pAntler": true,
+        ".moos": true,
+        "process": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "park_drive",
+      "checks": {
+        "PARK": true,
+        "DRIVE": true,
+        "DEPLOY": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "behavior_conditions",
+      "checks": {
+        "condition": true,
+        "priority": true,
+        "duration": true,
+        "complete": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "waypoint_debug",
+      "checks": {
+        "BHV_Waypoint": true,
+        "condition": true,
+        "NAV_X": true,
+        "NAV_Y": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "loiter_setup",
+      "checks": {
+        "BHV_Loiter": true,
+        "polygon": true,
+        "clockwise": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "opregion",
+      "checks": {
+        "OpRegion": true,
+        "polygon": true,
+        "region": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "constant_behaviors",
+      "checks": {
+        "ConstantSpeed": true,
+        "Heading": true,
+        "Depth": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "contacts",
+      "checks": {
+        "NODE_REPORT": true,
+        "contact": true,
+        "pContactMgr": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "multivehicle_share",
+      "checks": {
+        "pShare": true,
+        "uFldNodeBroker": true,
+        "uFldShoreBroker": true,
+        "port": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "message_handler",
+      "checks": {
+        "uFldMessageHandler": true,
+        "NODE_MESSAGE": true,
+        "message": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "viewer_no_vehicle",
+      "checks": {
+        "pMarineViewer": true,
+        "NODE_REPORT": true,
+        "pNodeReporter": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "sim_reporter",
+      "checks": {
+        "uSimMarine": true,
+        "pNodeReporter": true,
+        "NAV": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "db_tools",
+      "checks": {
+        "uXMS": true,
+        "uPokeDB": true,
+        "uQueryDB": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "alog_tools",
+      "checks": {
+        "alogview": true,
+        "aloggrep": true,
+        "alogscan": true,
+        "aloghelm": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "behavior_writing",
+      "checks": {
+        "IvPBehavior": true,
+        "OnRunState": true,
+        "configuration": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "zaic_reflector",
+      "checks": {
+        "ZAIC": true,
+        "reflector": true,
+        "IvP function": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "lab_moos_programming",
+      "checks": {
+        "MOOS": true,
+        "programming": true,
+        "lab": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "rescue_labs",
+      "checks": {
+        "Rescue": true,
+        "autonomous": true,
+        "lab": true
+      },
+      "citationLike": true
+    },
+    {
+      "id": "tooling_misc",
+      "checks": {
+        "pRealm": true,
+        "uMAC": true,
+        "pMissionEval": true
+      },
+      "citationLike": true
+    }
+  ],
+  "sourceReplacement": "Replaced MOOS-IvP Helm As MOOS web source with 48_chap_helm_as_moos.pdf; source count remains 49."
+}
