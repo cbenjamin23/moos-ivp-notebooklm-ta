@@ -4,11 +4,11 @@ Run ID: 2026-05-31_organic_beginner_tier_clean2
 
 Status: in progress
 
-Last updated: 2026-05-31T20:36:02.499Z
+Last updated: 2026-05-31T20:42:14.321Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":80,"not_started":120}
+Counts: {"captured":100,"not_started":100}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -32,11 +32,11 @@ Counts: {"captured":80,"not_started":120}
 | C18 | conceptual_debugging | Behavior Never Runs | captured | captured | captured | captured |
 | C19 | conceptual_debugging | `.moos` vs `.bhv` Mistake | captured | captured | captured | captured |
 | C20 | conceptual_debugging | Payload Event Not Affecting Autonomy | captured | captured | captured | captured |
-| C21 | conceptual_debugging | Simulation to Heron/PABLO | not_started | not_started | not_started | not_started |
-| C22 | conceptual_debugging | Field Deployment Sanity Check | not_started | not_started | not_started | not_started |
-| C23 | conceptual_debugging | Rescue Path Planning | not_started | not_started | not_started | not_started |
-| C24 | conceptual_debugging | Adversarial Rescue Updates | not_started | not_started | not_started | not_started |
-| C25 | conceptual_debugging | Teammate Messaging | not_started | not_started | not_started | not_started |
+| C21 | conceptual_debugging | Simulation to Heron/PABLO | captured | captured | captured | captured |
+| C22 | conceptual_debugging | Field Deployment Sanity Check | captured | captured | captured | captured |
+| C23 | conceptual_debugging | Rescue Path Planning | captured | captured | captured | captured |
+| C24 | conceptual_debugging | Adversarial Rescue Updates | captured | captured | captured | captured |
+| C25 | conceptual_debugging | Teammate Messaging | captured | captured | captured | captured |
 | C26 | conceptual_debugging | Post-Mission Alog Diagnosis | not_started | not_started | not_started | not_started |
 | C27 | conceptual_debugging | pLogger Produced No Useful Alog | not_started | not_started | not_started | not_started |
 | C28 | conceptual_debugging | Choosing Debugging Tools During A Mission Run | not_started | not_started | not_started | not_started |
