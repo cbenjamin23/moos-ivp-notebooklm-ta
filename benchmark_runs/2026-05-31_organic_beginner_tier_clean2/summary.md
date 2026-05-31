@@ -4,11 +4,11 @@ Run ID: 2026-05-31_organic_beginner_tier_clean2
 
 Status: in progress
 
-Last updated: 2026-05-31T20:16:22.121Z
+Last updated: 2026-05-31T20:22:34.007Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":20,"not_started":180}
+Counts: {"captured":40,"not_started":160}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -17,11 +17,11 @@ Counts: {"captured":20,"not_started":180}
 | C03 | conceptual_debugging | uXMS/uPokeDB Confusion | captured | captured | captured | captured |
 | C04 | conceptual_debugging | App Not Publishing | captured | captured | captured | captured |
 | C05 | conceptual_debugging | pAntler Did Not Start A Process | captured | captured | captured | captured |
-| C06 | conceptual_debugging | Launch Arguments Not Reaching Config Files | not_started | not_started | not_started | not_started |
-| C07 | conceptual_debugging | Helm Remains PARKED | not_started | not_started | not_started | not_started |
-| C08 | conceptual_debugging | No Desired Outputs | not_started | not_started | not_started | not_started |
-| C09 | conceptual_debugging | Vehicle Moves In Simulation But Autonomy Looks Wrong | not_started | not_started | not_started | not_started |
-| C10 | conceptual_debugging | Multi-Vehicle Ports | not_started | not_started | not_started | not_started |
+| C06 | conceptual_debugging | Launch Arguments Not Reaching Config Files | captured | captured | captured | captured |
+| C07 | conceptual_debugging | Helm Remains PARKED | captured | captured | captured | captured |
+| C08 | conceptual_debugging | No Desired Outputs | captured | captured | captured | captured |
+| C09 | conceptual_debugging | Vehicle Moves In Simulation But Autonomy Looks Wrong | captured | captured | captured | captured |
+| C10 | conceptual_debugging | Multi-Vehicle Ports | captured | captured | captured | captured |
 | C11 | conceptual_debugging | Shoreside Missing Vehicle | not_started | not_started | not_started | not_started |
 | C12 | conceptual_debugging | pShare Route Confusion | not_started | not_started | not_started | not_started |
 | C13 | conceptual_debugging | TSP App / Behavior Boundary | not_started | not_started | not_started | not_started |
