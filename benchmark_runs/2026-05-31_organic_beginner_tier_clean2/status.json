@@ -123,50 +123,50 @@
       "category": "conceptual_debugging",
       "title": "Shoreside Missing Vehicle",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C12": {
       "category": "conceptual_debugging",
       "title": "pShare Route Confusion",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C13": {
       "category": "conceptual_debugging",
       "title": "TSP App / Behavior Boundary",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C14": {
       "category": "conceptual_debugging",
       "title": "Distributed Route Assignment Problem",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C15": {
       "category": "conceptual_debugging",
       "title": "Multi-Machine Networking Problem",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C16": {
@@ -520,7 +520,7 @@
       }
     }
   },
-  "last_updated_at": "2026-05-31T20:22:34.007Z",
+  "last_updated_at": "2026-05-31T20:28:47.905Z",
   "notes": [
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing."
   ]

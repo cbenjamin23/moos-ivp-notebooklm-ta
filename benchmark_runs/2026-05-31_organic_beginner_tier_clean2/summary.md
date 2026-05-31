@@ -4,11 +4,11 @@ Run ID: 2026-05-31_organic_beginner_tier_clean2
 
 Status: in progress
 
-Last updated: 2026-05-31T20:22:34.007Z
+Last updated: 2026-05-31T20:28:47.905Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":40,"not_started":160}
+Counts: {"captured":60,"not_started":140}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -22,11 +22,11 @@ Counts: {"captured":40,"not_started":160}
 | C08 | conceptual_debugging | No Desired Outputs | captured | captured | captured | captured |
 | C09 | conceptual_debugging | Vehicle Moves In Simulation But Autonomy Looks Wrong | captured | captured | captured | captured |
 | C10 | conceptual_debugging | Multi-Vehicle Ports | captured | captured | captured | captured |
-| C11 | conceptual_debugging | Shoreside Missing Vehicle | not_started | not_started | not_started | not_started |
-| C12 | conceptual_debugging | pShare Route Confusion | not_started | not_started | not_started | not_started |
-| C13 | conceptual_debugging | TSP App / Behavior Boundary | not_started | not_started | not_started | not_started |
-| C14 | conceptual_debugging | Distributed Route Assignment Problem | not_started | not_started | not_started | not_started |
-| C15 | conceptual_debugging | Multi-Machine Networking Problem | not_started | not_started | not_started | not_started |
+| C11 | conceptual_debugging | Shoreside Missing Vehicle | captured | captured | captured | captured |
+| C12 | conceptual_debugging | pShare Route Confusion | captured | captured | captured | captured |
+| C13 | conceptual_debugging | TSP App / Behavior Boundary | captured | captured | captured | captured |
+| C14 | conceptual_debugging | Distributed Route Assignment Problem | captured | captured | captured | captured |
+| C15 | conceptual_debugging | Multi-Machine Networking Problem | captured | captured | captured | captured |
 | C16 | conceptual_debugging | Message Does Not Arrive | not_started | not_started | not_started | not_started |
 | C17 | conceptual_debugging | Node Names / Destinations | not_started | not_started | not_started | not_started |
 | C18 | conceptual_debugging | Behavior Never Runs | not_started | not_started | not_started | not_started |
