@@ -16,7 +16,7 @@ The prompt text is intentionally neutral, but the set is grounded in the lab seq
 - C10-C17, D08-D09, K06-K07: multiple-vehicle, pShare, TSP, multi-machine, and inter-vehicle messaging work.
 - C18-C22, K08-K10: behavior writing, payload autonomy, and Heron/PABLO field-deployment work.
 - C23-C25: autonomous rescue-style mission work.
-- C26-C30, D10: logging, alog analysis, mission debugging, and automated mission-check workflows used throughout the labs.
+- C26-C30, D10: logging, alog analysis, mission debugging, and post-run verification workflows used throughout the labs.
 
 ## Conceptual / Debugging Prompts
 
@@ -178,9 +178,9 @@ What configuration choices determine whether a variable is shared between MOOS c
 
 For inter-vehicle messaging, compare uFldNodeBroker, uFldShoreBroker, uFldNodeComms, and uFldMessageHandler. What does each one do, and what is a common symptom when each is misconfigured?
 
-### D10: Automated Mission Check Capabilities
+### D10: pLogger And Alog Verification
 
-When I want an automated check that a mission reached a goal, posted expected variables, or stopped cleanly, what can pMissionEval verify and what can it not prove about overall mission correctness?
+When I need to verify after a mission that generated points, assignments, or behavior events were posted, how should I use pLogger output, aloggrep, alogview, and variable history?
 
 ## Code Advice / Correction Prompts
 

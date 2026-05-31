@@ -65,7 +65,7 @@ These should still be framed as natural student questions, without asking for ci
 - "What are the actual BHV_Waypoint arrival/capture parameters I should use in my `.bhv` file?"
 - "Does BHV_OpRegionV24 steer me back inside the polygon, or does it mainly detect/enforce region constraints?"
 - "In a multi-vehicle messaging setup, what is the difference between uFldNodeBroker, uFldShoreBroker, and uFldNodeComms?"
-- "What can pMissionEval prove in an automated mission check, and what can it not prove?"
+- "How should I use pLogger output, aloggrep, alogview, and variable history to verify what happened after a mission?"
 - "Why does pMarineViewer show vehicles in the wrong place relative to the background image?"
 - "What determines whether pAntler launches a process, and how do I tell launch failure from registration failure?"
 - "What variables and tools matter for a pOdometry-style app?"

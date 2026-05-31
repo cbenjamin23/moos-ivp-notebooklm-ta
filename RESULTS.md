@@ -118,7 +118,7 @@ Scoring:
 | D07 | Exact docs/parameters/tools | viewer image/geodesy config | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D08 | Exact docs/parameters/tools | pShare configuration | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | D09 | Exact docs/parameters/tools | uField broker comparison | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| D10 | Exact docs/parameters/tools | automated mission check capabilities | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| D10 | Exact docs/parameters/tools | pLogger and alog verification | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | K01 | Code advice/correction | pOdometry mail handling | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | K02 | Code advice/correction | missing registration pattern | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | K03 | Code advice/correction | AppCasting config warnings | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
