@@ -2,7 +2,7 @@
 
 Status: planned, not yet run.
 
-This document is the target structure for the cross-model benchmark comparing the NotebookLM MOOS-IvP TA against normal non-RAG LLM outputs on lab-grounded student questions.
+This document is the target structure for the cross-model benchmark comparing the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini on lab-grounded student questions.
 
 ## Executive Summary
 
@@ -17,7 +17,7 @@ Planned comparison:
 
 Primary question:
 
-> Is the NotebookLM TA better than normal non-RAG LLMs for documentation-grounded conceptual MOOS-IvP help?
+> Is the NotebookLM TA better than the normal beginner-tier AI browser experience for documentation-grounded conceptual MOOS-IvP help?
 
 Secondary question:
 

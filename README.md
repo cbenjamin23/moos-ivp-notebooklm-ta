@@ -41,7 +41,7 @@ High-level result:
 
 ## Benchmark Plan
 
-The planned cross-model benchmark will compare the NotebookLM MOOS-IvP TA against non-RAG ChatGPT, Claude, and Gemini outputs on questions a student might naturally ask while working through the MOOS-IvP labs.
+The planned cross-model benchmark will compare the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini on questions a student might naturally ask while working through the MOOS-IvP labs.
 
 The intended product claim is narrow:
 

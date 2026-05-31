@@ -1,6 +1,6 @@
 # Benchmarking Plan
 
-This benchmark will compare the NotebookLM MOOS-IvP TA against normal non-RAG LLM answers. The main purpose is to test whether the NotebookLM TA is useful as a conceptual, documentation-grounded MOOS-IvP teaching assistant for students working through the MIT/OceanAI MOOS-IvP labs.
+This benchmark will compare the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. The main purpose is to test whether the NotebookLM TA is useful as a conceptual, documentation-grounded MOOS-IvP teaching assistant for students working through the MIT/OceanAI MOOS-IvP labs.
 
 The benchmark should not market the notebook as a code generator. Code tasks are included as a stress-test category, not as the primary product claim.
 
@@ -16,19 +16,32 @@ Explicit limitation:
 
 ## Systems To Compare
 
-Initial comparison:
+Primary comparison:
 
 - NotebookLM MOOS-IvP TA
-- ChatGPT without the NotebookLM source pack
-- Claude without the NotebookLM source pack
-- Gemini without the NotebookLM source pack
+- ChatGPT in the normal signed-in browser UI
+- Claude in the normal signed-in browser UI
+- Gemini in the normal signed-in browser UI
 
 Optional later comparison:
 
+- Controlled no-web versions of the same systems, if the UI makes that easy and repeatable.
 - ChatGPT with uploaded PDFs
 - Claude Project with uploaded PDFs
 - Gemini/AI Studio with uploaded PDFs
 - Codex with local `moos-ivp` source and MOOS-IvP skills
+
+## Benchmark Mode
+
+The primary benchmark mode is an organic beginner-tier test:
+
+- Use the standard browser UI a student would naturally use.
+- Use the same prompt text for every model.
+- Do not add special benchmark instructions such as "do not browse," "cite sources," or "answer concisely."
+- Do not upload extra documents to ChatGPT, Claude, or Gemini for the primary run.
+- Allow each platform to use its default available behavior, including web/search behavior if the product chooses to use it.
+- NotebookLM uses the curated `MOOS-IvP Virtual TA` notebook because that is the product being evaluated.
+- Record visible model/tool settings where practical, but do not tune them per prompt.
 
 ## Prompt Set
 
@@ -87,7 +100,7 @@ These prompts should be small code-adjacent student questions, not requests for 
 - Use the exact same prompt text for every model.
 - Do not give one model extra hidden hints.
 - Do not ask for citations in the prompt text; evaluate source grounding separately during grading.
-- Do not allow web search unless the tested condition explicitly says web search is enabled.
+- Allow each platform's normal/default tool behavior in the primary organic benchmark.
 - Preserve raw model output.
 - Grade only after all model outputs are collected for that prompt.
 - Code answers should be graded against the local MOOS-IvP source tree, not just against citations.
