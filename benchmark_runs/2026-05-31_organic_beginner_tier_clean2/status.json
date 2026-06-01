@@ -783,7 +783,10 @@
     "D15": {
       "gemini": "captured",
       "notebook": "captured"
+    },
+    "D11": {
+      "gemini": "captured"
     }
   },
-  "updated_at": "2026-06-01T18:55:08.395Z"
+  "updated_at": "2026-06-01T18:57:33.679Z"
 }
