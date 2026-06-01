@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - resumed after Claude quota and completed through C28
+Status: in progress - conceptual category complete through C30
 
-Last updated: 2026-06-01T00:13:56.238Z
+Last updated: 2026-06-01T00:23:07.270Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":112,"not_started":88}
+Counts: {"captured":120,"not_started":80}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -40,8 +40,8 @@ Counts: {"captured":112,"not_started":88}
 | C26 | conceptual_debugging | Post-Mission Alog Diagnosis | captured | captured | captured | captured |
 | C27 | conceptual_debugging | pLogger Produced No Useful Alog | captured | captured | captured | captured |
 | C28 | conceptual_debugging | Choosing Debugging Tools During A Mission Run | captured | captured | captured | captured |
-| C29 | conceptual_debugging | pMarineViewer Background / Geodesy | not_started | not_started | not_started | not_started |
-| C30 | conceptual_debugging | Mission Broke After Several Edits | not_started | not_started | not_started | not_started |
+| C29 | conceptual_debugging | pMarineViewer Background / Geodesy | captured | captured | captured | captured |
+| C30 | conceptual_debugging | Mission Broke After Several Edits | captured | captured | captured | captured |
 | D01 | exact_docs_tools | pOdometry Variables | not_started | not_started | not_started | not_started |
 | D02 | exact_docs_tools | pAntler Process Launching | not_started | not_started | not_started | not_started |
 | D03 | exact_docs_tools | uTimerScript Usage | not_started | not_started | not_started | not_started |
@@ -65,4 +65,4 @@ Counts: {"captured":112,"not_started":88}
 
 ## Progress Notes
 
-Claude quota reset was available on retry. C27 Claude was captured, and C28 was captured for all four tools. Continuing from C29 next.
+Claude quota reset was available on retry. C27-C30 are now complete for all four tools, finishing the conceptual/debugging category. Continuing from D01 next.
