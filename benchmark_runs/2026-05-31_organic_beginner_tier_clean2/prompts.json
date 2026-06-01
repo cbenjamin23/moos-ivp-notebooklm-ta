@@ -237,7 +237,7 @@
     "id": "D10",
     "title": "pLogger And Alog Verification",
     "category": "exact_docs_tools",
-    "prompt": "When I need to verify after a mission that generated points, assignments, or behavior events were posted, how should I use pLogger output, aloggrep, alogview, and variable history?\n\n## Code Advice / Correction Prompts\n\nThese prompts are included to measure limits. They should not be used to market the NotebookLM TA as a coding agent."
+    "prompt": "When I need to verify after a mission that generated points, assignments, or behavior events were posted, how should I use pLogger output, aloggrep, alogview, and variable history?"
   },
   {
     "id": "K01",
