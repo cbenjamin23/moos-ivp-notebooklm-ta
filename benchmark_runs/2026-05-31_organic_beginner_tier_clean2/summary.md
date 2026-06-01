@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt K02
+Status: in progress - next prompt K03
 
-Last updated: 2026-06-01T13:27:28Z
+Last updated: 2026-06-01T13:34:43Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":164,"not_started":36}
+Counts: {"captured":168,"not_started":32}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -53,7 +53,7 @@ Counts: {"captured":164,"not_started":36}
 | D09 | exact_docs_tools | uField Broker Comparison | captured | captured | captured | captured |
 | D10 | exact_docs_tools | pLogger And Alog Verification | captured | captured | captured | captured |
 | K01 | code_config_advice | pOdometry Mail Handling | captured | captured | captured | captured |
-| K02 | code_config_advice | Missing Registration Pattern | not_started | not_started | not_started | not_started |
+| K02 | code_config_advice | Missing Registration Pattern | captured | captured | captured | captured |
 | K03 | code_config_advice | AppCasting Config Warnings | not_started | not_started | not_started | not_started |
 | K04 | code_config_advice | uTimerScript Trigger Setup | not_started | not_started | not_started | not_started |
 | K05 | code_config_advice | Behavior Config File Boundary | not_started | not_started | not_started | not_started |
@@ -65,8 +65,8 @@ Counts: {"captured":164,"not_started":36}
 
 ## Current Position
 
-C01-C30, D01-D10, and K01 are complete for all four tools. The next prompt is K02 in the code/config advice category.
+C01-C30, D01-D10, and K01-K02 are complete for all four tools. The next prompt is K03 in the code/config advice category.
 
 ## Progress Notes
 
-Checkpoint at 2026-06-01T13:27:28Z: K01 completed for all four tools; NotebookLM extraction corrected from the live page.
+Checkpoint at 2026-06-01T13:34:43Z: K02 completed for all four tools.

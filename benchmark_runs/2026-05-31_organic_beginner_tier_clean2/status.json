@@ -433,10 +433,10 @@
       "category": "code_config_advice",
       "title": "Missing Registration Pattern",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "K03": {
@@ -527,7 +527,7 @@
   ],
   "stopped_at": null,
   "stop_reason": null,
-  "last_completed_prompt": "K01",
+  "last_completed_prompt": "K02",
   "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
@@ -585,11 +585,15 @@
     {
       "at": "2026-06-01T13:27:28Z",
       "result": "K01 completed for Gemini and bad NotebookLM extraction corrected."
+    },
+    {
+      "at": "2026-06-01T13:34:43Z",
+      "result": "K02 completed for all four tools."
     }
   ],
-  "last_updated": "2026-06-01T13:27:28Z",
+  "last_updated": "2026-06-01T13:34:43Z",
   "counts": {
-    "captured": 164,
-    "not_started": 36
+    "captured": 168,
+    "not_started": 32
   }
 }
