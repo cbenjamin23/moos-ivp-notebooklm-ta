@@ -32,6 +32,14 @@
       "method": "gemini_body_last_response_slice",
       "url": "https://gemini.google.com/app/c240ed6bbabc875b",
       "captured_at": "2026-06-01T14:15:07Z"
+    },
+    "chatgpt_55_instant": {
+      "status": "captured",
+      "captured_at": "2026-06-01T20:39:38.086Z",
+      "url": "https://chatgpt.com/c/6a1dedfb-ebbc-832e-9561-c0f04ce3df6e",
+      "method": "chatgpt_55_instant_fresh_user_tab",
+      "model_label": "GPT-5.5 Instant",
+      "text": "Correct pattern:\n\nC++\nbool BHV_Survey::setParam(string param, string val)\n{\n  param = tolower(param);\n\n  if(param == \"survey_radius\") {\n    double radius = atof(val.c_str());\n    if(radius <= 0)\n      return false;\n\n    m_radius = radius;\n    return true;\n  }\n\n  return false;\n}\n\nMOOS-IvP-specific reason: behavior parameters in .bhv files are commonly treated case-insensitively, so Survey_Radius, survey_radius, or SURVEY_RADIUS should not accidentally become different parameters. Most IvP behavior code normalizes param with tolower(param) before matching.\n\nAlso, setParam() should reject invalid values. Returning true tells pHelmIvP that the parameter was accepted, so accepting survey_radius = -5 or garbage like abc can silently create a broken behavior."
     }
   }
 }
