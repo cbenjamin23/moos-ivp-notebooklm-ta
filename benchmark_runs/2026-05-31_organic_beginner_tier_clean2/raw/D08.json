@@ -32,6 +32,14 @@
       "method": "gemini_body_prompt_slice",
       "url": "https://gemini.google.com/app/43b2659dcd55e02a",
       "captured_at": "2026-06-01T12:06:18Z"
+    },
+    "chatgpt_55_instant": {
+      "status": "captured",
+      "captured_at": "2026-06-01T20:27:14.367Z",
+      "url": "https://chatgpt.com/c/6a1deb0a-1dc8-832d-9fe8-b19b10d26ea6",
+      "method": "chatgpt_55_instant_fresh_user_tab",
+      "model_label": "GPT-5.5 Instant",
+      "text": "A variable is shared between MOOS communities only if some bridge process is explicitly configured to move it. Usually that means pShare.\n\nCheck these configuration choices:\n\nWhich community publishes it\nThe source app must actually Notify() the variable locally. Use uXMS VAR_NAME inside that vehicle/community first.\n\nWhich community subscribes/exports it\nIn pShare, the source side must be configured to send/export that variable. If NODE_REPORT is posted locally but not exported, shoreside will never see it.\n\nDestination host/IP\nThe route must point to the machine running the receiving MOOS community or receiving pShare. Wrong IP/hostname is common when moving from one laptop to multiple machines.\n\nDestination port\nDistinguish:\n\nMOOSDB ServerPort\n\npShare listening/UDP ports\n\nvehicle-specific ports\n\nMixing these up can make everything look “alive” locally but disconnected across communities.\n\nCommunity / vehicle names\nNames in NODE_REPORT, src_node, dest_node, Community, and launch arguments must match what the other side expects. A typo can make messages arrive but be ignored.\n\nVariable name spelling\nMOOS variables are just string keys. SWIMMER_ALERT, SWIMMER_REPORT, and SWIMMER_REPORT_LOCAL are different variables.\n\nTypical symptoms:\n\nVisible locally, invisible remotely → export/share route missing or wrong.\n\nNothing from one vehicle appears shoreside → wrong pShare route, host, port, firewall, or community name.\n\nOne vehicle appears in pMarineViewer, another does not → missing/incorrect NODE_REPORT, pNodeReporter not running, pShare not forwarding, or duplicate/wrong vehicle name.\n\nNODE_MESSAGE_LOCAL posted but payload never appears on receiver → wrong src_node, dest_node, pShare route, or message field format.\n\nApp reacts in simulation but not multi-machine → variable was local-only; it never crossed communities.\n\nRoute works on one laptop but fails across machines → bad IP/hostname, blocked UDP/TCP port, or WSL/network-interface confusion.\n\nRemote variable appears with stale values → old process still running, wrong community being watched, or pLogger/uXMS pointed at the wrong MOOSDB.\n\nBest debugging order: prove the variable exists in the source MOOSDB, prove pShare is running and configured to export it, prove the receiving community sees it with uXMS, then check whether the consuming app subscribed to the exact remote variable name."
     }
   }
 }
