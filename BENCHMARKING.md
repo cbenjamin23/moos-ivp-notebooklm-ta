@@ -184,6 +184,7 @@ The root `README.md` should only include a concise summary:
 
 Report these metrics:
 
+- Average score out of 2 per model.
 - Public score percentage per model, calculated as total points divided by maximum possible points.
 - Percent of answers scored `2`.
 - Percent of answers scored `0`.
@@ -193,7 +194,7 @@ Report these metrics:
 
 Recommended headline table:
 
-| Model | Score % | Good % | Partial % | Bad % | Hard/Notable Error Flags | Conceptual Score % | Exact Docs Score % | Code Score % |
+| Model | Score % | Avg / 2 | Good % | Partial % | Bad % | Conceptual Score % | Exact Docs Score % | Code Score % |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | ChatGPT | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |

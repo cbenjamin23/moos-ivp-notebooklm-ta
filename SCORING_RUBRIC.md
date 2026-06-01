@@ -10,9 +10,10 @@ This benchmark uses one simple score per answer and a separate reliability flag.
 | 1 | 50% | Partially useful | Mostly helpful, but vague, incomplete, off-domain in places, missing an important caveat, or containing a concrete factual slip/hallucination that must be corrected before use. |
 | 0 | 0% | Bad | Wrong, misleading, unsafe, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unusable for the task. |
 
-The public average score is reported as a percentage of possible points:
+The public average score is reported both as an average out of 2 and as a percentage of possible points:
 
 ```text
+average_score = total_points / prompt_count
 score_percent = total_points / (2 * prompt_count) * 100
 ```
 

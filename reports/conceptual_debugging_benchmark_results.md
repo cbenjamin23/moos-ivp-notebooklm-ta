@@ -6,7 +6,7 @@ Run: `2026-05-31_organic_beginner_tier_clean2`
 
 Grading method: Manual Codex review against the simple rubric in BENCHMARKING.md, revised to penalize concrete hallucinations, invented MOOS-IvP details, wrong copy-pasteable config snippets, and unsupported product-specific claims even when the surrounding answer was useful.
 
-Rubric: `SCORING_RUBRIC.md`. Public averages are percentages of possible points. Hard/notable errors are separate reliability flags and may overlap with partial or bad answers.
+Rubric: `SCORING_RUBRIC.md`. Public averages are shown both as percentages and as averages out of 2. Hard/notable error details are retained for audit and may overlap with partial or bad answers.
 
 ## Summary
 
@@ -16,28 +16,21 @@ NotebookLM remained clean across C01-C30. ChatGPT was still very strong, but los
 
 ## Headline Scores
 
-| Model | Score % | Good Answers | Partial Answers | Bad Answers |
-|---|---:|---:|---:|---:|
-| NotebookLM TA | 100.0% | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
-| ChatGPT | 96.7% | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
-| Gemini | 80.0% | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
-| Claude | 60.0% | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
+Scores use a `0/1/2` rubric; `Score %` is the average converted to a percentage.
 
-Reliability flags, counted separately from good/partial/bad:
-
-| Model | Hard/Notable Error Flags | Tied Top Prompts |
-|---|---:|---:|
-| NotebookLM TA | 0/30 (0.0%) | 30/30 |
-| ChatGPT | 2/30 (6.7%) | 28/30 |
-| Gemini | 5/30 (16.7%) | 20/30 |
-| Claude | 9/30 (30.0%) | 11/30 |
+| Model | Score % | Avg / 2 | Good Answers | Partial Answers | Bad Answers |
+|---|---:|---:|---:|---:|---:|
+| NotebookLM TA | 100.0% | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 96.7% | 1.93 | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
+| Gemini | 80.0% | 1.60 | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
+| Claude | 60.0% | 1.20 | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
 
 ## Ranking
 
-1. NotebookLM TA: scored 100.0% with no partial answers and no hard/notable error flags.
-2. ChatGPT: scored 96.7%; still high quality, but the stricter pass found two wrong copy-pasteable pAntler config examples.
-3. Gemini: scored 80.0%; useful on many prompts, but less reliable on MOOS-specific deployment and messaging details.
-4. Claude: scored 60.0%; several answers were generic, stale, or contained invented MOOS-adjacent details.
+1. NotebookLM TA: scored 100.0% with a 2.00/2 average.
+2. ChatGPT: scored 96.7% with a 1.93/2 average; still high quality, but the stricter pass found two wrong copy-pasteable pAntler config examples.
+3. Gemini: scored 80.0% with a 1.60/2 average; useful on many prompts, but less reliable on MOOS-specific deployment and messaging details.
+4. Claude: scored 60.0% with a 1.20/2 average; several answers were generic, stale, or contained invented MOOS-adjacent details.
 
 Interpretation: for the intended conceptual TA use case, the current NotebookLM source set is competitive with normal beginner-tier AI tools and shows lower hallucination risk on this MOOS-IvP lab-grounded prompt set. This completed category still does not support marketing the notebook as a coding helper.
 
@@ -56,9 +49,9 @@ Interpretation: for the intended conceptual TA use case, the current NotebookLM 
 
 Additional sweep notes: `reports/hallucination_sweep_notes.md`.
 
-## Hard/Notable Error Flags
+## Hard/Notable Error Details
 
-These flags are separate reliability markers, not additional answer categories. A hard/notable error can be in an answer already counted as partial or bad.
+These details are kept for audit, not as a headline scoring column. A hard/notable error can be in an answer already counted as partial or bad.
 
 | Prompt | Model | Failure Type | Explanation |
 |---|---|---|---|
@@ -83,7 +76,7 @@ These flags are separate reliability markers, not additional answer categories. 
 
 Scoring: `2` = good and clean, `1` = partially useful or hallucination-tainted, `0` = bad.
 
-| ID | Prompt | NotebookLM | ChatGPT | Claude | Gemini | Hard/Notable Flags | Grading Note |
+| ID | Prompt | NotebookLM | ChatGPT | Claude | Gemini | Hard/Notable Details | Grading Note |
 |---|---|---:|---:|---:|---:|---|---|
 | C01 | Command Not Found After Build | 2 | 2 | 2 | 2 | none | All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful. |
 | C02 | Version Control Before Mission Changes | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts. |

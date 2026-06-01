@@ -43,23 +43,16 @@ High-level result:
 
 The clean cross-model benchmark is partially complete. The conceptual/debugging section (`C01-C30`) has been captured and graded independently from the unfinished sections. A hallucination-sensitive revision pass has been applied, so plausible-looking wrong MOOS-IvP details reduce the score.
 
+Scores use a `0/1/2` rubric; `Score %` is the average converted to a percentage.
+
 Conceptual/debugging scores:
 
-| Model | Score % | Good Answers | Partial Answers | Bad Answers |
-|---|---:|---:|---:|---:|
-| NotebookLM TA | 100.0% | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
-| ChatGPT | 96.7% | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
-| Gemini | 80.0% | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
-| Claude | 60.0% | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
-
-Reliability flags are counted separately from the answer categories above:
-
-| Model | Hard/Notable Error Flags |
-|---|---:|
-| NotebookLM TA | 0/30 (0.0%) |
-| ChatGPT | 2/30 (6.7%) |
-| Gemini | 5/30 (16.7%) |
-| Claude | 9/30 (30.0%) |
+| Model | Score % | Avg / 2 | Good Answers | Partial Answers | Bad Answers |
+|---|---:|---:|---:|---:|---:|
+| NotebookLM TA | 100.0% | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 96.7% | 1.93 | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
+| Gemini | 80.0% | 1.60 | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
+| Claude | 60.0% | 1.20 | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
 
 Interpretation: NotebookLM TA ranks first on the completed conceptual/debugging section under the hallucination-sensitive rubric. ChatGPT remains very strong, but lost credit for two wrong copy-pasteable pAntler config examples. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
 
@@ -93,7 +86,7 @@ Each answer will be graded with a simple score:
 - `1` = partially useful
 - `0` = bad
 
-Public averages are reported as percentages of possible points. Hard/notable errors are tracked separately for invented APIs, wrong parameters, unsafe advice, `.moos`/`.bhv` confusion, unsupported certainty, bad citations, and source-level C++ errors; these flags may overlap with partial or bad answers.
+Public averages are reported both as an average out of 2 and as a percentage of possible points. Hard/notable errors are tracked separately for invented APIs, wrong parameters, unsafe advice, `.moos`/`.bhv` confusion, unsupported certainty, bad citations, and source-level C++ errors; these details may overlap with partial or bad answers.
 
 Detailed methodology:
 
