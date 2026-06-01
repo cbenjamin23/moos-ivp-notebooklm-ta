@@ -506,29 +506,29 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "captured"
       }
     },
     "K10": {
       "category": "code_config_advice",
       "title": "ZAIC Speed Function",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
+        "notebook": "captured",
+        "chatgpt": "captured",
         "claude": "not_started",
-        "gemini": "not_started"
+        "gemini": "captured"
       }
     }
   },
-  "last_updated_at": "2026-06-01T14:20:36Z",
+  "last_updated_at": "2026-06-01T14:33:34Z",
   "notes": [
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing.",
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
-  "stopped_at": "2026-06-01T14:20:36Z",
-  "stop_reason": "Claude showed \"You are out of free messages until 12:10 PM\" immediately after completing K09, before Gemini was run. Per the benchmark rule, the run stopped and no subset testing continued.",
-  "last_completed_prompt": "K08",
-  "partial_prompt_at_stop": "K09",
+  "stopped_at": "2026-06-01T14:33:34Z",
+  "stop_reason": "User allowed continuing non-Claude tools after the Claude quota notice. K09 is now complete. K10 has NotebookLM, ChatGPT, and Gemini captured; K10 Claude remains deferred until Claude is available at 12:10 PM.",
+  "last_completed_prompt": "K09",
+  "partial_prompt_at_stop": "K10",
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
@@ -617,22 +617,26 @@
     {
       "at": "2026-06-01T14:20:36Z",
       "result": "Stopped at partial K09 after Claude quota notice; Gemini was not run."
+    },
+    {
+      "at": "2026-06-01T14:33:34Z",
+      "result": "Collected K09 Gemini and K10 for NotebookLM, ChatGPT, and Gemini. Only K10 Claude remains."
     }
   ],
-  "last_updated": "2026-06-01T14:20:36Z",
+  "last_updated": "2026-06-01T14:33:34Z",
   "counts": {
-    "captured": 195,
-    "not_started": 5
+    "captured": 199,
+    "not_started": 1
   },
   "partial_prompt": {
-    "prompt_id": "K09",
+    "prompt_id": "K10",
     "captured_models": [
       "notebook",
       "chatgpt",
-      "claude"
+      "gemini"
     ],
     "remaining_models": [
-      "gemini"
+      "claude"
     ]
   }
 }

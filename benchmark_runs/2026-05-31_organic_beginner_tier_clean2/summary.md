@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: stopped at partial K09 - Claude quota notice before Gemini
+Status: partial K10 - only Claude remains
 
-Last updated: 2026-06-01T14:20:36Z
+Last updated: 2026-06-01T14:33:34Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":195,"not_started":5}
+Counts: {"captured":199,"not_started":1}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -60,17 +60,17 @@ Counts: {"captured":195,"not_started":5}
 | K06 | code_config_advice | pShare Route Config | captured | captured | captured | captured |
 | K07 | code_config_advice | Inter-Vehicle Message Payload | captured | captured | captured | captured |
 | K08 | code_config_advice | `setParam()` Pattern | captured | captured | captured | captured |
-| K09 | code_config_advice | `addInfoVars()` / InfoBuffer | captured | captured | captured | not_started |
-| K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
+| K09 | code_config_advice | `addInfoVars()` / InfoBuffer | captured | captured | captured | captured |
+| K10 | code_config_advice | ZAIC Speed Function | captured | captured | not_started | captured |
 
 ## Current Position
 
-C01-C30, D01-D10, and K01-K08 are complete for all four tools. K09 is partial: NotebookLM, ChatGPT, and Claude are captured; Gemini was not started. K10 is not started.
+C01-C30, D01-D10, and K01-K09 are complete for all four tools. K10 is partial: NotebookLM, ChatGPT, and Gemini are captured; Claude remains to be collected after its quota resets.
 
 ## Stop Reason
 
-At 2026-06-01T14:20:36Z, Claude completed K09 and then showed: "You are out of free messages until 12:10 PM". Per the run rule, I stopped the whole benchmark and did not continue with a smaller subset of tools.
+Claude showed a quota notice after K09. The user then allowed continuing other tools, so K09 Gemini and K10 for NotebookLM, ChatGPT, and Gemini were collected. K10 Claude remains deferred until 12:10 PM.
 
 ## Resume Point
 
-Resume at K09 Gemini only after confirming Claude is available again, then continue to K10 for all four tools if no tool is blocked.
+At 12:10 PM, run K10 in Claude only, then mark the full benchmark capture complete.
