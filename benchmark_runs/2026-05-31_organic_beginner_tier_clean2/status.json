@@ -875,61 +875,71 @@
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C12": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C13": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C14": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C15": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C16": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C17": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C18": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C19": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C20": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "C21": {
       "notebook": "captured",
@@ -1118,5 +1128,5 @@
       "gemini": "captured"
     }
   },
-  "updated_at": "2026-06-01T19:53:00.458Z"
+  "updated_at": "2026-06-01T19:57:43.328Z"
 }
