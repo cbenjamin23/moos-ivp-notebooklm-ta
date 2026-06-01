@@ -503,9 +503,9 @@
       "category": "code_config_advice",
       "title": "`addInfoVars()` / InfoBuffer",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -520,15 +520,15 @@
       }
     }
   },
-  "last_updated_at": "2026-06-01T14:15:07Z",
+  "last_updated_at": "2026-06-01T14:20:36Z",
   "notes": [
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing.",
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
-  "stopped_at": null,
-  "stop_reason": null,
+  "stopped_at": "2026-06-01T14:20:36Z",
+  "stop_reason": "Claude showed \"You are out of free messages until 12:10 PM\" immediately after completing K09, before Gemini was run. Per the benchmark rule, the run stopped and no subset testing continued.",
   "last_completed_prompt": "K08",
-  "partial_prompt_at_stop": null,
+  "partial_prompt_at_stop": "K09",
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
@@ -613,11 +613,26 @@
     {
       "at": "2026-06-01T14:15:07Z",
       "result": "K08 completed for all four tools; Claude warned at 90% session limit but did not block. Next prompt is K09."
+    },
+    {
+      "at": "2026-06-01T14:20:36Z",
+      "result": "Stopped at partial K09 after Claude quota notice; Gemini was not run."
     }
   ],
-  "last_updated": "2026-06-01T14:15:07Z",
+  "last_updated": "2026-06-01T14:20:36Z",
   "counts": {
-    "captured": 192,
-    "not_started": 8
+    "captured": 195,
+    "not_started": 5
+  },
+  "partial_prompt": {
+    "prompt_id": "K09",
+    "captured_models": [
+      "notebook",
+      "chatgpt",
+      "claude"
+    ],
+    "remaining_models": [
+      "gemini"
+    ]
   }
 }

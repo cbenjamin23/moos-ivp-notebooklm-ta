@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt K09
+Status: stopped at partial K09 - Claude quota notice before Gemini
 
-Last updated: 2026-06-01T14:15:07Z
+Last updated: 2026-06-01T14:20:36Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":192,"not_started":8}
+Counts: {"captured":195,"not_started":5}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -60,13 +60,17 @@ Counts: {"captured":192,"not_started":8}
 | K06 | code_config_advice | pShare Route Config | captured | captured | captured | captured |
 | K07 | code_config_advice | Inter-Vehicle Message Payload | captured | captured | captured | captured |
 | K08 | code_config_advice | `setParam()` Pattern | captured | captured | captured | captured |
-| K09 | code_config_advice | `addInfoVars()` / InfoBuffer | not_started | not_started | not_started | not_started |
+| K09 | code_config_advice | `addInfoVars()` / InfoBuffer | captured | captured | captured | not_started |
 | K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
 
 ## Current Position
 
-C01-C30, D01-D10, and K01-K08 are complete for all four tools. The next prompt is K09 in the code/config advice category.
+C01-C30, D01-D10, and K01-K08 are complete for all four tools. K09 is partial: NotebookLM, ChatGPT, and Claude are captured; Gemini was not started. K10 is not started.
 
-## Progress Notes
+## Stop Reason
 
-Checkpoint at 2026-06-01T14:15:07Z: K08 completed for all four tools. Claude showed a 90% session-limit warning but was not blocked.
+At 2026-06-01T14:20:36Z, Claude completed K09 and then showed: "You are out of free messages until 12:10 PM". Per the run rule, I stopped the whole benchmark and did not continue with a smaller subset of tools.
+
+## Resume Point
+
+Resume at K09 Gemini only after confirming Claude is available again, then continue to K10 for all four tools if no tool is blocked.

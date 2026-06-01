@@ -1,0 +1,38 @@
+{
+  "prompt_id": "K09",
+  "category": "code_config_advice",
+  "title": "`addInfoVars()` / InfoBuffer",
+  "prompt": "My custom behavior reads `NAV_X` and `NAV_Y` in `onRunState()` but I never declared them in the constructor and I do not check whether they exist. What should I change?",
+  "captured_at": "2026-06-01T14:20:36Z",
+  "stop_reason": "Claude quota notice after completing K09; Gemini not run per stop-whole-run rule.",
+  "responses": {
+    "notebook": {
+      "status": "captured",
+      "text": "To ensure your custom behavior operates correctly and robustly, you should make two primary changes: declare the required variables in your constructor and check for their presence in the information buffer before using them.\n1. Declare Variables in the Constructor\nA behavior is obligated to inform the helm which MOOS variables it requires so the helm can register for them from the MOOSDB\n1\n. You should call addInfoVars() in your behavior’s constructor, typically as a comma-separated list\n1\n2\n.\nWhat to change: Add the following line to your behavior's constructor:\naddInfoVars(\"NAV_X, NAV_Y\");\n\nWhile some variables are registered automatically (like those used in condition parameters), it is best practice to explicitly declare variables used inside your C++ code to ensure they are included in the helm's info buffer\n2\n3\n.\n2. Check for Variable Existence in onRunState()\nWhen you retrieve values using getBufferDoubleVal(), you should provide and check a boolean result variable. This indicates whether the variable was actually found in the buffer\n1\n4\n. At the start of a mission, there may be a brief period where the helm hasn't yet received mail for NAV_X or NAV_Y, and trying to use them without checking could lead to logic errors.\nWhat to change: Update your onRunState() logic to check the success of the buffer query:\nbool ok_x, ok_y;\ndouble my_x = getBufferDoubleVal(\"NAV_X\", ok_x);\ndouble my_y = getBufferDoubleVal(\"NAV_Y\", ok_y);\n\nif(!ok_x || !ok_y) {\n  // Gracefully handle missing data, perhaps by returning null\n  return(nullptr); \n}\n\nDiagnostic Checklist for Your Code\nRegistration: If you don't call addInfoVars(), the helm may never subscribe to the MOOSDB for that data, and your buffer queries will always fail\n2\n.\nInitial Values: Using the boolean check allows your behavior to remain Running but not Active (by returning nullptr) until it has the valid navigation data it needs to produce an objective function\n5\n.\nStaleness: If your behavior requires highly current data, you can also use getBufferTimeVal(\"NAV_X\") to check how long it has been since the variable was last updated\n4\n6\n. A return value of -1 indicates the variable is missing from the buffer\n6\n.",
+      "method": "notebook_body_answer_slice",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "captured_at": "2026-06-01T14:20:36Z"
+    },
+    "chatgpt": {
+      "status": "captured",
+      "text": "In a custom IvP behavior, do not casually read NAV_X / NAV_Y in onRunState() unless the behavior has explicitly declared that it needs them and checks that the InfoBuffer has valid values.\n\nYou should do three things.\n\n1. Declare required InfoBuffer variables in the constructor\n\nIn your behavior constructor:\n\nC++\nBHV_MyBehavior::BHV_MyBehavior(IvPDomain domain) : IvPBehavior(domain)\n{\n  setParam(\"name\", \"my_behavior\");\n\n  addInfoVars(\"NAV_X, NAV_Y\");\n}\n\nThis tells the helm/InfoBuffer that your behavior depends on those MOOS variables.\n\n2. Read them safely in onRunState()\n\nDo not assume the variables exist. Use the getBufferDoubleVal() pattern with an ok flag:\n\nC++\nIvPFunction* BHV_MyBehavior::onRunState()\n{\n  bool ok_x = false;\n  bool ok_y = false;\n\n  double nav_x = getBufferDoubleVal(\"NAV_X\", ok_x);\n  double nav_y = getBufferDoubleVal(\"NAV_Y\", ok_y);\n\n  if(!ok_x || !ok_y) {\n    postWMessage(\"Missing NAV_X or NAV_Y in InfoBuffer\");\n    return nullptr;\n  }\n\n  // Safe to use nav_x/nav_y here\n\n  return nullptr;\n}\n\nThe important point is that getBufferDoubleVal() can fail silently unless you check the boolean. If NAV_X or NAV_Y has not arrived yet, is misspelled, or is not being posted by the navigation process, your behavior may otherwise run with bogus/default values.\n\n3. Debug the source of NAV_X and NAV_Y\n\nIf the behavior still warns that the variables are missing, check whether they are actually reaching the helm community:\n\nBash\nuXMS NAV_X NAV_Y\n\nAlso inspect helm/behavior state with:\n\nBash\nuHelmScope\n\nand check for warnings from the behavior.\n\nThe MOOS-IvP-specific reason is that a behavior does not subscribe directly to MOOS mail like a normal MOOS app. It reads from the helm’s InfoBuffer. So the behavior must declare its InfoBuffer dependencies with addInfoVars(), and then it must check whether the requested values are actually available before using them.",
+      "method": "assistant_dom_last_message_after_timeout",
+      "url": "https://chatgpt.com/c/6a1d9485-6c94-8330-ac0d-4d11f75a962e",
+      "captured_at": "2026-06-01T14:20:36Z"
+    },
+    "claude": {
+      "status": "captured_quota_after_response",
+      "text": "Good catch — this is a classic MOOS-IvP bug. Here's what you should fix:\n\n1. Declare the variables in the constructor\n\nRegister your interest so the MOOS community actually delivers updates to your app:\n\ncpp\nMyBehavior::MyBehavior() : IvPBehavior() {\n    m_nav_x = 0.0;   // sensible defaults\n    m_nav_y = 0.0;\n}\n\nAnd in onSetParam() or wherever you call RegisterVariables():\n\ncpp\nvoid MyBehavior::onSetParam() {\n    IvPBehavior::onSetParam();\n    addInfoVars(\"NAV_X, NAV_Y\");  // tells the helm to watch for these\n}\n\n2. Read them safely in onRunState()\n\nUse getBufferDoubleVal() with the existence-check overload so you can detect whether a value has actually arrived yet:\n\ncpp\nIvPFunction* MyBehavior::onRunState() {\n    bool got_x = false, got_y = false;\n\n    double nav_x = getBufferDoubleVal(\"NAV_X\", got_x);\n    double nav_y = getBufferDoubleVal(\"NAV_Y\", got_y);\n\n    if (!got_x || !got_y) {\n        postWMessage(\"Waiting for NAV_X / NAV_Y\");\n        return nullptr;   // yield — don't produce an IvP function yet\n    }\n\n    // safe to use nav_x and nav_y here\n    ...\n}\n\n3. Store them as member variables if you need them across calls\n\nIf other methods also need the position, cache them:\n\ncpp\n// header\ndouble m_nav_x, m_nav_y;\nbool   m_nav_valid;\n\n// onRunState\nm_nav_x     = nav_x;\nm_nav_y     = nav_y;\nm_nav_valid = true;\n\nWhy each piece matters\n\nStep\tWithout it\tWith it\naddInfoVars\tHelm silently never delivers updates\tValues flow in from the info buffer\nMember-variable defaults\tGarbage values if onRunState runs before the first update\tDeterministic starting state\ngot_x / got_y check\tBehavior acts on 0.0/0.0 or stale junk\tBehavior idles gracefully until real data arrives\n\nThe postWMessage in the !got_x || !got_y branch is optional but good practice — it surfaces the \"waiting\" state in the MOOSDB log so you can diagnose startup timing issues quickly.",
+      "method": "claude_body_response_slice_with_quota_notice",
+      "url": "https://claude.ai/chat/33e2b1a4-d0f6-4907-a2b4-7e2357fb670b",
+      "captured_at": "2026-06-01T14:20:36Z"
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": "",
+      "method": null,
+      "url": "https://gemini.google.com/app/c240ed6bbabc875b",
+      "captured_at": null
+    }
+  }
+}
