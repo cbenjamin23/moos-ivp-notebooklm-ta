@@ -5,7 +5,7 @@
   "category": "exact documentation/tool",
   "prompt_range": "D01-D10",
   "graded_at": "2026-06-01T12:00:00-04:00",
-  "status": "complete",
+  "status": "complete; NotebookLM D02 uses user-approved retry replacement",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
     "2": "good",
@@ -17,16 +17,16 @@
     "notebook": {
       "model": "NotebookLM TA",
       "prompt_count": 10,
-      "total_score": 18,
+      "total_score": 20,
       "max_score": 20,
-      "average_score": 1.8,
-      "score_percent": 90.0,
-      "good_count": 9,
-      "good_percent": 90.0,
+      "average_score": 2.0,
+      "score_percent": 100.0,
+      "good_count": 10,
+      "good_percent": 100.0,
       "partial_count": 0,
       "partial_percent": 0.0,
-      "bad_count": 1,
-      "bad_percent": 10.0,
+      "bad_count": 0,
+      "bad_percent": 0.0,
       "pending_count": 0
     },
     "chatgpt": {
@@ -146,19 +146,20 @@
       "title": "pAntler Process Launching",
       "prompt": "What parts of a mission configuration determine whether pAntler launches a MOOS app, and how can I distinguish an app that never launched from an app that launched but never registered with the MOOSDB?",
       "scores": {
-        "notebook": 0,
+        "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2
       },
       "winners": [
+        "notebook",
         "chatgpt",
         "gemini"
       ],
       "hard_failures": [
         "Claude"
       ],
-      "note": "ChatGPT and Gemini correctly centered ProcessConfig = ANTLER and Run lines. NotebookLM failed to answer. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block."
+      "note": "NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only \u201cThe system was unable to answer,\u201d but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block."
     },
     {
       "id": "D03",
@@ -321,6 +322,15 @@
         "Claude"
       ],
       "note": "NotebookLM, ChatGPT, and Gemini gave a usable alog/pLogger verification workflow. Claude declined to answer without additional context."
+    }
+  ],
+  "replacement_notes": [
+    {
+      "prompt_id": "D02",
+      "model": "NotebookLM TA",
+      "first_pass_score": 0,
+      "replacement_score": 2,
+      "reason": "First pass returned only \u201cThe system was unable to answer.\u201d User requested treating immediate retry as replacement."
     }
   ]
 }

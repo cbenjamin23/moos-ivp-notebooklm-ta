@@ -1,6 +1,6 @@
 # Benchmark Results
 
-Status: near-complete. C01-C30 and D01-D10 are fully captured and graded. K01-K09 are complete for all four tools, and K10 is graded for NotebookLM TA, ChatGPT, and Gemini. Claude K10 remains pending because Claude hit a quota stop and indicated availability at 12:10 PM.
+Status: near-complete. C01-C30 and D01-D10 are fully captured and graded. K01-K09 are complete for all four tools, and K10 is graded for NotebookLM TA, ChatGPT, and Gemini. Claude K10 remains pending because Claude hit a quota stop and indicated availability at 12:10 PM. NotebookLM D02 uses a user-approved immediate retry replacement after the first pass returned only `The system was unable to answer.`
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
@@ -16,7 +16,7 @@ The evidence still supports a narrow positioning: the notebook is a conceptual, 
 
 | Model | Score % | Avg / 2 | Good % | Partial % | Bad % | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 97.0% | 1.94 | 96.0% | 2.0% | 2.0% | 100.0% | 90.0% | 95.0% | 0 |
+| NotebookLM TA | 99.0% | 1.98 | 98.0% | 2.0% | 0.0% | 100.0% | 100.0% | 95.0% | 0 |
 | ChatGPT | 94.0% | 1.88 | 90.0% | 8.0% | 2.0% | 96.7% | 90.0% | 90.0% | 0 |
 | Gemini | 78.0% | 1.56 | 66.0% | 24.0% | 10.0% | 80.0% | 90.0% | 60.0% | 0 |
 | Claude | 60.2% | 1.20 | 38.8% | 42.9% | 18.4% | 60.0% | 50.0% | 72.2% | 1 |
@@ -28,8 +28,12 @@ Claude's overall score is provisional because one code/config answer is pending.
 | Category | Prompt Count | NotebookLM TA | ChatGPT | Claude | Gemini | Status |
 |---|---:|---:|---:|---:|---:|---|
 | Conceptual/debugging | 30 | 100.0% (2.00/2) | 96.7% (1.93/2) | 60.0% (1.20/2) | 80.0% (1.60/2) | complete |
-| Exact docs/parameters/tools | 10 | 90.0% (1.80/2) | 90.0% (1.80/2) | 50.0% (1.00/2) | 90.0% (1.80/2) | complete |
+| Exact docs/parameters/tools | 10 | 100.0% (2.00/2) | 90.0% (1.80/2) | 50.0% (1.00/2) | 90.0% (1.80/2) | complete; NotebookLM D02 retry replacement |
 | Code/config advice | 10 | 95.0% (1.90/2) | 90.0% (1.80/2) | 72.2% (1.44/2) | 60.0% (1.20/2) | partial: K10 Claude pending |
+
+## Replacement Note
+
+NotebookLM's first D02 answer was `The system was unable to answer.` The immediate retry produced a correct answer and, at the user's request, is treated as the replacement primary score. The original first-pass response is preserved in `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/retries/D02_notebook_retry_replacement.json` and in `raw/D02.json` under `replacement_for`.
 
 ## Hard/Notable Error Details
 
@@ -112,7 +116,7 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet capt
 | C29 | pMarineViewer Background / Geodesy | 2 | 2 | 0 | 2 | Claude | NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names. |
 | C30 | Mission Broke After Several Edits | 2 | 1 | 2 | 2 | ChatGPT | NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example. |
 | D01 | pOdometry Variables | 2 | 2 | 0 | 1 | Claude | NotebookLM and ChatGPT gave the expected NAV_X/NAV_Y to ODOMETRY_DIST path; Claude answered as ROS odometry; Gemini mixed MOOS-IvP with generic robotics/ROS signals. |
-| D02 | pAntler Process Launching | 0 | 2 | 1 | 2 | Claude | ChatGPT and Gemini correctly centered ProcessConfig = ANTLER and Run lines. NotebookLM failed to answer. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. |
+| D02 | pAntler Process Launching | 2 | 2 | 1 | 2 | Claude | NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only “The system was unable to answer,” but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. |
 | D03 | uTimerScript Usage | 2 | 2 | 2 | 2 | none | All four answers gave a usable uTimerScript mental model: timed MOOS posts for initialization, triggers, simulation proxies, and checks in uXMS. |
 | D04 | Helm Deploy Variables | 2 | 2 | 2 | 2 | none | All four answers correctly described DEPLOY, MOOS_MANUAL_OVERRIDE, and helm state gating for autonomous behavior. |
 | D05 | BHV_Waypoint Params | 2 | 2 | 0 | 2 | Claude | NotebookLM, ChatGPT, and Gemini rejected the invented parameter and identified capture_radius/radius, slip_radius/nm_radius, and capture_line. Claude did not answer without an uploaded file. |

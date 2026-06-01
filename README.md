@@ -29,11 +29,11 @@ The most important entry point for human review is:
 
 The clean cross-model benchmark compares NotebookLM TA with the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
 
-Current status: 199 of 200 model outputs are captured and graded. Claude K10 is pending after a quota stop.
+Current status: 199 of 200 model outputs are captured and graded. Claude K10 is pending after a quota stop. NotebookLM D02 uses a user-approved retry replacement after an initial non-answer.
 
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 97.0% | 1.94 | 100.0% | 90.0% | 95.0% | 0 |
+| NotebookLM TA | 99.0% | 1.98 | 100.0% | 100.0% | 95.0% | 0 |
 | ChatGPT | 94.0% | 1.88 | 96.7% | 90.0% | 90.0% | 0 |
 | Gemini | 78.0% | 1.56 | 80.0% | 90.0% | 60.0% | 0 |
 | Claude | 60.2% | 1.20 | 60.0% | 50.0% | 72.2% | 1 |

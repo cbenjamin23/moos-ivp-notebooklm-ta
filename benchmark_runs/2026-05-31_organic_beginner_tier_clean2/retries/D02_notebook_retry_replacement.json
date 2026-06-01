@@ -1,0 +1,27 @@
+{
+  "prompt_id": "D02",
+  "model": "notebook",
+  "prompt": "What parts of a mission configuration determine whether pAntler launches a MOOS app, and how can I distinguish an app that never launched from an app that launched but never registered with the MOOSDB?",
+  "first_pass": {
+    "status": "captured",
+    "text": "The system was unable to answer.",
+    "method": "notebook_body_prompt_slice",
+    "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012"
+  },
+  "retry_replacement": {
+    "status": "captured_retry_replacement",
+    "text": "Determining which MOOS applications are launched by pAntler and diagnosing their connection status involves inspecting the mission configuration file and using monitoring utilities like uProcessWatch.\n\nMission Configuration for pAntler\n\nThe pAntler tool determines which applications to launch by reading its dedicated configuration block in the .moos mission file.\n\n- Configuration Block: pAntler looks for the block starting with ProcessConfig = ANTLER.\n- Launch Lines: It launches exactly one process for every line within that block that begins with the Run = parameter.\n- Syntax: The general syntax for these lines is Run = procname [@ LaunchConfiguration] [~ MOOSName].\n  - procname: The name of the executable to be run, e.g. pHelmIvP.\n  - LaunchConfiguration: Optional parameters such as NewConsole = true/false, which determine if the app opens in its own terminal window.\n  - MOOSName: An optional alias used by the app when it registers with the MOOSDB. If omitted, the app uses its executable name.\n\nDistinguishing Launch and Registration Failures\n\nTo distinguish an application that never launched from one that launched but never registered, you can use uProcessWatch and check MOOSDB client lists.\n\n1. Using uProcessWatch\n\nuProcessWatch is the primary tool for monitoring application health. It compares two lists: the Antler List, what should be running based on the .moos file, and the DB Clients List, what is actually connected to the MOOSDB.\n\n- App Never Launched: If an app is in the pAntler configuration but never started, for example because the executable was not in your shell path, uProcessWatch will report it as AWOL. In the PROC_WATCH_FULL_SUMMARY variable, it will show a connection count of (0/0), indicating it has never successfully registered.\n- App Launched but Never Registered: If the app started but hung during its OnStartUp() phase before connecting to the database, it will also appear as AWOL. However, you can distinguish this by checking for an open terminal window if NewConsole = true was set, or by checking pAntler's console output, which may report that a process has exited or failed to start.\n\n2. Diagnostic Checklist\n\n- Check DB_CLIENTS: The MOOSDB publishes this variable once per second with a list of all currently connected clients. If the app is missing from this list, it is not registered.\n- Verify the Executable: Run which <appname> in your terminal. If it returns blank, pAntler cannot find the app to launch it.\n- Inspect Console Windows: If NewConsole = true is configured, a missing window suggests a launch failure, while a window that opens but remains blank suggests a registration or start-up failure.\n- Check AppCast Reports: If the app is AppCast enabled, its presence in a viewer like pMarineViewer or uMAC confirms it is registered. If it appears red in these viewers, uProcessWatch has flagged it as missing from the MOOSDB client list.",
+    "method": "notebook_body_retry_replacement",
+    "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+    "captured_at": "2026-06-01T10:50:00-04:00",
+    "replacement_for": {
+      "status": "captured",
+      "text": "The system was unable to answer.",
+      "method": "notebook_body_prompt_slice",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012"
+    },
+    "replacement_reason": "User requested treating the immediate NotebookLM D02 retry as the benchmark replacement after the first pass returned only \u201cThe system was unable to answer.\u201d"
+  },
+  "score_replacement": 2,
+  "notes": "Replacement accepted by user as primary benchmark result; first-pass non-answer remains preserved here and inside raw/D02.json."
+}

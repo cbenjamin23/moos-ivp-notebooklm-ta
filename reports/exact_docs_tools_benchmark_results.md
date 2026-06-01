@@ -1,6 +1,6 @@
 # Exact Documentation / Tool Benchmark Results
 
-Status: complete for D01-D10.
+Status: complete for D01-D10. NotebookLM D02 uses a user-approved immediate retry replacement after the first pass returned only `The system was unable to answer.`
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
@@ -10,14 +10,18 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; `Score %` is tot
 
 | Model | Score % | Avg / 2 | Good Answers | Partial Answers | Bad Answers | Pending |
 |---|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 90.0% | 1.80 | 9/10 (90.0%) | 0/10 (0.0%) | 1/10 (10.0%) | 0 |
+| NotebookLM TA | 100.0% | 2.00 | 10/10 (100.0%) | 0/10 (0.0%) | 0/10 (0.0%) | 0 |
 | ChatGPT | 90.0% | 1.80 | 9/10 (90.0%) | 0/10 (0.0%) | 1/10 (10.0%) | 0 |
 | Claude | 50.0% | 1.00 | 3/10 (30.0%) | 4/10 (40.0%) | 3/10 (30.0%) | 0 |
 | Gemini | 90.0% | 1.80 | 8/10 (80.0%) | 2/10 (20.0%) | 0/10 (0.0%) | 0 |
 
 ## Interpretation
 
-NotebookLM TA, ChatGPT, and Gemini were tightly grouped on exact documentation/tool questions, but their failure modes differed. NotebookLM lost one point only because it failed to answer D02. ChatGPT had one serious wrong answer on BHV_OpRegionV24. Gemini was strong overall but lost credit for mixed/off-target pOdometry details and an inaccurate pShare syntax. Claude was much weaker in this section because several answers were off-domain, non-responsive, or framed around the wrong tool/configuration model.
+NotebookLM TA now leads the exact documentation/tool section after the user-approved D02 retry replacement. The retry answer correctly identified `ProcessConfig = ANTLER`, `Run =` launch lines, optional aliases, `DB_CLIENTS`, and `uProcessWatch`. ChatGPT and Gemini remain tied behind it because each had one serious or partial exact-docs miss. Claude was much weaker in this section because several answers were off-domain, non-responsive, or framed around the wrong tool/configuration model.
+
+## Replacement Note
+
+NotebookLM's first D02 answer was `The system was unable to answer.` The immediate retry produced a correct answer and, at the user's request, is treated as the replacement primary score. The original first-pass response is preserved in `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/retries/D02_notebook_retry_replacement.json` and in `raw/D02.json` under `replacement_for`.
 
 ## Hard/Notable Error Details
 
@@ -38,7 +42,7 @@ These details are kept for audit, not as a headline scoring column. They may ove
 | ID | Prompt Short Name | NotebookLM | ChatGPT | Claude | Gemini | Hard/Notable Details | Notes |
 |---|---|---:|---:|---:|---:|---|---|
 | D01 | pOdometry Variables | 2 | 2 | 0 | 1 | Claude | NotebookLM and ChatGPT gave the expected NAV_X/NAV_Y to ODOMETRY_DIST path; Claude answered as ROS odometry; Gemini mixed MOOS-IvP with generic robotics/ROS signals. |
-| D02 | pAntler Process Launching | 0 | 2 | 1 | 2 | Claude | ChatGPT and Gemini correctly centered ProcessConfig = ANTLER and Run lines. NotebookLM failed to answer. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. |
+| D02 | pAntler Process Launching | 2 | 2 | 1 | 2 | Claude | NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only “The system was unable to answer,” but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. |
 | D03 | uTimerScript Usage | 2 | 2 | 2 | 2 | none | All four answers gave a usable uTimerScript mental model: timed MOOS posts for initialization, triggers, simulation proxies, and checks in uXMS. |
 | D04 | Helm Deploy Variables | 2 | 2 | 2 | 2 | none | All four answers correctly described DEPLOY, MOOS_MANUAL_OVERRIDE, and helm state gating for autonomous behavior. |
 | D05 | BHV_Waypoint Params | 2 | 2 | 0 | 2 | Claude | NotebookLM, ChatGPT, and Gemini rejected the invented parameter and identified capture_radius/radius, slip_radius/nm_radius, and capture_line. Claude did not answer without an uploaded file. |
