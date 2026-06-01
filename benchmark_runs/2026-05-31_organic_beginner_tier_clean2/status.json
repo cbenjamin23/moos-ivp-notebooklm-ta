@@ -403,10 +403,10 @@
       "category": "exact_docs_tools",
       "title": "uField Broker Comparison",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D10": {
@@ -527,7 +527,7 @@
   ],
   "stopped_at": null,
   "stop_reason": null,
-  "last_completed_prompt": "D08",
+  "last_completed_prompt": "D09",
   "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
@@ -565,11 +565,15 @@
     {
       "at": "2026-06-01T12:06:18Z",
       "result": "D08 completed for all four tools."
+    },
+    {
+      "at": "2026-06-01T12:11:45Z",
+      "result": "D09 completed for all four tools."
     }
   ],
-  "last_updated": "2026-06-01T12:06:18Z",
+  "last_updated": "2026-06-01T12:11:45Z",
   "counts": {
-    "captured": 152,
-    "not_started": 48
+    "captured": 156,
+    "not_started": 44
   }
 }

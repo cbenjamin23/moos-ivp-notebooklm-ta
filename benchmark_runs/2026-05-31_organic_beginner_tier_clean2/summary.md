@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt D09
+Status: in progress - next prompt D10
 
-Last updated: 2026-06-01T12:06:18Z
+Last updated: 2026-06-01T12:11:45Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":152,"not_started":48}
+Counts: {"captured":156,"not_started":44}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -50,7 +50,7 @@ Counts: {"captured":152,"not_started":48}
 | D06 | exact_docs_tools | BHV_OpRegionV24 Semantics | captured | captured | captured | captured |
 | D07 | exact_docs_tools | Viewer Image / Geodesy Config | captured | captured | captured | captured |
 | D08 | exact_docs_tools | pShare Configuration | captured | captured | captured | captured |
-| D09 | exact_docs_tools | uField Broker Comparison | not_started | not_started | not_started | not_started |
+| D09 | exact_docs_tools | uField Broker Comparison | captured | captured | captured | captured |
 | D10 | exact_docs_tools | pLogger And Alog Verification | not_started | not_started | not_started | not_started |
 | K01 | code_config_advice | pOdometry Mail Handling | not_started | not_started | not_started | not_started |
 | K02 | code_config_advice | Missing Registration Pattern | not_started | not_started | not_started | not_started |
@@ -65,8 +65,8 @@ Counts: {"captured":152,"not_started":48}
 
 ## Current Position
 
-C01-C30 are complete for all four tools. D01-D08 are complete for all four tools. The next prompt is D09 in the exact documentation/tool category.
+C01-C30 are complete for all four tools. D01-D09 are complete for all four tools. The next prompt is D10 in the exact documentation/tool category.
 
 ## Progress Notes
 
-Checkpoint at 2026-06-01T12:06:18Z: D08 completed for all four tools.
+Checkpoint at 2026-06-01T12:11:45Z: D09 completed for all four tools.
