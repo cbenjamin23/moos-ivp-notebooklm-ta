@@ -111,9 +111,15 @@ Each answer gets one score:
 
 | Score | Label | Meaning |
 |---:|---|---|
-| 2 | Good | Correct, useful, specific enough, and no serious caveat. |
-| 1 | Partially useful | Mostly helpful, but vague, incomplete, missing an important caveat, or needs source verification. |
-| 0 | Bad | Wrong, misleading, unsafe, invented details, or likely to waste student time. |
+| 2 | Good | Correct, useful, specific enough, and no notable hallucination or serious caveat. |
+| 1 | Partially useful | Mostly helpful, but vague, incomplete, off-domain in places, missing an important caveat, or containing a concrete factual slip/hallucination that must be corrected before use. |
+| 0 | Bad | Wrong, misleading, unsafe, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unusable for the task. |
+
+The conceptual/debugging results use a hallucination-sensitive revision pass:
+
+- A broadly useful answer can still drop from `2` to `1` if it includes a plausible-looking but wrong MOOS-IvP detail, especially a copy-pasteable `.moos`/`.bhv` snippet.
+- Invented app names, utility names, behavior parameters, C++ APIs, or unsupported vehicle-interface details count against the score even when the surrounding explanation is reasonable.
+- The hard-failure field is reserved for errors that are severe enough to materially mislead a beginner or send them into an off-domain debugging path.
 
 Also mark hard failures separately:
 
@@ -125,6 +131,7 @@ Also mark hard failures separately:
 Hard failure examples:
 
 - Invented MOOS variable, behavior parameter, utility option, or C++ API.
+- Wrong copy-pasteable MOOS configuration snippet.
 - Confuses `.moos` app configuration with `.bhv` behavior configuration.
 - Advises a behavior to directly publish `DESIRED_HEADING` or `DESIRED_SPEED`.
 - Omits a critical requirement such as `setPWT(m_priority_wt)` in a code-correction task.

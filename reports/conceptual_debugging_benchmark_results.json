@@ -4,12 +4,12 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "conceptual_debugging",
   "prompt_range": "C01-C30",
-  "graded_at": "2026-06-01T00:40:38.331Z",
-  "grading_method": "Manual Codex review against the simple 0/1/2 rubric in BENCHMARKING.md, using preserved raw browser outputs and MOOS-IvP documentation/source expectations for conceptual prompts.",
+  "graded_at": "2026-06-01 hallucination-sensitive revision pass",
+  "grading_method": "Manual Codex review against the simple rubric in BENCHMARKING.md, revised to penalize concrete hallucinations, invented MOOS-IvP details, wrong copy-pasteable config snippets, and unsupported product-specific claims even when the surrounding answer was useful.",
   "score_legend": {
-    "0": "Bad: wrong, misleading, non-answer, or likely to waste student time",
-    "1": "Partially useful: helpful but vague, incomplete, off-domain in places, or needing verification",
-    "2": "Good: correct, useful, specific enough, no serious caveat"
+    "0": "Bad: wrong, misleading, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unsafe for the task.",
+    "1": "Partially useful: mostly helpful, but vague, incomplete, off-domain in places, or includes a concrete factual slip/hallucination that requires correction before use.",
+    "2": "Good: correct, useful, specific enough, and no notable hallucination or serious caveat."
   },
   "metrics": {
     "notebook": {
@@ -19,115 +19,150 @@
       "average_score": 2,
       "good_count": 30,
       "good_percent": 100,
+      "partial_count": 0,
+      "partial_percent": 0,
       "bad_count": 0,
       "bad_percent": 0,
       "hard_failures": 0,
-      "top_tie_count": 30,
-      "hard_failure_percent": 0
+      "hard_failure_percent": 0,
+      "top_tie_count": 30
     },
     "chatgpt": {
       "model": "ChatGPT",
       "prompt_count": 30,
-      "total_score": 60,
-      "average_score": 2,
-      "good_count": 30,
-      "good_percent": 100,
+      "total_score": 58,
+      "average_score": 1.933,
+      "good_count": 28,
+      "good_percent": 93.3,
+      "partial_count": 2,
+      "partial_percent": 6.7,
       "bad_count": 0,
       "bad_percent": 0,
-      "hard_failures": 0,
-      "top_tie_count": 30,
-      "hard_failure_percent": 0
+      "hard_failures": 2,
+      "hard_failure_percent": 6.7,
+      "top_tie_count": 28
     },
     "claude": {
       "model": "Claude",
       "prompt_count": 30,
-      "total_score": 38,
-      "average_score": 1.267,
-      "good_count": 13,
-      "good_percent": 43.3,
+      "total_score": 36,
+      "average_score": 1.2,
+      "good_count": 11,
+      "good_percent": 36.7,
+      "partial_count": 14,
+      "partial_percent": 46.7,
       "bad_count": 5,
       "bad_percent": 16.7,
-      "hard_failures": 6,
-      "top_tie_count": 13,
-      "hard_failure_percent": 20
+      "hard_failures": 8,
+      "hard_failure_percent": 26.7,
+      "top_tie_count": 11
     },
     "gemini": {
       "model": "Gemini",
       "prompt_count": 30,
-      "total_score": 50,
-      "average_score": 1.667,
-      "good_count": 22,
-      "good_percent": 73.3,
+      "total_score": 48,
+      "average_score": 1.6,
+      "good_count": 20,
+      "good_percent": 66.7,
+      "partial_count": 8,
+      "partial_percent": 26.7,
       "bad_count": 2,
       "bad_percent": 6.7,
-      "hard_failures": 3,
-      "top_tie_count": 22,
-      "hard_failure_percent": 10
+      "hard_failures": 5,
+      "hard_failure_percent": 16.7,
+      "top_tie_count": 20
     }
   },
   "hard_failures": [
     {
+      "prompt_id": "C05",
+      "model": "claude",
+      "type": "Wrong pAntler configuration block framing",
+      "explanation": "Suggested looking for ProcessConfig = pAntler around launch entries; the pAntler launch list is read from the ANTLER/Antler process configuration block."
+    },
+    {
+      "prompt_id": "C05",
+      "model": "gemini",
+      "type": "Wrong pAntler configuration block framing",
+      "explanation": "Told the user to look for Run lines inside ProcessConfig = pAntler; the pAntler launch block should be ANTLER/Antler, making the answer useful but copy-paste risky."
+    },
+    {
       "prompt_id": "C06",
       "model": "gemini",
-      "model_label": "Gemini",
-      "failure_type": "Off-domain framework drift",
+      "type": "Off-domain framework drift",
       "explanation": "Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files."
     },
     {
       "prompt_id": "C16",
       "model": "claude",
-      "model_label": "Claude",
-      "failure_type": "No substantive answer",
+      "type": "No substantive answer",
       "explanation": "Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path."
     },
     {
       "prompt_id": "C17",
       "model": "gemini",
-      "model_label": "Gemini",
-      "failure_type": "Off-domain messaging model",
+      "type": "Off-domain messaging model",
       "explanation": "Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields."
     },
     {
       "prompt_id": "C21",
       "model": "claude",
-      "model_label": "Claude",
-      "failure_type": "Invented/uncertain MOOS-IvP app names",
+      "type": "Invented/uncertain MOOS-IvP app names",
       "explanation": "Suggested iGPS/iIMU/pNavManager/iHeron/iActuationKF instead of the documented Heron/PABLO interface framing."
+    },
+    {
+      "prompt_id": "C21",
+      "model": "gemini",
+      "type": "Invented/uncertain Heron interface app names",
+      "explanation": "Suggested iHeron/iClearpath as the physical Heron front-seat interface, which is not supported by the curated MOOS-IvP TA source set."
     },
     {
       "prompt_id": "C22",
       "model": "claude",
-      "model_label": "Claude",
-      "failure_type": "Off-domain deployment checklist",
+      "type": "Off-domain deployment checklist",
       "explanation": "Generic ROS/Gazebo/CARLA checklist with no MOOS-IvP variable/process specificity."
     },
     {
       "prompt_id": "C22",
       "model": "gemini",
-      "model_label": "Gemini",
-      "failure_type": "Off-domain deployment checklist",
+      "type": "Off-domain deployment checklist",
       "explanation": "Generic drone/autopilot/PX4-style checklist, only partially transferable to a Heron/PABLO MOOS mission."
     },
     {
       "prompt_id": "C25",
       "model": "claude",
-      "model_label": "Claude",
-      "failure_type": "Off-domain clarification",
+      "type": "Off-domain clarification",
       "explanation": "Treated uField as unknown and asked whether this was a game/competition instead of answering the MOOS-IvP setup."
     },
     {
       "prompt_id": "C26",
       "model": "claude",
-      "model_label": "Claude",
-      "failure_type": "Wrong prompt context",
+      "type": "Wrong prompt context",
       "explanation": "Repeated the unrelated uField clarification instead of answering the alog diagnosis prompt."
+    },
+    {
+      "prompt_id": "C27",
+      "model": "chatgpt",
+      "type": "Wrong pAntler configuration block example",
+      "explanation": "Used ProcessConfig = pAntler for Run lines; the pAntler launch block should use the ANTLER process configuration, so the answer was useful but copy-paste risky."
+    },
+    {
+      "prompt_id": "C27",
+      "model": "claude",
+      "type": "Invented/imprecise pLogger filtering semantics",
+      "explanation": "Described pLogger as logging only subscribed variables and referred to LogAuxSrc/LOG=false filtering in a way not supported by the curated source set."
     },
     {
       "prompt_id": "C29",
       "model": "claude",
-      "model_label": "Claude",
-      "failure_type": "Invented viewer parameters",
+      "type": "Invented viewer parameters",
       "explanation": "Used BackgroundFileX/BackgroundFileY/BackgroundFileScale style parameters rather than the MOOS-IvP TIFF/info/datum configuration model."
+    },
+    {
+      "prompt_id": "C30",
+      "model": "chatgpt",
+      "type": "Wrong pAntler configuration block example",
+      "explanation": "Again used ProcessConfig = pAntler around Run lines, a plausible-looking but wrong MOOS configuration detail."
     }
   ],
   "prompts": [
@@ -198,17 +233,16 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 2,
-        "claude": 2,
+        "claude": 1,
         "gemini": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
         "gemini"
       ],
       "hard_failures": [],
-      "note": "All models gave a usable app lifecycle pipeline: register/subscribe, OnNewMail state update, Iterate cadence, Notify, and uXMS checks."
+      "note": "NotebookLM/ChatGPT/Gemini gave a usable app lifecycle pipeline. Claude was mostly useful, but lost credit for suggesting pMarinePID/iGPS-style upstream NAV publishers in a way that could mislead a beginner."
     },
     {
       "id": "C05",
@@ -219,15 +253,17 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 1
       },
       "winners": [
         "notebook",
-        "chatgpt",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        "claude",
         "gemini"
       ],
-      "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini covered pAntler launch vs MOOSDB registration well; Claude was helpful but had imprecise ProcessConfig/launch terminology."
+      "note": "NotebookLM/ChatGPT gave clean pAntler launch-vs-registration guidance. Claude and Gemini were useful but lost credit for imprecise or wrong ProcessConfig framing; Gemini used ProcessConfig = pAntler for Run lines."
     },
     {
       "id": "C06",
@@ -245,12 +281,7 @@
         "chatgpt"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C06",
-          "model": "gemini",
-          "failure_type": "Off-domain framework drift",
-          "explanation": "Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files."
-        }
+        "gemini"
       ],
       "note": "NotebookLM and ChatGPT directly described launch scripts, templates, generated files, and stale target files; Claude was generic ROS-like but partly useful; Gemini went off-domain."
     },
@@ -444,12 +475,7 @@
         "chatgpt"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C16",
-          "model": "claude",
-          "failure_type": "No substantive answer",
-          "explanation": "Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path."
-        }
+        "claude"
       ],
       "note": "NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value."
     },
@@ -469,12 +495,7 @@
         "chatgpt"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C17",
-          "model": "gemini",
-          "failure_type": "Off-domain messaging model",
-          "explanation": "Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields."
-        }
+        "gemini"
       ],
       "note": "NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT."
     },
@@ -547,22 +568,17 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 1
       },
       "winners": [
         "notebook",
-        "chatgpt",
-        "gemini"
+        "chatgpt"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C21",
-          "model": "claude",
-          "failure_type": "Invented/uncertain MOOS-IvP app names",
-          "explanation": "Suggested iGPS/iIMU/pNavManager/iHeron/iActuationKF instead of the documented Heron/PABLO interface framing."
-        }
+        "claude",
+        "gemini"
       ],
-      "note": "NotebookLM/ChatGPT/Gemini handled uSimMarine-to-Heron/PABLO transition; Claude had good safety framing but invented/uncertain Heron interface app names."
+      "note": "NotebookLM and ChatGPT gave the cleanest uSimMarine-to-Heron/PABLO transition framing. Claude and Gemini kept some useful safety/architecture points but lost credit for invented or unsupported Heron interface app names."
     },
     {
       "id": "C22",
@@ -580,18 +596,8 @@
         "chatgpt"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C22",
-          "model": "claude",
-          "failure_type": "Off-domain deployment checklist",
-          "explanation": "Generic ROS/Gazebo/CARLA checklist with no MOOS-IvP variable/process specificity."
-        },
-        {
-          "prompt_id": "C22",
-          "model": "gemini",
-          "failure_type": "Off-domain deployment checklist",
-          "explanation": "Generic drone/autopilot/PX4-style checklist, only partially transferable to a Heron/PABLO MOOS mission."
-        }
+        "claude",
+        "gemini"
       ],
       "note": "NotebookLM/ChatGPT were MOOS/PABLO-aware; Claude was generic ROS/Gazebo; Gemini was generic drone/autopilot deployment with little MOOS specificity."
     },
@@ -648,12 +654,7 @@
         "gemini"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C25",
-          "model": "claude",
-          "failure_type": "Off-domain clarification",
-          "explanation": "Treated uField as unknown and asked whether this was a game/competition instead of answering the MOOS-IvP setup."
-        }
+        "claude"
       ],
       "note": "NotebookLM/ChatGPT/Gemini understood two-vehicle rescue/uField messaging; Claude asked for context and treated uField as unknown."
     },
@@ -674,12 +675,7 @@
         "gemini"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C26",
-          "model": "claude",
-          "failure_type": "Wrong prompt context",
-          "explanation": "Repeated the unrelated uField clarification instead of answering the alog diagnosis prompt."
-        }
+        "claude"
       ],
       "note": "NotebookLM/ChatGPT/Gemini gave aloggrep/alogview/aloghelm-style post-run debugging; Claude returned an unrelated uField clarification from a prior prompt."
     },
@@ -690,18 +686,19 @@
       "prompt": "The mission completed, but there is no useful `.alog` file or the log is missing key variables. What pLogger, pAntler, process, path, and configuration issues should I check?",
       "scores": {
         "notebook": 2,
-        "chatgpt": 2,
-        "claude": 2,
+        "chatgpt": 1,
+        "claude": 1,
         "gemini": 2
       },
       "winners": [
         "notebook",
-        "chatgpt",
-        "claude",
         "gemini"
       ],
-      "hard_failures": [],
-      "note": "All models gave a useful pLogger/pAntler/path/process/config checklist."
+      "hard_failures": [
+        "chatgpt",
+        "claude"
+      ],
+      "note": "NotebookLM and Gemini gave useful pLogger/path/process guidance. ChatGPT was otherwise strong but used a wrong ProcessConfig = pAntler example; Claude included unsupported pLogger filtering/subscription claims."
     },
     {
       "id": "C28",
@@ -739,12 +736,7 @@
         "gemini"
       ],
       "hard_failures": [
-        {
-          "prompt_id": "C29",
-          "model": "claude",
-          "failure_type": "Invented viewer parameters",
-          "explanation": "Used BackgroundFileX/BackgroundFileY/BackgroundFileScale style parameters rather than the MOOS-IvP TIFF/info/datum configuration model."
-        }
+        "claude"
       ],
       "note": "NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names."
     },
@@ -755,19 +747,58 @@
       "prompt": "After several edits to a mission, the vehicle no longer deploys correctly and I do not know whether the problem is in the launch script, `.moos` file, `.bhv` file, process output, or MOOS variables. What should I inspect first, and what artifacts would let someone diagnose it quickly?",
       "scores": {
         "notebook": 2,
-        "chatgpt": 2,
+        "chatgpt": 1,
         "claude": 2,
         "gemini": 2
       },
       "winners": [
         "notebook",
-        "chatgpt",
         "claude",
         "gemini"
       ],
-      "hard_failures": [],
-      "note": "All models gave usable triage order and artifact requests after mission edits."
+      "hard_failures": [
+        "chatgpt"
+      ],
+      "note": "NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example."
     }
   ],
-  "summary_caveat": "NotebookLM TA and ChatGPT tie under the coarse 0/1/2 conceptual rubric. This does not mean the answers are identical in quality; NotebookLM is generally more documentation-shaped and concise, while ChatGPT is often more operationally detailed."
+  "summary_caveat": "This hallucination-sensitive revision pass penalizes plausible-looking but wrong MOOS-IvP details. Under this stricter rubric, NotebookLM TA leads ChatGPT on the completed conceptual/debugging category because it avoided the wrong pAntler launch-block examples found in ChatGPT answers.",
+  "notable_revision_changes": [
+    {
+      "prompt_id": "C04",
+      "model": "Claude",
+      "change": "2 -> 1",
+      "reason": "Mostly useful lifecycle advice, but included a misleading upstream NAV publisher example."
+    },
+    {
+      "prompt_id": "C05",
+      "model": "Gemini",
+      "change": "2 -> 1",
+      "reason": "Useful pAntler debugging shape, but wrong ProcessConfig = pAntler launch-block framing."
+    },
+    {
+      "prompt_id": "C21",
+      "model": "Gemini",
+      "change": "2 -> 1",
+      "reason": "Useful deployment framing, but invented/unsupported Heron interface app names."
+    },
+    {
+      "prompt_id": "C27",
+      "model": "ChatGPT",
+      "change": "2 -> 1",
+      "reason": "Useful pLogger advice, but wrong ProcessConfig = pAntler example."
+    },
+    {
+      "prompt_id": "C27",
+      "model": "Claude",
+      "change": "2 -> 1",
+      "reason": "Useful checklist mixed with unsupported pLogger filtering/subscription claims."
+    },
+    {
+      "prompt_id": "C30",
+      "model": "ChatGPT",
+      "change": "2 -> 1",
+      "reason": "Useful triage answer, but repeated wrong ProcessConfig = pAntler example."
+    }
+  ]
 }

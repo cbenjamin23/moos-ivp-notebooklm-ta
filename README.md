@@ -41,18 +41,18 @@ High-level result:
 
 ## Benchmark Results
 
-The clean cross-model benchmark is partially complete. The conceptual/debugging section (`C01-C30`) has been captured and graded independently from the unfinished sections.
+The clean cross-model benchmark is partially complete. The conceptual/debugging section (`C01-C30`) has been captured and graded independently from the unfinished sections. A hallucination-sensitive revision pass has been applied, so plausible-looking wrong MOOS-IvP details reduce the score.
 
 Conceptual/debugging results:
 
-| Model | Avg Score | Good Answers | Bad Answers | Hard Failures |
-|---|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
-| ChatGPT | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
-| Gemini | 1.67 | 22/30 (73.3%) | 2/30 (6.7%) | 3/30 (10.0%) |
-| Claude | 1.27 | 13/30 (43.3%) | 5/30 (16.7%) | 6/30 (20.0%) |
+| Model | Avg Score | Good Answers | Partial Answers | Bad Answers | Hard Failures |
+|---|---:|---:|---:|---:|---:|
+| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 1.93 | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) | 2/30 (6.7%) |
+| Gemini | 1.60 | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) | 5/30 (16.7%) |
+| Claude | 1.20 | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) | 8/30 (26.7%) |
 
-Interpretation: NotebookLM TA tied ChatGPT on the coarse conceptual/debugging rubric, but that does not prove the answers were equal in every respect. NotebookLM was generally more documentation-shaped and concise, while ChatGPT was often more operationally detailed. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
+Interpretation: NotebookLM TA ranks first on the completed conceptual/debugging section under the hallucination-sensitive rubric. ChatGPT remains very strong, but lost credit for two wrong copy-pasteable pAntler config examples. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
 
 Detailed results:
 
