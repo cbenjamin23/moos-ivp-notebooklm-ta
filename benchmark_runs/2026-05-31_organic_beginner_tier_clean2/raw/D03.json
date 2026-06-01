@@ -32,6 +32,14 @@
       "method": "gemini_body_prompt_slice_after_manual_retry",
       "url": "https://gemini.google.com/app/8ff5650e124e99aa",
       "captured_at": "2026-06-01T11:18:44Z"
+    },
+    "chatgpt_55_instant": {
+      "status": "captured",
+      "captured_at": "2026-06-01T20:05:39.739Z",
+      "url": "https://chatgpt.com/c/6a1de601-87f8-8327-80dd-eacea1377b03",
+      "method": "chatgpt_55_instant_reusable_tab",
+      "model_label": "GPT-5.5 Instant",
+      "text": "uTimerScript is useful when you need scripted MOOSDB posts at known times during a mission. Think of it as a mission “button presser” or timed initializer, not as the autonomy brain.\n\nIt is commonly used to post things like:\n\nDEPLOY = true\nMOOS_MANUAL_OVERRIDE = false\nRETURN = false\nSTATION_KEEP = false\nLOITER = true\nSURVEY = true\nWPT_UPDATE = points=0,0:50,0:50,50\nMISSION_MODE = survey\n\nGood uses:\n\n// at start\nDEPLOY=true\nMOOS_MANUAL_OVERRIDE=false\n\n// after 10 seconds\nSURVEY=true\n\n// after 60 seconds\nRETURN=true\n\nThe key idea is that uTimerScript should post variables that other apps or behaviors are already configured to listen for. For example, if a behavior has:\n\ncondition = SURVEY = true\nupdates   = WAYPOINT_UPDATES\n\nthen posting SURVEY=true can activate it, and posting WAYPOINT_UPDATES=points=... can update it.\n\nCommon mistakes:\n\nNotify(\"WPT_UPDATE\", ...)\n\nwhen the behavior expects:\n\nupdates = WAYPOINT_UPDATES\n\nThe variable names must match exactly.\n\nAnother mistake is using uTimerScript to post DEPLOY=true but forgetting:\n\nMOOS_MANUAL_OVERRIDE=false\n\nThe helm may still stay effectively parked/manual.\n\nAlso avoid posting behavior configuration into the MOOSDB and expecting the helm to “load” it. Behavior blocks belong in the .bhv file. uTimerScript can trigger or update configured behaviors, but it does not define them.\n\nA good mental model:\n\n.bhv file        = what autonomy can do\n.moos file       = what apps run and how they are configured\nuTimerScript     = timed trigger/update posts\npHelmIvP         = decides desired heading/speed\nBHV_Waypoint     = actually generates steering objectives\n\nFor debugging, watch the posted variables with:\n\nBash\nuXMS DEPLOY MOOS_MANUAL_OVERRIDE SURVEY RETURN WAYPOINT_UPDATES\n\nand inspect helm state with:\n\nBash\nuHelmScope\n\nIf the variable appears in uXMS but the behavior does not react, the issue is probably in the .bhv conditions, behavior update variable name, helm state, or InfoBuffer freshness—not in uTimerScript itself."
     }
   }
 }
