@@ -415,8 +415,8 @@
       "models": {
         "notebook": "captured",
         "chatgpt": "captured",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "K01": {
@@ -525,10 +525,10 @@
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing.",
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
-  "stopped_at": "2026-06-01T12:14:03Z",
-  "stop_reason": "User requested a good stopping point. D10 NotebookLM is captured; D10 ChatGPT status is captured; D10 Claude and Gemini have not been prompted.",
-  "last_completed_prompt": "D09",
-  "partial_prompt_at_stop": "D10",
+  "stopped_at": null,
+  "stop_reason": null,
+  "last_completed_prompt": "D10",
+  "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
@@ -573,11 +573,15 @@
     {
       "at": "2026-06-01T12:14:03Z",
       "result": "User-requested pause during D10. Resume by completing any remaining D10 tools, starting with Claude."
+    },
+    {
+      "at": "2026-06-01T12:50:54Z",
+      "result": "D10 completed for Claude and Gemini; exact documentation/tool category is complete."
     }
   ],
-  "last_updated": "2026-06-01T12:14:03Z",
+  "last_updated": "2026-06-01T12:50:54Z",
   "counts": {
-    "captured": 158,
-    "not_started": 42
+    "captured": 160,
+    "not_started": 40
   }
 }
