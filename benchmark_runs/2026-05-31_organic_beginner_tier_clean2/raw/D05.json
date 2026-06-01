@@ -40,7 +40,21 @@
       "method": "chatgpt_55_instant_reusable_tab_trimmed_sources",
       "model_label": "GPT-5.5 Instant",
       "text": "No. magic_arrival_radius is not a real BHV_Waypoint parameter.\n\nUse these instead:\n\ncapture_radius = <meters>   // also accepted as radius\nslip_radius    = <meters>   // older alias: nm_radius\ncapture_line   = true/false/absolute\n\nWhat they mean:\n\ncapture_radius: waypoint is hit when vehicle gets inside this radius. The code accepts radius or capture_radius. \nGitHub\n\nslip_radius: outer/non-monotonic capture radius; if the vehicle got within this radius and then starts getting farther away, the waypoint can count as reached. \nGitHub\n\ncapture_line: lets the vehicle advance after crossing the perpendicular arrival line through the waypoint; absolute sets both capture_radius and slip_radius to 0. \nGitHub\n\nTo verify:\n\nBash\ngrep -R \"magic_arrival_radius\" ~/moos-ivp/ivp/src/lib_behaviors-marine\ngrep -R \"capture_radius\\|slip_radius\\|capture_line\\|nm_radius\" ~/moos-ivp/ivp/src/lib_behaviors-marine\n\nAt runtime, check BHV_SETTINGS or helm/appcast output; BHV_Waypoint posts settings including capture_radius, slip_radius, and capture_line. \nGitHub"
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:55:22Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 10.42,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "No. `BHV_Waypoint` does not have a standard parameter named `magic_arrival_radius`.\n\nThe arrival/capture-related parameters to look up are typically:\n\n- `capture_radius`: distance at which the waypoint is considered captured.\n- `capture_line`: enables line-based waypoint capture behavior.\n- `capture_line_radius`: radius/tolerance used with capture-line behavior.\n- `slip_radius`: affects behavior near the waypoint, allowing smoother approach/turning rather than hard point capture.\n- `lead`: lead distance for waypoint tracking, if used in your behavior config.\n- `lead_damper`: damping applied to the lead behavior.\n\nHow to verify:\n\n1. Check the official behavior documentation for `BHV_Waypoint`.\n2. Check the source for `BHV_Waypoint`, especially its parameter parsing method, usually something like `setParam()` or equivalent.\n3. Run the behavior with your `.bhv` file and watch for helm warnings about unknown parameters. MOOS-IvP typically reports unrecognized behavior parameters at startup or helm launch time.\n\nSo if your `.bhv` contains:\n\n```text\nmagic_arrival_radius = 5\n```\n\nyou should treat it as invalid unless your local tree has a custom fork that added it."
     }
   },
-  "updated_at": "2026-06-01T21:40:00.000Z"
+  "updated_at": "2026-06-01T21:55:22Z"
 }

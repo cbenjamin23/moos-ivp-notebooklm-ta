@@ -40,6 +40,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "The mistake is using localhost as if it means “the shoreside.” In a multi-community setup, localhost means this same machine, from the perspective of the vehicle process.\n\nConceptually:\n\nVehicle community pShare:\n  output = src_name=NODE_REPORT_LOCAL, dest_name=NODE_REPORT, route=<shoreside_host>:<shoreside_moosdb_port>\n\nExample:\n\nProcessConfig = pShare\n{\n  AppTick   = 4\n  CommsTick = 4\n\n  output = src_name=NODE_REPORT_LOCAL, dest_name=NODE_REPORT, route=192.168.1.50:9000\n}\n\nKey things that must match:\n\nroute must point to the shoreside MOOSDB, not the vehicle’s own DB. So the host should be the reachable IP/hostname of the shoreside machine, and the port should be the shoreside community’s MOOSTimeWarp/MOOSDB port, commonly from the top of the shoreside .moos file:\n\nServerHost = 192.168.1.50\nServerPort = 9000\n\nThe source variable on the vehicle is usually:\n\nNODE_REPORT_LOCAL\n\nbecause pNodeReporter typically publishes the local vehicle report under that name inside the vehicle community.\n\nThe destination variable at shoreside is usually:\n\nNODE_REPORT\n\nbecause shoreside apps like pMarineViewer, uFldNodeBroker, or other multi-vehicle tools expect incoming vehicle reports as NODE_REPORT.\n\nSo the corrected mental model is:\n\nvehicle NODE_REPORT_LOCAL\n   --pShare-->\nshoreside NODE_REPORT\n\nDebug with uXMS:\n\nOn the vehicle:\n\nBash\nuXMS targ_vehicle.moos NODE_REPORT_LOCAL\n\nOn shoreside:\n\nBash\nuXMS targ_shoreside.moos NODE_REPORT\n\nIf the first exists but the second does not, suspect the route host/port, firewall/network reachability, or pShare launch/config."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:59:25Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 17.83,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "The pattern should be: vehicle `pShare` sends the vehicle-local report variable to a `pShare` input socket on the shoreside community.\n\nConceptually:\n\n```text\n// Vehicle community\nProcessConfig = pShare\n{\n  AppTick   = 4\n  CommsTick = 4\n\n  output = src_name=NODE_REPORT_LOCAL, dest_name=NODE_REPORT, route=SHORESIDE_HOST:9200\n}\n```\n\n```text\n// Shoreside community\nProcessConfig = pShare\n{\n  AppTick   = 4\n  CommsTick = 4\n\n  input = route=9200\n}\n```\n\nKey details:\n\n- `route=localhost:9200` on the vehicle means “send to port `9200` on the vehicle machine itself.” That is only correct if vehicle and shoreside are running on the same host. For separate machines, use the shoreside machine’s reachable hostname or IP address.\n\n- The sender’s `route` port must match the receiver’s `pShare` input port. If the vehicle sends to `SHORESIDE_HOST:9200`, the shoreside `pShare` must be listening on `9200`.\n\n- `src_name` must match the variable actually produced in the vehicle community. In standard MOOS-IvP setups, `pNodeReporter` commonly publishes `NODE_REPORT_LOCAL`, not `NODE_REPORT`.\n\n- `dest_name` is the variable name that will be posted in the receiving community. Shoreside tools such as `pMarineViewer` usually expect `NODE_REPORT`.\n\nSo the usual correction is:\n\n```text\noutput = src_name=NODE_REPORT_LOCAL, dest_name=NODE_REPORT, route=<shoreside_ip_or_host>:9200\n```\n\nwith a matching shoreside `pShare` input on port `9200`."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:59:25Z"
 }

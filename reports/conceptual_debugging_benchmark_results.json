@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "conceptual_debugging",
   "prompt_range": "C01-C30",
-  "graded_at": "2026-06-01T21:45:00.000Z",
+  "graded_at": "2026-06-01T22:09:43Z",
   "grading_method": "Manual Codex review against the simple rubric in BENCHMARKING.md, revised to penalize concrete hallucinations, invented MOOS-IvP details, wrong copy-pasteable config snippets, and unsupported product-specific claims even when the surrounding answer was useful.",
   "score_legend": {
     "0": "Bad: wrong, misleading, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unsafe for the task.",
@@ -83,6 +83,21 @@
       "good_percent": 90.0,
       "partial_count": 3,
       "partial_percent": 10.0,
+      "bad_count": 0,
+      "bad_percent": 0.0,
+      "pending_count": 0
+    },
+    "chatgpt_55_low_cli": {
+      "model": "ChatGPT 5.5 Low CLI",
+      "prompt_count": 30,
+      "total_score": 56,
+      "max_score": 60,
+      "average_score": 1.867,
+      "score_percent": 93.3,
+      "good_count": 26,
+      "good_percent": 86.7,
+      "partial_count": 4,
+      "partial_percent": 13.3,
       "bad_count": 0,
       "bad_percent": 0.0,
       "pending_count": 0
@@ -190,6 +205,30 @@
       "model": "chatgpt_55_instant",
       "failure_type": "Wrong NODE_MESSAGE handling process",
       "brief_explanation": "Described pNodeReporter as converting/unwrapping NODE_MESSAGE_LOCAL/NODE_MESSAGE; the lab/source path uses uFldNodeBroker/uFldMessageHandler style handling."
+    },
+    {
+      "prompt_id": "C08",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong pHelmIvP behavior-file parameter",
+      "brief_explanation": "Used singular `behavior = file.bhv`; pHelmIvP parses the `Behaviors = ...` parameter or `.bhv` command-line files."
+    },
+    {
+      "prompt_id": "C16",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong NODE_MESSAGE handling process",
+      "brief_explanation": "Named pNodeReporter as a common NODE_MESSAGE_LOCAL handler; the relevant path is uFldNodeBroker/uFldNodeComms/uFldMessageHandler style messaging."
+    },
+    {
+      "prompt_id": "C19",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong pHelmIvP behavior-file parameter",
+      "brief_explanation": "Correct file-boundary explanation but gave `behavior = filename.bhv` instead of `Behaviors = filename.bhv`."
+    },
+    {
+      "prompt_id": "C25",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Imprecise uField message transport",
+      "brief_explanation": "Described scout reports moving through uField broker/handler plumbing without clearly requiring NODE_MESSAGE payloads or explicit pShare/uField routes."
     }
   ],
   "prompts": [
@@ -203,17 +242,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful."
+      "note": "All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C02",
@@ -225,16 +266,18 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts."
+      "note": "NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C03",
@@ -246,17 +289,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All models correctly centered the same-host/same-port/same-variable/uXMS registration debugging path."
+      "note": "All models correctly centered the same-host/same-port/same-variable/uXMS registration debugging path. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C04",
@@ -268,16 +313,18 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini gave a usable app lifecycle pipeline. Claude was mostly useful, but lost credit for suggesting pMarinePID/iGPS-style upstream NAV publishers in a way that could mislead a beginner."
+      "note": "NotebookLM/ChatGPT/Gemini gave a usable app lifecycle pipeline. Claude was mostly useful, but lost credit for suggesting pMarinePID/iGPS-style upstream NAV publishers in a way that could mislead a beginner. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C05",
@@ -289,18 +336,20 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "claude",
         "gemini"
       ],
-      "note": "NotebookLM/ChatGPT gave clean pAntler launch-vs-registration guidance. Claude and Gemini were useful but lost credit for imprecise or wrong ProcessConfig framing; Gemini used ProcessConfig = pAntler for Run lines."
+      "note": "NotebookLM/ChatGPT gave clean pAntler launch-vs-registration guidance. Claude and Gemini were useful but lost credit for imprecise or wrong ProcessConfig framing; Gemini used ProcessConfig = pAntler for Run lines. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C06",
@@ -312,17 +361,19 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 0,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "gemini"
       ],
-      "note": "NotebookLM and ChatGPT directly described launch scripts, templates, generated files, and stale target files; Claude was generic ROS-like but partly useful; Gemini went off-domain."
+      "note": "NotebookLM and ChatGPT directly described launch scripts, templates, generated files, and stale target files; Claude was generic ROS-like but partly useful; Gemini went off-domain. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C07",
@@ -334,16 +385,18 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Claude gave correct helm-state/all-stop/deploy-variable diagnostics; Gemini was broadly helpful but less precise about helm state naming."
+      "note": "NotebookLM/ChatGPT/Claude gave correct helm-state/all-stop/deploy-variable diagnostics; Gemini was broadly helpful but less precise about helm state naming. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C08",
@@ -355,7 +408,8 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 1
       },
       "winners": [
         "notebook",
@@ -363,8 +417,10 @@
         "gemini",
         "chatgpt_55_instant"
       ],
-      "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini covered helm state, behavior activation, NAV variables, .moos/.bhv boundaries; Claude had useful checks but wrong pHelmIvP casing and config details."
+      "hard_failures": [
+        "ChatGPT 5.5 Low CLI"
+      ],
+      "note": "NotebookLM/ChatGPT/Gemini covered helm state, behavior activation, NAV variables, .moos/.bhv boundaries; Claude had useful checks but wrong pHelmIvP casing and config details. ChatGPT 5.5 Low CLI: Partial: useful helm/nav/condition checks, but it says the pHelmIvP `.moos` setting is `behavior = your_file.bhv`; source and missions use the `Behaviors = ...` parameter, so the behavior-file check is copy-paste risky."
     },
     {
       "id": "C09",
@@ -376,17 +432,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All models separated simulator NAV output, helm inputs, behavior conditions, and viewer state well enough."
+      "note": "All models separated simulator NAV output, helm inputs, behavior conditions, and viewer state well enough. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C10",
@@ -398,17 +456,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All models correctly explained unique MOOSDB ports, community names, pShare ports/routes, and launch arguments."
+      "note": "All models correctly explained unique MOOSDB ports, community names, pShare ports/routes, and launch arguments. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C11",
@@ -420,18 +480,20 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 1
+        "chatgpt_55_instant": 1,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "ChatGPT 5.5 Instant"
       ],
-      "note": "All models traced pNodeReporter/NODE_REPORT through vehicle, bridge, shoreside, and viewer well enough. GPT-5.5 Instant: Partial: useful NODE_REPORT/pNodeReporter debugging path, but includes the wrong pShare-port mental model by saying vehicle reports should be sent to the shoreside MOOSDB port."
+      "note": "All models traced pNodeReporter/NODE_REPORT through vehicle, bridge, shoreside, and viewer well enough. GPT-5.5 Instant: Partial: useful NODE_REPORT/pNodeReporter debugging path, but includes the wrong pShare-port mental model by saying vehicle reports should be sent to the shoreside MOOSDB port. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C12",
@@ -443,18 +505,20 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 1
+        "chatgpt_55_instant": 1,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "ChatGPT 5.5 Instant"
       ],
-      "note": "All models gave a reasonable local-vs-shared variable boundary for pShare routes. GPT-5.5 Instant: Partial: good local-vs-shared variable framing, but incorrectly describes a pShare route as sending directly to the remote MOOSDB rather than to the receiving pShare route/input port."
+      "note": "All models gave a reasonable local-vs-shared variable boundary for pShare routes. GPT-5.5 Instant: Partial: good local-vs-shared variable framing, but incorrectly describes a pShare route as sending directly to the remote MOOSDB rather than to the receiving pShare route/input port. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C13",
@@ -466,16 +530,18 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming."
+      "note": "NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C14",
@@ -487,15 +553,17 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers."
+      "note": "NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C15",
@@ -507,18 +575,20 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "claude"
       ],
-      "note": "NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting."
+      "note": "NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C16",
@@ -530,7 +600,8 @@
         "chatgpt": 2,
         "claude": 0,
         "gemini": 1,
-        "chatgpt_55_instant": 1
+        "chatgpt_55_instant": 1,
+        "chatgpt_55_low_cli": 1
       },
       "winners": [
         "notebook",
@@ -538,9 +609,10 @@
       ],
       "hard_failures": [
         "Claude",
-        "ChatGPT 5.5 Instant"
+        "ChatGPT 5.5 Instant",
+        "ChatGPT 5.5 Low CLI"
       ],
-      "note": "NotebookLM and ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path. The recaptured Claude answer was substantive but still wrong about NODE_MESSAGE_LOCAL scoping, so it remains bad. Gemini gave a generic messaging pipeline with only partial MOOS value. GPT-5.5 Instant: Partial: useful NODE_MESSAGE_LOCAL / NODE_MESSAGE / dest_node / var_name debugging path, but wrongly assigns conversion/unwrapping to pNodeReporter rather than the uField broker/message-handler path."
+      "note": "NotebookLM and ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path. The recaptured Claude answer was substantive but still wrong about NODE_MESSAGE_LOCAL scoping, so it remains bad. Gemini gave a generic messaging pipeline with only partial MOOS value. GPT-5.5 Instant: Partial: useful NODE_MESSAGE_LOCAL / NODE_MESSAGE / dest_node / var_name debugging path, but wrongly assigns conversion/unwrapping to pNodeReporter rather than the uField broker/message-handler path. ChatGPT 5.5 Low CLI: Partial: mostly correct NODE_MESSAGE_LOCAL to NODE_MESSAGE to payload-variable trace, but it incorrectly names pNodeReporter as a common sender-side handler for NODE_MESSAGE_LOCAL instead of keeping the uField broker/message-handler path clean."
     },
     {
       "id": "C17",
@@ -552,17 +624,19 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 0,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "gemini"
       ],
-      "note": "NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT."
+      "note": "NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C18",
@@ -574,17 +648,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance."
+      "note": "All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C19",
@@ -596,7 +672,8 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 1
       },
       "winners": [
         "notebook",
@@ -605,8 +682,10 @@
         "gemini",
         "chatgpt_55_instant"
       ],
-      "hard_failures": [],
-      "note": "All models correctly distinguished .moos app/process config from .bhv behavior config."
+      "hard_failures": [
+        "ChatGPT 5.5 Low CLI"
+      ],
+      "note": "All models correctly distinguished .moos app/process config from .bhv behavior config. ChatGPT 5.5 Low CLI: Partial: correctly separates `.moos` app config from `.bhv` behavior config, but gives `behavior = filename.bhv` as the pHelmIvP config pattern rather than the documented `Behaviors = filename.bhv` parameter."
     },
     {
       "id": "C20",
@@ -618,17 +697,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All models gave a usable data-path trace from payload publication through MOOSDB into helm conditions/updates/coordinating apps."
+      "note": "All models gave a usable data-path trace from payload publication through MOOSDB into helm conditions/updates/coordinating apps. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C21",
@@ -640,18 +721,20 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "claude",
         "gemini"
       ],
-      "note": "NotebookLM and ChatGPT gave the cleanest uSimMarine-to-Heron/PABLO transition framing. Claude and Gemini kept some useful safety/architecture points but lost credit for invented or unsupported Heron interface app names."
+      "note": "NotebookLM and ChatGPT gave the cleanest uSimMarine-to-Heron/PABLO transition framing. Claude and Gemini kept some useful safety/architecture points but lost credit for invented or unsupported Heron interface app names. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C22",
@@ -663,18 +746,20 @@
         "chatgpt": 2,
         "claude": 0,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "claude",
         "gemini"
       ],
-      "note": "NotebookLM/ChatGPT were MOOS/PABLO-aware; Claude was generic ROS/Gazebo; Gemini was generic drone/autopilot deployment with little MOOS specificity."
+      "note": "NotebookLM/ChatGPT were MOOS/PABLO-aware; Claude was generic ROS/Gazebo; Gemini was generic drone/autopilot deployment with little MOOS specificity. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C23",
@@ -686,15 +771,17 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT were most aligned with MOOS rescue planner/route handoff; Claude/Gemini were generic SAR planning but still conceptually useful."
+      "note": "NotebookLM/ChatGPT were most aligned with MOOS rescue planner/route handoff; Claude/Gemini were generic SAR planning but still conceptually useful. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C24",
@@ -706,15 +793,17 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 1,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT addressed dynamic rescue updates and replanning in the lab style; Claude/Gemini gave generic dynamic task-allocation answers."
+      "note": "NotebookLM/ChatGPT addressed dynamic rescue updates and replanning in the lab style; Claude/Gemini gave generic dynamic task-allocation answers. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C25",
@@ -726,7 +815,8 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 1
       },
       "winners": [
         "notebook",
@@ -734,8 +824,10 @@
         "gemini",
         "chatgpt_55_instant"
       ],
-      "hard_failures": [],
-      "note": "NotebookLM, ChatGPT, and Gemini understood two-vehicle rescue/uField messaging. The recaptured Claude answer was operationally useful but generic and weak on the uField-specific messaging path."
+      "hard_failures": [
+        "ChatGPT 5.5 Low CLI"
+      ],
+      "note": "NotebookLM, ChatGPT, and Gemini understood two-vehicle rescue/uField messaging. The recaptured Claude answer was operationally useful but generic and weak on the uField-specific messaging path. ChatGPT 5.5 Low CLI: Partial: good teammate/scout/rescue mental model, but the uField transport explanation implies a generic SCOUT_REPORT can move through broker/message-handler plumbing without clearly using the NODE_MESSAGE envelope or explicit sharing route."
     },
     {
       "id": "C26",
@@ -747,17 +839,19 @@
         "chatgpt": 2,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "All four final stored answers gave useful post-run diagnosis guidance; the recaptured Claude answer covered aloggrep, IVPHELM_SUMMARY, condition variables, and behavior-state tracing."
+      "note": "All four final stored answers gave useful post-run diagnosis guidance; the recaptured Claude answer covered aloggrep, IVPHELM_SUMMARY, condition variables, and behavior-state tracing. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C27",
@@ -769,18 +863,20 @@
         "chatgpt": 1,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "chatgpt",
         "claude"
       ],
-      "note": "NotebookLM and Gemini gave useful pLogger/path/process guidance. ChatGPT was otherwise strong but used a wrong ProcessConfig = pAntler example; Claude included unsupported pLogger filtering/subscription claims."
+      "note": "NotebookLM and Gemini gave useful pLogger/path/process guidance. ChatGPT was otherwise strong but used a wrong ProcessConfig = pAntler example; Claude included unsupported pLogger filtering/subscription claims. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C28",
@@ -792,16 +888,18 @@
         "chatgpt": 2,
         "claude": 1,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini mapped tools to use cases well; Claude was useful but shallower and slightly imprecise on uQueryDB/pLogger roles."
+      "note": "NotebookLM/ChatGPT/Gemini mapped tools to use cases well; Claude was useful but shallower and slightly imprecise on uQueryDB/pLogger roles. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C29",
@@ -813,18 +911,20 @@
         "chatgpt": 2,
         "claude": 0,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "claude"
       ],
-      "note": "NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names."
+      "note": "NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     },
     {
       "id": "C30",
@@ -836,18 +936,20 @@
         "chatgpt": 1,
         "claude": 2,
         "gemini": 2,
-        "chatgpt_55_instant": 2
+        "chatgpt_55_instant": 2,
+        "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
         "claude",
         "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "chatgpt_55_low_cli"
       ],
       "hard_failures": [
         "chatgpt"
       ],
-      "note": "NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example."
+      "note": "NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
     }
   ],
   "summary_caveat": "Recaptured answers requested by the user are treated as the regular stored answers. Scoring remains hallucination-sensitive, so a recaptured answer can still score poorly if it is substantive but wrong.",

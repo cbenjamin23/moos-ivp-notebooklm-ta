@@ -1,0 +1,17 @@
+Reading additional input from stdin...
+2026-06-01T21:48:33.694329Z ERROR codex_models_manager::manager: failed to refresh available models: timeout waiting for child process to exit
+2026-06-01T21:48:38.684665Z  WARN codex_core_plugins::startup_remote_sync: startup remote plugin sync failed; will retry on next app-server start error=remote marketplace `oai-maintained-plugins` is not available locally
+2026-06-01T21:49:04.991887Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.991903Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.992431Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.992440Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.992949Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.992957Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.993474Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.993481Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.994004Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.994010Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.995133Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:04.995141Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-06-01T21:49:10.853027Z ERROR codex_models_manager::manager: failed to refresh available models: timeout waiting for child process to exit
+2026-06-01T21:49:28.426826Z  WARN codex_mcp::rmcp_client: failed to initialize MCP client during shutdown: MCP startup failed: timed out awaiting tools/list after 30s

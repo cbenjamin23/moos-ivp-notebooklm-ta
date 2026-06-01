@@ -40,6 +40,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Correct pattern:\n\nC++\nbool BHV_Survey::setParam(string param, string val)\n{\n  param = tolower(param);\n\n  if(param == \"survey_radius\") {\n    double radius = atof(val.c_str());\n    if(radius <= 0)\n      return false;\n\n    m_radius = radius;\n    return true;\n  }\n\n  return false;\n}\n\nMOOS-IvP-specific reason: behavior parameters in .bhv files are commonly treated case-insensitively, so Survey_Radius, survey_radius, or SURVEY_RADIUS should not accidentally become different parameters. Most IvP behavior code normalizes param with tolower(param) before matching.\n\nAlso, setParam() should reject invalid values. Returning true tells pHelmIvP that the parameter was accepted, so accepting survey_radius = -5 or garbage like abc can silently create a broken behavior."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:00:52Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 53.1,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Corrected version:\n\n```cpp\nbool BHV_Survey::setParam(string param, string val)\n{\n  if(IvPBehavior::setParam(param, val))\n    return true;\n\n  param = tolower(param);\n\n  if(param == \"survey_radius\") {\n    if(!isNumber(val))\n      return false;\n\n    double radius = atof(val.c_str());\n    if(radius <= 0)\n      return false;\n\n    m_radius = radius;\n    return true;\n  }\n\n  return false;\n}\n```\n\nMOOS-IvP-specific reason: behavior config lines are routed through `setParam()`, including standard `IvPBehavior` parameters such as `name`, `pwt`, `condition`, `updates`, `duration`, `endflag`, `runflag`, etc. If a custom behavior overrides `setParam()` but never calls `IvPBehavior::setParam()`, those standard behavior parameters are rejected or ignored by the helm.\n\nAlso, `atof()` alone is unsafe here because invalid strings become `0.0`, so `survey_radius = banana` could silently set the radius to zero. MOOS-IvP behavior params should validate numeric strings explicitly, usually with `isNumber()` and any domain checks needed."
     }
-  }
+  },
+  "updated_at": "2026-06-01T22:00:52Z"
 }

@@ -41,7 +41,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Register in OnConnectToServer(), and call that from OnStartUp() after reading config.\n\nC++\nbool MyApp::OnStartUp()\n{\n  // Read mission-file parameters here.\n  // m_MissionReader.GetConfiguration(...)\n\n  RegisterVariables();\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  RegisterVariables();\n  return true;\n}\n\nvoid MyApp::RegisterVariables()\n{\n  Register(\"NAV_X\", 0);\n}\n\nConceptually:\n\nOnStartUp() runs once when the app launches.\nOnConnectToServer() runs each time the app connects or reconnects to the MOOSDB.\n\nSo if registration only happens in OnStartUp(), the app may initially receive NAV_X, but after a reconnect the MOOSDB no longer has that subscription. The normal MOOS-IvP/AppCasting pattern is:\n\nParse mission-file config in OnStartUp().\n\nPut all Register(...) calls in a helper like RegisterVariables().\n\nCall RegisterVariables() from both OnStartUp() and OnConnectToServer().\n\nThis makes subscriptions resilient to reconnects."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:01:40Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 16.55,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Register for mail in `OnConnectToServer()`, not only in `OnStartUp()`. After a MOOSDB reconnect, subscriptions need to be re-established.\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  Register(\"NAV_X\", 0);\n  return true;\n}\n```\n\nIf the app has multiple subscriptions, put them in a helper like `RegisterVariables()` and call it from `OnConnectToServer()`."
     }
   },
-  "updated_at": "2026-06-01T17:57:50.005Z"
+  "updated_at": "2026-06-01T22:01:40Z"
 }

@@ -7,7 +7,8 @@
     "ChatGPT",
     "Claude",
     "Gemini",
-    "GPT-5.5 Instant"
+    "GPT-5.5 Instant",
+    "ChatGPT 5.5 Low CLI"
   ],
   "instructions": "Use only the prompt text. No special instructions. Default platform behavior allowed. Stop the whole run if any model hits quota/blocking state. Use one prompt per browser conversation where practical; NotebookLM chat history deleted between prompts after raw output capture.",
   "previous_attempts_excluded": [
@@ -27,7 +28,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C02": {
@@ -37,7 +39,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C03": {
@@ -47,7 +50,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C04": {
@@ -57,7 +61,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C05": {
@@ -67,7 +72,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C06": {
@@ -77,7 +83,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C07": {
@@ -87,7 +94,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C08": {
@@ -97,7 +105,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C09": {
@@ -107,7 +116,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C10": {
@@ -117,7 +127,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C11": {
@@ -127,7 +138,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C12": {
@@ -137,7 +149,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C13": {
@@ -147,7 +160,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C14": {
@@ -157,7 +171,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C15": {
@@ -167,7 +182,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C16": {
@@ -177,7 +193,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C17": {
@@ -187,7 +204,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C18": {
@@ -197,7 +215,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C19": {
@@ -207,7 +226,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C20": {
@@ -217,7 +237,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C21": {
@@ -227,7 +248,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C22": {
@@ -237,7 +259,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C23": {
@@ -247,7 +270,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C24": {
@@ -257,7 +281,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C25": {
@@ -267,7 +292,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C26": {
@@ -277,7 +303,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C27": {
@@ -287,7 +314,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C28": {
@@ -297,7 +325,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C29": {
@@ -307,7 +336,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "C30": {
@@ -317,7 +347,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D01": {
@@ -327,7 +358,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D02": {
@@ -337,7 +369,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D03": {
@@ -347,7 +380,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D04": {
@@ -357,7 +391,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D05": {
@@ -367,7 +402,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D06": {
@@ -377,7 +413,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D07": {
@@ -387,7 +424,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D08": {
@@ -397,7 +435,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D09": {
@@ -407,7 +446,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D10": {
@@ -417,7 +457,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K01": {
@@ -427,7 +468,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K02": {
@@ -437,7 +479,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K03": {
@@ -447,7 +490,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K04": {
@@ -457,7 +501,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K05": {
@@ -467,7 +512,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K06": {
@@ -477,7 +523,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K07": {
@@ -487,7 +534,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K08": {
@@ -497,7 +545,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K09": {
@@ -507,7 +556,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K10": {
@@ -517,7 +567,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D11": {
@@ -527,7 +578,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D12": {
@@ -537,7 +589,8 @@
         "notebook": "captured",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D13": {
@@ -547,7 +600,8 @@
         "notebook": "not_started",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "captured"
+        "gemini": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D14": {
@@ -557,7 +611,8 @@
         "notebook": "not_started",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "D15": {
@@ -567,7 +622,8 @@
         "notebook": "not_started",
         "chatgpt": "captured",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K11": {
@@ -577,7 +633,8 @@
         "notebook": "not_started",
         "chatgpt": "not_started",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K12": {
@@ -587,7 +644,8 @@
         "notebook": "not_started",
         "chatgpt": "not_started",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K13": {
@@ -597,7 +655,8 @@
         "notebook": "not_started",
         "chatgpt": "not_started",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K14": {
@@ -608,7 +667,8 @@
         "chatgpt": "not_started",
         "claude": "captured",
         "gemini": "not_started",
-        "chatgpt_55_instant": "captured"
+        "chatgpt_55_instant": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     },
     "K15": {
@@ -619,7 +679,8 @@
         "chatgpt": "not_started",
         "claude": "captured",
         "gemini": "not_started",
-        "chatgpt_55_instant": "captured"
+        "chatgpt_55_instant": "captured",
+        "chatgpt_55_low_cli": "captured"
       }
     }
   },
@@ -1170,5 +1231,5 @@
       "chatgpt_55_instant": "captured"
     }
   },
-  "updated_at": "2026-06-01T21:25:00.000Z"
+  "updated_at": "2026-06-01T22:02:45Z"
 }

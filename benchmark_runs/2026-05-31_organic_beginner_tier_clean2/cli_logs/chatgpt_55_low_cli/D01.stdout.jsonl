@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019e852e-442d-7cf0-a3c7-0262a0a3973d"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"A `pOdometry`-style MOOS app normally consumes navigation mail such as:\n\n- `NAV_X`\n- `NAV_Y`\n\nIt typically publishes:\n\n- `ODOMETRY_DIST`\n\nThat output is the accumulated distance traveled, computed from changes in ownship position over time.\n\nTo debug the mail and publication path, use standard MOOS tools such as:\n\n- `uXMS` to watch whether `NAV_X`, `NAV_Y`, and `ODOMETRY_DIST` are appearing in the MOOSDB.\n- `uPokeDB` to manually inject test values for `NAV_X` and `NAV_Y`.\n- `uMS` or `uMAC` to inspect running processes and MOOSDB traffic.\n- App-level console output or `MOOSTrace` messages to confirm the app is receiving mail and publishing."}}
+{"type":"turn.completed","usage":{"input_tokens":10937,"cached_input_tokens":2432,"output_tokens":173,"reasoning_output_tokens":0}}

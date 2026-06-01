@@ -40,6 +40,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Conceptually, make uTimerScript a simple initializer, not the thing you trust blindly to prove autonomy is running.\n\nProcessConfig = uTimerScript\n{\n  AppTick   = 4\n  CommsTick = 4\n\n  paused = false\n  reset_max = 0\n\n  event = var=DEPLOY,               val=true,  time=10\n  event = var=MOOS_MANUAL_OVERRIDE, val=false, time=10\n}\n\nBut the safer pattern is usually:\n\nevent = var=DEPLOY, val=true, time=10\nevent = var=MOOS_MANUAL_OVERRIDE, val=false, time=11\n\nor trigger deployment manually first with uPokeDB, then automate only after you know the helm and behaviors work.\n\nIn uXMS, check:\n\nBash\nuXMS DEPLOY MOOS_MANUAL_OVERRIDE IVPHELM_STATE DESIRED_HEADING DESIRED_SPEED\n\nYou want to see:\n\nDEPLOY = true\nMOOS_MANUAL_OVERRIDE = false\nIVPHELM_STATE = DRIVE\n\nThen confirm the helm is actually producing outputs:\n\nDESIRED_HEADING = ...\nDESIRED_SPEED   = ...\n\nIf DEPLOY=true but IVPHELM_STATE is not DRIVE, inspect the .bhv conditions. If IVPHELM_STATE=DRIVE but no desired heading/speed appears, the behavior may not be active, may have failed conditions, or may lack required navigation mail. If the timer posts never appear, verify uTimerScript was actually launched by pAntler and that the generated .moos file contains the events you think it does."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:58:56Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 17.99,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "The fragile part is treating `uTimerScript` as a launch synchronizer. Its clock starts when `uTimerScript` starts, not when the vehicle, helm, navigation, and comms are actually ready. Also both posts happen at the same timestamp, which makes debugging ordering and causality harder.\n\nConceptually, make deployment an explicit state transition:\n\n```text\nProcessConfig = uTimerScript\n{\n  AppTick   = 4\n  CommsTick = 4\n\n  // Clear manual override first\n  event = var=MOOS_MANUAL_OVERRIDE, val=false, time=10.0\n\n  // Then deploy shortly after\n  event = var=DEPLOY, val=true, time=10.5\n}\n```\n\nBetter still, do not rely on a blind timer for real missions. Use `pMarineViewer` buttons, `uPokeDB`, or a launch-side script that deploys only after confirming the MOOSDB, `pHelmIvP`, navigation, and required apps are alive. The timer is acceptable for demos, but it should not be the only proof that the vehicle is ready.\n\nIn `uXMS`, check these variables:\n\n```text\nDEPLOY\nMOOS_MANUAL_OVERRIDE\nIVPHELM_STATE\nBHV_WARNING\nBHV_ERROR\nNAV_X\nNAV_Y\nNAV_HEADING\nNAV_SPEED\nDESIRED_HEADING\nDESIRED_SPEED\n```\n\nExpected result after the timer fires:\n\n```text\nDEPLOY = true\nMOOS_MANUAL_OVERRIDE = false\nIVPHELM_STATE = DRIVE\n```\n\nIf `DEPLOY=true` but `IVPHELM_STATE` stays `PARK` or `DISABLED`, then the helm is not accepting the mission state, a behavior condition is unmet, or manual override is still active. If `DESIRED_SPEED` and `DESIRED_HEADING` are absent, the helm may be running but no behavior is producing an objective function."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:58:56Z"
 }

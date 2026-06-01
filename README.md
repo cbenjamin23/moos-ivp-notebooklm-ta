@@ -27,19 +27,20 @@ The most important entry point for human review is:
 
 ## Benchmark Results
 
-The clean cross-model benchmark compares NotebookLM TA with the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. The original ChatGPT run used GPT-5.5 Thinking; GPT-5.5 Instant was later collected and scored separately. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
+The clean cross-model benchmark compares NotebookLM TA with beginner-tier browser ChatGPT, Claude, and Gemini. Additional ChatGPT rows test GPT-5.5 Instant in the web app and GPT-5.5 Low through an isolated CLI run. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
 
-Current status: all 300 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive and concrete MOOS-IvP hallucinations reduce the score.
+Current status: all 360 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive and concrete MOOS-IvP hallucinations reduce the score.
 
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
 | ChatGPT 5.5 Thinking | 94.2% | 1.88 | 96.7% | 90.0% | 93.3% | 0 |
 | ChatGPT 5.5 Instant | 91.7% | 1.83 | 95.0% | 93.3% | 83.3% | 0 |
+| ChatGPT 5.5 Low CLI | 90.8% | 1.82 | 93.3% | 80.0% | 96.7% | 0 |
 | Gemini | 80.0% | 1.60 | 80.0% | 90.0% | 70.0% | 0 |
 | Claude | 71.7% | 1.43 | 65.0% | 73.3% | 83.3% | 0 |
 
-Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. The repo should still position it as a conceptual TA, not as a standalone MOOS-IvP coding agent.
+Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. The isolated GPT-5.5 Low CLI row is useful as a cleaner non-RAG comparison because it avoids browser memory and local Codex skills, but it still trails NotebookLM on exact MOOS-IvP source alignment.
 
 Detailed results and rubric:
 
@@ -49,6 +50,7 @@ Detailed results and rubric:
 - `reports/exact_docs_tools_benchmark_results.md`
 - `reports/code_config_benchmark_results.md`
 - `reports/chatgpt_55_instant_benchmark_results.md`
+- `reports/chatgpt_55_low_cli_benchmark_results.md`
 
 ## Validation Summary
 

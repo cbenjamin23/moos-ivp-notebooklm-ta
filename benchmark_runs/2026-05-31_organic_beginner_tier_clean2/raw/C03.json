@@ -32,6 +32,21 @@
       "method": "chatgpt_55_instant_reusable_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Check variable name, community, and connection target first.\n\nMost common issue: uPokeDB and uXMS are not talking to the same MOOSDB, or you poked a different variable name/type than the one you are watching.\n\nDebug in this order:\n\nConfirm the MOOSDB is running\n\nBash\nps aux | grep MOOSDB\n\nConfirm host and port\nIf MOOSDB is on port 9000, both tools need that port:\n\nBash\nuPokeDB localhost:9000 TEST_VAR=hello\nuXMS localhost:9000 TEST_VAR\n\nDo not assume the default port is the one your mission uses.\n\nCheck the exact variable name\nMOOS variables are case-sensitive:\n\nTEST_VAR\nTest_Var\ntest_var\n\nare different variables.\n\nUse uXMS with no filter\nRun:\n\nBash\nuXMS localhost:9000\n\nThen look for whether the variable exists under a slightly different name.\n\nCheck type/value formatting\nFor strings, use:\n\nBash\nuPokeDB localhost:9000 TEST_VAR=hello\n\nFor numbers:\n\nBash\nuPokeDB localhost:9000 TEST_NUM=42\n\nIf another app expects a double but you poked a string, it may ignore it.\n\nCheck whether another app overwrites it\nIf you see the value briefly then it disappears or changes, another process may be repeatedly publishing the same variable.\n\nCheck community mismatch\nIn multi-vehicle setups, each MOOSDB has its own community/port. Poking the shoreside DB will not automatically make the variable appear in the vehicle DB unless pShare or broker config forwards it.\n\nGood minimal test:\n\nBash\nMOOSDB targ.moos\nuPokeDB localhost:9000 FOO=bar\nuXMS localhost:9000 FOO\n\nIf that works, your issue is probably wrong port, wrong community, wrong variable name, or missing sharing route, not uPokeDB itself."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:43:02Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 13.52,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "First check that `uXMS` is connected to the same MOOS community as the `MOOSDB` you poked.\n\nThe usual first failure is not the variable itself, but that one tool is pointed at a different `MOOSDB`, port, host, or mission file.\n\nA practical debugging sequence:\n\n1. Confirm the `MOOSDB` is running and note its host and port.\n   Typical default is `localhost:9000`, but many missions use a different port.\n\n2. Confirm `uPokeDB` poked that same DB.\n   Check the `--serverhost`, `--serverport`, or mission file arguments you used. If you poked `localhost:9000` but `uXMS` is watching another port, the variable will not appear.\n\n3. Confirm `uXMS` is connected to the same DB.\n   Start it explicitly if needed, for example:\n   ```bash\n   uXMS --serverhost=localhost --serverport=9000\n   ```\n   or use the same `.moos` file used by the running community.\n\n4. Check the exact variable name.\n   MOOS variable names are case-sensitive. `FOO`, `Foo`, and `foo` are different variables.\n\n5. Check whether `uXMS` is filtering.\n   If you launched `uXMS` with a variable list or pattern, it may simply not be showing the variable. Try watching all traffic or explicitly subscribe to the variable you poked.\n\n6. Check that the poke actually happened.\n   Use a simple poke with an obvious value:\n   ```bash\n   uPokeDB FOO=bar --serverhost=localhost --serverport=9000\n   ```\n   Then watch `FOO` in `uXMS`.\n\n7. Check timing.\n   Some `uXMS` views emphasize recent mail or subscribed variables. If you poked before starting `uXMS`, the current value should usually still be in the DB, but depending on display mode or filters you may not notice it. Re-poke while `uXMS` is already running.\n\n8. Check for another app overwriting the variable.\n   If another MOOS app is publishing the same variable, your poked value may be replaced immediately. Watch the source/name and update time if available.\n\nIn short: first verify `uPokeDB`, `uXMS`, and the `MOOSDB` are all using the same host and port. Then check spelling/case, filters, timing, and whether another process is overwriting the variable."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:43:02Z"
 }

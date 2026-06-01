@@ -40,6 +40,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Use the standard MOOS-IvP pattern: parse known params, report unhandled params, then register variables in OnConnectToServer() and call it from OnStartUp().\n\nC++\nbool MyApp::OnStartUp()\n{\n  AppCastingMOOSApp::OnStartUp();\n\n  STRING_LIST sParams;\n  m_MissionReader.GetConfiguration(GetAppName(), sParams);\n\n  for(auto line : sParams) {\n    string orig  = line;\n    string param = tolower(biteStringX(line, '='));\n    string value = line;\n\n    bool handled = false;\n\n    if(param == \"threshold\") {\n      handled = setDoubleOnString(m_threshold, value);\n    }\n\n    if(!handled)\n      reportUnhandledConfigWarning(orig);\n  }\n\n  registerVariables();\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  registerVariables();\n  return true;\n}\n\nvoid MyApp::registerVariables()\n{\n  AppCastingMOOSApp::RegisterVariables();\n\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n}\n\nConceptually:\n\nOnStartUp() should read mission-file config, validate values, and warn on anything unknown or malformed. A typo like threshhold=10 should produce an AppCasting warning instead of being silently ignored.\n\nOnConnectToServer() should register for mail. Registrations can be lost across reconnects, so the usual pattern is to put all subscriptions in registerVariables() and call that both from OnStartUp() and OnConnectToServer().\n\nAlso avoid raw atof(): it turns bad strings into 0 silently. Use MOOS-IvP helpers like setDoubleOnString() so malformed values are rejected and reported."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:58:38Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 14.47,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Use the standard AppCasting pattern: normalize the parameter name, track whether each line was handled, warn on unknown config, validate values, and call `registerVariables()` from both `OnStartUp()` and `OnConnectToServer()`.\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  AppCastingMOOSApp::OnStartUp();\n\n  STRING_LIST params;\n  m_MissionReader.GetConfiguration(GetAppName(), params);\n\n  for(string line : params) {\n    string orig  = line;\n    string param = biteStringX(line, '=');\n\n    param = tolower(stripBlankEnds(param));\n    string value = stripBlankEnds(line);\n\n    bool handled = false;\n\n    if(param == \"threshold\") {\n      handled = true;\n\n      if(!isNumber(value)) {\n        reportConfigWarning(\"Bad threshold value: \" + value);\n      } else {\n        m_threshold = atof(value.c_str());\n      }\n    }\n\n    if(!handled)\n      reportUnhandledConfigWarning(orig);\n  }\n\n  registerVariables();\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  registerVariables();\n  return true;\n}\n\nvoid MyApp::registerVariables()\n{\n  AppCastingMOOSApp::RegisterVariables();\n\n  Register(\"SOME_MAIL_VAR\", 0);\n}\n```\n\nKey fixes:\n\n- Unknown mission-file parameters are reported with `reportUnhandledConfigWarning(orig)`.\n- Parameter names are stripped and lowercased, so `Threshold = 5` works.\n- Values are validated before use.\n- `registerVariables()` is called in `OnStartUp()` and `OnConnectToServer()`, which prevents missed subscriptions if startup/connect timing changes.\n- `AppCastingMOOSApp::OnStartUp()` and `AppCastingMOOSApp::RegisterVariables()` are preserved."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:58:38Z"
 }

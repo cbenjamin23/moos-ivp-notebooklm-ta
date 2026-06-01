@@ -41,7 +41,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab_trimmed_prompt_echo_trimmed_sources",
       "model_label": "GPT-5.5 Instant",
       "text": "Fix the button so it posts both variables normally needed to let the helm run:\n\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true # MOOS_MANUAL_OVERRIDE=false\n}\n\nConceptually:\n\nDEPLOY=true says “the mission is deployed.”\n\nMOOS_MANUAL_OVERRIDE=false says “the helm is allowed to control the vehicle.”\n\nIf you only post DEPLOY=true while MOOS_MANUAL_OVERRIDE remains true, the helm may stay idle/overridden even though deployment was requested.\n\nIn uXMS, watch:\n\nBash\nuXMS DEPLOY MOOS_MANUAL_OVERRIDE IVPHELM_STATE DESIRED_SPEED DESIRED_HEADING\n\nCheck that after clicking the button:\n\nDEPLOY = true\nMOOS_MANUAL_OVERRIDE = false\nIVPHELM_STATE = DRIVE\n\nIf IVPHELM_STATE is still PARK or no DESIRED_SPEED / DESIRED_HEADING appears, then the helm is not actually producing behavior output. Next check behavior conditions, .bhv file loading, and whether pHelmIvP is running."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:02:22Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 27.02,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "`pMarineViewer` buttons publish MOOS variables, but they do not run shell commands or directly start the helm. The button should publish the same deployment variables that the mission/helm logic is watching, typically including `MOOS_MANUAL_OVERRIDE=false`.\n\nConceptually:\n\n```text\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true\n  button_two = RETURN # RETURN=true\n}\n```\n\nAnd if the vehicle starts in manual override, add a deploy action that clears it, for example:\n\n```text\nbutton_one = DEPLOY # DEPLOY=true # MOOS_MANUAL_OVERRIDE=false\n```\n\nThe exact variable names must match the behavior file and any `pHelmIvP`/mission conventions in that mission. A common mistake is publishing `DEPLOY=true` while the helm remains held by `MOOS_MANUAL_OVERRIDE=true`, so no helm decisions take effect.\n\nIn `uXMS`, check that clicking the viewer button actually changes the relevant MOOS variables:\n\n```text\nDEPLOY\nMOOS_MANUAL_OVERRIDE\nIVPHELM_STATE\nDESIRED_HEADING\nDESIRED_SPEED\n```\n\nExpected signs after deploy are:\n\n```text\nDEPLOY = true\nMOOS_MANUAL_OVERRIDE = false\nIVPHELM_STATE = DRIVE\n```\n\nIf `DEPLOY=true` appears but `IVPHELM_STATE` stays parked or manual override remains true, the button is publishing but the helm is still inhibited or the behaviors are not conditioned on the variable being posted."
     }
   },
-  "updated_at": "2026-06-01T21:40:00.000Z"
+  "updated_at": "2026-06-01T22:02:22Z"
 }

@@ -41,7 +41,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "pNodeReporter publishes the vehicle’s “I am here and this is my status” report.\n\nNormally it produces:\n\nNODE_REPORT_LOCAL\n\ncontaining things like:\n\nNAME=abe,TYPE=KAYAK,TIME=...,X=...,Y=...,LAT=...,LON=...,\nSPD=...,HDG=...,DEPTH=...,MODE=...,ALLSTOP=...\n\nThe key distinction:\n\nNODE_REPORT_LOCAL is the local vehicle-side report. It is usually published inside the vehicle’s own MOOS community.\n\nNODE_REPORT is the shared / received node report used by other communities, especially shoreside tools like pMarineViewer, uFldNodeComms, or multi-vehicle coordination apps.\n\nIn a shoreside/vehicle setup, the usual path is:\n\nvehicle pNodeReporter\n        ↓\nNODE_REPORT_LOCAL\n        ↓  pShare / uFldNodeBroker / comms bridge\nNODE_REPORT\n        ↓\nshoreside MOOSDB\n        ↓\npMarineViewer displays vehicle\n\nSo if the vehicle moves locally but does not appear shoreside, do not immediately blame pMarineViewer. Check whether:\n\nNODE_REPORT_LOCAL exists on vehicle\nNODE_REPORT is being bridged to shoreside\npShare routes or uFld broker settings are correct\nvehicle NAME/community names match\nshoreside is subscribing to the right variable\n\nA common mistake is expecting pNodeReporter to magically publish NODE_REPORT everywhere. It usually publishes the local report; another process must route/transform/share it so the shoreside community receives NODE_REPORT."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:57:35Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 9.18,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "`pNodeReporter` normally publishes a vehicle’s own status as a `NODE_REPORT`. That report is a compact summary of the node: name/type, position, heading, speed, depth, timestamp, mode, and other navigation or health fields used by other MOOS-IvP apps.\n\n`NODE_REPORT_LOCAL` is the same kind of report, but it is intended to stay local to the vehicle’s own MOOS community. `NODE_REPORT` is the version intended for sharing outside the local community, usually through `pShare` or another comms bridge.\n\nIn a shoreside/vehicle setup, that distinction prevents a vehicle from accidentally treating its own shared report as if it were a remote contact report. A common pattern is:\n\n- On each vehicle, `pNodeReporter` publishes `NODE_REPORT_LOCAL`.\n- A sharing process forwards or remaps that to `NODE_REPORT` for the shoreside.\n- The shoreside receives `NODE_REPORT` from all vehicles and uses those as contact tracks.\n- Other vehicles may receive `NODE_REPORT` for teammates, but their own local report remains separate.\n\nSo the practical difference is routing and interpretation: `NODE_REPORT_LOCAL` is “my node, for local use”; `NODE_REPORT` is “a node report suitable for the wider network.” This matters because shoreside communities aggregate `NODE_REPORT`s from vehicles, while vehicles should avoid confusing their own locally generated state with externally received contact information."
     }
   },
-  "updated_at": "2026-06-01T18:08:25.569Z"
+  "updated_at": "2026-06-01T21:57:35Z"
 }

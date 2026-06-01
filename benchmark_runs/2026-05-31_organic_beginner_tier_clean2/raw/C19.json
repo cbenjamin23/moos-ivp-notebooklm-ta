@@ -32,6 +32,21 @@
       "method": "chatgpt_55_instant_reusable_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Expect the behavior to not run at all. pHelmIvP will not treat a Behavior = BHV_Loiter { ... } block inside the .moos file as a helm behavior. At best it is ignored as irrelevant config text; at worst you get confusing startup/config warnings. The symptom is usually:\n\npHelmIvP runs, but no loiter/custom behavior produces IvP functions, so you see no expected DESIRED_HEADING / DESIRED_SPEED.\n\nThe split is:\n\n.moos file\n= process/app launch configuration\n\nExamples:\n- ServerHost / ServerPort / Community\n- ProcessConfig = pHelmIvP\n- ProcessConfig = pMarineViewer\n- AppTick / CommsTick\n- pShare routes\n- which .bhv file pHelmIvP should load\n.bhv file\n= helm behavior configuration\n\nExamples:\n- Behavior = BHV_Loiter\n- Behavior = BHV_Waypoint\n- Behavior = BHV_StationKeep\n- custom BHV_* blocks\n- conditions like DEPLOY == true\n- behavior parameters like center, radius, points, speed\n- updates variables\n\nCorrect pattern:\n\n// in targ_vehicle.moos\nProcessConfig = pHelmIvP\n{\n  AppTick    = 4\n  CommsTick = 4\n  behaviors = targ_vehicle.bhv\n}\n// in targ_vehicle.bhv\nBehavior = BHV_Loiter\n{\n  name      = loiter\n  condition = DEPLOY == true\n  condition = MOOS_MANUAL_OVERRIDE == false\n\n  updates   = LOITER_UPDATE\n  center    = 0,0\n  radius    = 30\n  speed     = 1.5\n}\n\nMental model: the .moos file starts and configures programs; the .bhv file configures the autonomy decisions that pHelmIvP loads."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:48:27Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 24.16,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "You should expect the behavior to be ignored by the IvP Helm behavior parser. In practice, `pHelmIvP` reads behavior definitions from the `.bhv` file named in its `.moos` configuration, so a `BHV_Loiter` or custom `BHV_*` block placed directly in the `.moos` file will not instantiate that behavior. The likely symptom is that the vehicle does not perform the intended behavior, and you may see helm/startup warnings or an inactive/empty behavior set depending on the rest of the configuration.\n\nThe responsibilities are different:\n\n- `.moos` file: mission/process configuration. It names and configures MOOS apps, communities, ports, app parameters, and tells `pHelmIvP` which behavior file to load, commonly via something like `behavior = filename.bhv`.\n\n- `.bhv` file: IvP Helm behavior configuration. It contains `initialize` settings and behavior blocks such as `Behavior = BHV_Loiter`, `Behavior = BHV_Waypoint`, or custom `BHV_*` behaviors with their behavior-specific parameters.\n\nSo the `.moos` file starts and configures `pHelmIvP`; the `.bhv` file tells `pHelmIvP` what behaviors to run."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:48:27Z"
 }

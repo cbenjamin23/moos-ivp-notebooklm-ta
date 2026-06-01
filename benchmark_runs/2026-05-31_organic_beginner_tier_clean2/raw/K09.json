@@ -41,7 +41,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Declare the dependencies in the behavior constructor and defensively check the InfoBuffer before using them.\n\nConceptually:\n\nC++\nBHV_MyBehavior::BHV_MyBehavior(IvPDomain domain) : IvPBehavior(domain)\n{\n  addInfoVars(\"NAV_X, NAV_Y\");\n}\n\nThen in onRunState():\n\nC++\nIvPFunction* BHV_MyBehavior::onRunState()\n{\n  bool ok_x, ok_y;\n  double nav_x = getBufferDoubleVal(\"NAV_X\", ok_x);\n  double nav_y = getBufferDoubleVal(\"NAV_Y\", ok_y);\n\n  if(!ok_x || !ok_y) {\n    postWMessage(\"Missing NAV_X or NAV_Y\");\n    return nullptr;\n  }\n\n  // Safe to use nav_x/nav_y here\n}\n\nMOOS-IvP-specific reason: behaviors do not receive MOOS mail directly like apps do. They read from the helm’s InfoBuffer. addInfoVars() tells the helm which MOOS variables the behavior needs copied into that buffer. Then getBufferDoubleVal() should be checked because the variable may not have arrived yet, may be typoed, or may not be produced by any process."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:01:06Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 14.01,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "In MOOS-IvP, register for `NAV_X` and `NAV_Y` explicitly, usually in `onHelmStart()` or `onIdleState()` via `addInfoVars()`:\n\n```cpp\nvoid BHV_MyBehavior::onHelmStart()\n{\n  addInfoVars(\"NAV_X, NAV_Y\");\n}\n```\n\nThen in `onRunState()`, check that the values are present/current before using them:\n\n```cpp\nIvPFunction* BHV_MyBehavior::onRunState()\n{\n  bool ok_x, ok_y;\n  double nav_x = getBufferDoubleVal(\"NAV_X\", ok_x);\n  double nav_y = getBufferDoubleVal(\"NAV_Y\", ok_y);\n\n  if(!ok_x || !ok_y) {\n    postWMessage(\"Missing NAV_X or NAV_Y\");\n    return nullptr;\n  }\n\n  // use nav_x/nav_y safely here\n  ...\n}\n```\n\nDo not rely on the constructor alone for subscriptions unless that is the local pattern. The key fixes are:\n\n1. Add `NAV_X` and `NAV_Y` to the behavior’s info vars.\n2. Use the `ok`/validity result from the info buffer getter.\n3. Return `nullptr` or otherwise avoid producing an IvP function when required navigation data is unavailable."
     }
   },
-  "updated_at": "2026-06-01T14:33:34Z"
+  "updated_at": "2026-06-01T22:01:06Z"
 }

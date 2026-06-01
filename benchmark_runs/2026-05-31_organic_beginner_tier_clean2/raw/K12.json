@@ -41,7 +41,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab_trimmed_prompt_echo",
       "model_label": "GPT-5.5 Instant",
       "text": "You must regenerate the target file after editing the meta file.\n\nBash\n# 1. Edit the template\nvim meta_vehicle.moos\n\n# 2. Re-run nsplug to produce a fresh generated file\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\n\n# 3. Then launch the regenerated mission file\npAntler targ_vehicle.moos\n\nConceptually:\n\nmeta_vehicle.moos is only the template.\ntarg_vehicle.moos is the actual file pAntler reads.\n\nSo if you edit:\n\nmeta_vehicle.moos\n\nbut do not re-run:\n\nBash\nnsplug meta_vehicle.moos targ_vehicle.moos ...\n\nthen:\n\nBash\npAntler targ_vehicle.moos\n\nstill launches the old generated config.\n\nAlso check that behavior changes are in the correct generated files. Helm behavior settings usually come from the .bhv file, often generated from something like:\n\nBash\nnsplug meta_vehicle.bhv targ_vehicle.bhv VNAME=alpha\n\nSo the full pattern is usually:\n\nBash\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\nnsplug meta_vehicle.bhv  targ_vehicle.bhv  WARP=10 VNAME=alpha\npAntler targ_vehicle.moos\n\nThen inspect targ_vehicle.moos and targ_vehicle.bhv, not just the meta_* files."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:01:54Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 14.24,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "`nsplug` is a generation step, not a live include.\n\n`pAntler` runs `targ_vehicle.moos`, so editing `meta_vehicle.moos` later has no effect until you regenerate the target file. The corrected workflow is:\n\n```bash\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\npAntler targ_vehicle.moos\n\n# after editing meta_vehicle.moos:\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\npAntler targ_vehicle.moos\n```\n\nIf ports or behavior settings are also generated from behavior templates, regenerate those target files too, for example:\n\n```bash\nnsplug meta_vehicle.bhv targ_vehicle.bhv VNAME=alpha\n```\n\nThen launch the generated `.moos` file that references the regenerated `.bhv` file. In short: edit `meta_*`, rerun `nsplug`, then rerun `pAntler` on the generated `targ_*` files."
     }
   },
-  "updated_at": "2026-06-01T21:30:00.000Z"
+  "updated_at": "2026-06-01T22:01:54Z"
 }

@@ -32,6 +32,21 @@
       "method": "chatgpt_55_instant_reusable_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Check these in order:\n\nConfirm the binaries exist\n\nBash\ncd ~/moos-ivp\nfind . -type f -name pAntler\nfind . -type f -name uXMS\nfind . -type f -name pMarineViewer\n\nUsually MOOS-IvP binaries end up in places like:\n\nBash\n~/moos-ivp/bin\n~/moos-ivp/ivp/bin\n\nCheck whether your shell can see them\n\nBash\necho $PATH\nwhich pAntler\nwhich uXMS\nwhich pMarineViewer\n\nIf which returns nothing, the build may be fine, but your PATH is missing the binary directories.\n\nTemporarily add them\n\nBash\nexport PATH=$PATH:~/moos-ivp/bin:~/moos-ivp/ivp/bin\n\nThen test:\n\nBash\npAntler --help\nuXMS --help\npMarineViewer --help\n\nMake it permanent\nFor bash:\n\nBash\necho 'export PATH=$PATH:~/moos-ivp/bin:~/moos-ivp/ivp/bin' >> ~/.bashrc\nsource ~/.bashrc\n\nFor zsh:\n\nBash\necho 'export PATH=$PATH:~/moos-ivp/bin:~/moos-ivp/ivp/bin' >> ~/.zshrc\nsource ~/.zshrc\n\nIf pMarineViewer specifically is missing\nThat often means the IvP GUI tools did not build, even if core MOOS built. Check for FLTK / OpenGL / image-library dependency errors in the build output.\n\nUseful checks:\n\nBash\nls ~/moos-ivp/ivp/bin\nls ~/moos-ivp/bin\n\nConceptually: pAntler and uXMS are command-line MOOS tools; pMarineViewer depends on GUI build support. If only pMarineViewer is missing, suspect GUI dependencies. If all are missing, suspect PATH or incomplete build/install."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:42:37Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 12.71,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Check these points:\n\n1. Confirm the build actually produced binaries  \n   MOOS-IvP binaries are normally built under the source/build tree, commonly in locations like:\n\n   ```sh\n   MOOS-IvP/bin\n   MOOS-IvP/MOOS/MOOSBin\n   ```\n\n   Look for programs such as:\n\n   ```sh\n   pAntler\n   uXMS\n   pMarineViewer\n   ```\n\n   If `pMarineViewer` is missing but core tools exist, the IvP GUI/app portion may not have built, often due to missing FLTK/OpenGL-related dependencies.\n\n2. Check whether the binaries are merely not on your `PATH`  \n   A successful build does not necessarily install commands into `/usr/local/bin`. You may need to add the MOOS-IvP binary directories to your shell startup file.\n\n   For example, if MOOS-IvP is in `~/moos-ivp`:\n\n   ```sh\n   export PATH=$PATH:$HOME/moos-ivp/bin\n   export PATH=$PATH:$HOME/moos-ivp/MOOS/MOOSBin\n   ```\n\n3. Reload your shell environment  \n   After editing `~/.bashrc`, `~/.zshrc`, or similar:\n\n   ```sh\n   source ~/.bashrc\n   ```\n\n   or open a new terminal. Use the correct file for your shell: bash usually uses `~/.bashrc` or `~/.bash_profile`; zsh uses `~/.zshrc`.\n\n4. Verify what your shell sees  \n\n   ```sh\n   echo $PATH\n   which pAntler\n   which uXMS\n   which pMarineViewer\n   ```\n\n   If `which` returns nothing, the directory containing the executable is still not on `PATH`.\n\n5. Check executable permissions  \n   If the file exists but will not run:\n\n   ```sh\n   ls -l /path/to/pAntler\n   ```\n\n   It should have executable bits set.\n\n6. Be aware of install location assumptions  \n   MOOS-IvP is often used directly from its build/source tree. Unless you explicitly ran an install step, the binaries may not be copied into a global system directory.\n\nIn short: first find where `pAntler`, `uXMS`, and `pMarineViewer` were built, then add those directories to your `PATH`, reload your shell, and verify with `which`."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:42:37Z"
 }

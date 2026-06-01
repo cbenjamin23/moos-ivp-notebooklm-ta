@@ -40,6 +40,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Inspect these areas first:\n\n1. pMarineViewer config in the shoreside .moos file\nLook for:\n\nmoos\nProcessConfig = pMarineViewer\n{\n  tiff_file = ...\n  set_pan_x = ...\n  set_pan_y = ...\n  zoom = ...\n  vehicles_shape_scale = ...\n}\n\nCommon issue: tiff_file points to the wrong image, a stale relative path, or an image that does not match the mission’s coordinate assumptions.\n\n2. Mission datum in every relevant .moos file\nCheck:\n\nmoos\nLatOrigin = ...\nLongOrigin = ...\n\nThe shoreside and vehicle communities should usually agree on the same datum. If the datum changes, all local x,y coordinates shift.\n\n3. pAntler launch/generated files\nIf using templates, inspect the generated .moos files, not just the .moos or .meta templates. You may be editing the template but launching an old generated file.\n\n4. Viewer image registration / georeferencing\nThe background image is not “magic.” It must correspond to the local coordinate frame implied by LatOrigin / LongOrigin. A visually correct image can still be offset, rotated, or scaled incorrectly relative to MOOS local coordinates.\n\n5. pMarineViewer variable display\nUse the viewer and uXMS to compare:\n\nBash\nuXMS NAV_X NAV_Y NODE_REPORT VIEW_POINT VIEW_SEGLIST\n\nIf NAV_X/NAV_Y look reasonable but the vehicle appears in the wrong place on the image, suspect the viewer image/datum alignment. If NAV_X/NAV_Y themselves are wrong, suspect nav input or datum conversion.\n\n6. MOOSGeodesy usage in apps\nAny custom app converting lat/lon to local x,y must initialize geodesy with the same LatOrigin / LongOrigin. Otherwise your app may publish points in a different local frame than the helm/viewer expects.\n\nRule of thumb: pMarineViewer only visualizes the local coordinate world. The real coordinate system is set by the datum and whatever publishes NAV_X, NAV_Y, VIEW_*, and NODE_REPORT."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:55:51Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 16.39,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Inspect these MOOS-IvP areas:\n\n- `pMarineViewer` configuration in the `.moos` file:\n  - `tiff_file`, `background_tiff`, or image/map-related parameters\n  - `set_pan_x`, `set_pan_y`, zoom, and viewer centering settings\n  - Whether polygons, grids, or shoreside/vehicle drawings are being rendered in expected local coordinates\n\n- Mission datum settings:\n  - `LatOrigin`\n  - `LongOrigin`\n  - These must be consistent across the mission `.moos` files, especially shoreside and vehicle configs.\n\n- `pAntler` / launch configuration:\n  - Confirm the intended `.moos` file is actually being launched.\n  - Check for stale alternate configs or generated mission files.\n\n- `nsplug` / meta configuration files:\n  - Inspect `.meta` or template files that generate the deployed `.moos` files.\n  - A wrong datum often comes from generated values, not the final-looking file you expected.\n\n- `alog` or appcast output:\n  - Check what datum and local coordinates apps report at runtime.\n  - Look for warnings about geodesy, projection, or missing origin.\n\n- Chart/image generation setup:\n  - If using a GeoTIFF or background image, verify it was generated for the same datum/origin and local coordinate convention as the mission.\n  - Check any tools/scripts used to create the viewer background.\n\n- Coordinate conversion assumptions:\n  - MOOS-IvP local coordinates are typically meters in an `x/y` frame derived from `LatOrigin`/`LongOrigin`.\n  - If objects appear shifted, mirrored, or rotated, compare lat/lon inputs against their converted local `x/y` values.\n\nIn practice, start with the deployed `.moos` file’s `pMarineViewer` block and the global `LatOrigin`/`LongOrigin`, then trace backward into any `nsplug` templates that generated them."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:55:51Z"
 }

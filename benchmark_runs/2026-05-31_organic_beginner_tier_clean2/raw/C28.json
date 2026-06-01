@@ -36,6 +36,21 @@
       "method": "chatgpt_55_instant_reusable_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Use them by question type:\n\nNeed\tBest tool\tWhy\n“Is variable X being posted right now?”\tuXMS\tLive watch of ordinary MOOSDB variables like NAV_X, DEPLOY, DESIRED_HEADING, NODE_REPORT.\n“What is the current value of X once?”\tuQueryDB\tQuick snapshot query without opening a live watch.\n“Why is the helm not producing commands?”\tuHelmScope\tShows helm state, active/running behaviors, conditions, priorities, and behavior updates.\n“Is the app alive, warning, or misconfigured?”\tuMAC / AppCasting\tShows app health, events, warnings, config problems, subscriptions/publications if appcasting is enabled.\n“What happened earlier in the run?”\tpLogger / .alog tools\tPost-run evidence: variable history, timing, helm posts, app messages, and reconstructing failure sequence.\n\nA practical workflow:\n\nStart with uXMS\n\nBash\nuXMS targ_vehicle.moos NAV_X NAV_Y NAV_HEADING NAV_SPEED DEPLOY MOOS_MANUAL_OVERRIDE DESIRED_HEADING DESIRED_SPEED\n\nUse this to confirm the basic variable chain is alive.\n\nUse uQueryDB for spot checks\n\nBash\nuQueryDB targ_vehicle.moos DEPLOY\nuQueryDB targ_vehicle.moos IVPHELM_STATE\n\nGood when you just need one value.\n\nUse uHelmScope when behavior logic is suspect\n\nBash\nuHelmScope targ_vehicle.moos\n\nCheck whether the helm is PARKED, DRIVE, or blocked by conditions; whether your behavior is idle/running; and whether updates are reaching the correct behavior.\n\nUse uMAC / AppCasting for process health\n\nBash\nuMAC targ_vehicle.moos\n\nLook for whether the process is connected, appcasting, reporting warnings, or missing config/mail.\n\nUse pLogger after or during the run\nCheck the .alog when the mission already failed, or when live tools missed the moment. Use it to reconstruct:\n\nBash\naloggrep file.alog DEPLOY NAV_X DESIRED_HEADING IVPHELM_STATE\nalogview file.alog\n\nRule of thumb: uXMS watches variables, uQueryDB snapshots variables, uHelmScope explains helm behavior, uMAC/AppCasting explains app health, and pLogger proves what happened over time."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:53:50Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 10.69,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Use them by what you need to observe:\n\n- `uXMS`: Best for live, general MOOSDB inspection. Use it when you want to watch ordinary MOOS variables updating in real time, such as `NAV_X`, `NAV_Y`, `DESIRED_HEADING`, `DEPLOY`, `RETURN`, or app-specific publications.\n\n- `uQueryDB`: Best for a one-shot query of the current value of one or more MOOS variables. Use it when you do not need a live scrolling monitor and just want to ask, “what is the value in the DB right now?”\n\n- `uHelmScope`: Best for inspecting `pHelmIvP` internals. Use it when you care about helm behavior state: active/running/idle/completed behaviors, mode set, behavior priorities, objective functions, or why the helm is producing a particular decision.\n\n- `uMAC` / AppCasting: Best for application health and warnings. Use it to inspect AppCasts from MOOS apps: configuration summaries, runtime status, events, warnings, errors, and other app-level diagnostics. This is usually the right place to look when an app is running but behaving suspiciously.\n\n- `pLogger` output: Best for after-the-fact analysis. Use the `.alog` logs from `pLogger` when the run is over, when you need history, replay, debugging evidence, timing, or correlation across variables and apps.\n\nFor checking whether a process is alive, use AppCasting/`uMAC` if the app supports AppCasts and is connected/reporting. Otherwise use normal OS/process tools outside MOOS, or infer from MOOSDB freshness only cautiously. A stale variable can suggest a dead or disconnected process, but it is not definitive by itself."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:53:50Z"
 }

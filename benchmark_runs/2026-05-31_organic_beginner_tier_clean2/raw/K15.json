@@ -41,7 +41,21 @@
       "method": "user_pasted_chatgpt_55_instant_answer",
       "model_label": "GPT-5.5 Instant",
       "text": "The conceptual problem is that **both MOOS communities have the same identity**:\n\n```text\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n```\n\nand\n\n```text\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n```\n\nWhen running multiple vehicles on one laptop, each vehicle should normally have:\n\n1. **Its own MOOSDB port**\n2. **Its own unique community/vehicle name**\n\nA typical pattern is:\n\n**Vehicle Alpha**\n\n```text\nServerHost = localhost\nServerPort = 9001\nCommunity  = alpha\n```\n\n**Vehicle Bravo**\n\n```text\nServerHost = localhost\nServerPort = 9002\nCommunity  = bravo\n```\n\n### Why this matters\n\nIf both missions use the same `Community` name:\n\n* `NODE_REPORT` entries may identify both vehicles as `alpha`.\n* Vehicle reports can overwrite or be confused with one another.\n* Shoreside tools may appear to show only one vehicle.\n* Inter-vehicle messaging may target the wrong community.\n\nIf both missions attempt to use the same `ServerPort`:\n\n* Only one MOOSDB may successfully own the port.\n* One vehicle may fail to start correctly.\n* Apps may accidentally connect to the wrong MOOSDB.\n\n### What should line up\n\nFor a two-vehicle mission:\n\n* `Community = alpha` ↔ vehicle name `alpha`\n* `Community = bravo` ↔ vehicle name `bravo`\n* `pNodeReporter` should publish reports using the correct vehicle name.\n* `uFldNodeComms`, `uFldShoreBroker`, and shoreside viewers should receive distinct reports from each vehicle.\n* Each MOOS community should have a unique MOOSDB port.\n\n### Debugging checklist\n\nIn **uXMS** on each vehicle:\n\n* Confirm `NODE_REPORT_LOCAL` contains the correct vehicle name.\n* Confirm `NODE_REPORT` contains the correct vehicle name.\n* Verify the vehicle's MOOSDB is running on the expected port.\n\nOn the shoreside:\n\n* Watch `NODE_REPORT`.\n* Ensure reports arrive from both `alpha` and `bravo`.\n* If every report says `NAME=alpha`, the vehicle naming/community configuration is still wrong.\n\nThe key rule is: **one vehicle = one MOOSDB port + one unique community/vehicle name.**"
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:02:45Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 8.16,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "Both vehicles are configured as the same MOOS community on the same MOOSDB port, so they collide conceptually. Each vehicle needs its own MOOSDB, with a unique port and a unique community name.\n\nFor example:\n\n```text\n// first vehicle file\nServerHost = localhost\nServerPort = 9001\nCommunity  = alpha\n```\n\n```text\n// second vehicle file\nServerHost = localhost\nServerPort = 9002\nCommunity  = bravo\n```\n\nThe shoreside should run as its own MOOS community on a third port, for example:\n\n```text\n// shoreside\nServerHost = localhost\nServerPort = 9000\nCommunity  = shoreside\n```\n\nThen configure the communication bridges so shoreside knows it is receiving reports from `alpha` and `bravo`, not two processes both claiming to be the same community."
     }
   },
-  "updated_at": "2026-06-01T21:25:00.000Z"
+  "updated_at": "2026-06-01T22:02:45Z"
 }

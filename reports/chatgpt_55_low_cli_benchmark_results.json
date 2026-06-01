@@ -1,0 +1,833 @@
+{
+  "benchmark": "MOOS-IvP NotebookLM TA cross-model benchmark - GPT-5.5 Low CLI addendum",
+  "run_id": "2026-05-31_organic_beginner_tier_clean2",
+  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "model_key": "chatgpt_55_low_cli",
+  "model": "ChatGPT 5.5 Low CLI",
+  "graded_at": "2026-06-01T22:09:43Z",
+  "status": "complete",
+  "collection_method": "Temporary Codex CLI 0.136.0 installed under /tmp, run with isolated temporary CODEX_HOME, --ephemeral, --ignore-user-config, --ignore-rules, read-only sandbox, empty working directory, no skills/tools/web/local files by instruction, one fresh CLI turn per prompt.",
+  "integrity_scan": "60/60 captured; stored CLI JSON event streams contained only thread/turn/agent-message/turn completion events; no suspicious local MOOS-IvP checkout path references found in answers or logs.",
+  "grading_method": "Manual hallucination-sensitive grading against the existing benchmark rubric, curated MOOS-IvP source packs, and local /Users/charlesbenjamin/moos-ivp source checks for exact/code/config details. Concrete hallucinations and invalid copy-pasteable MOOS-IvP details are penalized even when the surrounding answer is useful.",
+  "score_legend": {
+    "2": "good",
+    "1": "partially useful but incomplete or containing a meaningful wrong detail",
+    "0": "bad, non-answer, off-domain, or likely to mislead"
+  },
+  "metrics": {
+    "overall": {
+      "model": "ChatGPT 5.5 Low CLI",
+      "prompt_count": 60,
+      "total_score": 109,
+      "max_score": 120,
+      "average_score": 1.817,
+      "score_percent": 90.8,
+      "good_count": 50,
+      "good_percent": 83.3,
+      "partial_count": 9,
+      "partial_percent": 15.0,
+      "bad_count": 1,
+      "bad_percent": 1.7,
+      "pending_count": 0
+    },
+    "conceptual_debugging": {
+      "model": "ChatGPT 5.5 Low CLI",
+      "prompt_count": 30,
+      "total_score": 56,
+      "max_score": 60,
+      "average_score": 1.867,
+      "score_percent": 93.3,
+      "good_count": 26,
+      "good_percent": 86.7,
+      "partial_count": 4,
+      "partial_percent": 13.3,
+      "bad_count": 0,
+      "bad_percent": 0.0,
+      "pending_count": 0
+    },
+    "exact_docs_tools": {
+      "model": "ChatGPT 5.5 Low CLI",
+      "prompt_count": 15,
+      "total_score": 24,
+      "max_score": 30,
+      "average_score": 1.6,
+      "score_percent": 80.0,
+      "good_count": 10,
+      "good_percent": 66.7,
+      "partial_count": 4,
+      "partial_percent": 26.7,
+      "bad_count": 1,
+      "bad_percent": 6.7,
+      "pending_count": 0
+    },
+    "code_config_advice": {
+      "model": "ChatGPT 5.5 Low CLI",
+      "prompt_count": 15,
+      "total_score": 29,
+      "max_score": 30,
+      "average_score": 1.933,
+      "score_percent": 96.7,
+      "good_count": 14,
+      "good_percent": 93.3,
+      "partial_count": 1,
+      "partial_percent": 6.7,
+      "bad_count": 0,
+      "bad_percent": 0.0,
+      "pending_count": 0
+    }
+  },
+  "hard_failures": [
+    {
+      "prompt_id": "C08",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong pHelmIvP behavior-file parameter",
+      "brief_explanation": "Used singular `behavior = file.bhv`; pHelmIvP parses the `Behaviors = ...` parameter or `.bhv` command-line files."
+    },
+    {
+      "prompt_id": "C16",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong NODE_MESSAGE handling process",
+      "brief_explanation": "Named pNodeReporter as a common NODE_MESSAGE_LOCAL handler; the relevant path is uFldNodeBroker/uFldNodeComms/uFldMessageHandler style messaging."
+    },
+    {
+      "prompt_id": "C19",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong pHelmIvP behavior-file parameter",
+      "brief_explanation": "Correct file-boundary explanation but gave `behavior = filename.bhv` instead of `Behaviors = filename.bhv`."
+    },
+    {
+      "prompt_id": "C25",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Imprecise uField message transport",
+      "brief_explanation": "Described scout reports moving through uField broker/handler plumbing without clearly requiring NODE_MESSAGE payloads or explicit pShare/uField routes."
+    },
+    {
+      "prompt_id": "D02",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Invented/misspelled executable name",
+      "brief_explanation": "Used `pNodeReport` in an exact pAntler launch example; the app is `pNodeReporter`."
+    },
+    {
+      "prompt_id": "D05",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Invented BHV_Waypoint parameter",
+      "brief_explanation": "Listed `capture_line_radius`, which is not parsed by BHV_Waypoint source."
+    },
+    {
+      "prompt_id": "D06",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong behavior semantics",
+      "brief_explanation": "Described BHV_OpRegionV24 as only a constraint/watchdog and denied the documented V24 save-poly recovery objective function."
+    },
+    {
+      "prompt_id": "D08",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong pShare destination port model",
+      "brief_explanation": "Said pShare remote host/port is usually the other community MOOSDB host/port; output routes should target the receiving pShare input/route port."
+    },
+    {
+      "prompt_id": "D14",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong pNodeReporter default output framing",
+      "brief_explanation": "Said pNodeReporter normally publishes NODE_REPORT; source defaults to NODE_REPORT_LOCAL."
+    },
+    {
+      "prompt_id": "K09",
+      "model": "chatgpt_55_low_cli",
+      "failure_type": "Wrong behavior lifecycle framing",
+      "brief_explanation": "Put addInfoVars in onHelmStart/onIdleState instead of the normal constructor/config-time behavior pattern."
+    }
+  ],
+  "prompts": [
+    {
+      "id": "C01",
+      "category": "conceptual_debugging",
+      "title": "Command Not Found After Build",
+      "prompt": "I built MOOS-IvP successfully, but commands such as `pAntler`, `uXMS`, or `pMarineViewer` are not found from my terminal. What should I check about the build, shell environment, PATH, and where the binaries are installed?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1865
+    },
+    {
+      "id": "C02",
+      "category": "conceptual_debugging",
+      "title": "Version Control Before Mission Changes",
+      "prompt": "I am about to modify several mission and source files, and I want to avoid losing a working baseline. What simple Git workflow should I use before experimenting, and what files should I be careful not to treat as source?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1141
+    },
+    {
+      "id": "C03",
+      "category": "conceptual_debugging",
+      "title": "uXMS/uPokeDB Confusion",
+      "prompt": "I launched a MOOSDB, poked a variable with uPokeDB, and expected to see it in uXMS, but I do not see what I expected. What should I check first? Explain the debugging steps.",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2073
+    },
+    {
+      "id": "C04",
+      "category": "conceptual_debugging",
+      "title": "App Not Publishing",
+      "prompt": "My pOdometry-style MOOS app is supposed to publish `ODOMETRY_DIST`, but I do not see it in uXMS. How should I debug `OnNewMail()`, subscriptions, `Iterate()`, AppTick, and `Notify()`?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 5744
+    },
+    {
+      "id": "C05",
+      "category": "conceptual_debugging",
+      "title": "pAntler Did Not Start A Process",
+      "prompt": "My mission launches, but one expected MOOS process never appears in the community. How should I debug the `ProcessConfig` block, the pAntler launch section, app names, executable names, terminal output, and process registration?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 4546
+    },
+    {
+      "id": "C06",
+      "category": "conceptual_debugging",
+      "title": "Launch Arguments Not Reaching Config Files",
+      "prompt": "I changed a launch argument for vehicle name, port, speed, or start position, but the generated mission still behaves like it has the old value. How should I reason about launch scripts, template files, generated files, and stale configuration?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2416
+    },
+    {
+      "id": "C07",
+      "category": "conceptual_debugging",
+      "title": "Helm Remains PARKED",
+      "prompt": "I set `DEPLOY=true` and `MOOS_MANUAL_OVERRIDE=false`, but pHelmIvP still seems PARKED. Is the helm broken? Give a careful diagnostic checklist.",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 4337
+    },
+    {
+      "id": "C08",
+      "category": "conceptual_debugging",
+      "title": "No Desired Outputs",
+      "prompt": "pHelmIvP starts and my behaviors appear to be configured, but I do not see `DESIRED_HEADING` or `DESIRED_SPEED`. What should I check in the `.moos`, `.bhv`, NAV variables, behavior conditions, and helm state?",
+      "score": 1,
+      "note": "Partial: useful helm/nav/condition checks, but it says the pHelmIvP `.moos` setting is `behavior = your_file.bhv`; source and missions use the `Behaviors = ...` parameter, so the behavior-file check is copy-paste risky.",
+      "hard_failure": {
+        "failure_type": "Wrong pHelmIvP behavior-file parameter",
+        "brief_explanation": "Used singular `behavior = file.bhv`; pHelmIvP parses the `Behaviors = ...` parameter or `.bhv` command-line files."
+      },
+      "raw_status": "captured",
+      "answer_length": 2657
+    },
+    {
+      "id": "C09",
+      "category": "conceptual_debugging",
+      "title": "Vehicle Moves In Simulation But Autonomy Looks Wrong",
+      "prompt": "uSimMarine is updating position, but the autonomy behavior looks wrong or inconsistent with what I expected. What should I check about `NAV_X`, `NAV_Y`, `NAV_HEADING`, `NAV_SPEED`, helm inputs, behavior conditions, and viewer state?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2308
+    },
+    {
+      "id": "C10",
+      "category": "conceptual_debugging",
+      "title": "Multi-Vehicle Ports",
+      "prompt": "I am running two vehicle communities and a shoreside community on one laptop. One vehicle launches, but the other has connection problems. How should I reason about MOOSDB `ServerPort`, community names, pShare ports, and launch arguments?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2774
+    },
+    {
+      "id": "C11",
+      "category": "conceptual_debugging",
+      "title": "Shoreside Missing Vehicle",
+      "prompt": "In a multi-vehicle mission, pMarineViewer shows one vehicle but not the other. What are the likely causes involving `NODE_REPORT`, pNodeReporter, shoreside subscriptions, pShare, and community naming?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2206
+    },
+    {
+      "id": "C12",
+      "category": "conceptual_debugging",
+      "title": "pShare Route Confusion",
+      "prompt": "I have vehicle and shoreside communities running, but I am unsure which variables should cross between them. How should I think about pShare routes, what belongs in local vehicle communities, and what the shoreside needs to receive?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 3259
+    },
+    {
+      "id": "C13",
+      "category": "conceptual_debugging",
+      "title": "TSP App / Behavior Boundary",
+      "prompt": "My app computes a TSP-style route, but the vehicle does not follow the path. Explain the boundary between a MOOS app that computes points, the updates sent to the helm, and BHV_Waypoint actually steering the vehicle.",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 3277
+    },
+    {
+      "id": "C14",
+      "category": "conceptual_debugging",
+      "title": "Distributed Route Assignment Problem",
+      "prompt": "In a multi-vehicle route-planning mission, one vehicle gets all the work or no vehicle gets a useful route. What should I inspect about task generation, vehicle identity, assignment messages, route updates, and behavior activation?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1744
+    },
+    {
+      "id": "C15",
+      "category": "conceptual_debugging",
+      "title": "Multi-Machine Networking Problem",
+      "prompt": "The mission works when all communities run on one laptop, but fails when vehicles or shoreside run on separate machines. What should I check about IP addresses, hostnames, MOOS ports, pShare ports, firewalls, and time of launch?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1571
+    },
+    {
+      "id": "C16",
+      "category": "conceptual_debugging",
+      "title": "Message Does Not Arrive",
+      "prompt": "I post `NODE_MESSAGE_LOCAL` on one vehicle, but the receiving vehicle never sees the payload variable. Walk through the message path and what to check.",
+      "score": 1,
+      "note": "Partial: mostly correct NODE_MESSAGE_LOCAL to NODE_MESSAGE to payload-variable trace, but it incorrectly names pNodeReporter as a common sender-side handler for NODE_MESSAGE_LOCAL instead of keeping the uField broker/message-handler path clean.",
+      "hard_failure": {
+        "failure_type": "Wrong NODE_MESSAGE handling process",
+        "brief_explanation": "Named pNodeReporter as a common NODE_MESSAGE_LOCAL handler; the relevant path is uFldNodeBroker/uFldNodeComms/uFldMessageHandler style messaging."
+      },
+      "raw_status": "captured",
+      "answer_length": 2564
+    },
+    {
+      "id": "C17",
+      "category": "conceptual_debugging",
+      "title": "Node Names / Destinations",
+      "prompt": "I am confused about source node names, destination names, and message fields in inter-vehicle messaging. How can a wrong node name or destination prevent delivery, and how should I inspect the problem?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2053
+    },
+    {
+      "id": "C18",
+      "category": "conceptual_debugging",
+      "title": "Behavior Never Runs",
+      "prompt": "My custom behavior loads but never seems to run. How should I inspect behavior conditions, `pwt`, updates, InfoBuffer variables, and helm life events?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2656
+    },
+    {
+      "id": "C19",
+      "category": "conceptual_debugging",
+      "title": "`.moos` vs `.bhv` Mistake",
+      "prompt": "I put a `BHV_Loiter` or custom `BHV_*` configuration block in my `.moos` file instead of my `.bhv` file. What failure should I expect, and how do `.moos` and `.bhv` responsibilities differ?",
+      "score": 1,
+      "note": "Partial: correctly separates `.moos` app config from `.bhv` behavior config, but gives `behavior = filename.bhv` as the pHelmIvP config pattern rather than the documented `Behaviors = filename.bhv` parameter.",
+      "hard_failure": {
+        "failure_type": "Wrong pHelmIvP behavior-file parameter",
+        "brief_explanation": "Correct file-boundary explanation but gave `behavior = filename.bhv` instead of `Behaviors = filename.bhv`."
+      },
+      "raw_status": "captured",
+      "answer_length": 1098
+    },
+    {
+      "id": "C20",
+      "category": "conceptual_debugging",
+      "title": "Payload Event Not Affecting Autonomy",
+      "prompt": "A payload or sensor process appears to be posting useful information, but the vehicle behavior does not react to it. How should I trace the variable from the payload app through the MOOSDB into helm conditions, behavior updates, or a coordinating app?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 4988
+    },
+    {
+      "id": "C21",
+      "category": "conceptual_debugging",
+      "title": "Simulation to Heron/PABLO",
+      "prompt": "I have a mission working in simulation with uSimMarine, and now I need to run on a Heron/PABLO. What should change, what should not be running anymore, and what should I be careful about?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 3478
+    },
+    {
+      "id": "C22",
+      "category": "conceptual_debugging",
+      "title": "Field Deployment Sanity Check",
+      "prompt": "Before running a mission on a real vehicle, how should I verify that simulation-only processes are disabled, real navigation and control interfaces are active, safety variables are understood, and the mission is ready for cautious deployment?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2687
+    },
+    {
+      "id": "C23",
+      "category": "conceptual_debugging",
+      "title": "Rescue Path Planning",
+      "prompt": "In an autonomous rescue-style mission, my planner receives swimmer positions and generates a path, but performance is poor. How should I think about swimmer reports, route generation, and handing the path to the autonomy system?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2841
+    },
+    {
+      "id": "C24",
+      "category": "conceptual_debugging",
+      "title": "Adversarial Rescue Updates",
+      "prompt": "In an adversarial rescue-style mission, an opponent or teammate can rescue swimmers before me. How should my system handle dynamic updates, dropped swimmers, and replanning?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2782
+    },
+    {
+      "id": "C25",
+      "category": "conceptual_debugging",
+      "title": "Teammate Messaging",
+      "prompt": "For a two-vehicle rescue/scout setup, how should I think about teammate communication, scout reports, rescue vehicle updates, and uField messaging?",
+      "score": 1,
+      "note": "Partial: good teammate/scout/rescue mental model, but the uField transport explanation implies a generic SCOUT_REPORT can move through broker/message-handler plumbing without clearly using the NODE_MESSAGE envelope or explicit sharing route.",
+      "hard_failure": {
+        "failure_type": "Imprecise uField message transport",
+        "brief_explanation": "Described scout reports moving through uField broker/handler plumbing without clearly requiring NODE_MESSAGE payloads or explicit pShare/uField routes."
+      },
+      "raw_status": "captured",
+      "answer_length": 4426
+    },
+    {
+      "id": "C26",
+      "category": "conceptual_debugging",
+      "title": "Post-Mission Alog Diagnosis",
+      "prompt": "My mission already failed, and I cannot rerun it right now, but I have an `.alog`. What MOOS-IvP alog tools and query strategy should I use to diagnose why a behavior never ran?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 4020
+    },
+    {
+      "id": "C27",
+      "category": "conceptual_debugging",
+      "title": "pLogger Produced No Useful Alog",
+      "prompt": "The mission completed, but there is no useful `.alog` file or the log is missing key variables. What pLogger, pAntler, process, path, and configuration issues should I check?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 3933
+    },
+    {
+      "id": "C28",
+      "category": "conceptual_debugging",
+      "title": "Choosing Debugging Tools During A Mission Run",
+      "prompt": "During a mission run, I need to inspect ordinary MOOS variables, helm behavior state, app warnings, and whether a process is alive. When should I use uXMS, uQueryDB, uHelmScope, uMAC/AppCasting, or pLogger output?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1554
+    },
+    {
+      "id": "C29",
+      "category": "conceptual_debugging",
+      "title": "pMarineViewer Background / Geodesy",
+      "prompt": "pMarineViewer shows my vehicle, but the background image or coordinate alignment looks wrong. What should I check about image paths, datum, local coordinates, and viewer configuration?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2190
+    },
+    {
+      "id": "C30",
+      "category": "conceptual_debugging",
+      "title": "Mission Broke After Several Edits",
+      "prompt": "After several edits to a mission, the vehicle no longer deploys correctly and I do not know whether the problem is in the launch script, `.moos` file, `.bhv` file, process output, or MOOS variables. What should I inspect first, and what artifacts would let someone diagnose it quickly?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2142
+    },
+    {
+      "id": "D01",
+      "category": "exact_docs_tools",
+      "title": "pOdometry Variables",
+      "prompt": "For a pOdometry-style app, what input variables should it normally consume, what output variable should it publish, and what debugging tools can confirm whether the mail and publication path is working?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 647
+    },
+    {
+      "id": "D02",
+      "category": "exact_docs_tools",
+      "title": "pAntler Process Launching",
+      "prompt": "What parts of a mission configuration determine whether pAntler launches a MOOS app, and how can I distinguish an app that never launched from an app that launched but never registered with the MOOSDB?",
+      "score": 1,
+      "note": "Partial: correctly explains ANTLER `Run = ...` launch lines and registration, but includes an invented/misspelled `pNodeReport` executable in the exact pAntler example.",
+      "hard_failure": {
+        "failure_type": "Invented/misspelled executable name",
+        "brief_explanation": "Used `pNodeReport` in an exact pAntler launch example; the app is `pNodeReporter`."
+      },
+      "raw_status": "captured",
+      "answer_length": 2026
+    },
+    {
+      "id": "D03",
+      "category": "exact_docs_tools",
+      "title": "uTimerScript Usage",
+      "prompt": "What is uTimerScript useful for in a mission, what kinds of variables should it post, and what are common mistakes when using it to initialize or trigger autonomy?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2301
+    },
+    {
+      "id": "D04",
+      "category": "exact_docs_tools",
+      "title": "Helm Deploy Variables",
+      "prompt": "What are the roles of `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and the helm state variables when a vehicle is expected to start autonomous behavior?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1382
+    },
+    {
+      "id": "D05",
+      "category": "exact_docs_tools",
+      "title": "BHV_Waypoint Params",
+      "prompt": "In my `.bhv` file, does BHV_Waypoint have a parameter named `magic_arrival_radius`? If not, what are the real arrival/capture-related parameters I should look up and how should I verify them?",
+      "score": 1,
+      "note": "Partial: correctly rejects `magic_arrival_radius` and names real BHV_Waypoint parameters such as `capture_radius`, `slip_radius`/`nm_radius`, `capture_line`, `lead`, and `lead_damper`, but also invents `capture_line_radius` as a parameter.",
+      "hard_failure": {
+        "failure_type": "Invented BHV_Waypoint parameter",
+        "brief_explanation": "Listed `capture_line_radius`, which is not parsed by BHV_Waypoint source."
+      },
+      "raw_status": "captured",
+      "answer_length": 1176
+    },
+    {
+      "id": "D06",
+      "category": "exact_docs_tools",
+      "title": "BHV_OpRegionV24 Semantics",
+      "prompt": "Does BHV_OpRegionV24 steer the vehicle back inside the polygon, or is that the wrong mental model? Explain what it does and how it should be paired with other behaviors.",
+      "score": 0,
+      "note": "Bad: repeats the legacy mental model that BHV_OpRegionV24 is only a monitor/constraint behavior and denies the V24 save-poly recovery objective function shown in source.",
+      "hard_failure": {
+        "failure_type": "Wrong behavior semantics",
+        "brief_explanation": "Described BHV_OpRegionV24 as only a constraint/watchdog and denied the documented V24 save-poly recovery objective function."
+      },
+      "raw_status": "captured",
+      "answer_length": 1856
+    },
+    {
+      "id": "D07",
+      "category": "exact_docs_tools",
+      "title": "Viewer Image / Geodesy Config",
+      "prompt": "Which MOOS-IvP tools or configuration areas should I inspect when pMarineViewer has a wrong background image, wrong datum, or confusing local coordinate frame?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1730
+    },
+    {
+      "id": "D08",
+      "category": "exact_docs_tools",
+      "title": "pShare Configuration",
+      "prompt": "What configuration choices determine whether a variable is shared between MOOS communities, and what symptoms suggest the route, host, port, or variable name is wrong?",
+      "score": 1,
+      "note": "Partial: useful route/host/variable debugging advice, but says pShare remote host/port is usually the other community MOOSDB host/port; the pShare output route should target the receiving pShare input/route port.",
+      "hard_failure": {
+        "failure_type": "Wrong pShare destination port model",
+        "brief_explanation": "Said pShare remote host/port is usually the other community MOOSDB host/port; output routes should target the receiving pShare input/route port."
+      },
+      "raw_status": "captured",
+      "answer_length": 2168
+    },
+    {
+      "id": "D09",
+      "category": "exact_docs_tools",
+      "title": "uField Broker Comparison",
+      "prompt": "For inter-vehicle messaging, compare uFldNodeBroker, uFldShoreBroker, uFldNodeComms, and uFldMessageHandler. What does each one do, and what is a common symptom when each is misconfigured?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1815
+    },
+    {
+      "id": "D10",
+      "category": "exact_docs_tools",
+      "title": "pLogger And Alog Verification",
+      "prompt": "When I need to verify after a mission that generated points, assignments, or behavior events were posted, how should I use pLogger output, aloggrep, alogview, and variable history?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1766
+    },
+    {
+      "id": "D11",
+      "category": "exact_docs_tools",
+      "title": "Generated Mission Files",
+      "prompt": "If I change a launch argument or edit a `meta_*.moos` template but the mission still behaves like it has the old value, what generated files and `nsplug` workflow should I inspect?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1681
+    },
+    {
+      "id": "D12",
+      "category": "exact_docs_tools",
+      "title": "pMarineViewer Action Buttons",
+      "prompt": "How are pMarineViewer action buttons configured to post variables such as `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and `RETURN`, and what mistakes make a button appear but not affect the mission?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 2254
+    },
+    {
+      "id": "D13",
+      "category": "exact_docs_tools",
+      "title": "uXMS, uQueryDB, and uPokeDB",
+      "prompt": "What is the practical difference between using uXMS, uQueryDB, and uPokeDB when debugging a MOOS variable during a mission?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1115
+    },
+    {
+      "id": "D14",
+      "category": "exact_docs_tools",
+      "title": "pNodeReporter and NODE_REPORT",
+      "prompt": "What does pNodeReporter normally publish, why is `NODE_REPORT_LOCAL` different from `NODE_REPORT`, and how does that matter in a shoreside/vehicle setup?",
+      "score": 1,
+      "note": "Partial: explains the local-vs-shared report distinction, but starts by saying pNodeReporter normally publishes `NODE_REPORT`; source defaults to `NODE_REPORT_LOCAL`, with `NODE_REPORT` normally being the shared/received report.",
+      "hard_failure": {
+        "failure_type": "Wrong pNodeReporter default output framing",
+        "brief_explanation": "Said pNodeReporter normally publishes NODE_REPORT; source defaults to NODE_REPORT_LOCAL."
+      },
+      "raw_status": "captured",
+      "answer_length": 1391
+    },
+    {
+      "id": "D15",
+      "category": "exact_docs_tools",
+      "title": "Loiter and Station-Keep Behaviors",
+      "prompt": "For a student choosing between BHV_Loiter and BHV_StationKeep, what are the important configuration parameters and what symptoms suggest the wrong behavior or wrong condition was used?",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 3713
+    },
+    {
+      "id": "K01",
+      "category": "code_config_advice",
+      "title": "pOdometry Mail Handling",
+      "prompt": "I am writing a pOdometry-style MOOS app. This code is fragile. Correct the pattern conceptually and explain what belongs in `OnNewMail()` versus `Iterate()`:\n\n```cpp\nbool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)\n{\n  for(auto msg : NewMail) {\n    if(msg.GetKey() == \"NAV_X\")\n      m_x = msg.GetDouble();\n    if(msg.GetKey() == \"NAV_Y\")\n      m_y = msg.GetDouble();\n  }\n  m_total += hypot(m_x - m_prev_x, m_y - m_prev_y);\n  Notify(\"ODOM_DIST\", m_total);\n  return true;\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1793
+    },
+    {
+      "id": "K02",
+      "category": "code_config_advice",
+      "title": "Missing Registration Pattern",
+      "prompt": "This pOdometry-style app sometimes receives no `NAV_X` or `NAV_Y` mail after reconnecting. Correct the pattern conceptually and explain where registration should happen:\n\n```cpp\nbool Odometry::OnStartUp()\n{\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n  return true;\n}\n\nbool Odometry::OnConnectToServer()\n{\n  return true;\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1008
+    },
+    {
+      "id": "K03",
+      "category": "code_config_advice",
+      "title": "AppCasting Config Warnings",
+      "prompt": "This `OnStartUp()` parser silently ignores typoed mission-file parameters, and the app sometimes never receives mail. Correct the pattern conceptually in MOOS-IvP/AppCasting style:\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  list<string> params;\n  m_MissionReader.GetConfiguration(GetAppName(), params);\n  for(string line : params) {\n    string param = biteStringX(line, '=');\n    if(param == \"threshold\")\n      m_threshold = atof(line.c_str());\n  }\n  return true;\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1556
+    },
+    {
+      "id": "K04",
+      "category": "code_config_advice",
+      "title": "uTimerScript Trigger Setup",
+      "prompt": "This timer script is supposed to deploy the vehicle after launch, but it is fragile and hard to debug. Correct the setup conceptually and explain what should be checked in uXMS:\n\n```text\nProcessConfig = uTimerScript\n{\n  AppTick   = 4\n  CommsTick = 4\n  event = var=DEPLOY, val=true, time=10\n  event = var=MOOS_MANUAL_OVERRIDE, val=false, time=10\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1518
+    },
+    {
+      "id": "K05",
+      "category": "code_config_advice",
+      "title": "Behavior Config File Boundary",
+      "prompt": "This mission tries to configure a behavior in the app config file. Correct the file-boundary mistake conceptually and explain where the behavior block belongs:\n\n```text\nProcessConfig = pHelmIvP\n{\n  AppTick = 4\n  CommsTick = 4\n\n  Behavior = BHV_Waypoint\n  {\n    name      = waypt_survey\n    condition = DEPLOY == true\n    points    = 0,0:50,0:50,50\n  }\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 921
+    },
+    {
+      "id": "K06",
+      "category": "code_config_advice",
+      "title": "pShare Route Config",
+      "prompt": "This multi-community config is intended to get vehicle reports to the shoreside, but the data never appears there. Correct the pattern conceptually and explain what host, port, and variable details must match:\n\n```text\nProcessConfig = pShare\n{\n  AppTick   = 4\n  CommsTick = 4\n  output = src_name=NODE_REPORT, dest_name=NODE_REPORT, route=localhost:9200\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1432
+    },
+    {
+      "id": "K07",
+      "category": "code_config_advice",
+      "title": "Inter-Vehicle Message Payload",
+      "prompt": "This app posts a message intended for another vehicle, but the receiver never sees the payload variable. Correct the message-format pattern conceptually and explain what names must match:\n\n```cpp\nNotify(\"NODE_MESSAGE_LOCAL\",\n       \"src_node=alpha,dest_node=bravo,var_name=VISIT_POINT,string_val=12,45\");\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 983
+    },
+    {
+      "id": "K08",
+      "category": "code_config_advice",
+      "title": "`setParam()` Pattern",
+      "prompt": "This custom behavior `setParam()` is probably wrong. Correct it and explain the MOOS-IvP-specific reason:\n\n```cpp\nbool BHV_Survey::setParam(string param, string val)\n{\n  if(param == \"survey_radius\") {\n    m_radius = atof(val.c_str());\n    return true;\n  }\n  return false;\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1027
+    },
+    {
+      "id": "K09",
+      "category": "code_config_advice",
+      "title": "`addInfoVars()` / InfoBuffer",
+      "prompt": "My custom behavior reads `NAV_X` and `NAV_Y` in `onRunState()` but I never declared them in the constructor and I do not check whether they exist. What should I change?",
+      "score": 1,
+      "note": "Partial: correctly uses `addInfoVars()` and `getBufferDoubleVal(..., ok)`, but places InfoVar registration in `onHelmStart()`/`onIdleState()` instead of the normal constructor/config-time behavior pattern used throughout the MOOS-IvP behavior source.",
+      "hard_failure": {
+        "failure_type": "Wrong behavior lifecycle framing",
+        "brief_explanation": "Put addInfoVars in onHelmStart/onIdleState instead of the normal constructor/config-time behavior pattern."
+      },
+      "raw_status": "captured",
+      "answer_length": 943
+    },
+    {
+      "id": "K10",
+      "category": "code_config_advice",
+      "title": "ZAIC Speed Function",
+      "prompt": "This speed-only IvP function is wrong or incomplete. Correct it using the normal MOOS-IvP pattern:\n\n```cpp\nIvPFunction* BHV_HoldSpeed::onRunState()\n{\n  ZAIC_PEAK zaic(\"speed\");\n  zaic.setSummit(m_speed);\n  IvPFunction* ipf = zaic.extractIvPFunction();\n  return ipf;\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 732
+    },
+    {
+      "id": "K11",
+      "category": "code_config_advice",
+      "title": "Reconnect-Safe Registration",
+      "prompt": "This MOOS app receives mail at first but stops receiving `NAV_X` after a reconnect. Correct the app lifecycle pattern conceptually:\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  Register(\"NAV_X\", 0);\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  return true;\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 396
+    },
+    {
+      "id": "K12",
+      "category": "code_config_advice",
+      "title": "Editing Templates But Launching Stale Files",
+      "prompt": "This launch workflow edits `meta_vehicle.moos`, but the running mission still uses old ports and old behavior settings. Correct the workflow conceptually:\n\n```bash\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\npAntler targ_vehicle.moos\n# later I edit meta_vehicle.moos, then run:\npAntler targ_vehicle.moos\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 799
+    },
+    {
+      "id": "K13",
+      "category": "code_config_advice",
+      "title": "pMarineViewer Button Posts",
+      "prompt": "This viewer button is supposed to deploy the vehicle, but clicking it does not make the helm run. Correct the configuration conceptually and explain what should be checked in uXMS:\n\n```text\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 1322
+    },
+    {
+      "id": "K14",
+      "category": "code_config_advice",
+      "title": "Behavior Updates Not Taking Effect",
+      "prompt": "This app posts a new waypoint update, but BHV_Waypoint never changes route. Correct the pattern conceptually and explain what names must line up:\n\n```cpp\nNotify(\"WPT_UPDATE\", \"points=0,0:50,0:50,50\");\n```\n\n```text\nBehavior = BHV_Waypoint\n{\n  name = waypt_survey\n  updates = WAYPOINT_UPDATES\n}\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 770
+    },
+    {
+      "id": "K15",
+      "category": "code_config_advice",
+      "title": "Duplicate Ports and Community Names",
+      "prompt": "This two-vehicle mission is intended to run both vehicles on one laptop, but one vehicle seems to disappear or the shoreside receives confusing reports. Correct the configuration conceptually:\n\n```text\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n\n// second vehicle file\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n```",
+      "score": 2,
+      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failure": null,
+      "raw_status": "captured",
+      "answer_length": 739
+    }
+  ]
+}

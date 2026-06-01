@@ -41,7 +41,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "uXMS = “watch variables live.”\nUse it when you want a streaming view of values as apps publish them.\n\nBash\nuXMS DEPLOY MOOS_MANUAL_OVERRIDE NAV_X NAV_Y DESIRED_HEADING\n\nBest for: “Is this variable being posted? Is it changing? Who is publishing what behaviorally?”\n\nuQueryDB = “ask the MOOSDB once.”\nUse it when you want the current value at a moment in time, without a live stream.\n\nBash\nuQueryDB DEPLOY\nuQueryDB NAV_X NAV_Y\n\nBest for: “What is the value right now?” It is less useful for spotting timing, staleness, or rapid changes.\n\nuPokeDB = “manually set/post a variable.”\nUse it to inject a value into the mission and test whether other apps react.\n\nBash\nuPokeDB DEPLOY=true\nuPokeDB MOOS_MANUAL_OVERRIDE=false\nuPokeDB RETURN=true\n\nBest for: “If I force this variable, does the helm/viewer/planner respond?”\n\nPractical debugging pattern:\n\nUse uXMS to see whether the variable is live.\n\nUse uQueryDB to confirm the current MOOSDB value.\n\nUse uPokeDB to test whether changing it causes the expected downstream effect.\n\nCommon mistake: using uPokeDB and assuming the mission is fixed. It only proves that downstream components can respond; it does not prove the original publisher, launch config, or button/script is working."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:57:25Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 8.95,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "In MOOS-IvP, the practical difference is whether you are **watching**, **asking once**, or **writing** a MOOS variable.\n\n`uXMS` is for live monitoring. It subscribes to variables and continuously prints updates as they arrive. Use it when you want to watch a variable change during a mission, for example:\n\n```bash\nuXMS NAV_X NAV_Y DESIRED_HEADING\n```\n\n`uQueryDB` is for a one-time query of the MOOSDB. It asks the database for the current value of one or more variables and exits. Use it when you just want a snapshot without running a live monitor:\n\n```bash\nuQueryDB NAV_X\n```\n\n`uPokeDB` is for publishing a value into the MOOSDB. It is not just observing; it changes state by posting a variable. Use it to test behavior, trigger modes, or manually override/input a value:\n\n```bash\nuPokeDB DEPLOY=true\nuPokeDB DESIRED_SPEED=1.5\n```\n\nSo, when debugging a MOOS variable:\n\n- `uXMS`: “show me this variable live”\n- `uQueryDB`: “what is this variable right now?”\n- `uPokeDB`: “set/post this variable to a value”\n\nThe main caution is that `uPokeDB` can affect the mission, while `uXMS` and `uQueryDB` are observational."
     }
   },
-  "updated_at": "2026-06-01T18:12:29.456Z"
+  "updated_at": "2026-06-01T21:57:25Z"
 }

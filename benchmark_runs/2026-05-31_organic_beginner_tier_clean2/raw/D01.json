@@ -36,6 +36,21 @@
       "method": "chatgpt_55_instant_reusable_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "A normal pOdometry-style app:\n\nConsumes\n\nNAV_X\nNAV_Y\n\nusually from uSimMarine, GPS/nav fusion, or another nav source.\n\nPublishes\n\nODOMETRY_DIST\n\nthe accumulated distance traveled.\n\nDebug path:\n\nConfirm nav data exists:\n\nBash\nuXMS NAV_X NAV_Y\n\nConfirm the app is running and connected:\n\nBash\nuXMS DB_CLIENTS\n\nConfirm the output is being posted:\n\nBash\nuXMS ODOMETRY_DIST\n\nFor active inspection:\n\nBash\nuMAC\n\nthen watch variables or poke test values:\n\nBash\nuPokeDB targ.moos NAV_X=10 NAV_Y=20\nuPokeDB targ.moos NAV_X=20 NAV_Y=20\n\nIf still broken, inspect app code/config:\n\nC++\nOnConnectToServer() -> Register(\"NAV_X\", 0); Register(\"NAV_Y\", 0);\nOnNewMail()         -> update current x/y\nIterate()           -> compute and Notify(\"ODOMETRY_DIST\", value)\n\nKey failure pattern: registering only in OnStartUp() can fail after reconnects. Register subscriptions in OnConnectToServer()."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:54:31Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 10.52,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "A `pOdometry`-style MOOS app normally consumes navigation mail such as:\n\n- `NAV_X`\n- `NAV_Y`\n\nIt typically publishes:\n\n- `ODOMETRY_DIST`\n\nThat output is the accumulated distance traveled, computed from changes in ownship position over time.\n\nTo debug the mail and publication path, use standard MOOS tools such as:\n\n- `uXMS` to watch whether `NAV_X`, `NAV_Y`, and `ODOMETRY_DIST` are appearing in the MOOSDB.\n- `uPokeDB` to manually inject test values for `NAV_X` and `NAV_Y`.\n- `uMS` or `uMAC` to inspect running processes and MOOSDB traffic.\n- App-level console output or `MOOSTrace` messages to confirm the app is receiving mail and publishing."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:54:31Z"
 }

@@ -41,7 +41,21 @@
       "method": "user_pasted_chatgpt_55_instant_answer",
       "model_label": "GPT-5.5 Instant",
       "text": "The posted variable name and the behavior’s update variable do **not** match.\n\nCorrect pattern:\n\n```cpp\nNotify(\"WAYPOINT_UPDATES\", \"points=0,0:50,0:50,50\");\n```\n\n```text\nBehavior = BHV_Waypoint\n{\n  name    = waypt_survey\n  updates = WAYPOINT_UPDATES\n}\n```\n\nWhat must line up:\n\n`Notify()` posts to a **MOOS variable**:\n\n```cpp\nWAYPOINT_UPDATES\n```\n\nThe behavior listens to the MOOS variable named in:\n\n```text\nupdates = WAYPOINT_UPDATES\n```\n\nSo this is wrong:\n\n```cpp\nNotify(\"WPT_UPDATE\", ...)\nupdates = WAYPOINT_UPDATES\n```\n\nbecause `BHV_Waypoint` is not subscribed to `WPT_UPDATE`.\n\nAlso check in `uXMS`:\n\n```bash\nuXMS WAYPOINT_UPDATES WPT_UPDATE\n```\n\nYou should see the update appearing on the same variable named in the behavior block."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T22:02:36Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 13.13,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "`BHV_Waypoint` listens on the MOOS variable named by its `updates` parameter. In your behavior config, that variable is:\n\n```text\nupdates = WAYPOINT_UPDATES\n```\n\nBut the app is publishing:\n\n```cpp\nNotify(\"WPT_UPDATE\", \"points=0,0:50,0:50,50\");\n```\n\nThose names do not match, so the behavior never sees the update.\n\nCorrect pattern conceptually:\n\n```cpp\nNotify(\"WAYPOINT_UPDATES\", \"points=0,0:50,0:50,50\");\n```\n\nor change the behavior to match the posted variable:\n\n```text\nupdates = WPT_UPDATE\n```\n\nThe names that must line up are:\n\n- The MOOS variable posted by the app: `Notify(\"<var_name>\", \"...\")`\n- The behavior’s `updates = <var_name>` setting\n\nThe behavior `name = waypt_survey` is the behavior instance name; it does not automatically define the update variable."
     }
   },
-  "updated_at": "2026-06-01T21:20:00.000Z"
+  "updated_at": "2026-06-01T22:02:36Z"
 }

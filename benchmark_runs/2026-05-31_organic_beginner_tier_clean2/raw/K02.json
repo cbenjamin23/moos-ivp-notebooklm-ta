@@ -40,6 +40,21 @@
       "method": "chatgpt_55_instant_fresh_user_tab",
       "model_label": "GPT-5.5 Instant",
       "text": "Register in both places, usually through one helper.\n\nOnStartUp() runs when the app starts and reads config. OnConnectToServer() runs whenever the app connects or reconnects to the MOOSDB. After reconnecting, subscriptions may need to be re-established, so leaving OnConnectToServer() empty can cause exactly this symptom: the app is alive, but receives no NAV_X / NAV_Y.\n\nUse this pattern:\n\nC++\nbool Odometry::OnStartUp()\n{\n  RegisterVariables();\n  return true;\n}\n\nbool Odometry::OnConnectToServer()\n{\n  RegisterVariables();\n  return true;\n}\n\nvoid Odometry::RegisterVariables()\n{\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n}\n\nConceptually:\n\nOnStartUp():\n\nC++\n// Read mission-file config.\n// Initialize app parameters.\n// Register variables for the initial connection.\n\nOnConnectToServer():\n\nC++\n// Re-register all mail subscriptions after connecting/reconnecting.\n\nOnNewMail():\n\nC++\n// Consume NAV_X / NAV_Y updates.\n// Update stored input state.\n// Do not assume both variables arrived in the same mail batch.\n\nIterate():\n\nC++\n// Perform periodic computation once valid inputs exist.\n// Publish ODOM_DIST.\n\nAlso guard against stale or missing data: do not compute odometry until both NAV_X and NAV_Y have been received at least once."
+    },
+    "chatgpt_55_low_cli": {
+      "status": "captured",
+      "captured_at": "2026-06-01T21:58:23Z",
+      "method": "codex_cli_0.136.0_ephemeral_ignore_config_low_reasoning",
+      "model_label": "ChatGPT 5.5 Low CLI",
+      "sandbox": "read-only",
+      "codex_home": "temporary_auth_only",
+      "workdir": "temporary_empty_directory",
+      "returncode": 0,
+      "elapsed_seconds": 16.02,
+      "event_count": 4,
+      "suspicious_events": [],
+      "text": "In MOOS apps, mail registration should happen in `OnConnectToServer()`, because reconnecting to the MOOSDB can drop prior subscriptions. `OnStartUp()` is for reading config and initial setup; it may run only once, so registrations done only there can be lost after a reconnect.\n\nCorrect pattern conceptually:\n\n```cpp\nbool Odometry::OnStartUp()\n{\n  // Read mission/config params here.\n  return true;\n}\n\nbool Odometry::OnConnectToServer()\n{\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n  return true;\n}\n```\n\nOften this is wrapped in a helper:\n\n```cpp\nvoid Odometry::RegisterVariables()\n{\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n}\n\nbool Odometry::OnStartUp()\n{\n  RegisterVariables(); // optional initial registration\n  return true;\n}\n\nbool Odometry::OnConnectToServer()\n{\n  RegisterVariables(); // required for reconnects\n  return true;\n}\n```\n\nThe important rule: registrations must be performed from `OnConnectToServer()` so they are reissued every time the app connects or reconnects to the MOOSDB."
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:58:23Z"
 }
