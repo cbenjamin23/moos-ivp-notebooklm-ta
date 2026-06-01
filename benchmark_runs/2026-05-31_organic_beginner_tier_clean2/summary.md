@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: stopped - NotebookLM quota at D03
+Status: in progress - next prompt D04
 
-Last updated: 2026-06-01T02:33:36Z
+Last updated: 2026-06-01T11:18:44Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":128,"quota_or_block":1,"not_started":71}
+Counts: {"captured":132,"not_started":68}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -44,7 +44,7 @@ Counts: {"captured":128,"quota_or_block":1,"not_started":71}
 | C30 | conceptual_debugging | Mission Broke After Several Edits | captured | captured | captured | captured |
 | D01 | exact_docs_tools | pOdometry Variables | captured | captured | captured | captured |
 | D02 | exact_docs_tools | pAntler Process Launching | captured | captured | captured | captured |
-| D03 | exact_docs_tools | uTimerScript Usage | quota_or_block | not_started | not_started | not_started |
+| D03 | exact_docs_tools | uTimerScript Usage | captured | captured | captured | captured |
 | D04 | exact_docs_tools | Helm Deploy Variables | not_started | not_started | not_started | not_started |
 | D05 | exact_docs_tools | BHV_Waypoint Params | not_started | not_started | not_started | not_started |
 | D06 | exact_docs_tools | BHV_OpRegionV24 Semantics | not_started | not_started | not_started | not_started |
@@ -63,12 +63,10 @@ Counts: {"captured":128,"quota_or_block":1,"not_started":71}
 | K09 | code_config_advice | `addInfoVars()` / InfoBuffer | not_started | not_started | not_started | not_started |
 | K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
 
-## Stop Reason
+## Current Position
 
-NotebookLM reported after refresh and D03 submission: "The system was unable to answer. You have reached your daily chat limit, come back later. Or upgrade." The run remains stopped at D03 per instruction. D01-D02 are complete for all four tools. D03 has only the NotebookLM quota/block status; no ChatGPT, Claude, or Gemini D03 prompt was run.
+C01-C30 are complete for all four tools. D01-D03 are complete for all four tools. The next prompt is D04 in the exact documentation/tool category.
 
 ## Progress Notes
 
-C01-C30 are complete for all four tools, so the conceptual/debugging category is complete. D01-D02 are complete in the exact documentation/tool category. The benchmark should resume at D03 after NotebookLM quota resets.
-
-Latest retry: 2026-06-01T02:33:36Z; NotebookLM was still blocked, so no subset-only testing was performed.
+Manual retry at 2026-06-01T11:18:44Z: NotebookLM limit had lifted; D03 was captured for NotebookLM, ChatGPT, Claude, and Gemini. Testing should continue at D04 unless a tool quota/block appears.
