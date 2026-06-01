@@ -1,0 +1,26 @@
+{
+  "prompt_id": "K15",
+  "category": "code_config_advice",
+  "title": "Duplicate Ports and Community Names",
+  "prompt": "This two-vehicle mission is intended to run both vehicles on one laptop, but one vehicle seems to disappear or the shoreside receives confusing reports. Correct the configuration conceptually:\n\n```text\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n\n// second vehicle file\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n```",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "prompt_id": "K13",
+  "category": "code_config_advice",
+  "title": "pMarineViewer Button Posts",
+  "prompt": "This viewer button is supposed to deploy the vehicle, but clicking it does not make the helm run. Correct the configuration conceptually and explain what should be checked in uXMS:\n\n```text\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true\n}\n```",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

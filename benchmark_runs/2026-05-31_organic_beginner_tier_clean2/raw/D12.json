@@ -1,0 +1,30 @@
+{
+  "prompt_id": "D12",
+  "category": "exact_docs_tools",
+  "title": "pMarineViewer Action Buttons",
+  "prompt": "How are pMarineViewer action buttons configured to post variables such as `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and `RETURN`, and what mistakes make a button appear but not affect the mission?",
+  "captured_at": "2026-06-01T15:54:13.797Z",
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "captured",
+      "text": "Action buttons in pMarineViewer are configured in the .moos mission file within the pMarineViewer configuration block\n1\n. These buttons allow users to \"poke\" the MOOSDB with specific variable-value pairs to control the mission\n2\n3\n.\nConfiguring Action Buttons\nYou can configure up to twenty buttons (using parameters button_one through button_twenty)\n1\n4\n. The configuration uses a specific syntax where the right-hand side is a '#'-separated list containing the button label and one or more variable-value pairs\n5\n.\nConfiguration Syntax Example:\n// Illustrative configuration snippet\nProcessConfig = pMarineViewer\n{\n  // Button 1: Deploy the vehicle and put it in 'drive'\n  button_one = DEPLOY # DEPLOY=true # MOOS_MANUAL_OVERRIDE=false\n  \n  // Button 2: Command the vehicle to return\n  button_two = RETURN # RETURN=true\n}\n\nLabels: Any component in the list that does not contain an '=' is interpreted as the button’s label\n5\n.\nMultiple Pokes: A single button click can trigger multiple variable pokes (e.g., setting both DEPLOY=true and MOOS_MANUAL_OVERRIDE=false simultaneously)\n3\n.\nVariable Types: pMarineViewer uses a heuristic to determine the data type: if the value is non-numerical (like true), it is posted as a string; if it is numerical, it is posted as a double\n5\n. To force a numerical value to be a string, you must surround it with quotes\n5\n.\nCommon Mistakes (Why a button appears but has no effect)\nIf a button is visible on the GUI but clicking it does not affect the vehicle's mission, the following issues are the most likely causes, ranked from most common to least common:\nMissing Bridges (Shoreside-Vehicle Topology): In most multi-vehicle missions, pMarineViewer runs on a \"shoreside\" community\n6\n7\n. When you click a button, the poke happens only in the shoreside MOOSDB\n8\n. If you have not configured uFldShoreBroker (or pShare) to bridge that variable to the vehicle's community, the vehicle will never receive the command\n8\nmore_horiz\n.\nCase Sensitivity: MOOS variables and their string values are case-sensitive\n11\n12\n. If a behavior condition is looking for DEPLOY=true but your button posts deploy=true or DEPLOY=TRUE, the condition will not be met\n13\n14\n.\nSpelling Mismatches: A common pitfall is the legacy misspelling of \"override\" in MOOS. The helm traditionally uses MOOS_MANUAL_OVERIDE (one 'r')\n15\n16\n. While the helm has been updated to respect the correct spelling (MOOS_MANUAL_OVERRIDE) as well, other applications might only listen for one specific version\n15\n16\n.\nHeuristic Type Mismatch: If a behavior expects a string (e.g., DEPLOY=\"true\") but pMarineViewer posts a double, or vice-versa, the receiving application may ignore the post\n17\n18\n.\nBehavior Logic and Initializations:\nThe button only pokes the variable; a behavior in the .bhv file must actually have a condition listening for that variable (e.g., condition = DEPLOY=true) to take action\n14\n19\n.\nIf the helm is in a MALCONFIG state due to a behavior error, it will not process mission control pokes\n20\n21\n.\nHelm State (Manual Override): If you poke DEPLOY=true but the vehicle is still in PARK because MOOS_MANUAL_OVERRIDE is still true, the vehicle will not move\n22\n23\n. The DEPLOY button must typically set the override variable to false to transition the helm into the DRIVE state\n23\n24\n.\nkeep_pin",
+      "method": "notebook_clean_history_inner_text",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "captured_at": "2026-06-01T15:54:13.797Z"
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  },
+  "updated_at": "2026-06-01T15:54:13.797Z"
+}

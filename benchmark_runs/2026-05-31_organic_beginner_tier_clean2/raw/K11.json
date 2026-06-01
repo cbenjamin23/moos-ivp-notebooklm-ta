@@ -1,0 +1,26 @@
+{
+  "prompt_id": "K11",
+  "category": "code_config_advice",
+  "title": "Reconnect-Safe Registration",
+  "prompt": "This MOOS app receives mail at first but stops receiving `NAV_X` after a reconnect. Correct the app lifecycle pattern conceptually:\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  Register(\"NAV_X\", 0);\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  return true;\n}\n```",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

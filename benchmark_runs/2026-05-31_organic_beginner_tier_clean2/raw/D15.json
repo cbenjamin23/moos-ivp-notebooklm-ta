@@ -1,0 +1,26 @@
+{
+  "prompt_id": "D15",
+  "category": "exact_docs_tools",
+  "title": "Loiter and Station-Keep Behaviors",
+  "prompt": "For a student choosing between BHV_Loiter and BHV_StationKeep, what are the important configuration parameters and what symptoms suggest the wrong behavior or wrong condition was used?",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

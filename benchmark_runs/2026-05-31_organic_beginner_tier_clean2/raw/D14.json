@@ -1,0 +1,26 @@
+{
+  "prompt_id": "D14",
+  "category": "exact_docs_tools",
+  "title": "pNodeReporter and NODE_REPORT",
+  "prompt": "What does pNodeReporter normally publish, why is `NODE_REPORT_LOCAL` different from `NODE_REPORT`, and how does that matter in a shoreside/vehicle setup?",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

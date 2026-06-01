@@ -1,0 +1,26 @@
+{
+  "prompt_id": "D13",
+  "category": "exact_docs_tools",
+  "title": "uXMS, uQueryDB, and uPokeDB",
+  "prompt": "What is the practical difference between using uXMS, uQueryDB, and uPokeDB when debugging a MOOS variable during a mission?",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

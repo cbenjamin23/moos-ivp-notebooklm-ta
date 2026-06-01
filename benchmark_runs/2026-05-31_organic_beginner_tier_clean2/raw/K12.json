@@ -1,0 +1,26 @@
+{
+  "prompt_id": "K12",
+  "category": "code_config_advice",
+  "title": "Editing Templates But Launching Stale Files",
+  "prompt": "This launch workflow edits `meta_vehicle.moos`, but the running mission still uses old ports and old behavior settings. Correct the workflow conceptually:\n\n```bash\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\npAntler targ_vehicle.moos\n# later I edit meta_vehicle.moos, then run:\npAntler targ_vehicle.moos\n```",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}

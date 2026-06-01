@@ -182,6 +182,26 @@ For inter-vehicle messaging, compare uFldNodeBroker, uFldShoreBroker, uFldNodeCo
 
 When I need to verify after a mission that generated points, assignments, or behavior events were posted, how should I use pLogger output, aloggrep, alogview, and variable history?
 
+### D11: Generated Mission Files
+
+If I change a launch argument or edit a `meta_*.moos` template but the mission still behaves like it has the old value, what generated files and `nsplug` workflow should I inspect?
+
+### D12: pMarineViewer Action Buttons
+
+How are pMarineViewer action buttons configured to post variables such as `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and `RETURN`, and what mistakes make a button appear but not affect the mission?
+
+### D13: uXMS, uQueryDB, and uPokeDB
+
+What is the practical difference between using uXMS, uQueryDB, and uPokeDB when debugging a MOOS variable during a mission?
+
+### D14: pNodeReporter and NODE_REPORT
+
+What does pNodeReporter normally publish, why is `NODE_REPORT_LOCAL` different from `NODE_REPORT`, and how does that matter in a shoreside/vehicle setup?
+
+### D15: Loiter and Station-Keep Behaviors
+
+For a student choosing between BHV_Loiter and BHV_StationKeep, what are the important configuration parameters and what symptoms suggest the wrong behavior or wrong condition was used?
+
 ## Code Advice / Correction Prompts
 
 These prompts are included to measure limits. They should not be used to market the NotebookLM TA as a coding agent.
@@ -327,4 +347,74 @@ IvPFunction* BHV_HoldSpeed::onRunState()
   IvPFunction* ipf = zaic.extractIvPFunction();
   return ipf;
 }
+```
+
+### K11: Reconnect-Safe Registration
+
+This MOOS app receives mail at first but stops receiving `NAV_X` after a reconnect. Correct the app lifecycle pattern conceptually:
+
+```cpp
+bool MyApp::OnStartUp()
+{
+  Register("NAV_X", 0);
+  return true;
+}
+
+bool MyApp::OnConnectToServer()
+{
+  return true;
+}
+```
+
+### K12: Editing Templates But Launching Stale Files
+
+This launch workflow edits `meta_vehicle.moos`, but the running mission still uses old ports and old behavior settings. Correct the workflow conceptually:
+
+```bash
+nsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha
+pAntler targ_vehicle.moos
+# later I edit meta_vehicle.moos, then run:
+pAntler targ_vehicle.moos
+```
+
+### K13: pMarineViewer Button Posts
+
+This viewer button is supposed to deploy the vehicle, but clicking it does not make the helm run. Correct the configuration conceptually and explain what should be checked in uXMS:
+
+```text
+ProcessConfig = pMarineViewer
+{
+  button_one = DEPLOY # DEPLOY=true
+}
+```
+
+### K14: Behavior Updates Not Taking Effect
+
+This app posts a new waypoint update, but BHV_Waypoint never changes route. Correct the pattern conceptually and explain what names must line up:
+
+```cpp
+Notify("WPT_UPDATE", "points=0,0:50,0:50,50");
+```
+
+```text
+Behavior = BHV_Waypoint
+{
+  name = waypt_survey
+  updates = WAYPOINT_UPDATES
+}
+```
+
+### K15: Duplicate Ports and Community Names
+
+This two-vehicle mission is intended to run both vehicles on one laptop, but one vehicle seems to disappear or the shoreside receives confusing reports. Correct the configuration conceptually:
+
+```text
+ServerHost = localhost
+ServerPort = 9000
+Community  = alpha
+
+// second vehicle file
+ServerHost = localhost
+ServerPort = 9000
+Community  = alpha
 ```

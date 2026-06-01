@@ -17,7 +17,7 @@
     "ok": false,
     "reason": "Timed out after 3000ms waiting for selector internal:role=menuitem[name=/Delete chat history/i] >> nth=0: Browser Use encountered an error interacting with this webpage: Error: Element is not enabled\n    at new f (https://www.gstatic.com/_/mss/boq-labs-tailwind/_/js/k=boq-labs-tailwind.LabsTailwindUi.en.0MhdN-44gdo.es6.O/d=1/excm=_b/ed=1/dg=0/br=1/wt=2/ujg=1/rs=ANnj5bG2mKXGA413ZuwYiiWzhs8sInu0WQ/ee=Pjplud:PoEs9b;QGR0gd:Mlhmy;ScI3Yc:e7Hzgb;YIZmRd:A1yn5d;cEt90b:ws9Tlc;dowIGb:ebZ3mb/dti=1/m=_b:445:58)\n    at <anonymous>:203:767\n    at <anonymous>:203:1372\n    at <anonymous>:204:11\nwaiting on click for selector internal:role=menuitem[name=/Delete chat history/i] >> nth=0"
   },
-  "prompt_count": 50,
+  "prompt_count": 60,
   "status": {
     "C01": {
       "category": "conceptual_debugging",
@@ -518,6 +518,106 @@
         "claude": "not_started",
         "gemini": "captured"
       }
+    },
+    "D11": {
+      "category": "exact_docs_tools",
+      "title": "Generated Mission Files",
+      "models": {
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "pending_quota_limited",
+        "gemini": "captured"
+      }
+    },
+    "D12": {
+      "category": "exact_docs_tools",
+      "title": "pMarineViewer Action Buttons",
+      "models": {
+        "notebook": "captured",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "D13": {
+      "category": "exact_docs_tools",
+      "title": "uXMS, uQueryDB, and uPokeDB",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "D14": {
+      "category": "exact_docs_tools",
+      "title": "pNodeReporter and NODE_REPORT",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "D15": {
+      "category": "exact_docs_tools",
+      "title": "Loiter and Station-Keep Behaviors",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "K11": {
+      "category": "code_config_advice",
+      "title": "Reconnect-Safe Registration",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "K12": {
+      "category": "code_config_advice",
+      "title": "Editing Templates But Launching Stale Files",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "K13": {
+      "category": "code_config_advice",
+      "title": "pMarineViewer Button Posts",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "K14": {
+      "category": "code_config_advice",
+      "title": "Behavior Updates Not Taking Effect",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
+    },
+    "K15": {
+      "category": "code_config_advice",
+      "title": "Duplicate Ports and Community Names",
+      "models": {
+        "notebook": "not_started",
+        "chatgpt": "not_started",
+        "claude": "pending_quota_limited",
+        "gemini": "not_started"
+      }
     }
   },
   "last_updated_at": "2026-06-01T14:33:34Z",
@@ -526,7 +626,7 @@
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
   "stopped_at": "2026-06-01T14:33:34Z",
-  "stop_reason": "User allowed continuing non-Claude tools after the Claude quota notice. K09 is now complete. K10 has NotebookLM, ChatGPT, and Gemini captured; K10 Claude remains deferred until Claude is available at 12:10 PM.",
+  "stop_reason": "Expansion capture in progress. Last update: D12 notebook captured. Claude remains pending due quota/limit.",
   "last_completed_prompt": "K09",
   "partial_prompt_at_stop": "K10",
   "resume_attempts": [
@@ -638,5 +738,12 @@
     "remaining_models": [
       "claude"
     ]
-  }
+  },
+  "events": [
+    {
+      "at": "2026-06-01T11:05:00-04:00",
+      "event": "expanded_prompt_bank",
+      "result": "Added D11-D15 and K11-K15. User requested collecting results now on non-limited tools; Claude left pending due quota/limit."
+    }
+  ]
 }

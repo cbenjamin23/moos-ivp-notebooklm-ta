@@ -1,0 +1,26 @@
+{
+  "prompt_id": "K14",
+  "category": "code_config_advice",
+  "title": "Behavior Updates Not Taking Effect",
+  "prompt": "This app posts a new waypoint update, but BHV_Waypoint never changes route. Correct the pattern conceptually and explain what names must line up:\n\n```cpp\nNotify(\"WPT_UPDATE\", \"points=0,0:50,0:50,50\");\n```\n\n```text\nBehavior = BHV_Waypoint\n{\n  name = waypt_survey\n  updates = WAYPOINT_UPDATES\n}\n```",
+  "captured_at": null,
+  "status": "pending_non_claude_capture",
+  "responses": {
+    "notebook": {
+      "status": "not_started",
+      "text": ""
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": ""
+    },
+    "claude": {
+      "status": "pending_quota_limited",
+      "text": ""
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": ""
+    }
+  }
+}
