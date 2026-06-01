@@ -6,7 +6,8 @@
     "NotebookLM TA",
     "ChatGPT",
     "Claude",
-    "Gemini"
+    "Gemini",
+    "GPT-5.5 Instant"
   ],
   "instructions": "Use only the prompt text. No special instructions. Default platform behavior allowed. Stop the whole run if any model hits quota/blocking state. Use one prompt per browser conversation where practical; NotebookLM chat history deleted between prompts after raw output capture.",
   "previous_attempts_excluded": [
@@ -606,7 +607,8 @@
         "notebook": "not_started",
         "chatgpt": "not_started",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_instant": "captured"
       }
     },
     "K15": {
@@ -616,7 +618,8 @@
         "notebook": "not_started",
         "chatgpt": "not_started",
         "claude": "captured",
-        "gemini": "not_started"
+        "gemini": "not_started",
+        "chatgpt_55_instant": "captured"
       }
     }
   },
@@ -758,25 +761,29 @@
       "chatgpt": "captured",
       "gemini": "captured",
       "notebook": "captured",
-      "claude": "captured"
+      "claude": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K12": {
       "chatgpt": "captured",
       "gemini": "captured",
       "notebook": "captured",
-      "claude": "captured"
+      "claude": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K13": {
       "chatgpt": "captured",
       "gemini": "captured",
       "notebook": "captured",
-      "claude": "captured"
+      "claude": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K14": {
       "chatgpt": "captured",
       "gemini": "captured",
       "notebook": "captured",
-      "claude": "captured"
+      "claude": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K15": {
       "chatgpt": "captured",
@@ -1163,5 +1170,5 @@
       "chatgpt_55_instant": "captured"
     }
   },
-  "updated_at": "2026-06-01T20:41:46.217Z"
+  "updated_at": "2026-06-01T21:25:00.000Z"
 }

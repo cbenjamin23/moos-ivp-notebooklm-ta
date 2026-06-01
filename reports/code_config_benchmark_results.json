@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "code/config advice",
   "prompt_range": "K01-K15",
-  "graded_at": "2026-06-01 expansion pass",
+  "graded_at": "2026-06-01T21:45:00.000Z",
   "status": "complete for K01-K15; user-approved recaptures are treated as primary stored answers",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
@@ -73,6 +73,21 @@
       "bad_count": 3,
       "bad_percent": 20.0,
       "pending_count": 0
+    },
+    "chatgpt_55_instant": {
+      "model": "ChatGPT 5.5 Instant",
+      "prompt_count": 15,
+      "total_score": 25,
+      "max_score": 30,
+      "average_score": 1.667,
+      "score_percent": 83.3,
+      "good_count": 11,
+      "good_percent": 73.3,
+      "partial_count": 3,
+      "partial_percent": 20.0,
+      "bad_count": 1,
+      "bad_percent": 6.7,
+      "pending_count": 0
     }
   },
   "hard_failures": [
@@ -129,6 +144,30 @@
       "model": "Gemini",
       "failure_type": "Wrong pShare/port mental model",
       "brief_explanation": "Got the unique vehicle ports and community names right, but suggested routing shoreside pShare output to vehicle MOOSDB ports rather than distinguishing pShare route ports from MOOSDB ServerPort."
+    },
+    {
+      "prompt_id": "K06",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Wrong pShare destination port model",
+      "brief_explanation": "Told the user to route to the shoreside MOOSDB ServerPort; pShare output should target the receiving pShare route/input port."
+    },
+    {
+      "prompt_id": "K07",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Wrong NODE_MESSAGE destination field",
+      "brief_explanation": "Explicitly replaced the documented dest_node field with dests=bravo, which would break the message format."
+    },
+    {
+      "prompt_id": "K08",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Missing base-class delegation in code",
+      "brief_explanation": "Validated the custom parameter but returned false for unhandled parameters instead of delegating to IvPBehavior::setParam for standard behavior parameters."
+    },
+    {
+      "prompt_id": "K10",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Invalid/incomplete ZAIC correction",
+      "brief_explanation": "Added shaping and setPWT but kept ZAIC_PEAK zaic(\"speed\") without the IvP domain constructor argument."
     }
   ],
   "prompts": [
@@ -141,13 +180,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four answers separated mail/state updates from Iterate-time publication well enough for a pOdometry-style app."
@@ -161,13 +202,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four answers gave a usable reconnect-safe registration pattern, with registration repeated from OnConnectToServer or the local RegisterVariables helper."
@@ -181,10 +224,12 @@
         "notebook": 1,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "Gemini"
@@ -200,11 +245,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM and ChatGPT gave robust timed-post/debugging advice. Claude and Gemini were useful but more generic and included less reliable trigger/config details."
@@ -218,13 +265,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four correctly identified that behavior blocks belong in the .bhv behavior file, while pHelmIvP is launched/configured from the .moos mission file."
@@ -238,7 +287,8 @@
         "notebook": 2,
         "chatgpt": 1,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 1
       },
       "winners": [
         "notebook",
@@ -246,9 +296,10 @@
         "gemini"
       ],
       "hard_failures": [
-        "ChatGPT"
+        "ChatGPT",
+        "ChatGPT 5.5 Instant"
       ],
-      "note": "NotebookLM, Claude, and Gemini gave usable pShare host/port/name guidance. ChatGPT incorrectly framed the destination as the shoreside MOOSDB ServerPort rather than the receiving pShare port."
+      "note": "NotebookLM, Claude, and Gemini gave usable pShare host/port/name guidance. ChatGPT incorrectly framed the destination as the shoreside MOOSDB ServerPort rather than the receiving pShare port. GPT-5.5 Instant: Partial: correctly identifies localhost/source-variable/name issues, but incorrectly says the route should target the shoreside MOOSDB ServerPort rather than the receiving pShare route/input port."
     },
     {
       "id": "K07",
@@ -259,7 +310,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 0,
-        "gemini": 0
+        "gemini": 0,
+        "chatgpt_55_instant": 0
       },
       "winners": [
         "notebook",
@@ -267,9 +319,10 @@
       ],
       "hard_failures": [
         "Claude",
-        "Gemini"
+        "Gemini",
+        "ChatGPT 5.5 Instant"
       ],
-      "note": "NotebookLM and ChatGPT correctly used NODE_MESSAGE_LOCAL with src_node, dest_node, var_name, and quoted string_val. Claude replaced the documented field names with wrong moos_var/moos_string fields. Gemini recommended direct VISIT_POINT publishing rather than the inter-vehicle envelope."
+      "note": "NotebookLM and ChatGPT correctly used NODE_MESSAGE_LOCAL with src_node, dest_node, var_name, and quoted string_val. Claude replaced the documented field names with wrong moos_var/moos_string fields. Gemini recommended direct VISIT_POINT publishing rather than the inter-vehicle envelope. GPT-5.5 Instant: Bad: the first line repeats the documented dest_node form, but the answer then explicitly says to replace it with dests=bravo, which is not the documented NODE_MESSAGE field."
     },
     {
       "id": "K08",
@@ -280,7 +333,8 @@
         "notebook": 2,
         "chatgpt": 1,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 1
       },
       "winners": [
         "notebook",
@@ -288,9 +342,10 @@
         "gemini"
       ],
       "hard_failures": [
-        "ChatGPT"
+        "ChatGPT",
+        "ChatGPT 5.5 Instant"
       ],
-      "note": "NotebookLM, Claude, and Gemini preserved base-class setParam delegation. ChatGPT validated the custom parameter but its code returned false instead of delegating to IvPBehavior::setParam for standard behavior parameters."
+      "note": "NotebookLM, Claude, and Gemini preserved base-class setParam delegation. ChatGPT validated the custom parameter but its code returned false instead of delegating to IvPBehavior::setParam for standard behavior parameters. GPT-5.5 Instant: Partial: lowercases and validates the custom parameter, but returns false for unhandled parameters instead of delegating to IvPBehavior::setParam for standard behavior parameters."
     },
     {
       "id": "K09",
@@ -301,11 +356,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 0
+        "gemini": 0,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "Claude",
@@ -322,7 +379,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 0
+        "gemini": 0,
+        "chatgpt_55_instant": 1
       },
       "winners": [
         "notebook",
@@ -330,9 +388,10 @@
         "claude"
       ],
       "hard_failures": [
-        "Gemini"
+        "Gemini",
+        "ChatGPT 5.5 Instant"
       ],
-      "note": "NotebookLM, ChatGPT, and Claude corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method."
+      "note": "NotebookLM, ChatGPT, and Claude corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. GPT-5.5 Instant: Partial: adds ZAIC shaping and setPWT, but the corrected code still uses ZAIC_PEAK zaic(\"speed\") instead of ZAIC_PEAK zaic(m_domain, \"speed\"), so it is not a valid normal MOOS-IvP pattern."
     },
     {
       "id": "K11",
@@ -343,7 +402,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers identified that registrations need to be repeated from OnConnectToServer or a shared registerVariables helper called on reconnect.",
@@ -351,7 +411,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -363,7 +424,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments.",
@@ -371,7 +433,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -383,7 +446,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers identified the need to post DEPLOY=true and release MOOS_MANUAL_OVERRIDE=false, then check DEPLOY, MOOS_MANUAL_OVERRIDE, helm state, and behavior outputs in uXMS/uHelmScope.",
@@ -391,7 +455,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -403,7 +468,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers correctly found the mismatch between Notify(\"WPT_UPDATE\", ...) and updates = WAYPOINT_UPDATES, and explained that the posted variable name must match the behavior updates parameter.",
@@ -411,7 +477,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -423,7 +490,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [
         "Gemini"
@@ -432,7 +500,8 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude"
+        "claude",
+        "chatgpt_55_instant"
       ]
     }
   ]

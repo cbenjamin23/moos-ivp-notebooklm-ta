@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "exact documentation/tool",
   "prompt_range": "D01-D15",
-  "graded_at": "2026-06-01 recapture normalization pass",
+  "graded_at": "2026-06-01T21:45:00.000Z",
   "status": "complete for D01-D15; user-approved recaptures are treated as primary stored answers",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
@@ -73,6 +73,21 @@
       "bad_count": 0,
       "bad_percent": 0.0,
       "pending_count": 0
+    },
+    "chatgpt_55_instant": {
+      "model": "ChatGPT 5.5 Instant",
+      "prompt_count": 15,
+      "total_score": 28,
+      "max_score": 30,
+      "average_score": 1.867,
+      "score_percent": 93.3,
+      "good_count": 14,
+      "good_percent": 93.3,
+      "partial_count": 0,
+      "partial_percent": 0.0,
+      "bad_count": 1,
+      "bad_percent": 6.7,
+      "pending_count": 0
     }
   },
   "hard_failures": [
@@ -129,6 +144,12 @@
       "model": "Claude",
       "failure_type": "Wrong NODE_REPORT_LOCAL publication framing",
       "brief_explanation": "Stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally, weakening the local-vs-shared report distinction."
+    },
+    {
+      "prompt_id": "D06",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Wrong behavior semantics",
+      "brief_explanation": "Described BHV_OpRegionV24 as only a safety/constraint monitor and denied the V24 recovery/steering behavior."
     }
   ],
   "prompts": [
@@ -141,11 +162,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 0,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "Claude"
@@ -161,17 +184,19 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "Claude"
       ],
-      "note": "NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only \u201cThe system was unable to answer,\u201d but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block."
+      "note": "NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only “The system was unable to answer,” but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block."
     },
     {
       "id": "D03",
@@ -182,13 +207,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four answers gave a usable uTimerScript mental model: timed MOOS posts for initialization, triggers, simulation proxies, and checks in uXMS."
@@ -202,13 +229,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four answers correctly described DEPLOY, MOOS_MANUAL_OVERRIDE, and helm state gating for autonomous behavior."
@@ -222,13 +251,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four final stored answers rejected the invented magic_arrival_radius parameter and identified real BHV_Waypoint arrival/capture parameters such as capture_radius/radius and slip_radius/nm_radius."
@@ -242,7 +273,8 @@
         "notebook": 2,
         "chatgpt": 0,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 0
       },
       "winners": [
         "notebook",
@@ -250,9 +282,10 @@
         "gemini"
       ],
       "hard_failures": [
-        "ChatGPT"
+        "ChatGPT",
+        "ChatGPT 5.5 Instant"
       ],
-      "note": "NotebookLM, Claude, and Gemini described the V24 core/save/halt model and active recovery influence. ChatGPT gave the legacy OpRegion mental model and incorrectly denied steering/recovery behavior."
+      "note": "NotebookLM, Claude, and Gemini described the V24 core/save/halt model and active recovery influence. ChatGPT gave the legacy OpRegion mental model and incorrectly denied steering/recovery behavior. GPT-5.5 Instant: Bad: repeats the legacy/wrong mental model that BHV_OpRegionV24 is only a safety monitor and denies the documented V24 recovery/steering behavior."
     },
     {
       "id": "D07",
@@ -263,12 +296,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM and ChatGPT gave strong viewer/image/datum checks; Gemini was also usable. Claude identified the right general issue but placed datum settings in questionable app blocks and used imprecise viewer parameter framing."
@@ -282,11 +317,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "Claude",
@@ -303,12 +340,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM, ChatGPT, and Gemini gave a usable comparison of brokers, pShare bridging, node comms, and message handling. Claude was broadly useful but overstated node reports and used imprecise bridge terminology."
@@ -322,13 +361,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four final stored answers gave a usable pLogger/aloggrep/alogview verification workflow."
@@ -342,7 +383,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers correctly identified the template-to-target-file workflow: inspect generated targ_/target .moos/.bhv files, rerun nsplug after template or launch-argument changes, and verify that pAntler is launching the regenerated file.",
@@ -350,7 +392,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -362,7 +405,8 @@
         "notebook": 2,
         "chatgpt": 1,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [
         "ChatGPT",
@@ -371,7 +415,8 @@
       ],
       "note": "NotebookLM gave the documented button_one/button_two style. ChatGPT, Claude, and Gemini explained the right control variables but used wrong or nonstandard exact button syntax (`action =`, var/sval forms, or `BUTTON =`), so their answers would need correction before copying.",
       "winners": [
-        "notebook"
+        "notebook",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -383,7 +428,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers separated live scoping/observation, one-shot or condition-oriented querying, and active poking well enough for a student debugging a running MOOSDB.",
@@ -391,7 +437,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -403,7 +450,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [
         "Claude"
@@ -412,7 +460,8 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     },
     {
@@ -424,7 +473,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "hard_failures": [],
       "note": "All four answers gave a useful distinction between continuous polygon loitering and point/radius station keeping, with enough parameters and symptoms to guide a lab student.",
@@ -432,7 +482,8 @@
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ]
     }
   ],
@@ -442,7 +493,7 @@
       "model": "NotebookLM TA",
       "first_pass_score": 0,
       "replacement_score": 2,
-      "reason": "First pass returned only \u201cThe system was unable to answer.\u201d User requested treating immediate retry as replacement."
+      "reason": "First pass returned only “The system was unable to answer.” User requested treating immediate retry as replacement."
     }
   ]
 }

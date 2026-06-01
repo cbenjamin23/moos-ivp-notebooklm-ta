@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "conceptual_debugging",
   "prompt_range": "C01-C30",
-  "graded_at": "2026-06-01 recapture normalization pass",
+  "graded_at": "2026-06-01T21:45:00.000Z",
   "grading_method": "Manual Codex review against the simple rubric in BENCHMARKING.md, revised to penalize concrete hallucinations, invented MOOS-IvP details, wrong copy-pasteable config snippets, and unsupported product-specific claims even when the surrounding answer was useful.",
   "score_legend": {
     "0": "Bad: wrong, misleading, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unsafe for the task.",
@@ -70,6 +70,21 @@
       "partial_percent": 26.7,
       "bad_count": 2,
       "bad_percent": 6.7,
+      "pending_count": 0
+    },
+    "chatgpt_55_instant": {
+      "model": "ChatGPT 5.5 Instant",
+      "prompt_count": 30,
+      "total_score": 57,
+      "max_score": 60,
+      "average_score": 1.9,
+      "score_percent": 95.0,
+      "good_count": 27,
+      "good_percent": 90.0,
+      "partial_count": 3,
+      "partial_percent": 10.0,
+      "bad_count": 0,
+      "bad_percent": 0.0,
       "pending_count": 0
     }
   },
@@ -157,6 +172,24 @@
       "model": "claude",
       "failure_type": "Wrong NODE_MESSAGE_LOCAL semantics",
       "brief_explanation": "The recaptured answer was substantive but incorrectly described NODE_MESSAGE_LOCAL as same-process/local-only rather than the MOOS-IvP local report that should be brokered through the uField messaging path."
+    },
+    {
+      "prompt_id": "C11",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Wrong pShare destination port model",
+      "brief_explanation": "Said vehicle reports should be sent to the shoreside MOOSDB port; pShare output should target the receiving pShare route/input port."
+    },
+    {
+      "prompt_id": "C12",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Wrong pShare destination port model",
+      "brief_explanation": "Described pShare as sending directly to the remote MOOSDB at host:port rather than to the receiving pShare route/input port."
+    },
+    {
+      "prompt_id": "C16",
+      "model": "chatgpt_55_instant",
+      "failure_type": "Wrong NODE_MESSAGE handling process",
+      "brief_explanation": "Described pNodeReporter as converting/unwrapping NODE_MESSAGE_LOCAL/NODE_MESSAGE; the lab/source path uses uFldNodeBroker/uFldMessageHandler style handling."
     }
   ],
   "prompts": [
@@ -169,13 +202,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful."
@@ -189,12 +224,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts."
@@ -208,13 +245,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models correctly centered the same-host/same-port/same-variable/uXMS registration debugging path."
@@ -228,12 +267,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT/Gemini gave a usable app lifecycle pipeline. Claude was mostly useful, but lost credit for suggesting pMarinePID/iGPS-style upstream NAV publishers in a way that could mislead a beginner."
@@ -247,11 +288,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "claude",
@@ -268,11 +311,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 0
+        "gemini": 0,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "gemini"
@@ -288,12 +333,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "claude"
+        "claude",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT/Claude gave correct helm-state/all-stop/deploy-variable diagnostics; Gemini was broadly helpful but less precise about helm state naming."
@@ -307,12 +354,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT/Gemini covered helm state, behavior activation, NAV variables, .moos/.bhv boundaries; Claude had useful checks but wrong pHelmIvP casing and config details."
@@ -326,13 +375,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models separated simulator NAV output, helm inputs, behavior conditions, and viewer state well enough."
@@ -346,13 +397,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models correctly explained unique MOOSDB ports, community names, pShare ports/routes, and launch arguments."
@@ -366,7 +419,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 1
       },
       "winners": [
         "notebook",
@@ -374,8 +428,10 @@
         "claude",
         "gemini"
       ],
-      "hard_failures": [],
-      "note": "All models traced pNodeReporter/NODE_REPORT through vehicle, bridge, shoreside, and viewer well enough."
+      "hard_failures": [
+        "ChatGPT 5.5 Instant"
+      ],
+      "note": "All models traced pNodeReporter/NODE_REPORT through vehicle, bridge, shoreside, and viewer well enough. GPT-5.5 Instant: Partial: useful NODE_REPORT/pNodeReporter debugging path, but includes the wrong pShare-port mental model by saying vehicle reports should be sent to the shoreside MOOSDB port."
     },
     {
       "id": "C12",
@@ -386,7 +442,8 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 1
       },
       "winners": [
         "notebook",
@@ -394,8 +451,10 @@
         "claude",
         "gemini"
       ],
-      "hard_failures": [],
-      "note": "All models gave a reasonable local-vs-shared variable boundary for pShare routes."
+      "hard_failures": [
+        "ChatGPT 5.5 Instant"
+      ],
+      "note": "All models gave a reasonable local-vs-shared variable boundary for pShare routes. GPT-5.5 Instant: Partial: good local-vs-shared variable framing, but incorrectly describes a pShare route as sending directly to the remote MOOSDB rather than to the receiving pShare route/input port."
     },
     {
       "id": "C13",
@@ -406,12 +465,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming."
@@ -425,11 +486,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers."
@@ -443,12 +506,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "claude"
@@ -464,16 +529,18 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 0,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 1
       },
       "winners": [
         "notebook",
         "chatgpt"
       ],
       "hard_failures": [
-        "Claude"
+        "Claude",
+        "ChatGPT 5.5 Instant"
       ],
-      "note": "NotebookLM and ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path. The recaptured Claude answer was substantive but still wrong about NODE_MESSAGE_LOCAL scoping, so it remains bad. Gemini gave a generic messaging pipeline with only partial MOOS value."
+      "note": "NotebookLM and ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path. The recaptured Claude answer was substantive but still wrong about NODE_MESSAGE_LOCAL scoping, so it remains bad. Gemini gave a generic messaging pipeline with only partial MOOS value. GPT-5.5 Instant: Partial: useful NODE_MESSAGE_LOCAL / NODE_MESSAGE / dest_node / var_name debugging path, but wrongly assigns conversion/unwrapping to pNodeReporter rather than the uField broker/message-handler path."
     },
     {
       "id": "C17",
@@ -484,11 +551,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 0
+        "gemini": 0,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "gemini"
@@ -504,13 +573,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance."
@@ -524,13 +595,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models correctly distinguished .moos app/process config from .bhv behavior config."
@@ -544,13 +617,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All models gave a usable data-path trace from payload publication through MOOSDB into helm conditions/updates/coordinating apps."
@@ -564,11 +639,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "claude",
@@ -585,11 +662,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 0,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "claude",
@@ -606,11 +685,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT were most aligned with MOOS rescue planner/route handoff; Claude/Gemini were generic SAR planning but still conceptually useful."
@@ -624,11 +705,13 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 1
+        "gemini": 1,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT addressed dynamic rescue updates and replanning in the lab style; Claude/Gemini gave generic dynamic task-allocation answers."
@@ -642,12 +725,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM, ChatGPT, and Gemini understood two-vehicle rescue/uField messaging. The recaptured Claude answer was operationally useful but generic and weak on the uField-specific messaging path."
@@ -661,13 +746,15 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "All four final stored answers gave useful post-run diagnosis guidance; the recaptured Claude answer covered aloggrep, IVPHELM_SUMMARY, condition variables, and behavior-state tracing."
@@ -681,11 +768,13 @@
         "notebook": 2,
         "chatgpt": 1,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "chatgpt",
@@ -702,12 +791,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 1,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [],
       "note": "NotebookLM/ChatGPT/Gemini mapped tools to use cases well; Claude was useful but shallower and slightly imprecise on uQueryDB/pLogger roles."
@@ -721,12 +812,14 @@
         "notebook": 2,
         "chatgpt": 2,
         "claude": 0,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "claude"
@@ -742,12 +835,14 @@
         "notebook": 2,
         "chatgpt": 1,
         "claude": 2,
-        "gemini": 2
+        "gemini": 2,
+        "chatgpt_55_instant": 2
       },
       "winners": [
         "notebook",
         "claude",
-        "gemini"
+        "gemini",
+        "chatgpt_55_instant"
       ],
       "hard_failures": [
         "chatgpt"

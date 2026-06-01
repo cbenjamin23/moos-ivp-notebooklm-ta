@@ -37,9 +37,10 @@
       "status": "captured",
       "captured_at": "2026-06-01T20:07:07.183Z",
       "url": "https://chatgpt.com/c/6a1de631-2b7c-832a-977a-a07915770e45",
-      "method": "chatgpt_55_instant_reusable_tab",
+      "method": "chatgpt_55_instant_reusable_tab_trimmed_sources",
       "model_label": "GPT-5.5 Instant",
-      "text": "No. magic_arrival_radius is not a real BHV_Waypoint parameter.\n\nUse these instead:\n\ncapture_radius = <meters>   // also accepted as radius\nslip_radius    = <meters>   // older alias: nm_radius\ncapture_line   = true/false/absolute\n\nWhat they mean:\n\ncapture_radius: waypoint is hit when vehicle gets inside this radius. The code accepts radius or capture_radius. \nGitHub\n\nslip_radius: outer/non-monotonic capture radius; if the vehicle got within this radius and then starts getting farther away, the waypoint can count as reached. \nGitHub\n\ncapture_line: lets the vehicle advance after crossing the perpendicular arrival line through the waypoint; absolute sets both capture_radius and slip_radius to 0. \nGitHub\n\nTo verify:\n\nBash\ngrep -R \"magic_arrival_radius\" ~/moos-ivp/ivp/src/lib_behaviors-marine\ngrep -R \"capture_radius\\|slip_radius\\|capture_line\\|nm_radius\" ~/moos-ivp/ivp/src/lib_behaviors-marine\n\nAt runtime, check BHV_SETTINGS or helm/appcast output; BHV_Waypoint posts settings including capture_radius, slip_radius, and capture_line. \nGitHub\n\nSources"
+      "text": "No. magic_arrival_radius is not a real BHV_Waypoint parameter.\n\nUse these instead:\n\ncapture_radius = <meters>   // also accepted as radius\nslip_radius    = <meters>   // older alias: nm_radius\ncapture_line   = true/false/absolute\n\nWhat they mean:\n\ncapture_radius: waypoint is hit when vehicle gets inside this radius. The code accepts radius or capture_radius. \nGitHub\n\nslip_radius: outer/non-monotonic capture radius; if the vehicle got within this radius and then starts getting farther away, the waypoint can count as reached. \nGitHub\n\ncapture_line: lets the vehicle advance after crossing the perpendicular arrival line through the waypoint; absolute sets both capture_radius and slip_radius to 0. \nGitHub\n\nTo verify:\n\nBash\ngrep -R \"magic_arrival_radius\" ~/moos-ivp/ivp/src/lib_behaviors-marine\ngrep -R \"capture_radius\\|slip_radius\\|capture_line\\|nm_radius\" ~/moos-ivp/ivp/src/lib_behaviors-marine\n\nAt runtime, check BHV_SETTINGS or helm/appcast output; BHV_Waypoint posts settings including capture_radius, slip_radius, and capture_line. \nGitHub"
     }
-  }
+  },
+  "updated_at": "2026-06-01T21:40:00.000Z"
 }

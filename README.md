@@ -27,14 +27,15 @@ The most important entry point for human review is:
 
 ## Benchmark Results
 
-The clean cross-model benchmark compares NotebookLM TA with the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
+The clean cross-model benchmark compares NotebookLM TA with the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. The original ChatGPT run used GPT-5.5 Thinking; GPT-5.5 Instant was later collected and scored separately. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
 
-Current status: all 240 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive.
+Current status: all 300 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive and concrete MOOS-IvP hallucinations reduce the score.
 
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
-| ChatGPT | 94.2% | 1.88 | 96.7% | 90.0% | 93.3% | 0 |
+| ChatGPT 5.5 Thinking | 94.2% | 1.88 | 96.7% | 90.0% | 93.3% | 0 |
+| ChatGPT 5.5 Instant | 91.7% | 1.83 | 95.0% | 93.3% | 83.3% | 0 |
 | Gemini | 80.0% | 1.60 | 80.0% | 90.0% | 70.0% | 0 |
 | Claude | 71.7% | 1.43 | 65.0% | 73.3% | 83.3% | 0 |
 
@@ -47,6 +48,7 @@ Detailed results and rubric:
 - `reports/conceptual_debugging_benchmark_results.md`
 - `reports/exact_docs_tools_benchmark_results.md`
 - `reports/code_config_benchmark_results.md`
+- `reports/chatgpt_55_instant_benchmark_results.md`
 
 ## Validation Summary
 
