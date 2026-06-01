@@ -34,7 +34,7 @@ Current status: all 360 model outputs are captured and graded. User-approved rec
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
-| ChatGPT 5.5 Thinking | 94.2% | 1.88 | 96.7% | 90.0% | 93.3% | 0 |
+| ChatGPT 5.5 Thinking | 93.3% | 1.87 | 96.7% | 90.0% | 90.0% | 0 |
 | ChatGPT 5.5 Instant | 91.7% | 1.83 | 95.0% | 93.3% | 83.3% | 0 |
 | ChatGPT 5.5 Low CLI | 90.8% | 1.82 | 93.3% | 80.0% | 96.7% | 0 |
 | Gemini | 80.0% | 1.60 | 80.0% | 90.0% | 70.0% | 0 |

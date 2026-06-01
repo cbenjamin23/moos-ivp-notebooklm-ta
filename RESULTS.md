@@ -8,7 +8,7 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; `Score %` is tot
 
 ## Executive Summary
 
-NotebookLM TA remains first overall and strongest in the intended product lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. ChatGPT 5.5 Thinking remains the strongest browser ChatGPT row. The isolated ChatGPT 5.5 Low CLI run removes browser memory and local-skill concerns; it scored close to Instant overall, with stronger code/config performance but weaker exact documentation performance due to concrete MOOS-IvP detail errors.
+NotebookLM TA remains first overall and strongest in the intended product lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. ChatGPT 5.5 Thinking remains strong, but a stricter copy-paste-risk pass lowered it for a bad pHelmIvP behavior-file parameter example. The isolated ChatGPT 5.5 Low CLI run removes browser memory and local-skill concerns; it scored close to Instant overall, with stronger code/config performance but weaker exact documentation performance due to concrete MOOS-IvP detail errors.
 
 The evidence still supports a narrow positioning: the notebook is a conceptual, documentation-grounded MOOS-IvP TA. It should not be marketed as an autonomous coding agent, though the code/config stress test suggests that RAG over curated MOOS-IvP sources can help with beginner configuration patterns.
 
@@ -17,7 +17,7 @@ The evidence still supports a narrow positioning: the notebook is a conceptual, 
 | Model | Score % | Avg / 2 | Good % | Partial % | Bad % | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 98.3% | 1.7% | 0.0% | 100.0% | 100.0% | 96.7% | 0 |
-| ChatGPT 5.5 Thinking | 94.2% | 1.88 | 90.0% | 8.3% | 1.7% | 96.7% | 90.0% | 93.3% | 0 |
+| ChatGPT 5.5 Thinking | 93.3% | 1.87 | 88.3% | 10.0% | 1.7% | 96.7% | 90.0% | 90.0% | 0 |
 | ChatGPT 5.5 Instant | 91.7% | 1.83 | 86.7% | 10.0% | 3.3% | 95.0% | 93.3% | 83.3% | 0 |
 | ChatGPT 5.5 Low CLI | 90.8% | 1.82 | 83.3% | 15.0% | 1.7% | 93.3% | 80.0% | 96.7% | 0 |
 | Gemini | 80.0% | 1.60 | 68.3% | 23.3% | 8.3% | 80.0% | 90.0% | 70.0% | 0 |
@@ -29,7 +29,7 @@ The evidence still supports a narrow positioning: the notebook is a conceptual, 
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | Conceptual/debugging | 30 | 100.0% (2.00/2) | 96.7% (1.93/2) | 95.0% (1.90/2) | 93.3% (1.87/2) | 80.0% (1.60/2) | 65.0% (1.30/2) | complete |
 | Exact docs/parameters/tools | 15 | 100.0% (2.00/2) | 90.0% (1.80/2) | 93.3% (1.87/2) | 80.0% (1.60/2) | 90.0% (1.80/2) | 73.3% (1.47/2) | complete |
-| Code/config advice | 15 | 96.7% (1.93/2) | 93.3% (1.87/2) | 83.3% (1.67/2) | 96.7% (1.93/2) | 70.0% (1.40/2) | 83.3% (1.67/2) | complete |
+| Code/config advice | 15 | 96.7% (1.93/2) | 90.0% (1.80/2) | 83.3% (1.67/2) | 96.7% (1.93/2) | 70.0% (1.40/2) | 83.3% (1.67/2) | complete |
 
 ## Recapture / Isolation Notes
 
@@ -89,6 +89,7 @@ User-approved recaptures are treated as the regular stored answers. NotebookLM D
 | K08 | ChatGPT 5.5 Instant | Missing base-class delegation in code | Validated the custom parameter but returned false for unhandled parameters instead of delegating to IvPBehavior::setParam for standard behavior parameters. |
 | K10 | ChatGPT 5.5 Instant | Invalid/incomplete ZAIC correction | Added shaping and setPWT but kept ZAIC_PEAK zaic("speed") without the IvP domain constructor argument. |
 | K09 | ChatGPT 5.5 Low CLI | Wrong behavior lifecycle framing | Put addInfoVars in onHelmStart/onIdleState instead of the normal constructor/config-time behavior pattern. |
+| K12 | ChatGPT 5.5 Thinking | Wrong pHelmIvP behavior-file parameter | Included `behavior = targ_alpha.bhv` as a pHelmIvP-style behavior-file example; pHelmIvP parses `Behaviors = ...`, so the answer is useful but copy-paste risky. |
 
 ## Main Interpretation
 
@@ -158,7 +159,7 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad.
 | K09 | `addInfoVars()` / InfoBuffer | 2 | 2 | 2 | 1 | 0 | 1 | Claude, Gemini, ChatGPT 5.5 Low CLI | NotebookLM and ChatGPT gave the normal addInfoVars plus getBufferDoubleVal ok-flag pattern. Claude had the right calls but wrong behavior lifecycle framing. Gemini answered as BehaviorTree.CPP, not MOOS-IvP. ChatGPT 5.5 Low CLI: Partial: correctly uses `addInfoVars()` and `getBufferDoubleVal(..., ok)`, but places InfoVar registration in `onHelmStart()`/`onIdleState()` instead of the normal constructor/config-time behavior pattern used throughout the MOOS-IvP behavior source. |
 | K10 | ZAIC Speed Function | 2 | 2 | 1 | 2 | 0 | 2 | Gemini, ChatGPT 5.5 Instant | NotebookLM, ChatGPT, and Claude corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. GPT-5.5 Instant: Partial: adds ZAIC shaping and setPWT, but the corrected code still uses ZAIC_PEAK zaic("speed") instead of ZAIC_PEAK zaic(m_domain, "speed"), so it is not a valid normal MOOS-IvP pattern. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
 | K11 | MOOS Reconnect Registration | 2 | 2 | 2 | 2 | 2 | 2 | none | All four answers identified that registrations need to be repeated from OnConnectToServer or a shared registerVariables helper called on reconnect. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
-| K12 | Regenerating nsplug Targets | 2 | 2 | 2 | 2 | 2 | 2 | none | All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
+| K12 | Regenerating nsplug Targets | 2 | 1 | 2 | 2 | 2 | 2 | ChatGPT 5.5 Thinking | All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. ChatGPT 5.5 Thinking strict-pass revision: Partial because the answer includes `behavior = targ_alpha.bhv` as a pHelmIvP-style behavior-file example; source parses `Behaviors = ...`, so this is a copy-paste-risk config line despite good stale-nsplug advice. |
 | K13 | Deploy Button Missing Helm Release | 2 | 2 | 2 | 2 | 2 | 2 | none | All four answers identified the need to post DEPLOY=true and release MOOS_MANUAL_OVERRIDE=false, then check DEPLOY, MOOS_MANUAL_OVERRIDE, helm state, and behavior outputs in uXMS/uHelmScope. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
 | K14 | BHV_Waypoint Update Variable Mismatch | 2 | 2 | 2 | 2 | 2 | 2 | none | All four answers correctly found the mismatch between Notify("WPT_UPDATE", ...) and updates = WAYPOINT_UPDATES, and explained that the posted variable name must match the behavior updates parameter. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
 | K15 | Two-Vehicle Community/Port Collision | 2 | 2 | 2 | 2 | 1 | 2 | Gemini | NotebookLM, ChatGPT, and Claude gave the clean unique-community/unique-MOOSDB-port correction. Gemini got that core correction but added a misleading pShare/port mental model, so it was only partial. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
