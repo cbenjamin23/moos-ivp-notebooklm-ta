@@ -1,6 +1,6 @@
 # Exact Documentation / Tool Benchmark Results
 
-Status: complete for D01-D10. NotebookLM D02 uses a user-approved immediate retry replacement after the first pass returned only `The system was unable to answer.`
+Status: complete for D01-D15; NotebookLM D02 uses user-approved retry replacement.
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
@@ -10,14 +10,14 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; `Score %` is tot
 
 | Model | Score % | Avg / 2 | Good Answers | Partial Answers | Bad Answers | Pending |
 |---|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 100.0% | 2.00 | 10/10 (100.0%) | 0/10 (0.0%) | 0/10 (0.0%) | 0 |
-| ChatGPT | 90.0% | 1.80 | 9/10 (90.0%) | 0/10 (0.0%) | 1/10 (10.0%) | 0 |
-| Claude | 50.0% | 1.00 | 3/10 (30.0%) | 4/10 (40.0%) | 3/10 (30.0%) | 0 |
-| Gemini | 90.0% | 1.80 | 8/10 (80.0%) | 2/10 (20.0%) | 0/10 (0.0%) | 0 |
+| NotebookLM TA | 100.0% | 2.00 | 15/15 (100.0%) | 0/15 (0.0%) | 0/15 (0.0%) | 0 |
+| ChatGPT | 90.0% | 1.80 | 13/15 (86.7%) | 1/15 (6.7%) | 1/15 (6.7%) | 0 |
+| Claude | 60.0% | 1.20 | 6/15 (40.0%) | 6/15 (40.0%) | 3/15 (20.0%) | 0 |
+| Gemini | 90.0% | 1.80 | 12/15 (80.0%) | 3/15 (20.0%) | 0/15 (0.0%) | 0 |
 
 ## Interpretation
 
-NotebookLM TA now leads the exact documentation/tool section after the user-approved D02 retry replacement. The retry answer correctly identified `ProcessConfig = ANTLER`, `Run =` launch lines, optional aliases, `DB_CLIENTS`, and `uProcessWatch`. ChatGPT and Gemini remain tied behind it because each had one serious or partial exact-docs miss. Claude was much weaker in this section because several answers were off-domain, non-responsive, or framed around the wrong tool/configuration model.
+NotebookLM TA remains strongest in the exact documentation/tool section after expanding from 10 to 15 prompts. The expansion exposed a useful distinction: general models often knew the broad MOOS-IvP concept, but were more likely to invent or substitute exact pMarineViewer syntax. NotebookLM preserved the correct documented syntax more consistently.
 
 ## Replacement Note
 
@@ -36,6 +36,10 @@ These details are kept for audit, not as a headline scoring column. They may ove
 | D08 | Claude | Wrong bridge/tool syntax | Answered primarily with pMOOSBridge SHARE syntax instead of the pShare configuration requested. |
 | D08 | Gemini | Inaccurate pShare syntax | Used a nonstandard src_var/colon route form for pShare output in an exact syntax-oriented answer. |
 | D10 | Claude | Non-answer | Declined to answer and asked for context despite the prompt naming pLogger, aloggrep, and alogview. |
+| D12 | ChatGPT | Wrong pMarineViewer button syntax | Used `action = ...` as the button syntax instead of the documented button_one/button_two action-button parameters. |
+| D12 | Claude | Wrong pMarineViewer button syntax | Used a var/sval button form that does not match the documented pMarineViewer button_one/button_two syntax. |
+| D12 | Gemini | Wrong pMarineViewer button parameter | Used a generic `BUTTON = ...` parameter instead of the documented numbered button parameters. |
+| D14 | Claude | Wrong NODE_REPORT_LOCAL publication framing | Stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally, weakening the local-vs-shared report distinction. |
 
 ## Prompt-by-Prompt Results
 
@@ -51,3 +55,8 @@ These details are kept for audit, not as a headline scoring column. They may ove
 | D08 | pShare Configuration | 2 | 2 | 1 | 1 | Claude, Gemini | NotebookLM and ChatGPT gave the cleanest pShare routing model. Claude mostly answered with pMOOSBridge syntax. Gemini had the right idea but used an inaccurate pShare output syntax for an exact-docs prompt. |
 | D09 | uField Broker Comparison | 2 | 2 | 1 | 2 | none | NotebookLM, ChatGPT, and Gemini gave a usable comparison of brokers, pShare bridging, node comms, and message handling. Claude was broadly useful but overstated node reports and used imprecise bridge terminology. |
 | D10 | pLogger And Alog Verification | 2 | 2 | 0 | 2 | Claude | NotebookLM, ChatGPT, and Gemini gave a usable alog/pLogger verification workflow. Claude declined to answer without additional context. |
+| D11 | Stale nsplug Generated Files | 2 | 2 | 2 | 2 | none | All four answers correctly identified the template-to-target-file workflow: inspect generated targ_/target .moos/.bhv files, rerun nsplug after template or launch-argument changes, and verify that pAntler is launching the regenerated file. |
+| D12 | pMarineViewer Action Buttons | 2 | 1 | 1 | 1 | ChatGPT, Claude, Gemini | NotebookLM gave the documented button_one/button_two style. ChatGPT, Claude, and Gemini explained the right control variables but used wrong or nonstandard exact button syntax (`action =`, var/sval forms, or `BUTTON =`), so their answers would need correction before copying. |
+| D13 | uXMS vs uQueryDB vs uPokeDB | 2 | 2 | 2 | 2 | none | All four answers separated live scoping/observation, one-shot or condition-oriented querying, and active poking well enough for a student debugging a running MOOSDB. |
+| D14 | pNodeReporter Local vs Shared Reports | 2 | 2 | 1 | 2 | Claude | NotebookLM, ChatGPT, and Gemini correctly centered NODE_REPORT_LOCAL as the local ownship report and NODE_REPORT as the shared/received report. Claude gave useful topology advice but incorrectly stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally. |
+| D15 | BHV_Loiter vs BHV_StationKeep | 2 | 2 | 2 | 2 | none | All four answers gave a useful distinction between continuous polygon loitering and point/radius station keeping, with enough parameters and symptoms to guide a lab student. |

@@ -3,9 +3,9 @@
   "run_id": "2026-05-31_organic_beginner_tier_clean2",
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "exact documentation/tool",
-  "prompt_range": "D01-D10",
-  "graded_at": "2026-06-01T12:00:00-04:00",
-  "status": "complete; NotebookLM D02 uses user-approved retry replacement",
+  "prompt_range": "D01-D15",
+  "graded_at": "2026-06-01 expansion pass",
+  "status": "complete for D01-D15; NotebookLM D02 uses user-approved retry replacement",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
     "2": "good",
@@ -16,12 +16,12 @@
   "metrics": {
     "notebook": {
       "model": "NotebookLM TA",
-      "prompt_count": 10,
-      "total_score": 20,
-      "max_score": 20,
+      "prompt_count": 15,
+      "total_score": 30,
+      "max_score": 30,
       "average_score": 2.0,
       "score_percent": 100.0,
-      "good_count": 10,
+      "good_count": 15,
       "good_percent": 100.0,
       "partial_count": 0,
       "partial_percent": 0.0,
@@ -31,44 +31,44 @@
     },
     "chatgpt": {
       "model": "ChatGPT",
-      "prompt_count": 10,
-      "total_score": 18,
-      "max_score": 20,
+      "prompt_count": 15,
+      "total_score": 27,
+      "max_score": 30,
       "average_score": 1.8,
       "score_percent": 90.0,
-      "good_count": 9,
-      "good_percent": 90.0,
-      "partial_count": 0,
-      "partial_percent": 0.0,
+      "good_count": 13,
+      "good_percent": 86.7,
+      "partial_count": 1,
+      "partial_percent": 6.7,
       "bad_count": 1,
-      "bad_percent": 10.0,
+      "bad_percent": 6.7,
       "pending_count": 0
     },
     "claude": {
       "model": "Claude",
-      "prompt_count": 10,
-      "total_score": 10,
-      "max_score": 20,
-      "average_score": 1.0,
-      "score_percent": 50.0,
-      "good_count": 3,
-      "good_percent": 30.0,
-      "partial_count": 4,
+      "prompt_count": 15,
+      "total_score": 18,
+      "max_score": 30,
+      "average_score": 1.2,
+      "score_percent": 60.0,
+      "good_count": 6,
+      "good_percent": 40.0,
+      "partial_count": 6,
       "partial_percent": 40.0,
       "bad_count": 3,
-      "bad_percent": 30.0,
+      "bad_percent": 20.0,
       "pending_count": 0
     },
     "gemini": {
       "model": "Gemini",
-      "prompt_count": 10,
-      "total_score": 18,
-      "max_score": 20,
+      "prompt_count": 15,
+      "total_score": 27,
+      "max_score": 30,
       "average_score": 1.8,
       "score_percent": 90.0,
-      "good_count": 8,
+      "good_count": 12,
       "good_percent": 80.0,
-      "partial_count": 2,
+      "partial_count": 3,
       "partial_percent": 20.0,
       "bad_count": 0,
       "bad_percent": 0.0,
@@ -117,6 +117,30 @@
       "model": "Claude",
       "failure_type": "Non-answer",
       "brief_explanation": "Declined to answer and asked for context despite the prompt naming pLogger, aloggrep, and alogview."
+    },
+    {
+      "prompt_id": "D12",
+      "model": "ChatGPT",
+      "failure_type": "Wrong pMarineViewer button syntax",
+      "brief_explanation": "Used `action = ...` as the button syntax instead of the documented button_one/button_two action-button parameters."
+    },
+    {
+      "prompt_id": "D12",
+      "model": "Claude",
+      "failure_type": "Wrong pMarineViewer button syntax",
+      "brief_explanation": "Used a var/sval button form that does not match the documented pMarineViewer button_one/button_two syntax."
+    },
+    {
+      "prompt_id": "D12",
+      "model": "Gemini",
+      "failure_type": "Wrong pMarineViewer button parameter",
+      "brief_explanation": "Used a generic `BUTTON = ...` parameter instead of the documented numbered button parameters."
+    },
+    {
+      "prompt_id": "D14",
+      "model": "Claude",
+      "failure_type": "Wrong NODE_REPORT_LOCAL publication framing",
+      "brief_explanation": "Stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally, weakening the local-vs-shared report distinction."
     }
   ],
   "prompts": [
@@ -322,6 +346,108 @@
         "Claude"
       ],
       "note": "NotebookLM, ChatGPT, and Gemini gave a usable alog/pLogger verification workflow. Claude declined to answer without additional context."
+    },
+    {
+      "id": "D11",
+      "category": "exact_docs_tools",
+      "title": "Stale nsplug Generated Files",
+      "prompt": "If I change a launch argument or edit a `meta_*.moos` template but the mission still behaves like it has the old value, what generated files should I inspect and what is the nsplug workflow?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers correctly identified the template-to-target-file workflow: inspect generated targ_/target .moos/.bhv files, rerun nsplug after template or launch-argument changes, and verify that pAntler is launching the regenerated file.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "id": "D12",
+      "category": "exact_docs_tools",
+      "title": "pMarineViewer Action Buttons",
+      "prompt": "How are pMarineViewer action buttons configured to post variables such as `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and `RETURN`, and what common mistakes make a button appear but not affect the mission?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 1,
+        "claude": 1,
+        "gemini": 1
+      },
+      "hard_failures": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "note": "NotebookLM gave the documented button_one/button_two style. ChatGPT, Claude, and Gemini explained the right control variables but used wrong or nonstandard exact button syntax (`action =`, var/sval forms, or `BUTTON =`), so their answers would need correction before copying.",
+      "winners": [
+        "notebook"
+      ]
+    },
+    {
+      "id": "D13",
+      "category": "exact_docs_tools",
+      "title": "uXMS vs uQueryDB vs uPokeDB",
+      "prompt": "What is the practical difference between using uXMS, uQueryDB, and uPokeDB when debugging a MOOS variable during a mission?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers separated live scoping/observation, one-shot or condition-oriented querying, and active poking well enough for a student debugging a running MOOSDB.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "id": "D14",
+      "category": "exact_docs_tools",
+      "title": "pNodeReporter Local vs Shared Reports",
+      "prompt": "What does pNodeReporter normally publish, why is `NODE_REPORT_LOCAL` different from `NODE_REPORT`, and how does that matter in a shoreside/vehicle setup?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "hard_failures": [
+        "Claude"
+      ],
+      "note": "NotebookLM, ChatGPT, and Gemini correctly centered NODE_REPORT_LOCAL as the local ownship report and NODE_REPORT as the shared/received report. Claude gave useful topology advice but incorrectly stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "D15",
+      "category": "exact_docs_tools",
+      "title": "BHV_Loiter vs BHV_StationKeep",
+      "prompt": "For a student choosing between BHV_Loiter and BHV_StationKeep, what are the important configuration parameters and what symptoms suggest the wrong behavior or wrong condition was used?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers gave a useful distinction between continuous polygon loitering and point/radius station keeping, with enough parameters and symptoms to guide a lab student.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
     }
   ],
   "replacement_notes": [

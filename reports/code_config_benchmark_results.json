@@ -3,9 +3,9 @@
   "run_id": "2026-05-31_organic_beginner_tier_clean2",
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "code/config advice",
-  "prompt_range": "K01-K10",
-  "graded_at": "2026-06-01T12:00:00-04:00",
-  "status": "partial: K10 Claude pending",
+  "prompt_range": "K01-K15",
+  "graded_at": "2026-06-01 expansion pass",
+  "status": "complete for K01-K15",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
     "2": "good",
@@ -16,62 +16,62 @@
   "metrics": {
     "notebook": {
       "model": "NotebookLM TA",
-      "prompt_count": 10,
-      "total_score": 19,
-      "max_score": 20,
-      "average_score": 1.9,
-      "score_percent": 95.0,
-      "good_count": 9,
-      "good_percent": 90.0,
+      "prompt_count": 15,
+      "total_score": 29,
+      "max_score": 30,
+      "average_score": 1.933,
+      "score_percent": 96.7,
+      "good_count": 14,
+      "good_percent": 93.3,
       "partial_count": 1,
-      "partial_percent": 10.0,
+      "partial_percent": 6.7,
       "bad_count": 0,
       "bad_percent": 0.0,
       "pending_count": 0
     },
     "chatgpt": {
       "model": "ChatGPT",
-      "prompt_count": 10,
-      "total_score": 18,
-      "max_score": 20,
-      "average_score": 1.8,
-      "score_percent": 90.0,
-      "good_count": 8,
-      "good_percent": 80.0,
+      "prompt_count": 15,
+      "total_score": 28,
+      "max_score": 30,
+      "average_score": 1.867,
+      "score_percent": 93.3,
+      "good_count": 13,
+      "good_percent": 86.7,
       "partial_count": 2,
-      "partial_percent": 20.0,
+      "partial_percent": 13.3,
       "bad_count": 0,
       "bad_percent": 0.0,
       "pending_count": 0
     },
     "claude": {
       "model": "Claude",
-      "prompt_count": 9,
-      "total_score": 13,
-      "max_score": 18,
-      "average_score": 1.444,
-      "score_percent": 72.2,
-      "good_count": 5,
-      "good_percent": 55.6,
+      "prompt_count": 15,
+      "total_score": 25,
+      "max_score": 30,
+      "average_score": 1.667,
+      "score_percent": 83.3,
+      "good_count": 11,
+      "good_percent": 73.3,
       "partial_count": 3,
-      "partial_percent": 33.3,
+      "partial_percent": 20.0,
       "bad_count": 1,
-      "bad_percent": 11.1,
-      "pending_count": 1
+      "bad_percent": 6.7,
+      "pending_count": 0
     },
     "gemini": {
       "model": "Gemini",
-      "prompt_count": 10,
-      "total_score": 12,
-      "max_score": 20,
-      "average_score": 1.2,
-      "score_percent": 60.0,
-      "good_count": 5,
-      "good_percent": 50.0,
-      "partial_count": 2,
+      "prompt_count": 15,
+      "total_score": 21,
+      "max_score": 30,
+      "average_score": 1.4,
+      "score_percent": 70.0,
+      "good_count": 9,
+      "good_percent": 60.0,
+      "partial_count": 3,
       "partial_percent": 20.0,
       "bad_count": 3,
-      "bad_percent": 30.0,
+      "bad_percent": 20.0,
       "pending_count": 0
     }
   },
@@ -123,6 +123,12 @@
       "model": "Gemini",
       "failure_type": "Invalid/incomplete ZAIC correction",
       "brief_explanation": "Kept ZAIC_PEAK zaic(\"speed\") without the IvP domain, omitted setPWT(m_priority_wt), and introduced an unsupported setValueAtSummit method."
+    },
+    {
+      "prompt_id": "K15",
+      "model": "Gemini",
+      "failure_type": "Wrong pShare/port mental model",
+      "brief_explanation": "Got the unique vehicle ports and community names right, but suggested routing shoreside pShare output to vehicle MOOSDB ports rather than distinguishing pShare route ports from MOOSDB ServerPort."
     }
   ],
   "prompts": [
@@ -315,17 +321,119 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 2,
-        "claude": null,
+        "claude": 2,
         "gemini": 0
       },
       "winners": [
         "notebook",
-        "chatgpt"
+        "chatgpt",
+        "claude"
       ],
       "hard_failures": [
         "Gemini"
       ],
-      "note": "NotebookLM and ChatGPT corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. Claude is still pending due quota."
+      "note": "NotebookLM, ChatGPT, and Claude corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method."
+    },
+    {
+      "id": "K11",
+      "category": "code_config_advice",
+      "title": "MOOS Reconnect Registration",
+      "prompt": "This MOOS app receives mail at first but stops receiving `NAV_X` after a reconnect. Correct the app lifecycle pattern conceptually.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers identified that registrations need to be repeated from OnConnectToServer or a shared registerVariables helper called on reconnect.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "id": "K12",
+      "category": "code_config_advice",
+      "title": "Regenerating nsplug Targets",
+      "prompt": "This launch workflow edits `meta_vehicle.moos`, but the running mission still uses old ports and old behavior settings. Correct the workflow conceptually.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "id": "K13",
+      "category": "code_config_advice",
+      "title": "Deploy Button Missing Helm Release",
+      "prompt": "This viewer button is supposed to deploy the vehicle, but clicking it does not make the helm run. Correct the configuration conceptually and explain what should be checked in uXMS.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers identified the need to post DEPLOY=true and release MOOS_MANUAL_OVERRIDE=false, then check DEPLOY, MOOS_MANUAL_OVERRIDE, helm state, and behavior outputs in uXMS/uHelmScope.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "id": "K14",
+      "category": "code_config_advice",
+      "title": "BHV_Waypoint Update Variable Mismatch",
+      "prompt": "This app posts a new waypoint update, but BHV_Waypoint never changes route. Correct the pattern conceptually and explain what names must line up.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "hard_failures": [],
+      "note": "All four answers correctly found the mismatch between Notify(\"WPT_UPDATE\", ...) and updates = WAYPOINT_UPDATES, and explained that the posted variable name must match the behavior updates parameter.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ]
+    },
+    {
+      "id": "K15",
+      "category": "code_config_advice",
+      "title": "Two-Vehicle Community/Port Collision",
+      "prompt": "This two-vehicle mission is intended to run both vehicles on one laptop, but one vehicle seems to disappear or the shoreside receives confusing reports. Correct the configuration conceptually.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 1
+      },
+      "hard_failures": [
+        "Gemini"
+      ],
+      "note": "NotebookLM, ChatGPT, and Claude gave the clean unique-community/unique-MOOSDB-port correction. Gemini got that core correction but added a misleading pShare/port mental model, so it was only partial.",
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude"
+      ]
     }
   ]
 }

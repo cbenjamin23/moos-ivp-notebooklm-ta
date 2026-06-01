@@ -1,6 +1,6 @@
 # Code / Config Benchmark Results
 
-Status: partial: K10 Claude remains pending due Claude quota; all other K outputs are captured and graded.
+Status: complete for K01-K15.
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
@@ -10,14 +10,14 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; `Score %` is tot
 
 | Model | Score % | Avg / 2 | Good Answers | Partial Answers | Bad Answers | Pending |
 |---|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 95.0% | 1.90 | 9/10 (90.0%) | 1/10 (10.0%) | 0/10 (0.0%) | 0 |
-| ChatGPT | 90.0% | 1.80 | 8/10 (80.0%) | 2/10 (20.0%) | 0/10 (0.0%) | 0 |
-| Claude | 72.2% | 1.44 | 5/9 (55.6%) | 3/9 (33.3%) | 1/9 (11.1%) | 1 |
-| Gemini | 60.0% | 1.20 | 5/10 (50.0%) | 2/10 (20.0%) | 3/10 (30.0%) | 0 |
+| NotebookLM TA | 96.7% | 1.93 | 14/15 (93.3%) | 1/15 (6.7%) | 0/15 (0.0%) | 0 |
+| ChatGPT | 93.3% | 1.87 | 13/15 (86.7%) | 2/15 (13.3%) | 0/15 (0.0%) | 0 |
+| Claude | 83.3% | 1.67 | 11/15 (73.3%) | 3/15 (20.0%) | 1/15 (6.7%) | 0 |
+| Gemini | 70.0% | 1.40 | 9/15 (60.0%) | 3/15 (20.0%) | 3/15 (20.0%) | 0 |
 
 ## Interpretation
 
-NotebookLM TA is currently leading the code/config stress section, but this should still be treated as a stress test rather than the product claim. The most important result is failure-mode shape: NotebookLM stayed close to MOOS-IvP source patterns, while general tools were more likely to produce fluent but wrong copy-pasteable details for pShare, NODE_MESSAGE payloads, behavior setParam delegation, or ZAIC construction. Claude will receive a final K score after K10 is captured.
+NotebookLM TA remains first in the code/config stress section, but this result should still be treated as secondary to the conceptual TA claim. The expanded prompts were mostly beginner configuration-pattern questions rather than full coding tasks. Claude improved after K10 was captured, while Gemini continued to lose credit for fluent but wrong MOOS-IvP-specific implementation details.
 
 ## Hard/Notable Error Details
 
@@ -33,6 +33,7 @@ These details are kept for audit, not as a headline scoring column. They may ove
 | K09 | Claude | Wrong behavior lifecycle framing | Placed addInfoVars in an onSetParam/RegisterVariables-style flow and described MOOS app mail delivery rather than the helm InfoBuffer behavior pattern. |
 | K09 | Gemini | Off-domain BehaviorTree.CPP answer | Answered with BehaviorTree.CPP ports, blackboard, getInput, and BT::NodeStatus rather than MOOS-IvP addInfoVars/InfoBuffer APIs. |
 | K10 | Gemini | Invalid/incomplete ZAIC correction | Kept ZAIC_PEAK zaic("speed") without the IvP domain, omitted setPWT(m_priority_wt), and introduced an unsupported setValueAtSummit method. |
+| K15 | Gemini | Wrong pShare/port mental model | Got the unique vehicle ports and community names right, but suggested routing shoreside pShare output to vehicle MOOSDB ports rather than distinguishing pShare route ports from MOOSDB ServerPort. |
 
 ## Prompt-by-Prompt Results
 
@@ -47,4 +48,9 @@ These details are kept for audit, not as a headline scoring column. They may ove
 | K07 | Inter-Vehicle Message Payload | 2 | 2 | 0 | 0 | Claude, Gemini | NotebookLM and ChatGPT correctly used NODE_MESSAGE_LOCAL with src_node, dest_node, var_name, and quoted string_val. Claude replaced the documented field names with wrong moos_var/moos_string fields. Gemini recommended direct VISIT_POINT publishing rather than the inter-vehicle envelope. |
 | K08 | `setParam()` Pattern | 2 | 1 | 2 | 2 | ChatGPT | NotebookLM, Claude, and Gemini preserved base-class setParam delegation. ChatGPT validated the custom parameter but its code returned false instead of delegating to IvPBehavior::setParam for standard behavior parameters. |
 | K09 | `addInfoVars()` / InfoBuffer | 2 | 2 | 1 | 0 | Claude, Gemini | NotebookLM and ChatGPT gave the normal addInfoVars plus getBufferDoubleVal ok-flag pattern. Claude had the right calls but wrong behavior lifecycle framing. Gemini answered as BehaviorTree.CPP, not MOOS-IvP. |
-| K10 | ZAIC Speed Function | 2 | 2 | pending | 0 | Gemini | NotebookLM and ChatGPT corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. Claude is still pending due quota. |
+| K10 | ZAIC Speed Function | 2 | 2 | 2 | 0 | Gemini | NotebookLM, ChatGPT, and Claude corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. |
+| K11 | MOOS Reconnect Registration | 2 | 2 | 2 | 2 | none | All four answers identified that registrations need to be repeated from OnConnectToServer or a shared registerVariables helper called on reconnect. |
+| K12 | Regenerating nsplug Targets | 2 | 2 | 2 | 2 | none | All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments. |
+| K13 | Deploy Button Missing Helm Release | 2 | 2 | 2 | 2 | none | All four answers identified the need to post DEPLOY=true and release MOOS_MANUAL_OVERRIDE=false, then check DEPLOY, MOOS_MANUAL_OVERRIDE, helm state, and behavior outputs in uXMS/uHelmScope. |
+| K14 | BHV_Waypoint Update Variable Mismatch | 2 | 2 | 2 | 2 | none | All four answers correctly found the mismatch between Notify("WPT_UPDATE", ...) and updates = WAYPOINT_UPDATES, and explained that the posted variable name must match the behavior updates parameter. |
+| K15 | Two-Vehicle Community/Port Collision | 2 | 2 | 2 | 1 | Gemini | NotebookLM, ChatGPT, and Claude gave the clean unique-community/unique-MOOSDB-port correction. Gemini got that core correction but added a misleading pShare/port mental model, so it was only partial. |

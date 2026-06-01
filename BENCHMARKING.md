@@ -45,11 +45,11 @@ The primary benchmark mode is an organic beginner-tier test:
 
 ## Prompt Set
 
-Use 50 fixed prompts grounded in the lab sequence:
+Use 60 fixed prompts grounded in the lab sequence:
 
 - 30 conceptual/debugging prompts
-- 10 exact documentation/parameter/tool prompts
-- 10 code-advice/code-correction prompts
+- 15 exact documentation/parameter/tool prompts
+- 15 code-advice/code-correction prompts
 
 This split reflects the intended use case. The benchmark should mainly test conceptual TA value for lab students, while still measuring whether the notebook is better or worse than normal LLMs on code-adjacent MOOS-IvP tasks.
 
@@ -141,7 +141,7 @@ It should contain:
 3. Score table by category
 4. Hard/notable error audit section
 5. Main interpretation
-6. Prompt-by-prompt results for all 50 prompts
+6. Prompt-by-prompt results for all 60 prompts
 7. Appendix with grading notes and reference checks
 
 The root `README.md` should only include a concise summary:

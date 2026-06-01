@@ -1,6 +1,6 @@
 # Benchmark Results
 
-Status: near-complete. C01-C30 and D01-D10 are fully captured and graded. K01-K09 are complete for all four tools, and K10 is graded for NotebookLM TA, ChatGPT, and Gemini. Claude K10 remains pending because Claude hit a quota stop and indicated availability at 12:10 PM. NotebookLM D02 uses a user-approved immediate retry replacement after the first pass returned only `The system was unable to answer.`
+Status: complete. C01-C30, D01-D15, and K01-K15 are fully captured and graded for NotebookLM TA, ChatGPT, Claude, and Gemini. NotebookLM D02 uses a user-approved immediate retry replacement after the first pass returned only `The system was unable to answer`.
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
@@ -8,32 +8,32 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; `Score %` is tot
 
 ## Executive Summary
 
-NotebookLM TA is currently first overall on the captured benchmark outputs and is strongest in the intended product lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. ChatGPT remains very strong, especially on readable explanations, but lost credit for several fluent wrong MOOS-IvP-specific details. Gemini was competitive on exact documentation questions but much weaker on the code/config stress prompts. Claude remains provisional because one answer is pending; its captured outputs show the most severe context/search failures.
+NotebookLM TA finished first overall and remained strongest in the intended product lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. ChatGPT remained very strong, especially on readable explanations, but lost credit for several fluent wrong MOOS-IvP-specific details. Gemini was competitive on exact documentation questions but weaker on code/config stress prompts. Claude improved after the delayed K10 capture and direct-answer retry test, but first-pass Claude still had the most severe context/search failures in the benchmark.
 
-The evidence still supports a narrow positioning: the notebook is a conceptual, documentation-grounded MOOS-IvP TA. It should not be marketed as an autonomous coding agent, though the code/config stress test suggests it can sometimes outperform general tools on MOOS-IvP-specific configuration patterns.
+The evidence supports a narrow positioning: the notebook is a conceptual, documentation-grounded MOOS-IvP TA. It should not be marketed as an autonomous coding agent, though the code/config stress test suggests that RAG over curated MOOS-IvP sources can help with beginner configuration patterns.
 
 ## Headline Scores
 
 | Model | Score % | Avg / 2 | Good % | Partial % | Bad % | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 99.0% | 1.98 | 98.0% | 2.0% | 0.0% | 100.0% | 100.0% | 95.0% | 0 |
-| ChatGPT | 94.0% | 1.88 | 90.0% | 8.0% | 2.0% | 96.7% | 90.0% | 90.0% | 0 |
-| Gemini | 78.0% | 1.56 | 66.0% | 24.0% | 10.0% | 80.0% | 90.0% | 60.0% | 0 |
-| Claude | 60.2% | 1.20 | 38.8% | 42.9% | 18.4% | 60.0% | 50.0% | 72.2% | 1 |
-
-Claude's overall score is provisional because one code/config answer is pending. The denominator for Claude currently excludes K10; all other tools are scored across all 50 prompts.
+| NotebookLM TA | 99.2% | 1.98 | 98.3% | 1.7% | 0.0% | 100.0% | 100.0% | 96.7% | 0 |
+| ChatGPT | 94.2% | 1.88 | 90.0% | 8.3% | 1.7% | 96.7% | 90.0% | 93.3% | 0 |
+| Gemini | 80.0% | 1.60 | 68.3% | 23.3% | 8.3% | 80.0% | 90.0% | 70.0% | 0 |
+| Claude | 65.8% | 1.32 | 46.7% | 38.3% | 15.0% | 60.0% | 60.0% | 83.3% | 0 |
 
 ## Category Results
 
 | Category | Prompt Count | NotebookLM TA | ChatGPT | Claude | Gemini | Status |
 |---|---:|---:|---:|---:|---:|---|
 | Conceptual/debugging | 30 | 100.0% (2.00/2) | 96.7% (1.93/2) | 60.0% (1.20/2) | 80.0% (1.60/2) | complete |
-| Exact docs/parameters/tools | 10 | 100.0% (2.00/2) | 90.0% (1.80/2) | 50.0% (1.00/2) | 90.0% (1.80/2) | complete; NotebookLM D02 retry replacement |
-| Code/config advice | 10 | 95.0% (1.90/2) | 90.0% (1.80/2) | 72.2% (1.44/2) | 60.0% (1.20/2) | partial: K10 Claude pending |
+| Exact docs/parameters/tools | 15 | 100.0% (2.00/2) | 90.0% (1.80/2) | 60.0% (1.20/2) | 90.0% (1.80/2) | complete; NotebookLM D02 retry replacement |
+| Code/config advice | 15 | 96.7% (1.93/2) | 93.3% (1.87/2) | 83.3% (1.67/2) | 70.0% (1.40/2) | complete |
 
-## Replacement Note
+## Replacement And Retry Notes
 
 NotebookLM's first D02 answer was `The system was unable to answer.` The immediate retry produced a correct answer and, at the user's request, is treated as the replacement primary score. The original first-pass response is preserved in `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/retries/D02_notebook_retry_replacement.json` and in `raw/D02.json` under `replacement_for`.
+
+Claude direct-answer retries were run post hoc for C16, C25, C26, D05, and D10 with the prefix `Answer directly, no clarifying questions.` These are saved under `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/retries/` for user-friction analysis and are not used to replace first-pass benchmark scores.
 
 ## Hard/Notable Error Details
 
@@ -64,6 +64,10 @@ These details are kept for audit. A hard/notable error can be in an answer alrea
 | D08 | Claude | Wrong bridge/tool syntax | Answered primarily with pMOOSBridge SHARE syntax instead of the pShare configuration requested. |
 | D08 | Gemini | Inaccurate pShare syntax | Used a nonstandard src_var/colon route form for pShare output in an exact syntax-oriented answer. |
 | D10 | Claude | Non-answer | Declined to answer and asked for context despite the prompt naming pLogger, aloggrep, and alogview. |
+| D12 | ChatGPT | Wrong pMarineViewer button syntax | Used `action = ...` as the button syntax instead of the documented button_one/button_two action-button parameters. |
+| D12 | Claude | Wrong pMarineViewer button syntax | Used a var/sval button form that does not match the documented pMarineViewer button_one/button_two syntax. |
+| D12 | Gemini | Wrong pMarineViewer button parameter | Used a generic `BUTTON = ...` parameter instead of the documented numbered button parameters. |
+| D14 | Claude | Wrong NODE_REPORT_LOCAL publication framing | Stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally, weakening the local-vs-shared report distinction. |
 | K03 | Gemini | Nonstandard AppCasting API | Used RegisterConfigWarning-style wording rather than the AppCasting warning/reporting pattern and did not fix reconnect registration. |
 | K06 | ChatGPT | Wrong pShare destination port model | Told the user to route to the destination MOOSDB ServerPort; pShare output should target the receiving pShare route/input port. |
 | K07 | Claude | Wrong NODE_MESSAGE fields | Claimed string_val/double_val are not recognized and replaced them with moos_var/moos_string, which is wrong for the documented NODE_MESSAGE payload. |
@@ -72,16 +76,17 @@ These details are kept for audit. A hard/notable error can be in an answer alrea
 | K09 | Claude | Wrong behavior lifecycle framing | Placed addInfoVars in an onSetParam/RegisterVariables-style flow and described MOOS app mail delivery rather than the helm InfoBuffer behavior pattern. |
 | K09 | Gemini | Off-domain BehaviorTree.CPP answer | Answered with BehaviorTree.CPP ports, blackboard, getInput, and BT::NodeStatus rather than MOOS-IvP addInfoVars/InfoBuffer APIs. |
 | K10 | Gemini | Invalid/incomplete ZAIC correction | Kept ZAIC_PEAK zaic("speed") without the IvP domain, omitted setPWT(m_priority_wt), and introduced an unsupported setValueAtSummit method. |
+| K15 | Gemini | Wrong pShare/port mental model | Got the unique vehicle ports and community names right, but suggested routing shoreside pShare output to vehicle MOOSDB ports rather than distinguishing pShare route ports from MOOSDB ServerPort. |
 
 ## Main Interpretation
 
 The strongest reasonable claim is not that NotebookLM is universally smarter than ChatGPT, Claude, or Gemini. The stronger claim is narrower and more defensible: when the question is grounded in MOOS-IvP lab concepts, documented tools, and common beginner debugging workflows, the curated NotebookLM TA produced fewer MOOS-specific hallucinations and more consistently stayed inside the correct toolchain.
 
-The code/config results are useful but should remain secondary. They show that RAG over the MOOS-IvP source packs can help with exact local conventions, but exact C++ or mission-file correction still needs source-tree verification.
+The expanded exact-doc and code/config prompts reinforced the same pattern. General models often understood the broad concept, but were more likely to produce plausible-looking syntax or routing details that would waste a student’s time if copied directly. NotebookLM was not perfect, but it was more conservative and source-aligned.
 
 ## Prompt-by-Prompt Results
 
-Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet captured.
+Scoring: `2` = good, `1` = partially useful, `0` = bad.
 
 | ID | Prompt Short Name | NotebookLM | ChatGPT | Claude | Gemini | Hard/Notable Details | Notes |
 |---|---|---:|---:|---:|---:|---|---|
@@ -89,8 +94,8 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet capt
 | C02 | Version Control Before Mission Changes | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts. |
 | C03 | uXMS/uPokeDB Confusion | 2 | 2 | 2 | 2 | none | All models correctly centered the same-host/same-port/same-variable/uXMS registration debugging path. |
 | C04 | App Not Publishing | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave a usable app lifecycle pipeline. Claude was mostly useful, but lost credit for suggesting pMarinePID/iGPS-style upstream NAV publishers in a way that could mislead a beginner. |
-| C05 | pAntler Did Not Start A Process | 2 | 2 | 1 | 1 | Claude, Gemini | NotebookLM/ChatGPT gave clean pAntler launch-vs-registration guidance. Claude and Gemini were useful but lost credit for imprecise or wrong ProcessConfig framing; Gemini used ProcessConfig = pAntler for Run lines. |
-| C06 | Launch Arguments Not Reaching Config Files | 2 | 2 | 1 | 0 | Gemini | NotebookLM and ChatGPT directly described launch scripts, templates, generated files, and stale target files; Claude was generic ROS-like but partly useful; Gemini went off-domain. |
+| C05 | pAntler Did Not Start A Process | 2 | 2 | 1 | 1 | claude, gemini | NotebookLM/ChatGPT gave clean pAntler launch-vs-registration guidance. Claude and Gemini were useful but lost credit for imprecise or wrong ProcessConfig framing; Gemini used ProcessConfig = pAntler for Run lines. |
+| C06 | Launch Arguments Not Reaching Config Files | 2 | 2 | 1 | 0 | gemini | NotebookLM and ChatGPT directly described launch scripts, templates, generated files, and stale target files; Claude was generic ROS-like but partly useful; Gemini went off-domain. |
 | C07 | Helm Remains PARKED | 2 | 2 | 2 | 1 | none | NotebookLM/ChatGPT/Claude gave correct helm-state/all-stop/deploy-variable diagnostics; Gemini was broadly helpful but less precise about helm state naming. |
 | C08 | No Desired Outputs | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini covered helm state, behavior activation, NAV variables, .moos/.bhv boundaries; Claude had useful checks but wrong pHelmIvP casing and config details. |
 | C09 | Vehicle Moves In Simulation But Autonomy Looks Wrong | 2 | 2 | 2 | 2 | none | All models separated simulator NAV output, helm inputs, behavior conditions, and viewer state well enough. |
@@ -99,22 +104,22 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet capt
 | C12 | pShare Route Confusion | 2 | 2 | 2 | 2 | none | All models gave a reasonable local-vs-shared variable boundary for pShare routes. |
 | C13 | TSP App / Behavior Boundary | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming. |
 | C14 | Distributed Route Assignment Problem | 2 | 2 | 1 | 1 | none | NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers. |
-| C15 | Multi-Machine Networking Problem | 2 | 2 | 1 | 2 | Claude | NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting. |
-| C16 | Message Does Not Arrive | 2 | 2 | 0 | 1 | Claude | NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value. |
-| C17 | Node Names / Destinations | 2 | 2 | 1 | 0 | Gemini | NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT. |
+| C15 | Multi-Machine Networking Problem | 2 | 2 | 1 | 2 | claude | NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting. |
+| C16 | Message Does Not Arrive | 2 | 2 | 0 | 1 | claude | NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value. |
+| C17 | Node Names / Destinations | 2 | 2 | 1 | 0 | gemini | NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT. |
 | C18 | Behavior Never Runs | 2 | 2 | 2 | 2 | none | All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance. |
 | C19 | `.moos` vs `.bhv` Mistake | 2 | 2 | 2 | 2 | none | All models correctly distinguished .moos app/process config from .bhv behavior config. |
 | C20 | Payload Event Not Affecting Autonomy | 2 | 2 | 2 | 2 | none | All models gave a usable data-path trace from payload publication through MOOSDB into helm conditions/updates/coordinating apps. |
-| C21 | Simulation to Heron/PABLO | 2 | 2 | 1 | 1 | Claude, Gemini | NotebookLM and ChatGPT gave the cleanest uSimMarine-to-Heron/PABLO transition framing. Claude and Gemini kept some useful safety/architecture points but lost credit for invented or unsupported Heron interface app names. |
-| C22 | Field Deployment Sanity Check | 2 | 2 | 0 | 1 | Claude, Gemini | NotebookLM/ChatGPT were MOOS/PABLO-aware; Claude was generic ROS/Gazebo; Gemini was generic drone/autopilot deployment with little MOOS specificity. |
+| C21 | Simulation to Heron/PABLO | 2 | 2 | 1 | 1 | claude, gemini | NotebookLM and ChatGPT gave the cleanest uSimMarine-to-Heron/PABLO transition framing. Claude and Gemini kept some useful safety/architecture points but lost credit for invented or unsupported Heron interface app names. |
+| C22 | Field Deployment Sanity Check | 2 | 2 | 0 | 1 | claude, gemini | NotebookLM/ChatGPT were MOOS/PABLO-aware; Claude was generic ROS/Gazebo; Gemini was generic drone/autopilot deployment with little MOOS specificity. |
 | C23 | Rescue Path Planning | 2 | 2 | 1 | 1 | none | NotebookLM/ChatGPT were most aligned with MOOS rescue planner/route handoff; Claude/Gemini were generic SAR planning but still conceptually useful. |
 | C24 | Adversarial Rescue Updates | 2 | 2 | 1 | 1 | none | NotebookLM/ChatGPT addressed dynamic rescue updates and replanning in the lab style; Claude/Gemini gave generic dynamic task-allocation answers. |
-| C25 | Teammate Messaging | 2 | 2 | 0 | 2 | Claude | NotebookLM/ChatGPT/Gemini understood two-vehicle rescue/uField messaging; Claude asked for context and treated uField as unknown. |
-| C26 | Post-Mission Alog Diagnosis | 2 | 2 | 0 | 2 | Claude | NotebookLM/ChatGPT/Gemini gave aloggrep/alogview/aloghelm-style post-run debugging; Claude returned an unrelated uField clarification from a prior prompt. |
-| C27 | pLogger Produced No Useful Alog | 2 | 1 | 1 | 2 | ChatGPT, Claude | NotebookLM and Gemini gave useful pLogger/path/process guidance. ChatGPT was otherwise strong but used a wrong ProcessConfig = pAntler example; Claude included unsupported pLogger filtering/subscription claims. |
+| C25 | Teammate Messaging | 2 | 2 | 0 | 2 | claude | NotebookLM/ChatGPT/Gemini understood two-vehicle rescue/uField messaging; Claude asked for context and treated uField as unknown. |
+| C26 | Post-Mission Alog Diagnosis | 2 | 2 | 0 | 2 | claude | NotebookLM/ChatGPT/Gemini gave aloggrep/alogview/aloghelm-style post-run debugging; Claude returned an unrelated uField clarification from a prior prompt. |
+| C27 | pLogger Produced No Useful Alog | 2 | 1 | 1 | 2 | chatgpt, claude | NotebookLM and Gemini gave useful pLogger/path/process guidance. ChatGPT was otherwise strong but used a wrong ProcessConfig = pAntler example; Claude included unsupported pLogger filtering/subscription claims. |
 | C28 | Choosing Debugging Tools During A Mission Run | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini mapped tools to use cases well; Claude was useful but shallower and slightly imprecise on uQueryDB/pLogger roles. |
-| C29 | pMarineViewer Background / Geodesy | 2 | 2 | 0 | 2 | Claude | NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names. |
-| C30 | Mission Broke After Several Edits | 2 | 1 | 2 | 2 | ChatGPT | NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example. |
+| C29 | pMarineViewer Background / Geodesy | 2 | 2 | 0 | 2 | claude | NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names. |
+| C30 | Mission Broke After Several Edits | 2 | 1 | 2 | 2 | chatgpt | NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example. |
 | D01 | pOdometry Variables | 2 | 2 | 0 | 1 | Claude | NotebookLM and ChatGPT gave the expected NAV_X/NAV_Y to ODOMETRY_DIST path; Claude answered as ROS odometry; Gemini mixed MOOS-IvP with generic robotics/ROS signals. |
 | D02 | pAntler Process Launching | 2 | 2 | 1 | 2 | Claude | NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only “The system was unable to answer,” but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. |
 | D03 | uTimerScript Usage | 2 | 2 | 2 | 2 | none | All four answers gave a usable uTimerScript mental model: timed MOOS posts for initialization, triggers, simulation proxies, and checks in uXMS. |
@@ -125,6 +130,11 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet capt
 | D08 | pShare Configuration | 2 | 2 | 1 | 1 | Claude, Gemini | NotebookLM and ChatGPT gave the cleanest pShare routing model. Claude mostly answered with pMOOSBridge syntax. Gemini had the right idea but used an inaccurate pShare output syntax for an exact-docs prompt. |
 | D09 | uField Broker Comparison | 2 | 2 | 1 | 2 | none | NotebookLM, ChatGPT, and Gemini gave a usable comparison of brokers, pShare bridging, node comms, and message handling. Claude was broadly useful but overstated node reports and used imprecise bridge terminology. |
 | D10 | pLogger And Alog Verification | 2 | 2 | 0 | 2 | Claude | NotebookLM, ChatGPT, and Gemini gave a usable alog/pLogger verification workflow. Claude declined to answer without additional context. |
+| D11 | Stale nsplug Generated Files | 2 | 2 | 2 | 2 | none | All four answers correctly identified the template-to-target-file workflow: inspect generated targ_/target .moos/.bhv files, rerun nsplug after template or launch-argument changes, and verify that pAntler is launching the regenerated file. |
+| D12 | pMarineViewer Action Buttons | 2 | 1 | 1 | 1 | ChatGPT, Claude, Gemini | NotebookLM gave the documented button_one/button_two style. ChatGPT, Claude, and Gemini explained the right control variables but used wrong or nonstandard exact button syntax (`action =`, var/sval forms, or `BUTTON =`), so their answers would need correction before copying. |
+| D13 | uXMS vs uQueryDB vs uPokeDB | 2 | 2 | 2 | 2 | none | All four answers separated live scoping/observation, one-shot or condition-oriented querying, and active poking well enough for a student debugging a running MOOSDB. |
+| D14 | pNodeReporter Local vs Shared Reports | 2 | 2 | 1 | 2 | Claude | NotebookLM, ChatGPT, and Gemini correctly centered NODE_REPORT_LOCAL as the local ownship report and NODE_REPORT as the shared/received report. Claude gave useful topology advice but incorrectly stated or implied that pNodeReporter normally publishes NODE_REPORT directly/both locally. |
+| D15 | BHV_Loiter vs BHV_StationKeep | 2 | 2 | 2 | 2 | none | All four answers gave a useful distinction between continuous polygon loitering and point/radius station keeping, with enough parameters and symptoms to guide a lab student. |
 | K01 | pOdometry Mail Handling | 2 | 2 | 2 | 2 | none | All four answers separated mail/state updates from Iterate-time publication well enough for a pOdometry-style app. |
 | K02 | Missing Registration Pattern | 2 | 2 | 2 | 2 | none | All four answers gave a usable reconnect-safe registration pattern, with registration repeated from OnConnectToServer or the local RegisterVariables helper. |
 | K03 | AppCasting Config Warnings | 1 | 2 | 1 | 1 | Gemini | ChatGPT gave the cleanest AppCasting/startup pattern. NotebookLM, Claude, and Gemini were partially useful but missed or weakened the reconnect registration point or used nonstandard warning API language. |
@@ -134,7 +144,12 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet capt
 | K07 | Inter-Vehicle Message Payload | 2 | 2 | 0 | 0 | Claude, Gemini | NotebookLM and ChatGPT correctly used NODE_MESSAGE_LOCAL with src_node, dest_node, var_name, and quoted string_val. Claude replaced the documented field names with wrong moos_var/moos_string fields. Gemini recommended direct VISIT_POINT publishing rather than the inter-vehicle envelope. |
 | K08 | `setParam()` Pattern | 2 | 1 | 2 | 2 | ChatGPT | NotebookLM, Claude, and Gemini preserved base-class setParam delegation. ChatGPT validated the custom parameter but its code returned false instead of delegating to IvPBehavior::setParam for standard behavior parameters. |
 | K09 | `addInfoVars()` / InfoBuffer | 2 | 2 | 1 | 0 | Claude, Gemini | NotebookLM and ChatGPT gave the normal addInfoVars plus getBufferDoubleVal ok-flag pattern. Claude had the right calls but wrong behavior lifecycle framing. Gemini answered as BehaviorTree.CPP, not MOOS-IvP. |
-| K10 | ZAIC Speed Function | 2 | 2 | pending | 0 | Gemini | NotebookLM and ChatGPT corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. Claude is still pending due quota. |
+| K10 | ZAIC Speed Function | 2 | 2 | 2 | 0 | Gemini | NotebookLM, ChatGPT, and Claude corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. |
+| K11 | MOOS Reconnect Registration | 2 | 2 | 2 | 2 | none | All four answers identified that registrations need to be repeated from OnConnectToServer or a shared registerVariables helper called on reconnect. |
+| K12 | Regenerating nsplug Targets | 2 | 2 | 2 | 2 | none | All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments. |
+| K13 | Deploy Button Missing Helm Release | 2 | 2 | 2 | 2 | none | All four answers identified the need to post DEPLOY=true and release MOOS_MANUAL_OVERRIDE=false, then check DEPLOY, MOOS_MANUAL_OVERRIDE, helm state, and behavior outputs in uXMS/uHelmScope. |
+| K14 | BHV_Waypoint Update Variable Mismatch | 2 | 2 | 2 | 2 | none | All four answers correctly found the mismatch between Notify("WPT_UPDATE", ...) and updates = WAYPOINT_UPDATES, and explained that the posted variable name must match the behavior updates parameter. |
+| K15 | Two-Vehicle Community/Port Collision | 2 | 2 | 2 | 1 | Gemini | NotebookLM, ChatGPT, and Claude gave the clean unique-community/unique-MOOSDB-port correction. Gemini got that core correction but added a misleading pShare/port mental model, so it was only partial. |
 
 ## Appendix: Detailed Reports
 
@@ -145,4 +160,4 @@ Scoring: `2` = good, `1` = partially useful, `0` = bad, `pending` = not yet capt
 
 ## Appendix: Grading Method
 
-See `SCORING_RUBRIC.md` for the concise scoring rubric. Conceptual and exact-doc answers were checked against the curated NotebookLM source packs and known MOOS-IvP documentation semantics. Code/config answers were checked against the local MOOS-IvP checkout at `/Users/charlesbenjamin/moos-ivp`, especially behavior examples, pShare/uField message tooling, and IvP behavior/ZAIC APIs.
+See `SCORING_RUBRIC.md` for the concise scoring rubric. Conceptual and exact-doc answers were checked against the curated NotebookLM source packs and known MOOS-IvP documentation semantics. Code/config answers were checked against the local MOOS-IvP checkout at `/Users/charlesbenjamin/moos-ivp`, especially behavior examples, pMarineViewer button syntax, pShare/uField message tooling, and IvP behavior/ZAIC APIs.
