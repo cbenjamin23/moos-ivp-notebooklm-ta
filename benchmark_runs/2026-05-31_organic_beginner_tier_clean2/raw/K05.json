@@ -32,6 +32,14 @@
       "method": "gemini_body_last_response_slice",
       "url": "https://gemini.google.com/app/a90a9df6c18870e2",
       "captured_at": "2026-06-01T13:57:45Z"
+    },
+    "chatgpt_55_instant": {
+      "status": "captured",
+      "captured_at": "2026-06-01T20:37:51.180Z",
+      "url": "https://chatgpt.com/c/6a1ded89-f81c-832c-9b8e-21151db4aad7",
+      "method": "chatgpt_55_instant_fresh_user_tab",
+      "model_label": "GPT-5.5 Instant",
+      "text": "That is the wrong file boundary.\n\nProcessConfig = pHelmIvP { ... } in the .moos file is only for configuring the pHelmIvP app itself: AppTick, CommsTick, helm settings, and the path to the behavior file.\n\nThe BHV_Waypoint block belongs in the .bhv behavior file, not inside the .moos process config.\n\nCorrect conceptually:\n\n// mission.moos\nProcessConfig = pHelmIvP\n{\n  AppTick    = 4\n  CommsTick = 4\n\n  behaviors = filename.bhv\n}\n\nThen:\n\n// filename.bhv\nBehavior = BHV_Waypoint\n{\n  name      = waypt_survey\n  condition = DEPLOY == true\n  condition = MOOS_MANUAL_OVERRIDE == false\n\n  points    = 0,0:50,0:50,50\n  speed     = 2.0\n}\n\nThe .moos file launches and configures apps. The .bhv file configures helm behaviors. If a behavior block is placed inside ProcessConfig = pHelmIvP, the helm will not treat it as a real behavior, so the vehicle may launch normally but no waypoint behavior will run.\n\nCheck uHelmScope, pHelmIvP appcasting, or helm warnings to confirm whether waypt_survey was actually loaded."
     }
   }
 }

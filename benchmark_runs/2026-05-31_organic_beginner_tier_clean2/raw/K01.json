@@ -32,6 +32,14 @@
       "method": "gemini_body_prompt_slice",
       "url": "https://gemini.google.com/app/5b757afb0f7a9ddf",
       "captured_at": "2026-06-01T13:27:28Z"
+    },
+    "chatgpt_55_instant": {
+      "status": "captured",
+      "captured_at": "2026-06-01T20:31:38.678Z",
+      "url": "https://chatgpt.com/c/6a1dec20-228c-8332-9428-bbf58dfb6772",
+      "method": "chatgpt_55_instant_fresh_user_tab",
+      "model_label": "GPT-5.5 Instant",
+      "text": "The fragile part is that OnNewMail() may receive only NAV_X, only NAV_Y, both, or neither. So this code can integrate a fake movement using one fresh coordinate and one stale coordinate.\n\nBetter pattern:\n\nC++\nbool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)\n{\n  for(const auto& msg : NewMail) {\n    if(msg.GetKey() == \"NAV_X\") {\n      m_x = msg.GetDouble();\n      m_got_x = true;\n    }\n    else if(msg.GetKey() == \"NAV_Y\") {\n      m_y = msg.GetDouble();\n      m_got_y = true;\n    }\n  }\n  return true;\n}\n\nbool Odometry::Iterate()\n{\n  if(!m_got_x || !m_got_y)\n    return true;\n\n  if(!m_initialized) {\n    m_prev_x = m_x;\n    m_prev_y = m_y;\n    m_initialized = true;\n    return true;\n  }\n\n  double delta = hypot(m_x - m_prev_x, m_y - m_prev_y);\n\n  if(delta > 0) {\n    m_total += delta;\n    m_prev_x = m_x;\n    m_prev_y = m_y;\n    Notify(\"ODOM_DIST\", m_total);\n  }\n\n  return true;\n}\n\nConceptually:\n\nOnNewMail() should be boring: receive mail, validate keys/types, update cached state, set “got data” flags. Do not do time-sensitive integration there.\n\nIterate() should do the app’s work: check whether the required inputs exist, compare current state to previous state, update odometry, publish ODOM_DIST.\n\nAlso make sure OnConnectToServer() or RegisterVariables() subscribes to:\n\nC++\nRegister(\"NAV_X\", 0);\nRegister(\"NAV_Y\", 0);\n\nMain bug: the original code never updates m_prev_x / m_prev_y, and it computes distance inside mail handling rather than inside the app’s regular iteration loop."
     }
   }
 }

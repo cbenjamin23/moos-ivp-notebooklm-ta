@@ -1096,31 +1096,36 @@
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K02": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K03": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K04": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K05": {
       "notebook": "captured",
       "chatgpt": "captured",
       "claude": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "chatgpt_55_instant": "captured"
     },
     "K06": {
       "notebook": "captured",
@@ -1153,5 +1158,5 @@
       "gemini": "captured"
     }
   },
-  "updated_at": "2026-06-01T20:30:53.703Z"
+  "updated_at": "2026-06-01T20:37:51.183Z"
 }

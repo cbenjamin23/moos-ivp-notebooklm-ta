@@ -32,6 +32,14 @@
       "method": "gemini_body_prompt_slice",
       "url": "https://gemini.google.com/app/f00861bd59201e30",
       "captured_at": "2026-06-01T13:34:43Z"
+    },
+    "chatgpt_55_instant": {
+      "status": "captured",
+      "captured_at": "2026-06-01T20:32:01.803Z",
+      "url": "https://chatgpt.com/c/6a1dec34-3f9c-8331-a27a-359556ce1912",
+      "method": "chatgpt_55_instant_fresh_user_tab",
+      "model_label": "GPT-5.5 Instant",
+      "text": "Register in both places, usually through one helper.\n\nOnStartUp() runs when the app starts and reads config. OnConnectToServer() runs whenever the app connects or reconnects to the MOOSDB. After reconnecting, subscriptions may need to be re-established, so leaving OnConnectToServer() empty can cause exactly this symptom: the app is alive, but receives no NAV_X / NAV_Y.\n\nUse this pattern:\n\nC++\nbool Odometry::OnStartUp()\n{\n  RegisterVariables();\n  return true;\n}\n\nbool Odometry::OnConnectToServer()\n{\n  RegisterVariables();\n  return true;\n}\n\nvoid Odometry::RegisterVariables()\n{\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n}\n\nConceptually:\n\nOnStartUp():\n\nC++\n// Read mission-file config.\n// Initialize app parameters.\n// Register variables for the initial connection.\n\nOnConnectToServer():\n\nC++\n// Re-register all mail subscriptions after connecting/reconnecting.\n\nOnNewMail():\n\nC++\n// Consume NAV_X / NAV_Y updates.\n// Update stored input state.\n// Do not assume both variables arrived in the same mail batch.\n\nIterate():\n\nC++\n// Perform periodic computation once valid inputs exist.\n// Publish ODOM_DIST.\n\nAlso guard against stale or missing data: do not compute odometry until both NAV_X and NAV_Y have been received at least once."
     }
   }
 }
