@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt K01
+Status: in progress - next prompt K02
 
-Last updated: 2026-06-01T12:50:54Z
+Last updated: 2026-06-01T13:27:28Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":160,"not_started":40}
+Counts: {"captured":164,"not_started":36}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -52,7 +52,7 @@ Counts: {"captured":160,"not_started":40}
 | D08 | exact_docs_tools | pShare Configuration | captured | captured | captured | captured |
 | D09 | exact_docs_tools | uField Broker Comparison | captured | captured | captured | captured |
 | D10 | exact_docs_tools | pLogger And Alog Verification | captured | captured | captured | captured |
-| K01 | code_config_advice | pOdometry Mail Handling | not_started | not_started | not_started | not_started |
+| K01 | code_config_advice | pOdometry Mail Handling | captured | captured | captured | captured |
 | K02 | code_config_advice | Missing Registration Pattern | not_started | not_started | not_started | not_started |
 | K03 | code_config_advice | AppCasting Config Warnings | not_started | not_started | not_started | not_started |
 | K04 | code_config_advice | uTimerScript Trigger Setup | not_started | not_started | not_started | not_started |
@@ -65,8 +65,8 @@ Counts: {"captured":160,"not_started":40}
 
 ## Current Position
 
-C01-C30 and D01-D10 are complete for all four tools. The conceptual/debugging and exact documentation/tool categories are complete. The next prompt is K01 in the code/config advice category.
+C01-C30, D01-D10, and K01 are complete for all four tools. The next prompt is K02 in the code/config advice category.
 
 ## Progress Notes
 
-Checkpoint at 2026-06-01T12:50:54Z: D10 completed for all four tools.
+Checkpoint at 2026-06-01T13:27:28Z: K01 completed for all four tools; NotebookLM extraction corrected from the live page.

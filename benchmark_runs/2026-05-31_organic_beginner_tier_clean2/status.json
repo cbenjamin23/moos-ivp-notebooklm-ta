@@ -423,10 +423,10 @@
       "category": "code_config_advice",
       "title": "pOdometry Mail Handling",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "K02": {
@@ -527,7 +527,7 @@
   ],
   "stopped_at": null,
   "stop_reason": null,
-  "last_completed_prompt": "D10",
+  "last_completed_prompt": "K01",
   "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
@@ -577,11 +577,19 @@
     {
       "at": "2026-06-01T12:50:54Z",
       "result": "D10 completed for Claude and Gemini; exact documentation/tool category is complete."
+    },
+    {
+      "at": "2026-06-01T13:06:38Z",
+      "result": "User-requested pause during K01. Resume by prompting Gemini for K01."
+    },
+    {
+      "at": "2026-06-01T13:27:28Z",
+      "result": "K01 completed for Gemini and bad NotebookLM extraction corrected."
     }
   ],
-  "last_updated": "2026-06-01T12:50:54Z",
+  "last_updated": "2026-06-01T13:27:28Z",
   "counts": {
-    "captured": 160,
-    "not_started": 40
+    "captured": 164,
+    "not_started": 36
   }
 }
