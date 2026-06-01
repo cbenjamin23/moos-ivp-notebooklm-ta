@@ -3,27 +3,29 @@
   "category": "exact_docs_tools",
   "title": "uTimerScript Usage",
   "prompt": "What is uTimerScript useful for in a mission, what kinds of variables should it post, and what are common mistakes when using it to initialize or trigger autonomy?",
-  "captured_at": "2026-06-01T00:30:41.946Z",
+  "captured_at": "2026-06-01T02:33:36Z",
   "responses": {
     "notebook": {
       "status": "quota_or_block",
-      "text": "NotebookLM quota stop: You have reached your daily chat limit, come back later. Or upgrade. Benchmark stopped per instruction; no further prompts run on subset of tools.",
-      "method": "notebooklm_page_daily_chat_limit"
+      "text": "NotebookLM quota stop persisted on retry: after refresh, D03 was submitted and NotebookLM responded, \"The system was unable to answer. You have reached your daily chat limit, come back later. Or upgrade.\" Benchmark stopped per instruction; no ChatGPT, Claude, or Gemini D03 prompt was run.",
+      "method": "notebooklm_retry_after_refresh_daily_chat_limit",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "retried_at": "2026-06-01T02:33:36Z"
     },
     "chatgpt": {
       "status": "not_started",
       "text": "",
-      "method": "stopped_before_prompt_due_to_notebooklm_quota"
+      "method": "stopped_before_prompt_due_to_notebooklm_quota_retry"
     },
     "claude": {
       "status": "not_started",
       "text": "",
-      "method": "stopped_before_prompt_due_to_notebooklm_quota"
+      "method": "stopped_before_prompt_due_to_notebooklm_quota_retry"
     },
     "gemini": {
       "status": "not_started",
       "text": "",
-      "method": "stopped_before_prompt_due_to_notebooklm_quota"
+      "method": "stopped_before_prompt_due_to_notebooklm_quota_retry"
     }
   }
 }

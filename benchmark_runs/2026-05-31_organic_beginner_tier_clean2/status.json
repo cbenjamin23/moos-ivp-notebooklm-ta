@@ -520,21 +520,26 @@
       }
     }
   },
-  "last_updated_at": "2026-05-31T23:55:17.835Z",
+  "last_updated_at": "2026-06-01T02:33:36Z",
   "notes": [
-    "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing."
+    "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing.",
+    "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
-  "stopped_at": "2026-05-31T20:45:43.150Z",
-  "stop_reason": "NotebookLM daily chat limit at D03. Benchmark stopped per instruction; no subset-only testing was performed after the block.",
+  "stopped_at": "2026-06-01T02:33:36Z",
+  "stop_reason": "NotebookLM daily chat limit persisted at D03 on 2026-06-01T02:33:36Z retry. Benchmark stopped per instruction; no subset-only testing was performed after the block.",
   "last_completed_prompt": "D02",
   "partial_prompt_at_stop": "D03",
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
       "result": "Claude still quota-blocked after scheduled 7:50 PM retry; benchmark remains stopped at C27."
+    },
+    {
+      "at": "2026-06-01T02:33:36Z",
+      "result": "NotebookLM refreshed successfully but remained daily-chat-limit blocked after submitting D03; benchmark remains stopped at D03 and no subset testing was performed."
     }
   ],
-  "last_updated": "2026-06-01T00:30:41.951Z",
+  "last_updated": "2026-06-01T02:33:36Z",
   "counts": {
     "captured": 128,
     "quota_or_block": 1,
