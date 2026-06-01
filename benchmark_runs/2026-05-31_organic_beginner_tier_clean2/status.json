@@ -383,10 +383,10 @@
       "category": "exact_docs_tools",
       "title": "Viewer Image / Geodesy Config",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D08": {
@@ -527,7 +527,7 @@
   ],
   "stopped_at": null,
   "stop_reason": null,
-  "last_completed_prompt": "D06",
+  "last_completed_prompt": "D07",
   "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
@@ -557,11 +557,15 @@
     {
       "at": "2026-06-01T11:53:54Z",
       "result": "D06 completed for all four tools."
+    },
+    {
+      "at": "2026-06-01T12:00:47Z",
+      "result": "D07 completed for all four tools."
     }
   ],
-  "last_updated": "2026-06-01T11:53:54Z",
+  "last_updated": "2026-06-01T12:00:47Z",
   "counts": {
-    "captured": 144,
-    "not_started": 56
+    "captured": 148,
+    "not_started": 52
   }
 }
