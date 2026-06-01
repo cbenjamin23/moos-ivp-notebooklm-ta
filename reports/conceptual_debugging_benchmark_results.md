@@ -8,24 +8,24 @@ Grading method: manual Codex review against the simple rubric in `BENCHMARKING.m
 
 ## Summary
 
-Under the coarse `0/1/2` rubric, NotebookLM TA and ChatGPT tied at the top on conceptual/debugging prompts. Both were consistently useful and had no hard failures. NotebookLM's answers were usually more documentation-shaped and concise; ChatGPT's were often more operationally detailed. Gemini was usually good but had several off-domain drifts. Claude had multiple blocking failures where the browser product either searched poorly, asked for context, repeated a stale answer, or invented MOOS-adjacent details.
+Under the coarse `0/1/2` rubric, NotebookLM TA and ChatGPT tied at the top on conceptual/debugging prompts. This means both cleared the "good answer" bar on every prompt, not that the answers were indistinguishable. NotebookLM's answers were usually more documentation-shaped and concise; ChatGPT's were often more operationally detailed. Gemini was usually good but had several off-domain drifts. Claude had multiple blocking failures where the browser product either searched poorly, asked for context, repeated a stale answer, or invented MOOS-adjacent details.
 
 ## Headline Metrics
 
-| Model | Avg Score | Good % | Bad % | Hard Failures | Tied Top Prompts |
+| Model | Avg Score | Good Answers | Bad Answers | Hard Failures | Tied Top Prompts |
 |---|---:|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 100.0% | 0.0% | 0 | 30/30 |
-| ChatGPT | 2.00 | 100.0% | 0.0% | 0 | 30/30 |
-| Claude | 1.27 | 43.3% | 16.7% | 6 | 13/30 |
-| Gemini | 1.67 | 73.3% | 6.7% | 3 | 22/30 |
+| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 30/30 |
+| ChatGPT | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 30/30 |
+| Claude | 1.27 | 13/30 (43.3%) | 5/30 (16.7%) | 6/30 (20.0%) | 13/30 |
+| Gemini | 1.67 | 22/30 (73.3%) | 2/30 (6.7%) | 3/30 (10.0%) | 22/30 |
 
 ## Ranking
 
-1. NotebookLM TA and ChatGPT tied: both averaged 2.00 with no hard failures.
+1. NotebookLM TA and ChatGPT tied under the coarse rubric: both averaged 2.00 with no hard failures.
 2. Gemini: averaged 1.67, usually helpful but less reliable on MOOS-specific naming and deployment context.
 3. Claude: averaged 1.27, with several severe off-domain or stale-context failures.
 
-Interpretation: for the intended conceptual TA use case, the current NotebookLM source set is competitive with ChatGPT and clearly stronger than the observed beginner-tier Claude/Gemini runs on MOOS-IvP-specific grounding. The simple rubric is not sensitive enough to choose between NotebookLM and ChatGPT when both are correct.
+Interpretation: for the intended conceptual TA use case, the current NotebookLM source set is competitive with ChatGPT and clearly stronger than the observed beginner-tier Claude/Gemini runs on MOOS-IvP-specific grounding. The simple rubric is not sensitive enough to choose between NotebookLM and ChatGPT when both are correct; a finer rubric would need separate dimensions for documentation grounding, operational detail, concision, and hallucination risk.
 
 ## Hard Failures
 

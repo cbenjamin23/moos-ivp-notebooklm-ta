@@ -11,24 +11,24 @@ Detailed conceptual results:
 
 ## Executive Summary
 
-For conceptual/debugging prompts based on the MOOS-IvP labs, NotebookLM TA and ChatGPT tied under the coarse `0/1/2` rubric: both scored 2.00/2.00 with no hard failures across C01-C30. NotebookLM was generally more documentation-shaped and concise. ChatGPT was often more operationally detailed. Gemini was usually helpful but drifted off-domain on several MOOS-specific prompts. Claude had several severe failures caused by poor search/context handling or invented MOOS-adjacent details.
+For conceptual/debugging prompts based on the MOOS-IvP labs, NotebookLM TA and ChatGPT tied under the coarse `0/1/2` rubric: both scored 2.00/2.00 with no hard failures across C01-C30. This should not be read as proof that ChatGPT was equally good in every respect. The rubric only asks whether an answer is good enough, partially useful, or bad. NotebookLM was generally more documentation-shaped and concise, while ChatGPT was often more operationally detailed. Gemini was usually helpful but drifted off-domain on several MOOS-specific prompts. Claude had several severe failures caused by poor search/context handling or invented MOOS-adjacent details.
 
 Primary question for the completed category:
 
 > Is the NotebookLM TA competitive with normal beginner-tier AI browser tools for documentation-grounded conceptual MOOS-IvP help?
 
-Answer for C01-C30: yes. It tied ChatGPT on the simple rubric and avoided the MOOS-specific hard failures seen in Claude and Gemini.
+Answer for C01-C30: yes. It tied ChatGPT on the simple rubric and avoided the MOOS-specific hard failures seen in Claude and Gemini. A finer rubric would be needed to distinguish NotebookLM's source-grounded style from ChatGPT's more expansive operational advice.
 
 Secondary question about exact docs and code/config remains open until those categories are complete.
 
 ## Headline Results
 
-| Model | Avg Score | Good % | Bad % | Hard Failures | Conceptual Avg | Exact Docs Avg | Code Avg |
+| Model | Avg Score | Good Answers | Bad Answers | Hard Failures | Conceptual Avg | Exact Docs Avg | Code Avg |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 100.0% | 0.0% | 0 | 2.00 | pending | pending |
-| ChatGPT | 2.00 | 100.0% | 0.0% | 0 | 2.00 | pending | pending |
-| Claude | 1.27 | 43.3% | 16.7% | 6 | 1.27 | pending | pending |
-| Gemini | 1.67 | 73.3% | 6.7% | 3 | 1.67 | pending | pending |
+| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 2.00 | pending | pending |
+| ChatGPT | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 2.00 | pending | pending |
+| Claude | 1.27 | 13/30 (43.3%) | 5/30 (16.7%) | 6/30 (20.0%) | 1.27 | pending | pending |
+| Gemini | 1.67 | 22/30 (73.3%) | 2/30 (6.7%) | 3/30 (10.0%) | 1.67 | pending | pending |
 
 ## Category Results
 
@@ -54,7 +54,7 @@ Secondary question about exact docs and code/config remains open until those cat
 
 ## Main Interpretation
 
-The completed conceptual/debugging category supports the narrow product claim that the NotebookLM notebook can serve as a conceptual MOOS-IvP TA for lab students. It does not prove NotebookLM is better than ChatGPT on all conceptual questions; with this coarse rubric, they tie. The more useful distinction is reliability: both NotebookLM and ChatGPT had zero hard failures, while Gemini and Claude showed off-domain drift when prompts became more MOOS-specific.
+The completed conceptual/debugging category supports the narrow product claim that the NotebookLM notebook can serve as a conceptual MOOS-IvP TA for lab students. It does not prove NotebookLM is better than ChatGPT on all conceptual questions; with this coarse rubric, they tie. The more useful distinction is reliability and style: both NotebookLM and ChatGPT had zero hard failures, NotebookLM stayed closer to the documentation, ChatGPT often gave richer operational checklists, and Gemini/Claude showed off-domain drift when prompts became more MOOS-specific.
 
 The current evidence does not support marketing the notebook as a coding helper. The code/config section is still pending in the clean cross-model benchmark, and earlier local validation already suggested caution on exact C++ correction.
 

@@ -45,14 +45,14 @@ The clean cross-model benchmark is partially complete. The conceptual/debugging 
 
 Conceptual/debugging results:
 
-| Model | Avg Score | Good % | Bad % | Hard Failures |
+| Model | Avg Score | Good Answers | Bad Answers | Hard Failures |
 |---|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 100.0% | 0.0% | 0 |
-| ChatGPT | 2.00 | 100.0% | 0.0% | 0 |
-| Gemini | 1.67 | 73.3% | 6.7% | 3 |
-| Claude | 1.27 | 43.3% | 16.7% | 6 |
+| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| Gemini | 1.67 | 22/30 (73.3%) | 2/30 (6.7%) | 3/30 (10.0%) |
+| Claude | 1.27 | 13/30 (43.3%) | 5/30 (16.7%) | 6/30 (20.0%) |
 
-Interpretation: NotebookLM TA tied ChatGPT on the coarse conceptual/debugging rubric and avoided the MOOS-specific hard failures seen in Claude and Gemini. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
+Interpretation: NotebookLM TA tied ChatGPT on the coarse conceptual/debugging rubric, but that does not prove the answers were equal in every respect. NotebookLM was generally more documentation-shaped and concise, while ChatGPT was often more operationally detailed. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
 
 Detailed results:
 

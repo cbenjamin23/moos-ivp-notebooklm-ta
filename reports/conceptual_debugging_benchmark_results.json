@@ -22,7 +22,8 @@
       "bad_count": 0,
       "bad_percent": 0,
       "hard_failures": 0,
-      "top_tie_count": 30
+      "top_tie_count": 30,
+      "hard_failure_percent": 0
     },
     "chatgpt": {
       "model": "ChatGPT",
@@ -34,7 +35,8 @@
       "bad_count": 0,
       "bad_percent": 0,
       "hard_failures": 0,
-      "top_tie_count": 30
+      "top_tie_count": 30,
+      "hard_failure_percent": 0
     },
     "claude": {
       "model": "Claude",
@@ -46,7 +48,8 @@
       "bad_count": 5,
       "bad_percent": 16.7,
       "hard_failures": 6,
-      "top_tie_count": 13
+      "top_tie_count": 13,
+      "hard_failure_percent": 20
     },
     "gemini": {
       "model": "Gemini",
@@ -58,7 +61,8 @@
       "bad_count": 2,
       "bad_percent": 6.7,
       "hard_failures": 3,
-      "top_tie_count": 22
+      "top_tie_count": 22,
+      "hard_failure_percent": 10
     }
   },
   "hard_failures": [
@@ -764,5 +768,6 @@
       "hard_failures": [],
       "note": "All models gave usable triage order and artifact requests after mission edits."
     }
-  ]
+  ],
+  "summary_caveat": "NotebookLM TA and ChatGPT tie under the coarse 0/1/2 conceptual rubric. This does not mean the answers are identical in quality; NotebookLM is generally more documentation-shaped and concise, while ChatGPT is often more operationally detailed."
 }
