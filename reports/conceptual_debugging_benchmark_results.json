@@ -1,0 +1,768 @@
+{
+  "benchmark": "MOOS-IvP NotebookLM TA conceptual/debugging benchmark",
+  "run_id": "2026-05-31_organic_beginner_tier_clean2",
+  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "category": "conceptual_debugging",
+  "prompt_range": "C01-C30",
+  "graded_at": "2026-06-01T00:40:38.331Z",
+  "grading_method": "Manual Codex review against the simple 0/1/2 rubric in BENCHMARKING.md, using preserved raw browser outputs and MOOS-IvP documentation/source expectations for conceptual prompts.",
+  "score_legend": {
+    "0": "Bad: wrong, misleading, non-answer, or likely to waste student time",
+    "1": "Partially useful: helpful but vague, incomplete, off-domain in places, or needing verification",
+    "2": "Good: correct, useful, specific enough, no serious caveat"
+  },
+  "metrics": {
+    "notebook": {
+      "model": "NotebookLM TA",
+      "prompt_count": 30,
+      "total_score": 60,
+      "average_score": 2,
+      "good_count": 30,
+      "good_percent": 100,
+      "bad_count": 0,
+      "bad_percent": 0,
+      "hard_failures": 0,
+      "top_tie_count": 30
+    },
+    "chatgpt": {
+      "model": "ChatGPT",
+      "prompt_count": 30,
+      "total_score": 60,
+      "average_score": 2,
+      "good_count": 30,
+      "good_percent": 100,
+      "bad_count": 0,
+      "bad_percent": 0,
+      "hard_failures": 0,
+      "top_tie_count": 30
+    },
+    "claude": {
+      "model": "Claude",
+      "prompt_count": 30,
+      "total_score": 38,
+      "average_score": 1.267,
+      "good_count": 13,
+      "good_percent": 43.3,
+      "bad_count": 5,
+      "bad_percent": 16.7,
+      "hard_failures": 6,
+      "top_tie_count": 13
+    },
+    "gemini": {
+      "model": "Gemini",
+      "prompt_count": 30,
+      "total_score": 50,
+      "average_score": 1.667,
+      "good_count": 22,
+      "good_percent": 73.3,
+      "bad_count": 2,
+      "bad_percent": 6.7,
+      "hard_failures": 3,
+      "top_tie_count": 22
+    }
+  },
+  "hard_failures": [
+    {
+      "prompt_id": "C06",
+      "model": "gemini",
+      "model_label": "Gemini",
+      "failure_type": "Off-domain framework drift",
+      "explanation": "Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files."
+    },
+    {
+      "prompt_id": "C16",
+      "model": "claude",
+      "model_label": "Claude",
+      "failure_type": "No substantive answer",
+      "explanation": "Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path."
+    },
+    {
+      "prompt_id": "C17",
+      "model": "gemini",
+      "model_label": "Gemini",
+      "failure_type": "Off-domain messaging model",
+      "explanation": "Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields."
+    },
+    {
+      "prompt_id": "C21",
+      "model": "claude",
+      "model_label": "Claude",
+      "failure_type": "Invented/uncertain MOOS-IvP app names",
+      "explanation": "Suggested iGPS/iIMU/pNavManager/iHeron/iActuationKF instead of the documented Heron/PABLO interface framing."
+    },
+    {
+      "prompt_id": "C22",
+      "model": "claude",
+      "model_label": "Claude",
+      "failure_type": "Off-domain deployment checklist",
+      "explanation": "Generic ROS/Gazebo/CARLA checklist with no MOOS-IvP variable/process specificity."
+    },
+    {
+      "prompt_id": "C22",
+      "model": "gemini",
+      "model_label": "Gemini",
+      "failure_type": "Off-domain deployment checklist",
+      "explanation": "Generic drone/autopilot/PX4-style checklist, only partially transferable to a Heron/PABLO MOOS mission."
+    },
+    {
+      "prompt_id": "C25",
+      "model": "claude",
+      "model_label": "Claude",
+      "failure_type": "Off-domain clarification",
+      "explanation": "Treated uField as unknown and asked whether this was a game/competition instead of answering the MOOS-IvP setup."
+    },
+    {
+      "prompt_id": "C26",
+      "model": "claude",
+      "model_label": "Claude",
+      "failure_type": "Wrong prompt context",
+      "explanation": "Repeated the unrelated uField clarification instead of answering the alog diagnosis prompt."
+    },
+    {
+      "prompt_id": "C29",
+      "model": "claude",
+      "model_label": "Claude",
+      "failure_type": "Invented viewer parameters",
+      "explanation": "Used BackgroundFileX/BackgroundFileY/BackgroundFileScale style parameters rather than the MOOS-IvP TIFF/info/datum configuration model."
+    }
+  ],
+  "prompts": [
+    {
+      "id": "C01",
+      "category": "conceptual_debugging",
+      "title": "Command Not Found After Build",
+      "prompt": "I built MOOS-IvP successfully, but commands such as `pAntler`, `uXMS`, or `pMarineViewer` are not found from my terminal. What should I check about the build, shell environment, PATH, and where the binaries are installed?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful."
+    },
+    {
+      "id": "C02",
+      "category": "conceptual_debugging",
+      "title": "Version Control Before Mission Changes",
+      "prompt": "I am about to modify several mission and source files, and I want to avoid losing a working baseline. What simple Git workflow should I use before experimenting, and what files should I be careful not to treat as source?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts."
+    },
+    {
+      "id": "C03",
+      "category": "conceptual_debugging",
+      "title": "uXMS/uPokeDB Confusion",
+      "prompt": "I launched a MOOSDB, poked a variable with uPokeDB, and expected to see it in uXMS, but I do not see what I expected. What should I check first? Explain the debugging steps.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models correctly centered the same-host/same-port/same-variable/uXMS registration debugging path."
+    },
+    {
+      "id": "C04",
+      "category": "conceptual_debugging",
+      "title": "App Not Publishing",
+      "prompt": "My pOdometry-style MOOS app is supposed to publish `ODOMETRY_DIST`, but I do not see it in uXMS. How should I debug `OnNewMail()`, subscriptions, `Iterate()`, AppTick, and `Notify()`?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models gave a usable app lifecycle pipeline: register/subscribe, OnNewMail state update, Iterate cadence, Notify, and uXMS checks."
+    },
+    {
+      "id": "C05",
+      "category": "conceptual_debugging",
+      "title": "pAntler Did Not Start A Process",
+      "prompt": "My mission launches, but one expected MOOS process never appears in the community. How should I debug the `ProcessConfig` block, the pAntler launch section, app names, executable names, terminal output, and process registration?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Gemini covered pAntler launch vs MOOSDB registration well; Claude was helpful but had imprecise ProcessConfig/launch terminology."
+    },
+    {
+      "id": "C06",
+      "category": "conceptual_debugging",
+      "title": "Launch Arguments Not Reaching Config Files",
+      "prompt": "I changed a launch argument for vehicle name, port, speed, or start position, but the generated mission still behaves like it has the old value. How should I reason about launch scripts, template files, generated files, and stale configuration?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 0
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C06",
+          "model": "gemini",
+          "failure_type": "Off-domain framework drift",
+          "explanation": "Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files."
+        }
+      ],
+      "note": "NotebookLM and ChatGPT directly described launch scripts, templates, generated files, and stale target files; Claude was generic ROS-like but partly useful; Gemini went off-domain."
+    },
+    {
+      "id": "C07",
+      "category": "conceptual_debugging",
+      "title": "Helm Remains PARKED",
+      "prompt": "I set `DEPLOY=true` and `MOOS_MANUAL_OVERRIDE=false`, but pHelmIvP still seems PARKED. Is the helm broken? Give a careful diagnostic checklist.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Claude gave correct helm-state/all-stop/deploy-variable diagnostics; Gemini was broadly helpful but less precise about helm state naming."
+    },
+    {
+      "id": "C08",
+      "category": "conceptual_debugging",
+      "title": "No Desired Outputs",
+      "prompt": "pHelmIvP starts and my behaviors appear to be configured, but I do not see `DESIRED_HEADING` or `DESIRED_SPEED`. What should I check in the `.moos`, `.bhv`, NAV variables, behavior conditions, and helm state?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Gemini covered helm state, behavior activation, NAV variables, .moos/.bhv boundaries; Claude had useful checks but wrong pHelmIvP casing and config details."
+    },
+    {
+      "id": "C09",
+      "category": "conceptual_debugging",
+      "title": "Vehicle Moves In Simulation But Autonomy Looks Wrong",
+      "prompt": "uSimMarine is updating position, but the autonomy behavior looks wrong or inconsistent with what I expected. What should I check about `NAV_X`, `NAV_Y`, `NAV_HEADING`, `NAV_SPEED`, helm inputs, behavior conditions, and viewer state?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models separated simulator NAV output, helm inputs, behavior conditions, and viewer state well enough."
+    },
+    {
+      "id": "C10",
+      "category": "conceptual_debugging",
+      "title": "Multi-Vehicle Ports",
+      "prompt": "I am running two vehicle communities and a shoreside community on one laptop. One vehicle launches, but the other has connection problems. How should I reason about MOOSDB `ServerPort`, community names, pShare ports, and launch arguments?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models correctly explained unique MOOSDB ports, community names, pShare ports/routes, and launch arguments."
+    },
+    {
+      "id": "C11",
+      "category": "conceptual_debugging",
+      "title": "Shoreside Missing Vehicle",
+      "prompt": "In a multi-vehicle mission, pMarineViewer shows one vehicle but not the other. What are the likely causes involving `NODE_REPORT`, pNodeReporter, shoreside subscriptions, pShare, and community naming?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models traced pNodeReporter/NODE_REPORT through vehicle, bridge, shoreside, and viewer well enough."
+    },
+    {
+      "id": "C12",
+      "category": "conceptual_debugging",
+      "title": "pShare Route Confusion",
+      "prompt": "I have vehicle and shoreside communities running, but I am unsure which variables should cross between them. How should I think about pShare routes, what belongs in local vehicle communities, and what the shoreside needs to receive?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models gave a reasonable local-vs-shared variable boundary for pShare routes."
+    },
+    {
+      "id": "C13",
+      "category": "conceptual_debugging",
+      "title": "TSP App / Behavior Boundary",
+      "prompt": "My app computes a TSP-style route, but the vehicle does not follow the path. Explain the boundary between a MOOS app that computes points, the updates sent to the helm, and BHV_Waypoint actually steering the vehicle.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming."
+    },
+    {
+      "id": "C14",
+      "category": "conceptual_debugging",
+      "title": "Distributed Route Assignment Problem",
+      "prompt": "In a multi-vehicle route-planning mission, one vehicle gets all the work or no vehicle gets a useful route. What should I inspect about task generation, vehicle identity, assignment messages, route updates, and behavior activation?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers."
+    },
+    {
+      "id": "C15",
+      "category": "conceptual_debugging",
+      "title": "Multi-Machine Networking Problem",
+      "prompt": "The mission works when all communities run on one laptop, but fails when vehicles or shoreside run on separate machines. What should I check about IP addresses, hostnames, MOOS ports, pShare ports, firewalls, and time of launch?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance; Claude was useful but used some imprecise MOOS_SERVER_HOST-style framing."
+    },
+    {
+      "id": "C16",
+      "category": "conceptual_debugging",
+      "title": "Message Does Not Arrive",
+      "prompt": "I post `NODE_MESSAGE_LOCAL` on one vehicle, but the receiving vehicle never sees the payload variable. Walk through the message path and what to check.",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 0,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C16",
+          "model": "claude",
+          "failure_type": "No substantive answer",
+          "explanation": "Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value."
+    },
+    {
+      "id": "C17",
+      "category": "conceptual_debugging",
+      "title": "Node Names / Destinations",
+      "prompt": "I am confused about source node names, destination names, and message fields in inter-vehicle messaging. How can a wrong node name or destination prevent delivery, and how should I inspect the problem?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 0
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C17",
+          "model": "gemini",
+          "failure_type": "Off-domain messaging model",
+          "explanation": "Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT."
+    },
+    {
+      "id": "C18",
+      "category": "conceptual_debugging",
+      "title": "Behavior Never Runs",
+      "prompt": "My custom behavior loads but never seems to run. How should I inspect behavior conditions, `pwt`, updates, InfoBuffer variables, and helm life events?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance."
+    },
+    {
+      "id": "C19",
+      "category": "conceptual_debugging",
+      "title": "`.moos` vs `.bhv` Mistake",
+      "prompt": "I put a `BHV_Loiter` or custom `BHV_*` configuration block in my `.moos` file instead of my `.bhv` file. What failure should I expect, and how do `.moos` and `.bhv` responsibilities differ?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models correctly distinguished .moos app/process config from .bhv behavior config."
+    },
+    {
+      "id": "C20",
+      "category": "conceptual_debugging",
+      "title": "Payload Event Not Affecting Autonomy",
+      "prompt": "A payload or sensor process appears to be posting useful information, but the vehicle behavior does not react to it. How should I trace the variable from the payload app through the MOOSDB into helm conditions, behavior updates, or a coordinating app?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models gave a usable data-path trace from payload publication through MOOSDB into helm conditions/updates/coordinating apps."
+    },
+    {
+      "id": "C21",
+      "category": "conceptual_debugging",
+      "title": "Simulation to Heron/PABLO",
+      "prompt": "I have a mission working in simulation with uSimMarine, and now I need to run on a Heron/PABLO. What should change, what should not be running anymore, and what should I be careful about?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C21",
+          "model": "claude",
+          "failure_type": "Invented/uncertain MOOS-IvP app names",
+          "explanation": "Suggested iGPS/iIMU/pNavManager/iHeron/iActuationKF instead of the documented Heron/PABLO interface framing."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT/Gemini handled uSimMarine-to-Heron/PABLO transition; Claude had good safety framing but invented/uncertain Heron interface app names."
+    },
+    {
+      "id": "C22",
+      "category": "conceptual_debugging",
+      "title": "Field Deployment Sanity Check",
+      "prompt": "Before running a mission on a real vehicle, how should I verify that simulation-only processes are disabled, real navigation and control interfaces are active, safety variables are understood, and the mission is ready for cautious deployment?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 0,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C22",
+          "model": "claude",
+          "failure_type": "Off-domain deployment checklist",
+          "explanation": "Generic ROS/Gazebo/CARLA checklist with no MOOS-IvP variable/process specificity."
+        },
+        {
+          "prompt_id": "C22",
+          "model": "gemini",
+          "failure_type": "Off-domain deployment checklist",
+          "explanation": "Generic drone/autopilot/PX4-style checklist, only partially transferable to a Heron/PABLO MOOS mission."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT were MOOS/PABLO-aware; Claude was generic ROS/Gazebo; Gemini was generic drone/autopilot deployment with little MOOS specificity."
+    },
+    {
+      "id": "C23",
+      "category": "conceptual_debugging",
+      "title": "Rescue Path Planning",
+      "prompt": "In an autonomous rescue-style mission, my planner receives swimmer positions and generates a path, but performance is poor. How should I think about swimmer reports, route generation, and handing the path to the autonomy system?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT were most aligned with MOOS rescue planner/route handoff; Claude/Gemini were generic SAR planning but still conceptually useful."
+    },
+    {
+      "id": "C24",
+      "category": "conceptual_debugging",
+      "title": "Adversarial Rescue Updates",
+      "prompt": "In an adversarial rescue-style mission, an opponent or teammate can rescue swimmers before me. How should my system handle dynamic updates, dropped swimmers, and replanning?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT addressed dynamic rescue updates and replanning in the lab style; Claude/Gemini gave generic dynamic task-allocation answers."
+    },
+    {
+      "id": "C25",
+      "category": "conceptual_debugging",
+      "title": "Teammate Messaging",
+      "prompt": "For a two-vehicle rescue/scout setup, how should I think about teammate communication, scout reports, rescue vehicle updates, and uField messaging?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 0,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C25",
+          "model": "claude",
+          "failure_type": "Off-domain clarification",
+          "explanation": "Treated uField as unknown and asked whether this was a game/competition instead of answering the MOOS-IvP setup."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT/Gemini understood two-vehicle rescue/uField messaging; Claude asked for context and treated uField as unknown."
+    },
+    {
+      "id": "C26",
+      "category": "conceptual_debugging",
+      "title": "Post-Mission Alog Diagnosis",
+      "prompt": "My mission already failed, and I cannot rerun it right now, but I have an `.alog`. What MOOS-IvP alog tools and query strategy should I use to diagnose why a behavior never ran?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 0,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C26",
+          "model": "claude",
+          "failure_type": "Wrong prompt context",
+          "explanation": "Repeated the unrelated uField clarification instead of answering the alog diagnosis prompt."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT/Gemini gave aloggrep/alogview/aloghelm-style post-run debugging; Claude returned an unrelated uField clarification from a prior prompt."
+    },
+    {
+      "id": "C27",
+      "category": "conceptual_debugging",
+      "title": "pLogger Produced No Useful Alog",
+      "prompt": "The mission completed, but there is no useful `.alog` file or the log is missing key variables. What pLogger, pAntler, process, path, and configuration issues should I check?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models gave a useful pLogger/pAntler/path/process/config checklist."
+    },
+    {
+      "id": "C28",
+      "category": "conceptual_debugging",
+      "title": "Choosing Debugging Tools During A Mission Run",
+      "prompt": "During a mission run, I need to inspect ordinary MOOS variables, helm behavior state, app warnings, and whether a process is alive. When should I use uXMS, uQueryDB, uHelmScope, uMAC/AppCasting, or pLogger output?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM/ChatGPT/Gemini mapped tools to use cases well; Claude was useful but shallower and slightly imprecise on uQueryDB/pLogger roles."
+    },
+    {
+      "id": "C29",
+      "category": "conceptual_debugging",
+      "title": "pMarineViewer Background / Geodesy",
+      "prompt": "pMarineViewer shows my vehicle, but the background image or coordinate alignment looks wrong. What should I check about image paths, datum, local coordinates, and viewer configuration?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 0,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "gemini"
+      ],
+      "hard_failures": [
+        {
+          "prompt_id": "C29",
+          "model": "claude",
+          "failure_type": "Invented viewer parameters",
+          "explanation": "Used BackgroundFileX/BackgroundFileY/BackgroundFileScale style parameters rather than the MOOS-IvP TIFF/info/datum configuration model."
+        }
+      ],
+      "note": "NotebookLM/ChatGPT/Gemini covered image files, datum, local coordinates, and viewer config; Claude invented BackgroundFile-style parameter names."
+    },
+    {
+      "id": "C30",
+      "category": "conceptual_debugging",
+      "title": "Mission Broke After Several Edits",
+      "prompt": "After several edits to a mission, the vehicle no longer deploys correctly and I do not know whether the problem is in the launch script, `.moos` file, `.bhv` file, process output, or MOOS variables. What should I inspect first, and what artifacts would let someone diagnose it quickly?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All models gave usable triage order and artifact requests after mission edits."
+    }
+  ]
+}

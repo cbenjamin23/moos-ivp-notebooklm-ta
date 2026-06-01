@@ -39,9 +39,30 @@ High-level result:
 - Code architecture advice: useful, with source-level caution.
 - Exact C++ correction: not reliable without checking the local `moos-ivp` checkout.
 
+## Benchmark Results
+
+The clean cross-model benchmark is partially complete. The conceptual/debugging section (`C01-C30`) has been captured and graded independently from the unfinished sections.
+
+Conceptual/debugging results:
+
+| Model | Avg Score | Good % | Bad % | Hard Failures |
+|---|---:|---:|---:|---:|
+| NotebookLM TA | 2.00 | 100.0% | 0.0% | 0 |
+| ChatGPT | 2.00 | 100.0% | 0.0% | 0 |
+| Gemini | 1.67 | 73.3% | 6.7% | 3 |
+| Claude | 1.27 | 43.3% | 16.7% | 6 |
+
+Interpretation: NotebookLM TA tied ChatGPT on the coarse conceptual/debugging rubric and avoided the MOOS-specific hard failures seen in Claude and Gemini. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
+
+Detailed results:
+
+- `RESULTS.md`
+- `reports/conceptual_debugging_benchmark_results.md`
+- `reports/conceptual_debugging_benchmark_results.json`
+
 ## Benchmark Plan
 
-The planned cross-model benchmark will compare the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini on questions a student might naturally ask while working through the MOOS-IvP labs.
+The cross-model benchmark compares the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini on questions a student might naturally ask while working through the MOOS-IvP labs.
 
 The intended product claim is narrow:
 
@@ -49,7 +70,7 @@ The intended product claim is narrow:
 
 It should not be marketed as a MOOS-IvP coding agent.
 
-The planned benchmark uses 50 fixed, lab-grounded prompts:
+The benchmark uses 50 fixed, lab-grounded prompts:
 
 - 30 conceptual/debugging prompts
 - 10 exact documentation/parameter/tool prompts
