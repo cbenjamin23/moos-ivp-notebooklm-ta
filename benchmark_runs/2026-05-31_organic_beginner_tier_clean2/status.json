@@ -413,8 +413,8 @@
       "category": "exact_docs_tools",
       "title": "pLogger And Alog Verification",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
+        "notebook": "captured",
+        "chatgpt": "captured",
         "claude": "not_started",
         "gemini": "not_started"
       }
@@ -525,10 +525,10 @@
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing.",
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
-  "stopped_at": null,
-  "stop_reason": null,
+  "stopped_at": "2026-06-01T12:14:03Z",
+  "stop_reason": "User requested a good stopping point. D10 NotebookLM is captured; D10 ChatGPT status is captured; D10 Claude and Gemini have not been prompted.",
   "last_completed_prompt": "D09",
-  "partial_prompt_at_stop": null,
+  "partial_prompt_at_stop": "D10",
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
@@ -569,11 +569,15 @@
     {
       "at": "2026-06-01T12:11:45Z",
       "result": "D09 completed for all four tools."
+    },
+    {
+      "at": "2026-06-01T12:14:03Z",
+      "result": "User-requested pause during D10. Resume by completing any remaining D10 tools, starting with Claude."
     }
   ],
-  "last_updated": "2026-06-01T12:11:45Z",
+  "last_updated": "2026-06-01T12:14:03Z",
   "counts": {
-    "captured": 156,
-    "not_started": 44
+    "captured": 158,
+    "not_started": 42
   }
 }
