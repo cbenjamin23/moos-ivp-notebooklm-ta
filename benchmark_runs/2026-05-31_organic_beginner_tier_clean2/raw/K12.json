@@ -25,8 +25,11 @@
       "captured_at": "2026-06-01T17:58:10.443Z"
     },
     "gemini": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:42:09.330Z",
+      "url": "https://gemini.google.com/app/e971e898d8b097a9",
+      "method": "gemini_reusable_fresh_chat",
+      "text": "The issue here is a classic caching/generation disconnect.\n\nnsplug is a template processor. It takes your template file (meta_vehicle.moos), injects the variables you provide (WARP=10, VNAME=alpha), and generates a completely new, static target file (targ_vehicle.moos).\n\nWhen you edit meta_vehicle.moos and immediately rerun pAntler targ_vehicle.moos, pAntler is simply reloading the old targ_vehicle.moos that was generated before your edits. It has no idea the template changed.\n\nThe Correct Workflow\n\nYou must rerun nsplug every single time you modify the template file so that your changes are compiled down into the target file before pAntler launches the MOOS community.\n\nBash\n# 1. Generate the initial target file from the template\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\n\n# 2. Launch the MOOS community\npAntler targ_vehicle.moos\n\n# --- [Later, you edit meta_vehicle.moos] ---\n\n# 3. CRITICAL STEP: Regenerate the target file to apply your edits\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\n\n# 4. Launch the updated MOOS community\npAntler targ_vehicle.moos\n\nPro-Tip: Use a Launch Script\n\nTo avoid typing this out and forgetting the nsplug step, MOOS developers typically wrap this workflow into a short shell script (often named launch.sh):\n\nBash\n#!/bin/bash\n\n# Define variables\nWARP=10\nVNAME=\"alpha\"\n\n# Always generate fresh target files right before launching\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=$WARP VNAME=$VNAME\n\n# Launch\npAntler targ_vehicle.moos\n\n\nWith a script, whenever you change meta_vehicle.moos, you just run ./launch.sh and it guarantees your newest behavior settings are baked in."
     }
   },
   "updated_at": "2026-06-01T17:58:10.443Z"

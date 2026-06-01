@@ -751,20 +751,31 @@
       "gemini": "captured"
     },
     "K11": {
-      "chatgpt": "captured"
+      "chatgpt": "captured",
+      "gemini": "captured"
     },
     "K12": {
-      "chatgpt": "captured"
+      "chatgpt": "captured",
+      "gemini": "captured"
     },
     "K13": {
-      "chatgpt": "captured"
+      "chatgpt": "captured",
+      "gemini": "captured"
     },
     "K14": {
-      "chatgpt": "captured"
+      "chatgpt": "captured",
+      "gemini": "captured"
     },
     "K15": {
-      "chatgpt": "captured"
+      "chatgpt": "captured",
+      "gemini": "captured"
+    },
+    "D14": {
+      "gemini": "captured"
+    },
+    "D15": {
+      "gemini": "captured"
     }
   },
-  "updated_at": "2026-06-01T18:39:43.883Z"
+  "updated_at": "2026-06-01T18:43:28.398Z"
 }

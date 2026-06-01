@@ -25,8 +25,11 @@
       "captured_at": "2026-06-01T18:00:26.918Z"
     },
     "gemini": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:43:28.396Z",
+      "url": "https://gemini.google.com/app/359c24d9621a0914",
+      "method": "gemini_reusable_fresh_chat",
+      "text": "The reason your second vehicle is disappearing or causing chaos is that both vehicles are trying to occupy the exact same digital \"space.\"\n\nIn a MOOS architecture, each autonomous vehicle must run its own isolated community, and they cannot share the same ServerPort if they are running on the same laptop (localhost). When they share a port, they conflict, kick each other off, and cross-wire the shoreside's data stream.\n\nHere is the conceptual correction to fix the conflict.\n\nThe Core Concept: Separation of Ports and Names\n\nTo run two vehicles on one machine, you must give them unique community names and unique network ports.\n\n1. Unique Communities (Community)\n\nThe Community parameter acts as the vehicle's identity. If both are named alpha, the shoreside cannot distinguish between them, leading to dropped or overwritten reports.\n\n2. Unique Ports (ServerPort)\n\nThe ServerPort is the gateway to that specific vehicle's MOOSDB. Since a single laptop only has one network stack, two processes cannot listen on the same port simultaneously.\n\nCorrected Configuration Blueprint\n\nYou need to split these into two distinct configuration blocks (usually in separate .moos files, like alpha.moos and bravo.moos):\n\nVehicle 1 Configuration\nPlaintext\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n\nVehicle 2 Configuration\nPlaintext\nServerHost = localhost\nServerPort = 9001          // Increment the port to avoid conflict\nCommunity  = bravo         // Give the second vehicle its own identity\n\nHow the Shoreside Connects\n\nOnce you have separated the vehicles, your Shoreside configuration needs to be aware of both distinct ports so it can talk to each vehicle individually.\n\nIn the shoreside's bridging app (typically pShare), you will route data like this:\n\nOutput to Vehicle 1: localhost:9000\n\nOutput to Vehicle 2: localhost:9001\n\nThis layout keeps their data streams entirely separate on your laptop, allowing the shoreside to track both vehicles simultaneously without anyone disappearing."
     }
   },
   "updated_at": "2026-06-01T18:00:26.918Z"
