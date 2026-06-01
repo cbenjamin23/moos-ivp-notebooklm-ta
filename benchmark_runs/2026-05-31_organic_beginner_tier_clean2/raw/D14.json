@@ -3,7 +3,7 @@
   "category": "exact_docs_tools",
   "title": "pNodeReporter and NODE_REPORT",
   "prompt": "What does pNodeReporter normally publish, why is `NODE_REPORT_LOCAL` different from `NODE_REPORT`, and how does that matter in a shoreside/vehicle setup?",
-  "captured_at": null,
+  "captured_at": "2026-06-01T17:57:04.914Z",
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
@@ -11,16 +11,23 @@
       "text": ""
     },
     "chatgpt": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "text": "I’ll frame this around the normal MOOS-IvP naming convention and the debugging implication: where the report is born versus where it is meant to be shared.\n\npNodeReporter is the app that turns a vehicle’s state into a compact “where/what am I?” report. The MOOS-IvP docs describe it as collecting node information like current vehicle position, trajectory, and type, then posting it as a single report for sharing with other vehicles or a shoreside display. \nOcean AI\n\nNormally it publishes something like:\n\nNODE_REPORT_LOCAL = NAME=alpha,TYPE=KAYAK,TIME=...,X=...,Y=...,LAT=...,LON=...,SPD=...,HDG=...,YAW=...,DEP=...,MODE=...\n\nThe exact fields depend on configuration and available nav variables, but conceptually it includes the vehicle name, type, time, position, speed, heading/course/yaw, depth if relevant, and sometimes mode or additional custom fields.\n\nThe key distinction:\n\nNODE_REPORT_LOCAL\n\nmeans “this report was generated locally by this vehicle’s own pNodeReporter.”\n\nNODE_REPORT\n\nmeans “this is a node report being consumed/shared as a general contact report.”\n\nIn a multi-community mission, you usually do not want each vehicle to simply publish its own report directly as NODE_REPORT inside its own DB, because then local and remote reports become ambiguous. The standard pattern is:\n\nvehicle MOOSDB:\n  pNodeReporter posts NODE_REPORT_LOCAL\n\ncommunication bridge / pShare / uFldNodeComms:\n  forwards NODE_REPORT_LOCAL outward\n  often renames it to NODE_REPORT at the receiver\n\nshoreside MOOSDB:\n  receives NODE_REPORT\n  pMarineViewer / contact manager displays vehicles from NODE_REPORT\n\nSo the practical mental model is:\n\nNODE_REPORT_LOCAL = born here\nNODE_REPORT       = received/shared contact report\n\nWhy it matters:\n\nIf you are on the vehicle, check NODE_REPORT_LOCAL to see whether pNodeReporter is actually producing a valid report.\n\nBash\nuXMS NODE_REPORT_LOCAL\n\nIf you are on the shoreside, check NODE_REPORT to see whether the report successfully crossed the comms route.\n\nBash\nuXMS NODE_REPORT\n\nA common broken setup looks like this:\n\npNodeReporter is working on vehicle:\n  NODE_REPORT_LOCAL exists\n\nbut shoreside sees nothing:\n  NODE_REPORT missing\n\nThat usually means the problem is not pNodeReporter; it is the sharing route, host/port, pShare/uFldNodeComms config, or variable rename.\n\nAnother common mistake is forwarding the wrong variable name:\n\nwrong:\n  output = src_name=NODE_REPORT, dest_name=NODE_REPORT, ...\n\nright/common:\n  output = src_name=NODE_REPORT_LOCAL, dest_name=NODE_REPORT, ...\n\nIn short: pNodeReporter creates the vehicle’s local self-report. NODE_REPORT_LOCAL is the vehicle-side source variable. NODE_REPORT is the shared/remote-facing variable that shoreside tools and other vehicles usually consume.",
+      "method": "chatgpt_existing_tab_inner_text_recovered",
+      "url": "https://chatgpt.com/c/6a1dc9fe-fa2c-832c-ac60-b4e111bb39eb",
+      "captured_at": "2026-06-01T18:08:25.569Z"
     },
     "claude": {
-      "status": "pending_quota_limited",
-      "text": ""
+      "status": "captured",
+      "text": "1:56 PM\n\n\n\npNodeReporter: What It Publishes and Why NODE_REPORT_LOCAL Matters\nWhat pNodeReporter normally publishes\n\npNodeReporter is a MOOS-IvP app that packages up a vehicle's current state into a compact string and publishes it as NODE_REPORT. That report typically contains:\n\nName – vehicle ID (e.g., NAME=alpha)\nPosition – X, Y in local coordinates, plus LAT/LON in geodetic coordinates\nSpeed & heading – SPD, HDG\nDepth – for AUVs\nType – TYPE=UUV, TYPE=USV, etc.\nUTC timestamp – UTC_TIME\nMode – often the active behavior mode or helm state\n\nSo a typical NODE_REPORT might look like:\n\nNAME=alpha,X=52.3,Y=-18.1,LAT=43.825,LON=-70.331,SPD=2.1,HDG=127,DEPTH=0,TYPE=UUV,UTC_TIME=1701234567.4\n\nThis gets shared across the MOOS community — other apps like pHelmIvP, pMarineViewer, and uFldNodeBroker consume it to track where the vehicle is and what it's doing.\n\nWhat NODE_REPORT_LOCAL is and why it's different\n\nNODE_REPORT_LOCAL is published by the vehicle itself, for itself — it represents the vehicle's own self-report before it has been shared or routed to anyone else.\n\nThe key distinction:\n\n\tNODE_REPORT\tNODE_REPORT_LOCAL\nWho publishes it\tAny node (could be forwarded from another vehicle)\tOnly the local vehicle's own pNodeReporter\nWhat it represents\tA report about some vehicle\tThe local vehicle's report about itself\nWho listens to it\tpHelmIvP, pMarineViewer, brokers, etc.\tPrimarily uFldNodeBroker for shoreside forwarding\nForwarded over comms?\tMay be (it arrives via bridge)\tNo — it stays local; it's the source\n\nInternally, pNodeReporter publishes both:\n\nNODE_REPORT_LOCAL — \"here's my self-report right now\"\nNODE_REPORT — effectively the same content, but on the variable name that the rest of the community uses for any vehicle report\nWhy this matters in a shoreside/vehicle setup\n\nIn a multi-vehicle MOOS-IvP system, each vehicle runs its own MOOS community, and there's a separate shoreside community that acts as mission control. The key challenge: how does the shoreside know where each vehicle is?\n\nThis is where NODE_REPORT_LOCAL plays its specific architectural role:\n\nOn the vehicle side:\n\npNodeReporter publishes NODE_REPORT_LOCAL (the vehicle's self-report)\n\n\nSonnet 4.6 High",
+      "method": "claude_new_chat_inner_text",
+      "url": "https://claude.ai/chat/7c66c8c0-8c7a-4c92-b6ff-df451f84f363",
+      "captured_at": "2026-06-01T17:57:04.914Z"
     },
     "gemini": {
       "status": "not_started",
       "text": ""
     }
-  }
+  },
+  "updated_at": "2026-06-01T18:08:25.569Z"
 }

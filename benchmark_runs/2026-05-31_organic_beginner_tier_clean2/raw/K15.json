@@ -3,7 +3,7 @@
   "category": "code_config_advice",
   "title": "Duplicate Ports and Community Names",
   "prompt": "This two-vehicle mission is intended to run both vehicles on one laptop, but one vehicle seems to disappear or the shoreside receives confusing reports. Correct the configuration conceptually:\n\n```text\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n\n// second vehicle file\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n```",
-  "captured_at": null,
+  "captured_at": "2026-06-01T17:59:14.694Z",
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
@@ -11,16 +11,23 @@
       "text": ""
     },
     "chatgpt": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:39:43.882Z",
+      "url": "https://chatgpt.com/c/6a1dd1d5-e0dc-832e-a3d3-599613683991",
+      "method": "chatgpt_reusable_fresh_chat_repaired_body",
+      "text": "The core mistake is that both “vehicles” are configured as the same MOOS community on the same MOOSDB port.\n\nThat means they are not really two independent vehicles. They are both trying to use:\n\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n\nSo their apps publish into the same database under the same community name. The result is variable collisions: both may publish NAV_X, NAV_Y, NODE_REPORT_LOCAL, helm state, waypoint state, etc. Shoreside then sees confusing or overwritten reports, or one vehicle appears to “disappear” because it is indistinguishable from the other.\n\nConceptually, each vehicle needs its own MOOSDB port and own community name:\n\n// alpha.moos\nServerHost = localhost\nServerPort = 9001\nCommunity  = alpha\n// bravo.moos\nServerHost = localhost\nServerPort = 9002\nCommunity  = bravo\n\nThen shoreside is another separate community, often something like:\n\n// shoreside.moos\nServerHost = localhost\nServerPort = 9000\nCommunity  = shoreside\n\nThe names that must line up are:\n\nCommunity = alpha\n\nshould match the vehicle name used by apps such as pNodeReporter, pShare, and any launch variables like VNAME=alpha.\n\nLikewise:\n\nCommunity = bravo\n\nshould match VNAME=bravo.\n\nA normal one-laptop topology is:\n\nshoreside MOOSDB: localhost:9000, Community=shoreside\nalpha MOOSDB:     localhost:9001, Community=alpha\nbravo MOOSDB:     localhost:9002, Community=bravo\n\nThen pShare routes vehicle reports from each vehicle DB to shoreside. For example, alpha sends NODE_REPORT_LOCAL or NODE_REPORT toward the shoreside DB, and bravo does the same from its own DB. The key is that each vehicle’s local report must contain a distinct vehicle name, usually NAME=alpha and NAME=bravo.\n\nSo the correction is not merely “change one variable.” The conceptual pattern is:\n\none vehicle = one MOOSDB port + one unique Community name + one unique vehicle name\n\nThen check with uXMS:\n\nBash\nuXMS NAV_X NAV_Y NODE_REPORT NODE_REPORT_LOCAL --server=localhost --port=9001\nuXMS NAV_X NAV_Y NODE_REPORT NODE_REPORT_LOCAL --server=localhost --port=9002\nuXMS NODE_REPORT --server=localhost --port=9000\n\nYou should see alpha’s local navigation only in alpha’s DB, bravo’s local navigation only in bravo’s DB, and distinct NODE_REPORT messages arriving at shoreside for both alpha and bravo."
     },
     "claude": {
-      "status": "pending_quota_limited",
-      "text": ""
+      "status": "captured",
+      "text": "2:00 PM\n\n\n\n\nClaude responded: The problem is that both vehicles share the same server port and community name, which causes conflicts — the second vehicle either collides with or overwrites…\n\nThe problem is that both vehicles share the same server port and community name, which causes conflicts — the second vehicle either collides with or overwrites the first on the shoreside.\n\nIn MOOS-IvP multi-vehicle missions run on one laptop, each vehicle needs its own MOOSDB instance. That means each .moos file must have a unique port and a unique community name:\n\ntext\n// Vehicle 1 (e.g., reds.moos)\nServerHost = localhost\nServerPort = 9000\nCommunity  = red\n\n// Vehicle 2 (e.g., blues.moos)\nServerHost = localhost\nServerPort = 9001\nCommunity  = blue\n\nWhy each field matters:\n\nServerPort — Each MOOSDB process binds to a port. Two MOOSDBs cannot share a port on the same host; the second launch will fail or silently conflict.\nCommunity — This is the vehicle's logical identity on the shoreside. If both vehicles report as alpha, the shoreside (pMarineViewer, uFldNodeBroker, etc.) cannot distinguish them and will conflate their positions, headings, and contacts.\n\nThe shoreside (typically on port 9300 or similar, community shoreside) then bridges the vehicles via uFldNodeBroker / p",
+      "method": "claude_new_chat_inner_text",
+      "url": "https://claude.ai/chat/81921a55-2664-44c5-8a3b-c233e18fd864",
+      "captured_at": "2026-06-01T18:00:26.918Z"
     },
     "gemini": {
       "status": "not_started",
       "text": ""
     }
-  }
+  },
+  "updated_at": "2026-06-01T18:00:26.918Z"
 }

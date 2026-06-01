@@ -3,7 +3,7 @@
   "category": "code_config_advice",
   "title": "pMarineViewer Button Posts",
   "prompt": "This viewer button is supposed to deploy the vehicle, but clicking it does not make the helm run. Correct the configuration conceptually and explain what should be checked in uXMS:\n\n```text\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true\n}\n```",
-  "captured_at": null,
+  "captured_at": "2026-06-01T17:58:35.486Z",
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
@@ -11,16 +11,23 @@
       "text": ""
     },
     "chatgpt": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:19:29.149Z",
+      "url": "https://chatgpt.com/c/6a1dcd20-e0f4-832b-b056-b7dd145f7bb4",
+      "method": "chatgpt_reusable_new_chat",
+      "text": "ht for a couple of seconds\n\nThe button is probably posting the wrong type/value or posting only one of the variables needed for the helm to leave standby.\n\nConceptually, a pMarineViewer button should post MOOS variables exactly as the helm behavior conditions expect:\n\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true\n  button_two = MANUAL # MOOS_MANUAL_OVERRIDE=true\n  button_three = RETURN # RETURN=true\n}\n\nBut for actual deployment, most MOOS-IvP missions need both:\n\nDEPLOY = true\nMOOS_MANUAL_OVERRIDE = false\n\nSo the deploy button is usually something like:\n\nbutton_one = DEPLOY # DEPLOY=true # MOOS_MANUAL_OVERRIDE=false\n\nor, in some mission styles:\n\nbutton_one = DEPLOY # DEPLOY=true\nbutton_two = AUTO # MOOS_MANUAL_OVERRIDE=false\n\nThe key idea is that DEPLOY=true may satisfy the behavior condition, but the helm may still not run autonomous behaviors if MOOS_MANUAL_OVERRIDE remains true.\n\nCheck these in uXMS:\n\nBash\nuXMS DEPLOY MOOS_MANUAL_OVERRIDE IVPHELM_STATE DESIRED_HEADING DESIRED_SPEED\n\nYou want to see:\n\nDEPLOY                = true\nMOOS_MANUAL_OVERRIDE  = false\nIVPHELM_STATE         = DRIVE\n\nIf clicking the button changes nothing, the issue is in the pMarineViewer config or you are not running the generated .moos file you edited. If DEPLOY=true appears but MOOS_MANUAL_OVERRIDE=true remains, the helm is still manually overridden. If both variables look correct but the helm does not drive, inspect the .bhv conditions and helm status with uHelmScope.\n\nAlso make sure the button syntax is in the actual pMarineViewer block of the running target file, not only in a stale meta_*.moos template. If you edited the template, regenerate with nsplug before relaunching.\n\nThinking"
     },
     "claude": {
-      "status": "pending_quota_limited",
-      "text": ""
+      "status": "captured",
+      "text": "1:59 PM\n\n\n\n\nClaude responded: The Problem\nThe Problem\n\nThe button is only posting DEPLOY=true, but the MOOS-IvP helm won't actually run on that alone. The helm requires three conditions to be satisfied simultaneously:\n\nDEPLOY=true\nMOOS_MANUAL_OVERRIDE=false\nRETURN=false (commonly also required)\n\nYour config only sets one of them, so the helm stays idle.\n\nCorrected Configuration\ntext\nProcessConfig = pMarineViewer\n{\n  button_one = DEPLOY # DEPLOY=true # MOOS_MANUAL_OVERRIDE=false # RETURN=false\n}\n\nEach #-separated token is an additional MOOS variable posting. All three get published atomically when the button is clicked.\n\nWhat to Check in uXMS\n\nOpen uXMS and filter for these variables to verify their state:\n\nVariable\tExpected value when deployed\nDEPLOY\ttrue\nMOOS_MANUAL_OVERRIDE\tfalse\nRETURN\tfalse\nIVPHELM_STATE\tDrive (confirms helm is actually running behaviors)\nIVPHELM_ALLSTOP\tclear (any other value means the helm is holding itself back)\n\nThe key diagnostic is IVPHELM_STATE — if it reads Park even after clicking Deploy, that tells you one of the interlock variables is still in the wrong state. IVPHELM_ALLSTOP will tell you why it's parked if that's the case.\n\n\n\n\n\n\n\n\nSonnet 4.6 High",
+      "method": "claude_new_chat_inner_text",
+      "url": "https://claude.ai/chat/28ee2c03-9e98-4292-8ae5-9b3005e8984f",
+      "captured_at": "2026-06-01T17:59:32.063Z"
     },
     "gemini": {
       "status": "not_started",
       "text": ""
     }
-  }
+  },
+  "updated_at": "2026-06-01T17:59:32.063Z"
 }

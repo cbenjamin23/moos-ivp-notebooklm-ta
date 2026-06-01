@@ -3,7 +3,7 @@
   "category": "code_config_advice",
   "title": "Reconnect-Safe Registration",
   "prompt": "This MOOS app receives mail at first but stops receiving `NAV_X` after a reconnect. Correct the app lifecycle pattern conceptually:\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  Register(\"NAV_X\", 0);\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  return true;\n}\n```",
-  "captured_at": null,
+  "captured_at": "2026-06-01T17:57:50.005Z",
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
@@ -11,16 +11,23 @@
       "text": ""
     },
     "chatgpt": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:16:00.898Z",
+      "url": "https://chatgpt.com/c/6a1dcc4e-92fc-8329-8e17-7c4ef895ba1e",
+      "method": "chatgpt_reusable_new_chat",
+      "text": "Skip to content\nChat history\nChatGPT\nNew chat\nSearch chats\nLibrary\nApps\nCodex\nMore\nProjects\nNew project\nDrivers\nUAV Project\nOpen Source Research\n223\nRecents\nMOOS app lifecycle fix\nBHV_Loiter vs BHV_StationKeep\nMoose Graphic Request\npNodeReporter NODE_REPORT difference\nDebugging MOOS Variables\npMarineViewer Action Buttons\nLiFePO₄ Battery Charging Setup\nMOOS-IvP Debugging Workflow\nMission Argument Debugging\nFemale-to-Female Plastic Coupler\nIvP Function Correction\nInfoBuffer Variable Safety\nsetParam function fix\nMessage Formatting Fix\nMulti-community MOOS config\nConfiguring Behavior Files\nTimer Script Debugging uXMS\nMission File Parsing Fix\nMOOS Variable Registration Fix\nMOOS Odometry Code Fix\nMission Log Verification\nuFld Broker Comparison\nMOOS variable sharing setup\npMarineViewer Configuration Issues\nBHV_OpRegionV24 Behavior Explained\nBHV_Waypoint Arrival Parameters\nAutonomous Behavior Variables\nuTimerScript Usage and Tips\nCharlie Benjamin\nPro\nShare\nThis MOOS app receives mail at first but stops receiving NAV_X after a reconnect. Correct the app lifecycle pattern conceptually:\n\n\ncpp\nbool MyApp::OnStartUp()\n{\n  Register(\"NAV_X\", 0);\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  return true;\n}\nShow more\nThought for 5s\n\nThe bug is that registration is only happening in OnStartUp(). After a MOOSDB reconnect, the app may lose its subscriptions, so OnConnectToServer() must re-register for all input variables.\n\nCorrect lifecycle pattern:\n\nC++\nbool MyApp::OnStartUp()\n{\n  // Read mission-file parameters here.\n  // Then register for mail.\n  registerVariables();\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  // Re-register every time the app connects or reconnects to the MOOSDB.\n  registerVariables();\n  return true;\n}\n\nvoid MyApp::registerVariables()\n{\n  Register(\"NAV_X\", 0);\n}\n\nOr, in AppCasting-style apps, the pattern is usually:\n\nC++\nbool MyApp::OnStartUp()\n{\n  AppCastingMOOSApp::OnStartUp();\n\n  // Read config params here.\n\n  registerVariables();\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  registerVariables();\n  return true;\n}\n\nvoid MyApp::registerVariables()\n{\n  AppCastingMOOSApp::RegisterVariables();\n  Register(\"NAV_X\", 0);\n}\n\nThe key idea: OnStartUp() is for initial setup and mission-file parsing; OnConnectToServer() is where you must restore MOOSDB subscriptions after reconnects.\n\nA common symptom of the wrong pattern is:\n\nApp receives NAV_X initially\nMOOSDB or network connection restarts\nApp keeps running\nNAV_X is still being published by another process\nBut this app no longer receives NAV_X mail\n\nSo for every variable consumed in OnNewMail(), such as NAV_X, NAV_Y, NAV_HEADING, NODE_REPORT, etc., put the registrations in one shared registerVariables() function and call it from both OnStartUp() and OnConnectToServer().\n\nThinking"
     },
     "claude": {
-      "status": "pending_quota_limited",
-      "text": ""
+      "status": "captured",
+      "text": "1:57 PM\n\n\n\n\nClaude responded: The bug is a lifecycle ordering mistake: Register() is called in OnStartUp(), but that runs before a server connection exists.\n\nThe bug is a lifecycle ordering mistake: Register() is called in OnStartUp(), but that runs before a server connection exists. It works the first time only by accident — the initial connect happens shortly after startup, and some MOOS implementations re-send registrations on first connect. After a reconnect, however, OnConnectToServer() fires again but there's nothing there to re-register, so the subscription is silently lost.\n\nThe correct pattern\ncpp\nbool MyApp::OnStartUp()\n{\n    // Read config, initialize state — no Register() calls here\n    return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n    Register(\"NAV_X\", 0);   // Re-runs on every connect and reconnect\n    return true;\n}\n\nWhy this works: OnConnectToServer() is called by the MOOS machinery every time a (re)connection to the MOOSDB is established — including the very first one. Placing Register() here guarantees subscriptions are (re)declared to a live server each time, surviving any number of disconnects.\n\nThe general rule\nHook\tPurpose\nOnStartUp()\tRead the mission file, allocate resources, set initial state\nOnConnectToServer()\tDeclare all Register() calls — every time\nIterate()\tPublish, compute, act\n\nA useful mental model: treat OnConnectToServer() like a network socket's on_open callback. Just as you'd re-subscribe to topics when a WebSocket reconnects, you re-register here. Anything registered before the socket is open is gone the moment the connection drops.\n\n\n\n\n\n\n\n\nSonnet 4.6 High",
+      "method": "claude_new_chat_inner_text",
+      "url": "https://claude.ai/chat/5e851b21-d689-4426-af62-062cb1ef3f05",
+      "captured_at": "2026-06-01T17:57:50.005Z"
     },
     "gemini": {
       "status": "not_started",
       "text": ""
     }
-  }
+  },
+  "updated_at": "2026-06-01T17:57:50.005Z"
 }

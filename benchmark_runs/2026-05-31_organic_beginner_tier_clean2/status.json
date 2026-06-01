@@ -515,7 +515,7 @@
       "models": {
         "notebook": "captured",
         "chatgpt": "captured",
-        "claude": "not_started",
+        "claude": "captured",
         "gemini": "captured"
       }
     },
@@ -525,7 +525,7 @@
       "models": {
         "notebook": "captured",
         "chatgpt": "captured",
-        "claude": "pending_quota_limited",
+        "claude": "captured",
         "gemini": "captured"
       }
     },
@@ -534,9 +534,9 @@
       "title": "pMarineViewer Action Buttons",
       "models": {
         "notebook": "captured",
-        "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
-        "gemini": "not_started"
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D13": {
@@ -544,9 +544,9 @@
       "title": "uXMS, uQueryDB, and uPokeDB",
       "models": {
         "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
-        "gemini": "not_started"
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D14": {
@@ -554,8 +554,8 @@
       "title": "pNodeReporter and NODE_REPORT",
       "models": {
         "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "chatgpt": "captured",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -564,8 +564,8 @@
       "title": "Loiter and Station-Keep Behaviors",
       "models": {
         "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "chatgpt": "captured",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -575,7 +575,7 @@
       "models": {
         "notebook": "not_started",
         "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -585,7 +585,7 @@
       "models": {
         "notebook": "not_started",
         "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -595,7 +595,7 @@
       "models": {
         "notebook": "not_started",
         "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -605,7 +605,7 @@
       "models": {
         "notebook": "not_started",
         "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "claude": "captured",
         "gemini": "not_started"
       }
     },
@@ -615,7 +615,7 @@
       "models": {
         "notebook": "not_started",
         "chatgpt": "not_started",
-        "claude": "pending_quota_limited",
+        "claude": "captured",
         "gemini": "not_started"
       }
     }
@@ -626,7 +626,7 @@
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
   "stopped_at": "2026-06-01T14:33:34Z",
-  "stop_reason": "Expansion capture in progress. Last update: D12 notebook captured. Claude remains pending due quota/limit.",
+  "stop_reason": "Benchmark capture in progress. Last update: D13 gemini captured.",
   "last_completed_prompt": "K09",
   "partial_prompt_at_stop": "K10",
   "resume_attempts": [
@@ -745,5 +745,26 @@
       "event": "expanded_prompt_bank",
       "result": "Added D11-D15 and K11-K15. User requested collecting results now on non-limited tools; Claude left pending due quota/limit."
     }
-  ]
+  ],
+  "prompts": {
+    "D13": {
+      "gemini": "captured"
+    },
+    "K11": {
+      "chatgpt": "captured"
+    },
+    "K12": {
+      "chatgpt": "captured"
+    },
+    "K13": {
+      "chatgpt": "captured"
+    },
+    "K14": {
+      "chatgpt": "captured"
+    },
+    "K15": {
+      "chatgpt": "captured"
+    }
+  },
+  "updated_at": "2026-06-01T18:39:43.883Z"
 }

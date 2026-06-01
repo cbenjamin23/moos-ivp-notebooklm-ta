@@ -3,7 +3,7 @@
   "category": "code_config_advice",
   "title": "Behavior Updates Not Taking Effect",
   "prompt": "This app posts a new waypoint update, but BHV_Waypoint never changes route. Correct the pattern conceptually and explain what names must line up:\n\n```cpp\nNotify(\"WPT_UPDATE\", \"points=0,0:50,0:50,50\");\n```\n\n```text\nBehavior = BHV_Waypoint\n{\n  name = waypt_survey\n  updates = WAYPOINT_UPDATES\n}\n```",
-  "captured_at": null,
+  "captured_at": "2026-06-01T17:58:54.354Z",
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
@@ -11,16 +11,23 @@
       "text": ""
     },
     "chatgpt": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:39:10.002Z",
+      "url": "https://chatgpt.com/c/6a1dd1b4-655c-8325-939d-7cff0659eb08",
+      "method": "chatgpt_reusable_fresh_chat_repaired_body",
+      "text": "The mismatch is that the app is publishing WPT_UPDATE, but the behavior is listening on WAYPOINT_UPDATES.\n\nIn BHV_Waypoint, the updates = ... line names the MOOS variable that the behavior will monitor for dynamic updates. So the posted variable and the updates variable must be identical.\n\nCorrect pattern:\n\nC++\nNotify(\"WAYPOINT_UPDATES\", \"points=0,0:50,0:50,50\");\nBehavior = BHV_Waypoint\n{\n  name    = waypt_survey\n  updates = WAYPOINT_UPDATES\n}\n\nThe important name alignment is:\n\nNotify(\"<update_variable>\", \"...\")\n\nupdates = <same_update_variable>\n\nSo either of these is fine:\n\nC++\nNotify(\"WPT_UPDATE\", \"points=0,0:50,0:50,50\");\nupdates = WPT_UPDATE\n\nor:\n\nC++\nNotify(\"WAYPOINT_UPDATES\", \"points=0,0:50,0:50,50\");\nupdates = WAYPOINT_UPDATES\n\nAlso check that the update string uses real BHV_Waypoint parameter names. For waypoint route updates, points=... is the usual conceptual pattern, but the behavior only reacts if the posted string parses as valid behavior updates.\n\nIn uXMS, check:\n\nBash\nuXMS WAYPOINT_UPDATES WPT_UPDATE\n\nYou want to see the variable named in updates = ... actually being posted. If WPT_UPDATE is changing but WAYPOINT_UPDATES is not, the helm never sees the update."
     },
     "claude": {
-      "status": "pending_quota_limited",
-      "text": ""
+      "status": "captured",
+      "text": "1:59 PM\n\n\n\n\nClaude responded: The problem is a name mismatch between what you're posting and what the behavior is listening to.\n\nThe problem is a name mismatch between what you're posting and what the behavior is listening to.\n\nWhat's Happening\n\nBHV_Waypoint listens on the variable named in its updates field. On every helm iteration, it checks the MOOSDB for new messages on that variable and, if it finds one, applies the new parameter values. Your code posts to WPT_UPDATE, but the behavior is watching WAYPOINT_UPDATES — so the message lands in the MOOSDB and is simply never read by the behavior.\n\nThe Fix\n\nThese two names must be identical:\n\ncpp\n// Post to exactly the variable the behavior watches\nNotify(\"WAYPOINT_UPDATES\", \"points=0,0:50,0:50,50\");\ntext\nBehavior = BHV_Waypoint\n{\n  name      = waypt_survey\n  updates   = WAYPOINT_UPDATES   // behavior subscribes to this exact string\n}\nNames That Must Line Up\nSide\tField\tValue\nPoster (C++ / .moos)\tFirst arg to Notify()\t\"WAYPOINT_UPDATES\"\nBehavior (.bhv)\tupdates parameter\tWAYPOINT_UPDATES\n\nThese are compared as plain strings by the helm — no fuzzy matching, no prefix stripping. One character difference and the update is silently ignored.\n\nSecondary thing to check\n\nThe updates parameter also requires the behavior to have updates_var set, or (in older pHelm) you must enable dynamic updates by adding:\n\ntext\n  updates = WAYPOINT_UPDATES\n\nwhich you already have — so as long as the string matches, the route will update live on each helm tick without restarting the mission.\n\n\n\n\n\n\n\n\nSonnet 4.6 High",
+      "method": "claude_new_chat_inner_text",
+      "url": "https://claude.ai/chat/12b71f74-02ac-4684-83fa-aedf3982dc93",
+      "captured_at": "2026-06-01T17:59:57.003Z"
     },
     "gemini": {
       "status": "not_started",
       "text": ""
     }
-  }
+  },
+  "updated_at": "2026-06-01T17:59:57.003Z"
 }
