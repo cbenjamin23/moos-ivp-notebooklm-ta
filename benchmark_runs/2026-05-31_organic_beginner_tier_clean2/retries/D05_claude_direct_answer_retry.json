@@ -1,0 +1,10 @@
+{
+  "prompt_id": "D05",
+  "model": "claude",
+  "status": "captured",
+  "captured_at": "2026-06-01T19:00:37.910Z",
+  "url": "https://claude.ai/chat/5e8a14fd-fa89-4122-b14d-4a7a333be8c7",
+  "method": "claude_direct_answer_retry",
+  "retry_prompt": "Answer directly, no clarifying questions.\n\nIn my `.bhv` file, does BHV_Waypoint have a parameter named `magic_arrival_radius`? If not, what are the real arrival/capture-related parameters I should look up and how should I verify them?",
+  "text": "I don't have access to your .\n\nI don't have access to your .bhv file \u2014 no file has been uploaded to this conversation, and I can't read files from your local machine.\n\nThat said, I can tell you directly: magic_arrival_radius is not a real MOOS-IvP BHV_Waypoint parameter. It sounds like a hallucinated or misremembered name.\n\nThe real arrival/capture-related parameters in BHV_Waypoint are:\n\ncapture_radius \u2014 the radius within which the vehicle is considered to have \"captured\" a waypoint (hard arrival trigger). Typically a small value like 3 or 5 meters.\nslip_radius (sometimes called nm_radius in older versions) \u2014 a larger outer radius; if the vehicle passes through this without hitting capture_radius, it still counts the waypoint as reached. Useful for fast-moving vehicles that might overshoot.\nlead \u2014 not arrival per se, but controls how far ahead on the segment the vehicle aims, affecting how it rounds corners.\n\nHow to verify against your actual .bhv file:\n\nUpload it here \u2014 paste the contents or attach the file and I'll tell you exactly what's in it.\nSearch locally:\nbash\n   grep -i \"radius\\|arrival\\|capture\\|slip\" your_file.bhv\nCheck the authoritative docs \u2014 the MOOS-IvP wiki at oceanai.mit.edu/ivpman/pmwiki/pmwiki.php has the full BHV_Waypoint parameter table.\nRun bhv_inspect (if available in your MOOS build) to dump valid parameter names for a behavior.\n\nShort answer: use capture_radius and slip_radius."
+}
