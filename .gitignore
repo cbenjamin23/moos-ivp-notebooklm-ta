@@ -1,4 +1,7 @@
 .DS_Store
 assets/logs/
 assets/downloads/
+assets/previews/
 assets/packs/.*_title.pdf
+benchmark_runs/*/tmp/
+benchmark_runs/*/screenshots/

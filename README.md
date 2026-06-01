@@ -1,6 +1,6 @@
 # MOOS-IvP NotebookLM TA
 
-This repository contains the source packs, upload list, and validation reports for a NotebookLM-based MOOS-IvP virtual teaching assistant aimed at students working through the MIT/OceanAI MOOS-IvP labs.
+This repository contains the source packs, upload list, benchmark captures, and evaluation reports for a NotebookLM-based MOOS-IvP virtual teaching assistant aimed at students working through the MIT/OceanAI MOOS-IvP labs.
 
 The current NotebookLM notebook is named `MOOS-IvP Virtual TA` and was built from MIT/OceanAI MOOS-IvP documentation PDFs grouped into upload-friendly packs.
 
@@ -10,8 +10,11 @@ The current NotebookLM notebook is named `MOOS-IvP Virtual TA` and was built fro
 - `assets/packs/` - combined PDFs uploaded to NotebookLM.
 - `assets/upload_files.txt` - absolute local paths for the current upload pack set.
 - `assets/manifest.json` - generated source-pack manifest from the original build.
-- `reports/` - validation, stress-test, code-advice, code-correction, and cross-model benchmark reports.
-- `benchmark_runs/` - raw captured benchmark outputs.
+- `reports/` - final benchmark reports, score JSON, and hallucination-audit notes.
+- `reports/pre_benchmark/` - earlier setup validation, Studio, stress-test, and code-advice checks.
+- `benchmark_runs/` - raw captured benchmark outputs and collection status.
+
+The only large directory is `assets/packs/`. Those PDFs are intentionally retained because they are the reproducible source set uploaded to NotebookLM.
 
 ## Current Notebook Source Set
 
@@ -27,7 +30,9 @@ The most important entry point for human review is:
 
 ## Benchmark Results
 
-The clean cross-model benchmark compares NotebookLM TA with beginner-tier browser ChatGPT, Claude, and Gemini. Additional ChatGPT rows test GPT-5.5 Instant in the web app and GPT-5.5 Low through an isolated CLI run. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
+The clean cross-model benchmark compares six rows: NotebookLM TA, ChatGPT 5.5 Thinking, ChatGPT 5.5 Instant, ChatGPT 5.5 Low CLI, Gemini, and Claude. The browser rows reflect the normal beginner-tier product experience available during collection; the CLI row is an isolated GPT-5.5 Low run without browser memory, Codex skills, local files, local tools, or web access.
+
+Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
 
 Current status: all 360 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive and concrete MOOS-IvP hallucinations reduce the score.
 
@@ -51,15 +56,26 @@ Detailed results and rubric:
 - `reports/code_config_benchmark_results.md`
 - `reports/chatgpt_55_instant_benchmark_results.md`
 - `reports/chatgpt_55_low_cli_benchmark_results.md`
+- `reports/hallucination_sweep_notes.md`
+
+## Grading Metadata
+
+Yes, grading metadata is stored with the benchmark artifacts:
+
+- `SCORING_RUBRIC.md` defines the `0/1/2` scoring rules and how hallucinations are penalized.
+- `RESULTS.md` gives the public summary plus per-prompt notes and hard/notable error examples.
+- `reports/*_benchmark_results.json` stores machine-readable scoring metadata, including fields such as `grading_method`, `score_legend`, `metrics`, `hard_failures`, per-prompt scores, winners, and notes.
+- `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/raw/` stores the raw model outputs used for scoring.
+- `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/cli_logs/` stores the isolated GPT-5.5 Low CLI event logs used for collection integrity checks.
 
 ## Validation Summary
 
 Existing pre-benchmark reports:
 
-- `reports/validation_report.json` - initial NotebookLM setup and 20-prompt validation sweep.
-- `reports/studio_and_stress_report.json` - Studio feature notes plus 20 diagnostic stress prompts.
-- `reports/code_advice_test_report.json` - 10 prompts asking for MOOS-IvP code advice, reviewed against local source.
-- `reports/code_correction_test_report.json` - 5 prompts with intentionally incorrect MOOS-IvP code, reviewed against local source.
+- `reports/pre_benchmark/validation_report.json` - initial NotebookLM setup and 20-prompt validation sweep.
+- `reports/pre_benchmark/studio_and_stress_report.json` - Studio feature notes plus 20 diagnostic stress prompts.
+- `reports/pre_benchmark/code_advice_test_report.json` - 10 prompts asking for MOOS-IvP code advice, reviewed against local source.
+- `reports/pre_benchmark/code_correction_test_report.json` - 5 prompts with intentionally incorrect MOOS-IvP code, reviewed against local source.
 
 High-level result:
 

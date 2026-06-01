@@ -1,6 +1,6 @@
 # Benchmarking Plan
 
-This benchmark will compare the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. The main purpose is to test whether the NotebookLM TA is useful as a conceptual, documentation-grounded MOOS-IvP teaching assistant for students working through the MIT/OceanAI MOOS-IvP labs.
+This benchmark compares the NotebookLM MOOS-IvP TA against the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini, plus two additional ChatGPT 5.5 rows. The main purpose is to test whether the NotebookLM TA is useful as a conceptual, documentation-grounded MOOS-IvP teaching assistant for students working through the MIT/OceanAI MOOS-IvP labs.
 
 The benchmark should not market the notebook as a code generator. Code tasks are included as a stress-test category, not as the primary product claim.
 
@@ -16,14 +16,16 @@ Explicit limitation:
 
 ## Systems To Compare
 
-Primary comparison:
+Completed comparison:
 
 - NotebookLM MOOS-IvP TA
-- ChatGPT in the normal signed-in browser UI
+- ChatGPT 5.5 Thinking in the normal signed-in browser UI
+- ChatGPT 5.5 Instant in the normal signed-in browser UI
+- ChatGPT 5.5 Low through an isolated CLI run
 - Claude in the normal signed-in browser UI
 - Gemini in the normal signed-in browser UI
 
-Optional later comparison:
+Potential future comparison:
 
 - Controlled no-web versions of the same systems, if the UI makes that easy and repeatable.
 - ChatGPT with uploaded PDFs
@@ -169,7 +171,9 @@ Recommended headline table:
 | Model | Score % | Avg / 2 | Good % | Partial % | Bad % | Conceptual Score % | Exact Docs Score % | Code Score % |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| ChatGPT | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| ChatGPT 5.5 Thinking | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| ChatGPT 5.5 Instant | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| ChatGPT 5.5 Low CLI | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | Claude | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | Gemini | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 
