@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt D06
+Status: in progress - next prompt D07
 
-Last updated: 2026-06-01T11:48:12Z
+Last updated: 2026-06-01T11:53:54Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":140,"not_started":60}
+Counts: {"captured":144,"not_started":56}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -47,7 +47,7 @@ Counts: {"captured":140,"not_started":60}
 | D03 | exact_docs_tools | uTimerScript Usage | captured | captured | captured | captured |
 | D04 | exact_docs_tools | Helm Deploy Variables | captured | captured | captured | captured |
 | D05 | exact_docs_tools | BHV_Waypoint Params | captured | captured | captured | captured |
-| D06 | exact_docs_tools | BHV_OpRegionV24 Semantics | not_started | not_started | not_started | not_started |
+| D06 | exact_docs_tools | BHV_OpRegionV24 Semantics | captured | captured | captured | captured |
 | D07 | exact_docs_tools | Viewer Image / Geodesy Config | not_started | not_started | not_started | not_started |
 | D08 | exact_docs_tools | pShare Configuration | not_started | not_started | not_started | not_started |
 | D09 | exact_docs_tools | uField Broker Comparison | not_started | not_started | not_started | not_started |
@@ -65,8 +65,8 @@ Counts: {"captured":140,"not_started":60}
 
 ## Current Position
 
-C01-C30 are complete for all four tools. D01-D05 are complete for all four tools. The next prompt is D06 in the exact documentation/tool category.
+C01-C30 are complete for all four tools. D01-D06 are complete for all four tools. The next prompt is D07 in the exact documentation/tool category.
 
 ## Progress Notes
 
-Checkpoint at 2026-06-01T11:48:12Z: D05 completed for all four tools.
+Checkpoint at 2026-06-01T11:53:54Z: D06 completed for all four tools.
