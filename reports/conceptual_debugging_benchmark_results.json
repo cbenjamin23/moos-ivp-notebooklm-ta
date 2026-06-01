@@ -25,7 +25,8 @@
       "bad_percent": 0,
       "hard_failures": 0,
       "hard_failure_percent": 0,
-      "top_tie_count": 30
+      "top_tie_count": 30,
+      "score_percent": 100
     },
     "chatgpt": {
       "model": "ChatGPT",
@@ -40,7 +41,8 @@
       "bad_percent": 0,
       "hard_failures": 2,
       "hard_failure_percent": 6.7,
-      "top_tie_count": 28
+      "top_tie_count": 28,
+      "score_percent": 96.7
     },
     "claude": {
       "model": "Claude",
@@ -53,9 +55,10 @@
       "partial_percent": 46.7,
       "bad_count": 5,
       "bad_percent": 16.7,
-      "hard_failures": 8,
-      "hard_failure_percent": 26.7,
-      "top_tie_count": 11
+      "hard_failures": 9,
+      "hard_failure_percent": 30,
+      "top_tie_count": 11,
+      "score_percent": 60
     },
     "gemini": {
       "model": "Gemini",
@@ -70,7 +73,8 @@
       "bad_percent": 6.7,
       "hard_failures": 5,
       "hard_failure_percent": 16.7,
-      "top_tie_count": 20
+      "top_tie_count": 20,
+      "score_percent": 80
     }
   },
   "hard_failures": [
@@ -85,6 +89,12 @@
       "model": "gemini",
       "type": "Wrong pAntler configuration block framing",
       "explanation": "Told the user to look for Run lines inside ProcessConfig = pAntler; the pAntler launch block should be ANTLER/Antler, making the answer useful but copy-paste risky."
+    },
+    {
+      "prompt_id": "C15",
+      "model": "claude",
+      "type": "Invented MOOS host variable",
+      "explanation": "Introduced MOOS_SERVER_HOST as if it were a mission-file setting; the relevant MOOS configuration field is ServerHost, so the answer was useful but contained a concrete wrong variable name."
     },
     {
       "prompt_id": "C06",
@@ -456,8 +466,10 @@
         "chatgpt",
         "gemini"
       ],
-      "hard_failures": [],
-      "note": "NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance; Claude was useful but used some imprecise MOOS_SERVER_HOST-style framing."
+      "hard_failures": [
+        "claude"
+      ],
+      "note": "NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting."
     },
     {
       "id": "C16",
@@ -762,7 +774,7 @@
       "note": "NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example."
     }
   ],
-  "summary_caveat": "This hallucination-sensitive revision pass penalizes plausible-looking but wrong MOOS-IvP details. Under this stricter rubric, NotebookLM TA leads ChatGPT on the completed conceptual/debugging category because it avoided the wrong pAntler launch-block examples found in ChatGPT answers.",
+  "summary_caveat": "This hallucination-sensitive revision pass penalizes plausible-looking but wrong MOOS-IvP details. Public tables report the average as a percentage of possible points. Hard/notable error flags are separate reliability flags and may overlap with partial or bad answers.",
   "notable_revision_changes": [
     {
       "prompt_id": "C04",
@@ -799,6 +811,18 @@
       "model": "ChatGPT",
       "change": "2 -> 1",
       "reason": "Useful triage answer, but repeated wrong ProcessConfig = pAntler example."
+    },
+    {
+      "prompt_id": "C05",
+      "model": "Claude",
+      "change": "1 -> 1 + flag",
+      "reason": "Second sweep added a hard/notable flag for wrong pAntler launch-block framing."
+    },
+    {
+      "prompt_id": "C15",
+      "model": "Claude",
+      "change": "1 -> 1 + flag",
+      "reason": "Second sweep added a hard/notable flag for invented MOOS_SERVER_HOST variable; score stayed partial because other networking advice was useful."
     }
   ]
 }

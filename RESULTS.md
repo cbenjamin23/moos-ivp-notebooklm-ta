@@ -8,10 +8,13 @@ Detailed conceptual results:
 
 - `reports/conceptual_debugging_benchmark_results.md`
 - `reports/conceptual_debugging_benchmark_results.json`
+- `reports/hallucination_sweep_notes.md`
+
+Rubric: `SCORING_RUBRIC.md`
 
 ## Executive Summary
 
-For conceptual/debugging prompts based on the MOOS-IvP labs, NotebookLM TA now leads under the hallucination-sensitive `0/1/2` rubric: 2.00/2.00 with no hard failures across C01-C30. ChatGPT remains very strong at 1.93, but lost credit for two plausible-looking wrong `ProcessConfig = pAntler` examples that a beginner might copy into a mission.
+For conceptual/debugging prompts based on the MOOS-IvP labs, NotebookLM TA now leads under the hallucination-sensitive `0/1/2` rubric: 100.0% with no hard/notable error flags across C01-C30. ChatGPT remains very strong at 96.7%, but lost credit for two plausible-looking wrong `ProcessConfig = pAntler` examples that a beginner might copy into a mission.
 
 The revision matters: the earlier coarse pass only asked whether an answer was broadly useful. This pass also penalizes concrete hallucinations, wrong copy-pasteable config snippets, invented MOOS-IvP app/parameter names, stale-context answers, and unsupported off-domain robotics details. Gemini was often useful but had several MOOS-specific drift problems. Claude had several severe failures caused by poor search/context handling or invented MOOS-adjacent details.
 
@@ -23,29 +26,41 @@ Answer for C01-C30: yes. On the stricter hallucination-sensitive scoring, it ran
 
 Secondary question about exact docs and code/config remains open until those categories are complete.
 
-## Headline Results
+## Headline Scores
 
-| Model | Avg Score | Good Answers | Partial Answers | Bad Answers | Hard Failures | Conceptual Avg | Exact Docs Avg | Code Avg |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 2.00 | pending | pending |
-| ChatGPT | 1.93 | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) | 2/30 (6.7%) | 1.93 | pending | pending |
-| Gemini | 1.60 | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) | 5/30 (16.7%) | 1.60 | pending | pending |
-| Claude | 1.20 | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) | 8/30 (26.7%) | 1.20 | pending | pending |
+| Model | Score % | Good Answers | Partial Answers | Bad Answers |
+|---|---:|---:|---:|---:|
+| NotebookLM TA | 100.0% | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 96.7% | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
+| Gemini | 80.0% | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
+| Claude | 60.0% | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
+
+Reliability flags, counted separately from good/partial/bad:
+
+| Model | Hard/Notable Error Flags | Conceptual Score % | Exact Docs Score % | Code Score % |
+|---|---:|---:|---:|---:|
+| NotebookLM TA | 0/30 (0.0%) | 100.0% | pending | pending |
+| ChatGPT | 2/30 (6.7%) | 96.7% | pending | pending |
+| Gemini | 5/30 (16.7%) | 80.0% | pending | pending |
+| Claude | 9/30 (30.0%) | 60.0% | pending | pending |
 
 ## Category Results
 
 | Category | Prompt Count | NotebookLM TA | ChatGPT | Claude | Gemini | Notes |
 |---|---:|---:|---:|---:|---:|---|
-| Conceptual/debugging | 30 | 2.00 | 1.93 | 1.20 | 1.60 | Complete; hallucination-sensitive revision pass applied. |
+| Conceptual/debugging | 30 | 100.0% | 96.7% | 60.0% | 80.0% | Complete; hallucination-sensitive revision pass applied. |
 | Exact docs/parameters/tools | 10 | pending | pending | pending | pending | Incomplete; browser run stopped at NotebookLM daily quota on D03. |
 | Code advice/correction | 10 | pending | pending | pending | pending | Not yet run in the clean cross-model benchmark. |
 
-## Hard Failures
+## Hard/Notable Error Flags
+
+These flags are separate reliability markers, not additional answer categories. A hard/notable error can be in an answer already counted as partial or bad.
 
 | Prompt ID | Model | Failure Type | Brief Explanation |
 |---|---|---|---|
 | C05 | Claude | Wrong pAntler configuration block framing | Suggested looking for ProcessConfig = pAntler around launch entries; the pAntler launch list is read from the ANTLER/Antler process configuration block. |
 | C05 | Gemini | Wrong pAntler configuration block framing | Told the user to look for Run lines inside ProcessConfig = pAntler; the pAntler launch block should be ANTLER/Antler, making the answer useful but copy-paste risky. |
+| C15 | Claude | Invented MOOS host variable | Introduced MOOS_SERVER_HOST as if it were a mission-file setting; the relevant MOOS configuration field is ServerHost, so the answer was useful but contained a concrete wrong variable name. |
 | C06 | Gemini | Off-domain framework drift | Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files. |
 | C16 | Claude | No substantive answer | Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path. |
 | C17 | Gemini | Off-domain messaging model | Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields. |
@@ -74,7 +89,7 @@ Scoring:
 - `1` = partially useful, incomplete, or hallucination-tainted
 - `0` = bad
 
-| ID | Category | Prompt Short Name | NotebookLM | ChatGPT | Claude | Gemini | Hard Failures | Notes |
+| ID | Category | Prompt Short Name | NotebookLM | ChatGPT | Claude | Gemini | Hard/Notable Flags | Notes |
 |---|---|---|---:|---:|---:|---:|---|---|
 | C01 | Conceptual/debugging | Command Not Found After Build | 2 | 2 | 2 | 2 | none | All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful. |
 | C02 | Conceptual/debugging | Version Control Before Mission Changes | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts. |
@@ -90,7 +105,7 @@ Scoring:
 | C12 | Conceptual/debugging | pShare Route Confusion | 2 | 2 | 2 | 2 | none | All models gave a reasonable local-vs-shared variable boundary for pShare routes. |
 | C13 | Conceptual/debugging | TSP App / Behavior Boundary | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming. |
 | C14 | Conceptual/debugging | Distributed Route Assignment Problem | 2 | 2 | 1 | 1 | none | NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers. |
-| C15 | Conceptual/debugging | Multi-Machine Networking Problem | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance; Claude was useful but used some imprecise MOOS_SERVER_HOST-style framing. |
+| C15 | Conceptual/debugging | Multi-Machine Networking Problem | 2 | 2 | 1 | 2 | Claude | NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting. |
 | C16 | Conceptual/debugging | Message Does Not Arrive | 2 | 2 | 0 | 1 | Claude | NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value. |
 | C17 | Conceptual/debugging | Node Names / Destinations | 2 | 2 | 1 | 0 | Gemini | NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT. |
 | C18 | Conceptual/debugging | Behavior Never Runs | 2 | 2 | 2 | 2 | none | All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance. |
@@ -129,26 +144,7 @@ Scoring:
 
 ## Appendix: Grading Method
 
-Each answer receives:
-
-- Score: `0`, `1`, or `2`
-- Hard failure: `yes` or `no`
-- Short grading note
-
-Score meanings:
-
-- `2`: correct, useful, specific enough, and no notable hallucination or serious caveat
-- `1`: mostly helpful, but vague, incomplete, off-domain in places, or includes a concrete factual slip/hallucination that requires correction before use
-- `0`: wrong, misleading, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unsafe for the task
-
-Hard failure examples used here:
-
-- invented MOOS-IvP utility, app, API, variable, or parameter
-- wrong copy-pasteable MOOS configuration snippets
-- off-domain ROS/Gazebo/PX4/V2X answer when the prompt was clearly MOOS-IvP-specific
-- stale answer from a prior prompt
-- no substantive answer
-- citation or source claim does not support the answer
+See `SCORING_RUBRIC.md` for the concise scoring rubric. Public score percentages are calculated as total points divided by maximum possible points. Hard/notable error flags are separate reliability flags and may overlap with partial or bad answers.
 
 ## Appendix: Existing Pre-Benchmark Evidence
 

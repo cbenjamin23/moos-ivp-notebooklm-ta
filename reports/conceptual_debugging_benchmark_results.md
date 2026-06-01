@@ -6,27 +6,38 @@ Run: `2026-05-31_organic_beginner_tier_clean2`
 
 Grading method: Manual Codex review against the simple rubric in BENCHMARKING.md, revised to penalize concrete hallucinations, invented MOOS-IvP details, wrong copy-pasteable config snippets, and unsupported product-specific claims even when the surrounding answer was useful.
 
+Rubric: `SCORING_RUBRIC.md`. Public averages are percentages of possible points. Hard/notable errors are separate reliability flags and may overlap with partial or bad answers.
+
 ## Summary
 
 Under the hallucination-sensitive `0/1/2` rubric, NotebookLM TA now leads the completed conceptual/debugging category. The earlier coarse pass treated all broadly useful answers as `2`; this revision drops answers to `1` when they include concrete wrong MOOS-IvP details a student might copy, such as an incorrect pAntler launch block or invented Heron interface app names.
 
 NotebookLM remained clean across C01-C30. ChatGPT was still very strong, but lost credit on two prompts for plausible-looking wrong `ProcessConfig = pAntler` examples. Gemini was usually helpful but had several off-domain or invented-detail failures. Claude had the most reliability issues, including stale-context answers and unsupported MOOS-adjacent details.
 
-## Headline Metrics
+## Headline Scores
 
-| Model | Avg Score | Good Answers | Partial Answers | Bad Answers | Hard Failures | Tied Top Prompts |
-|---|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 30/30 |
-| ChatGPT | 1.93 | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) | 2/30 (6.7%) | 28/30 |
-| Gemini | 1.60 | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) | 5/30 (16.7%) | 20/30 |
-| Claude | 1.20 | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) | 8/30 (26.7%) | 11/30 |
+| Model | Score % | Good Answers | Partial Answers | Bad Answers |
+|---|---:|---:|---:|---:|
+| NotebookLM TA | 100.0% | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 96.7% | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
+| Gemini | 80.0% | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
+| Claude | 60.0% | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
+
+Reliability flags, counted separately from good/partial/bad:
+
+| Model | Hard/Notable Error Flags | Tied Top Prompts |
+|---|---:|---:|
+| NotebookLM TA | 0/30 (0.0%) | 30/30 |
+| ChatGPT | 2/30 (6.7%) | 28/30 |
+| Gemini | 5/30 (16.7%) | 20/30 |
+| Claude | 9/30 (30.0%) | 11/30 |
 
 ## Ranking
 
-1. NotebookLM TA: averaged 2.00 with no partial answers and no hard failures.
-2. ChatGPT: averaged 1.93; still high quality, but the stricter pass found two wrong copy-pasteable pAntler config examples.
-3. Gemini: averaged 1.60; useful on many prompts, but less reliable on MOOS-specific deployment and messaging details.
-4. Claude: averaged 1.20; several answers were generic, stale, or contained invented MOOS-adjacent details.
+1. NotebookLM TA: scored 100.0% with no partial answers and no hard/notable error flags.
+2. ChatGPT: scored 96.7%; still high quality, but the stricter pass found two wrong copy-pasteable pAntler config examples.
+3. Gemini: scored 80.0%; useful on many prompts, but less reliable on MOOS-specific deployment and messaging details.
+4. Claude: scored 60.0%; several answers were generic, stale, or contained invented MOOS-adjacent details.
 
 Interpretation: for the intended conceptual TA use case, the current NotebookLM source set is competitive with normal beginner-tier AI tools and shows lower hallucination risk on this MOOS-IvP lab-grounded prompt set. This completed category still does not support marketing the notebook as a coding helper.
 
@@ -40,13 +51,20 @@ Interpretation: for the intended conceptual TA use case, the current NotebookLM 
 | C27 | ChatGPT | 2 -> 1 | Useful pLogger advice, but wrong ProcessConfig = pAntler example. |
 | C27 | Claude | 2 -> 1 | Useful checklist mixed with unsupported pLogger filtering/subscription claims. |
 | C30 | ChatGPT | 2 -> 1 | Useful triage answer, but repeated wrong ProcessConfig = pAntler example. |
+| C05 | Claude | 1 -> 1 + flag | Second sweep added a hard/notable flag for wrong pAntler launch-block framing. |
+| C15 | Claude | 1 -> 1 + flag | Second sweep added a hard/notable flag for invented MOOS_SERVER_HOST variable; score stayed partial because other networking advice was useful. |
 
-## Hard Failures
+Additional sweep notes: `reports/hallucination_sweep_notes.md`.
+
+## Hard/Notable Error Flags
+
+These flags are separate reliability markers, not additional answer categories. A hard/notable error can be in an answer already counted as partial or bad.
 
 | Prompt | Model | Failure Type | Explanation |
 |---|---|---|---|
 | C05 | Claude | Wrong pAntler configuration block framing | Suggested looking for ProcessConfig = pAntler around launch entries; the pAntler launch list is read from the ANTLER/Antler process configuration block. |
 | C05 | Gemini | Wrong pAntler configuration block framing | Told the user to look for Run lines inside ProcessConfig = pAntler; the pAntler launch block should be ANTLER/Antler, making the answer useful but copy-paste risky. |
+| C15 | Claude | Invented MOOS host variable | Introduced MOOS_SERVER_HOST as if it were a mission-file setting; the relevant MOOS configuration field is ServerHost, so the answer was useful but contained a concrete wrong variable name. |
 | C06 | Gemini | Off-domain framework drift | Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files. |
 | C16 | Claude | No substantive answer | Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path. |
 | C17 | Gemini | Off-domain messaging model | Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields. |
@@ -65,7 +83,7 @@ Interpretation: for the intended conceptual TA use case, the current NotebookLM 
 
 Scoring: `2` = good and clean, `1` = partially useful or hallucination-tainted, `0` = bad.
 
-| ID | Prompt | NotebookLM | ChatGPT | Claude | Gemini | Hard Failures | Grading Note |
+| ID | Prompt | NotebookLM | ChatGPT | Claude | Gemini | Hard/Notable Flags | Grading Note |
 |---|---|---:|---:|---:|---:|---|---|
 | C01 | Command Not Found After Build | 2 | 2 | 2 | 2 | none | All models identified PATH/build-location checks; Claude was less MOOS-specific but still useful. |
 | C02 | Version Control Before Mission Changes | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave clean Git baseline and generated-file cautions; Claude was useful but drifted into generic robotics/ROS artifacts. |
@@ -81,7 +99,7 @@ Scoring: `2` = good and clean, `1` = partially useful or hallucination-tainted, 
 | C12 | pShare Route Confusion | 2 | 2 | 2 | 2 | none | All models gave a reasonable local-vs-shared variable boundary for pShare routes. |
 | C13 | TSP App / Behavior Boundary | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini clearly separated planner output, behavior updates, and BHV_Waypoint steering; Claude was conceptually right but less exact on MOOS update naming. |
 | C14 | Distributed Route Assignment Problem | 2 | 2 | 1 | 1 | none | NotebookLM/ChatGPT were specific to task generation, identities, route updates, and behavior activation; Claude/Gemini were more generic task-allocation answers. |
-| C15 | Multi-Machine Networking Problem | 2 | 2 | 1 | 2 | none | NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance; Claude was useful but used some imprecise MOOS_SERVER_HOST-style framing. |
+| C15 | Multi-Machine Networking Problem | 2 | 2 | 1 | 2 | Claude | NotebookLM/ChatGPT/Gemini gave good multi-machine host/port/firewall/pShare guidance. Claude was useful but introduced a wrong MOOS_SERVER_HOST-style variable name where ServerHost is the relevant mission-file setting. |
 | C16 | Message Does Not Arrive | 2 | 2 | 0 | 1 | Claude | NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value. |
 | C17 | Node Names / Destinations | 2 | 2 | 1 | 0 | Gemini | NotebookLM/ChatGPT addressed src_node/dest_node/var_name payload fields; Claude was generic multi-middleware; Gemini was off-domain V2X/ROS/MQTT. |
 | C18 | Behavior Never Runs | 2 | 2 | 2 | 2 | none | All models gave usable behavior-state, condition, pwt, InfoBuffer, update, and uHelmScope guidance. |

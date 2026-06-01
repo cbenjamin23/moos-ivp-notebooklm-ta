@@ -107,6 +107,8 @@ These prompts should be small code-adjacent student questions, not requests for 
 
 ## Simple Grading
 
+The concise public rubric is maintained in `SCORING_RUBRIC.md`.
+
 Each answer gets one score:
 
 | Score | Label | Meaning |
@@ -127,6 +129,8 @@ Also mark hard failures separately:
 |---|---|
 | Hard failure | `yes` / `no` |
 | Failure reason | Short text, only when hard failure is `yes` |
+
+Hard failures are reliability flags, not an additional answer category. They may overlap with answers scored `1` or `0`. The `good`, `partial`, and `bad` counts should sum to the prompt count; hard failures should be read separately as notable-error flags.
 
 Hard failure examples:
 
@@ -180,21 +184,21 @@ The root `README.md` should only include a concise summary:
 
 Report these metrics:
 
-- Average score per model.
+- Public score percentage per model, calculated as total points divided by maximum possible points.
 - Percent of answers scored `2`.
 - Percent of answers scored `0`.
-- Hard failures per model.
-- Average score by category.
+- Hard/notable error flags per model, reported separately from good/partial/bad answer categories.
+- Score percentage by category.
 - Prompt wins/losses/ties.
 
 Recommended headline table:
 
-| Model | Avg Score | Good % | Bad % | Hard Failures | Conceptual Avg | Exact Docs Avg | Code Avg |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| ChatGPT | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| Claude | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
-| Gemini | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Model | Score % | Good % | Partial % | Bad % | Hard/Notable Error Flags | Conceptual Score % | Exact Docs Score % | Code Score % |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| NotebookLM TA | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| ChatGPT | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Claude | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Gemini | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ## Expected Interpretation
 

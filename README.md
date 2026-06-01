@@ -43,22 +43,33 @@ High-level result:
 
 The clean cross-model benchmark is partially complete. The conceptual/debugging section (`C01-C30`) has been captured and graded independently from the unfinished sections. A hallucination-sensitive revision pass has been applied, so plausible-looking wrong MOOS-IvP details reduce the score.
 
-Conceptual/debugging results:
+Conceptual/debugging scores:
 
-| Model | Avg Score | Good Answers | Partial Answers | Bad Answers | Hard Failures |
-|---|---:|---:|---:|---:|---:|
-| NotebookLM TA | 2.00 | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
-| ChatGPT | 1.93 | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) | 2/30 (6.7%) |
-| Gemini | 1.60 | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) | 5/30 (16.7%) |
-| Claude | 1.20 | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) | 8/30 (26.7%) |
+| Model | Score % | Good Answers | Partial Answers | Bad Answers |
+|---|---:|---:|---:|---:|
+| NotebookLM TA | 100.0% | 30/30 (100.0%) | 0/30 (0.0%) | 0/30 (0.0%) |
+| ChatGPT | 96.7% | 28/30 (93.3%) | 2/30 (6.7%) | 0/30 (0.0%) |
+| Gemini | 80.0% | 20/30 (66.7%) | 8/30 (26.7%) | 2/30 (6.7%) |
+| Claude | 60.0% | 11/30 (36.7%) | 14/30 (46.7%) | 5/30 (16.7%) |
+
+Reliability flags are counted separately from the answer categories above:
+
+| Model | Hard/Notable Error Flags |
+|---|---:|
+| NotebookLM TA | 0/30 (0.0%) |
+| ChatGPT | 2/30 (6.7%) |
+| Gemini | 5/30 (16.7%) |
+| Claude | 9/30 (30.0%) |
 
 Interpretation: NotebookLM TA ranks first on the completed conceptual/debugging section under the hallucination-sensitive rubric. ChatGPT remains very strong, but lost credit for two wrong copy-pasteable pAntler config examples. Exact documentation/tool prompts and code/config prompts remain pending in the clean benchmark.
 
-Detailed results:
+Detailed results and rubric:
 
+- `SCORING_RUBRIC.md`
 - `RESULTS.md`
 - `reports/conceptual_debugging_benchmark_results.md`
 - `reports/conceptual_debugging_benchmark_results.json`
+- `reports/hallucination_sweep_notes.md`
 
 ## Benchmark Plan
 
@@ -82,10 +93,11 @@ Each answer will be graded with a simple score:
 - `1` = partially useful
 - `0` = bad
 
-Hard failures will be tracked separately for invented APIs, wrong parameters, unsafe advice, `.moos`/`.bhv` confusion, unsupported certainty, bad citations, and source-level C++ errors.
+Public averages are reported as percentages of possible points. Hard/notable errors are tracked separately for invented APIs, wrong parameters, unsafe advice, `.moos`/`.bhv` confusion, unsupported certainty, bad citations, and source-level C++ errors; these flags may overlap with partial or bad answers.
 
 Detailed methodology:
 
+- `SCORING_RUBRIC.md`
 - `BENCHMARKING.md`
 
 Draft fixed prompt set:
