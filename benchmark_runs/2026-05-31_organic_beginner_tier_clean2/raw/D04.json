@@ -1,0 +1,31 @@
+{
+  "prompt_id": "D04",
+  "category": "exact_docs_tools",
+  "title": "Helm Deploy Variables",
+  "prompt": "What are the roles of `DEPLOY`, `MOOS_MANUAL_OVERRIDE`, and the helm state variables when a vehicle is expected to start autonomous behavior?",
+  "captured_at": "2026-06-01T11:22:04Z",
+  "responses": {
+    "notebook": {
+      "status": "captured",
+      "text": "To understand how a vehicle starts autonomous behavior, it is helpful to use the automobile analogy: launching the pHelmIvP process is like turning on the car's engine, but the vehicle only performs its mission when the \"gears\" are shifted into drive and the \"logical switches\" for specific behaviors are flipped\n1\n.\n1. MOOS_MANUAL_OVERRIDE: Shifting the Gears\nThis variable controls the highest level of helm state\n2\n. It determines whether the helm is actively attempting to control the vehicle or is standing by.\nRole: Setting this variable to false transitions the helm from PARK to DRIVE\n3\n4\n. Conversely, setting it to true puts the helm in PARK, where it stops calling behavior code and produces an \"all-stop\" (zero speed/thrust) command\n4\n5\n.\nImplementation Detail: While the legacy variable is spelled MOOS_MANUAL_OVERIDE (one 'R'), modern versions of the helm also respect the properly spelled MOOS_MANUAL_OVERRIDE\n6\n.\n2. DEPLOY: The Logical Switch\nUnlike the override variable, DEPLOY is not hard-coded into the MOOS-IvP core; it is a convention used by mission planners to coordinate behaviors\n7\n.\nRole: It acts as a run condition in the behavior (.bhv) file\n8\n. Most behaviors, such as waypoint survey or loitering, are configured with a parameter like condition = DEPLOY = true\n9\n10\n.\nMechanism: Even if the helm is in the DRIVE state, a behavior remains Idle and will not produce commands unless its specific conditions (like DEPLOY=true) are met\n7\nmore_horiz\n.\n3. Helm State Variables: The Dashboard\nTwo MOOS variables provide the primary status of the autonomy system:\nIVPHELM_STATE: Reflects the high-level mode: PARK, DRIVE, or MALCONFIG\n2\n. This is the helm's \"heartbeat\"\n13\n.\nIVPHELM_ALLSTOP: Explains why a vehicle might not be moving even if it is in DRIVE\n14\n15\n.\nclear: The helm is operating normally\n16\n.\nManualOverride: The helm is in PARK\n17\n.\nNothingToDo: The helm is in DRIVE, but no behaviors are currently active (perhaps DEPLOY is still false)\n15\n17\n.\nBehaviorError: A behavior has failed (e.g., lost its navigation source) and requested a halt\n17\n18\n.\n\n--------------------------------------------------------------------------------\n\nDiagnostic Checklist: Why won't my vehicle start?\nIf you have launched your mission and hit the \"Deploy\" button but the vehicle isn't moving, check the following in order:\nCheck the Helm State: Use uXMS or uHelmScope to check IVPHELM_STATE. If it says PARK, the helm is not receiving MOOS_MANUAL_OVERRIDE=false\n6\n14\n.\nCheck the All-Stop Status: Scope on IVPHELM_ALLSTOP. If it says NothingToDo, your helm is in DRIVE, but no behaviors have met their conditions\n15\n17\n.\nVerify Behavior Conditions: Check the value of DEPLOY. If it is false, your behaviors are likely waiting for this switch\n7\n12\n.\nInspect Behavior Status: Open uHelmScope. It will list behaviors as Active, Running, Idle, or Completed\n19\n.\nIf a behavior is Idle, it will show which condition is not being met (e.g., DEPLOY=false)\n20\n.\nIf a behavior is Completed, it has finished its task and won't run again unless configured as perpetual = true\n11\nmore_horiz\n.\nCheck for Malconfig: If IVPHELM_STATE is MALCONFIG, check the terminal output for configuration errors in your .moos or .bhv files\n2\n23\n.",
+      "method": "notebook_body_prompt_slice_before_user_pause",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "captured_at": "2026-06-01T11:22:04Z"
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": "",
+      "method": "user_requested_pause_before_prompt"
+    },
+    "claude": {
+      "status": "not_started",
+      "text": "",
+      "method": "user_requested_pause_before_prompt"
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": "",
+      "method": "user_requested_pause_before_prompt"
+    }
+  }
+}

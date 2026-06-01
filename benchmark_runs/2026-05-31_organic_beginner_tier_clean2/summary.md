@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt D04
+Status: paused - user requested stop at partial D04
 
-Last updated: 2026-06-01T11:18:44Z
+Last updated: 2026-06-01T11:22:04Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":132,"not_started":68}
+Counts: {"captured":133,"not_started":67}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -45,7 +45,7 @@ Counts: {"captured":132,"not_started":68}
 | D01 | exact_docs_tools | pOdometry Variables | captured | captured | captured | captured |
 | D02 | exact_docs_tools | pAntler Process Launching | captured | captured | captured | captured |
 | D03 | exact_docs_tools | uTimerScript Usage | captured | captured | captured | captured |
-| D04 | exact_docs_tools | Helm Deploy Variables | not_started | not_started | not_started | not_started |
+| D04 | exact_docs_tools | Helm Deploy Variables | captured | not_started | not_started | not_started |
 | D05 | exact_docs_tools | BHV_Waypoint Params | not_started | not_started | not_started | not_started |
 | D06 | exact_docs_tools | BHV_OpRegionV24 Semantics | not_started | not_started | not_started | not_started |
 | D07 | exact_docs_tools | Viewer Image / Geodesy Config | not_started | not_started | not_started | not_started |
@@ -63,10 +63,14 @@ Counts: {"captured":132,"not_started":68}
 | K09 | code_config_advice | `addInfoVars()` / InfoBuffer | not_started | not_started | not_started | not_started |
 | K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
 
-## Current Position
+## Stop Reason
 
-C01-C30 are complete for all four tools. D01-D03 are complete for all four tools. The next prompt is D04 in the exact documentation/tool category.
+User requested a natural stopping point before moving to a no-WiFi location. D04 NotebookLM is captured; D04 ChatGPT, Claude, and Gemini have not been prompted.
+
+## Resume Point
+
+Resume at D04 by prompting ChatGPT, Claude, and Gemini with the D04 prompt text. Do not re-run NotebookLM D04 unless the captured raw output is judged unusable. After D04 is complete for all four tools, continue with D05.
 
 ## Progress Notes
 
-Manual retry at 2026-06-01T11:18:44Z: NotebookLM limit had lifted; D03 was captured for NotebookLM, ChatGPT, Claude, and Gemini. Testing should continue at D04 unless a tool quota/block appears.
+Manual pause at 2026-06-01T11:22:04Z: D04 NotebookLM was captured successfully. No D04 prompt was sent to ChatGPT, Claude, or Gemini.
