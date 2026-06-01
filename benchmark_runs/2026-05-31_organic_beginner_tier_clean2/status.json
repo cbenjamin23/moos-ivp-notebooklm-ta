@@ -748,34 +748,42 @@
   ],
   "prompts": {
     "D13": {
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "K11": {
       "chatgpt": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "K12": {
       "chatgpt": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "K13": {
       "chatgpt": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "K14": {
       "chatgpt": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "K15": {
       "chatgpt": "captured",
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "D14": {
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     },
     "D15": {
-      "gemini": "captured"
+      "gemini": "captured",
+      "notebook": "captured"
     }
   },
-  "updated_at": "2026-06-01T18:43:28.398Z"
+  "updated_at": "2026-06-01T18:55:08.395Z"
 }

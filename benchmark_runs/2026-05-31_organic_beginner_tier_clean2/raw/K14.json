@@ -7,8 +7,11 @@
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:54:16.644Z",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "method": "notebooklm_reusable_tab_delete_history_cleaned",
+      "text": "To correct the issue, you must ensure that the MOOS variable name used in the application's Notify() call exactly matches the variable name specified in the behavior's updates parameter.\nConceptual Correction\nThe IvP Helm uses a general parameter called updates to allow behaviors to be dynamically reconfigured at run-time\n1\n2\n. When the helm receives mail for the variable named in the updates parameter, it interprets the string value of that mail as a set of new parameters for that specific behavior\n2\n3\n.\nIn your example, there is a naming mismatch. You can fix this in one of two ways:\nOption 1: Update the C++ code Change the Notify variable name to match the behavior configuration:\nNotify(\"WAYPOINT_UPDATES\", \"points=0,0:50,0:50,50\");\n\nOption 2: Update the Behavior file Change the updates parameter in the .bhv file to match the application's output:\nBehavior = BHV_Waypoint\n{\n  name = waypt_survey\n  updates = WPT_UPDATE\n}\n\nWhat Names Must Line Up\nFor dynamic updates to work, the following two strings must be identical and case-sensitive:\nThe Publication Name: The first argument in the MOOS app's Notify(VarName, VarValue) function\n4\n.\nThe Updates Parameter: The value assigned to updates = <VarName> in the behavior configuration block within the .bhv file\n1\n2\n.\nKey Mechanics to Remember\nAutomatic Subscription: Once you specify a variable in the updates parameter, the helm automatically registers for that variable in the MOOSDB\n5\n.\nParsing Syntax: The string value sent to the updates variable is parsed as a #-separated list of parameter = value pairs\n1\n2\n. For example, you could update multiple parameters at once: \"points=50,50 # speed=1.5\"\n3\n.\nImmediate Effect: The helm checks for these updates at the beginning of every iteration loop (via checkUpdates()). If an update is received, it is applied before the behavior executes for that iteration\n6\n7\n.\nError Logging: If you send a malformed update string (e.g., misspelling \"points\"), the behavior will ignore that specific parameter and post a warning to the MOOS variable BHV_WARNING\n3\n8\n."
     },
     "chatgpt": {
       "status": "captured",

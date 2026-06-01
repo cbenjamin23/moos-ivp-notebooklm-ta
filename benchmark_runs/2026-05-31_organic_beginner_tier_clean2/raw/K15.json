@@ -7,8 +7,11 @@
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:55:08.394Z",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "method": "notebooklm_reusable_tab_delete_history_cleaned",
+      "text": "The issue with your current configuration is that it violates two fundamental rules for running multiple MOOS communities on a single machine: every community must have a unique name and its own unique port\n1\nmore_horiz\n.\nIn your current setup, both vehicles are named \"alpha\" and both attempt to use port 9000. This causes a port collision (only one MOOSDB can successfully claim port 9000), and even if they did start, the shoreside would receive reports from two different sources claiming to be the same community, leading to the \"disappearing\" vehicle or confusing reports you've observed\n3\nmore_horiz\n.\nCorrected Conceptual Configuration\nTo fix this, you must assign a distinct Community name and a unique ServerPort to each vehicle file\n2\n6\n.\nVehicle 1 configuration file:\nServerHost = localhost\nServerPort = 9000\nCommunity  = alpha\n\nVehicle 2 configuration file:\nServerHost = localhost\nServerPort = 9001  // Must be unique between files [2, 3]\nCommunity  = bravo // Must be unique between files [2, 6]\n\nKey Considerations for Multi-Vehicle Missions:\nUnique MOOSDB Ports: When multiple communities run on the same laptop (localhost), the ServerPort for each must be different (e.g., 9000, 9001, 9002)\n1\n3\n.\nUnique Community Names: Each vehicle needs a unique Community name so that monitoring tools like pMarineViewer and communications brokers can distinguish between them\n2\nmore_horiz\n.\nInter-Vehicle Comms (pShare): If you are using pShare for these vehicles to talk to each other or a shoreside, the input = route in each pShare configuration block must also use a unique port (separate from the MOOSDB port)\n3\nmore_horiz\n.\nUnique App Names: Within a single community, every application must have a unique name\n9\nmore_horiz\n. While two different communities (alpha and bravo) can both have an app named pHelmIvP, a single community cannot have two pXRelay instances unless one is aliased (e.g., pXRelay_APPLES)\n4"
     },
     "chatgpt": {
       "status": "captured",

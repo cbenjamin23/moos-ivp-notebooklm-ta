@@ -7,8 +7,11 @@
   "status": "pending_non_claude_capture",
   "responses": {
     "notebook": {
-      "status": "not_started",
-      "text": ""
+      "status": "captured",
+      "captured_at": "2026-06-01T18:52:20.551Z",
+      "url": "https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012",
+      "method": "notebooklm_reusable_tab_delete_history_cleaned",
+      "text": "The conceptual error in your workflow is that nsplug is a template expansion tool that must be re-executed every time the template (the meta_ file) is modified\n1\n.\nIn your current sequence, when you edit meta_vehicle.moos, the changes exist only in that template file. The targ_vehicle.moos file remains a static copy of the previous version of the template. Because pAntler reads configuration parameters directly from the file passed as its argument, it continues to launch the mission using the old settings stored in the outdated targ_ file\n2\n3\n.\nCorrected Conceptual Workflow\nTo ensure your edits are applied, you must regenerate the target file before launching:\n# 1. Generate the target file from the template\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\n\n# 2. Launch the mission using the newly generated target file\npAntler targ_vehicle.moos\n\n# --- Later, after editing meta_vehicle.moos ---\n\n# 3. RE-RUN nsplug to expand the new edits into the target file\nnsplug meta_vehicle.moos targ_vehicle.moos WARP=10 VNAME=alpha\n\n# 4. Launch again\npAntler targ_vehicle.moos\n\nKey Rules to Remember\nNever edit targ_ files directly: These files are auto-generated. Any manual changes made to a targ_ file will be overwritten and lost the next time nsplug is invoked\n4\n.\nAutomate with Launch Scripts: To avoid this manual error, most MOOS-IvP missions use a launch.sh script that handles the nsplug calls and pAntler execution in a single command\n5\n6\n.\nClean Before Launch: It is a recommended practice to run a clean.sh script (or a \"kill and clean\" alias) before re-launching to ensure no dangling MOOS processes or old target files interfere with the new mission\n7\n8\n."
     },
     "chatgpt": {
       "status": "captured",
