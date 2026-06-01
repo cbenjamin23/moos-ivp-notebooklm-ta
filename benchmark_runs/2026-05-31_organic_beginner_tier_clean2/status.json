@@ -363,10 +363,10 @@
       "category": "exact_docs_tools",
       "title": "BHV_Waypoint Params",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D06": {
@@ -527,7 +527,7 @@
   ],
   "stopped_at": null,
   "stop_reason": null,
-  "last_completed_prompt": "D04",
+  "last_completed_prompt": "D05",
   "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
@@ -549,11 +549,15 @@
     {
       "at": "2026-06-01T11:41:53Z",
       "result": "D04 completed for ChatGPT, Claude, and Gemini after prior NotebookLM-only pause."
+    },
+    {
+      "at": "2026-06-01T11:48:12Z",
+      "result": "D05 completed for all four tools."
     }
   ],
-  "last_updated": "2026-06-01T11:41:53Z",
+  "last_updated": "2026-06-01T11:48:12Z",
   "counts": {
-    "captured": 136,
-    "not_started": 64
+    "captured": 140,
+    "not_started": 60
   }
 }
