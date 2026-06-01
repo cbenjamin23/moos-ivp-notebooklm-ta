@@ -105,42 +105,15 @@ These prompts should be small code-adjacent student questions, not requests for 
 - Grade only after all model outputs are collected for that prompt.
 - Code answers should be graded against the local MOOS-IvP source tree, not just against citations.
 
-## Simple Grading
+## Scoring
 
-The concise public rubric is maintained in `SCORING_RUBRIC.md`.
+Use the canonical rubric in `SCORING_RUBRIC.md`.
 
-Each answer gets one score:
+Benchmark-specific grading notes:
 
-| Score | Label | Meaning |
-|---:|---|---|
-| 2 | Good | Correct, useful, specific enough, and no notable hallucination or serious caveat. |
-| 1 | Partially useful | Mostly helpful, but vague, incomplete, off-domain in places, missing an important caveat, or containing a concrete factual slip/hallucination that must be corrected before use. |
-| 0 | Bad | Wrong, misleading, unsafe, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unusable for the task. |
-
-The conceptual/debugging results use a hallucination-sensitive revision pass:
-
-- A broadly useful answer can still drop from `2` to `1` if it includes a plausible-looking but wrong MOOS-IvP detail, especially a copy-pasteable `.moos`/`.bhv` snippet.
-- Invented app names, utility names, behavior parameters, C++ APIs, or unsupported vehicle-interface details count against the score even when the surrounding explanation is reasonable.
-- The hard-failure field is reserved for errors that are severe enough to materially mislead a beginner or send them into an off-domain debugging path.
-
-Also mark hard failures separately:
-
-| Field | Values |
-|---|---|
-| Hard failure | `yes` / `no` |
-| Failure reason | Short text, only when hard failure is `yes` |
-
-Hard failures are reliability flags, not an additional answer category. They may overlap with answers scored `1` or `0`. The `good`, `partial`, and `bad` counts should sum to the prompt count; hard failures should be read separately as notable-error flags.
-
-Hard failure examples:
-
-- Invented MOOS variable, behavior parameter, utility option, or C++ API.
-- Wrong copy-pasteable MOOS configuration snippet.
-- Confuses `.moos` app configuration with `.bhv` behavior configuration.
-- Advises a behavior to directly publish `DESIRED_HEADING` or `DESIRED_SPEED`.
-- Omits a critical requirement such as `setPWT(m_priority_wt)` in a code-correction task.
-- Claims certainty without logs/config/source when the prompt requires concrete debugging.
-- Citation does not support the answer's claim.
+- For code/config prompts, use the local MOOS-IvP source tree as the final oracle.
+- Report both `Score %` and `Avg / 2` in public tables.
+- Keep hard/notable error details in audit sections, not as a headline score-table column.
 
 ## Reference Oracle
 
@@ -166,7 +139,7 @@ It should contain:
 1. Executive summary
 2. Model score table
 3. Score table by category
-4. Hard-failure table
+4. Hard/notable error audit section
 5. Main interpretation
 6. Prompt-by-prompt results for all 50 prompts
 7. Appendix with grading notes and reference checks
@@ -176,7 +149,6 @@ The root `README.md` should only include a concise summary:
 - benchmark date
 - systems tested
 - average scores
-- hard failures
 - headline conclusion
 - link to `RESULTS.md`
 
@@ -188,7 +160,7 @@ Report these metrics:
 - Public score percentage per model, calculated as total points divided by maximum possible points.
 - Percent of answers scored `2`.
 - Percent of answers scored `0`.
-- Hard/notable error flags per model, reported separately from good/partial/bad answer categories.
+- Hard/notable error details in audit sections, reported separately from good/partial/bad answer categories.
 - Score percentage by category.
 - Prompt wins/losses/ties.
 
@@ -210,4 +182,4 @@ Expected outcome based on early validation:
 - NotebookLM TA may make source-level C++ mistakes, especially around exact constructors, helper naming, and implementation details not cleanly represented in the PDFs.
 - General LLMs may be smoother and better at code style, but are likely to invent MOOS-IvP-specific details more often without retrieval.
 
-The most important comparison is not raw average score. It is whether NotebookLM reduces hard failures on conceptual MOOS-IvP questions.
+The most important comparison is not raw average score. It is whether NotebookLM reduces MOOS-IvP-specific hallucinations on conceptual questions.

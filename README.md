@@ -80,14 +80,6 @@ The benchmark uses 50 fixed, lab-grounded prompts:
 - 10 exact documentation/parameter/tool prompts
 - 10 code-advice/code-correction prompts
 
-Each answer will be graded with a simple score:
-
-- `2` = good
-- `1` = partially useful
-- `0` = bad
-
-Public averages are reported both as an average out of 2 and as a percentage of possible points. Hard/notable errors are tracked separately for invented APIs, wrong parameters, unsafe advice, `.moos`/`.bhv` confusion, unsupported certainty, bad citations, and source-level C++ errors; these details may overlap with partial or bad answers.
-
 Detailed methodology:
 
 - `SCORING_RUBRIC.md`
