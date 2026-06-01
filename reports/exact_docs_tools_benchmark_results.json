@@ -4,8 +4,8 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "exact documentation/tool",
   "prompt_range": "D01-D15",
-  "graded_at": "2026-06-01 expansion pass",
-  "status": "complete for D01-D15; NotebookLM D02 uses user-approved retry replacement",
+  "graded_at": "2026-06-01 recapture normalization pass",
+  "status": "complete for D01-D15; user-approved recaptures are treated as primary stored answers",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
     "2": "good",
@@ -47,16 +47,16 @@
     "claude": {
       "model": "Claude",
       "prompt_count": 15,
-      "total_score": 18,
+      "total_score": 22,
       "max_score": 30,
-      "average_score": 1.2,
-      "score_percent": 60.0,
-      "good_count": 6,
-      "good_percent": 40.0,
+      "average_score": 1.467,
+      "score_percent": 73.3,
+      "good_count": 8,
+      "good_percent": 53.3,
       "partial_count": 6,
       "partial_percent": 40.0,
-      "bad_count": 3,
-      "bad_percent": 20.0,
+      "bad_count": 1,
+      "bad_percent": 6.7,
       "pending_count": 0
     },
     "gemini": {
@@ -89,12 +89,6 @@
       "brief_explanation": "Treated generic ProcessConfig = AppName blocks as launch selectors; pAntler launch commands come from the ANTLER process configuration Run lines."
     },
     {
-      "prompt_id": "D05",
-      "model": "Claude",
-      "failure_type": "Non-answer",
-      "brief_explanation": "Asked for the .bhv file instead of answering the actual BHV_Waypoint parameter question."
-    },
-    {
       "prompt_id": "D06",
       "model": "ChatGPT",
       "failure_type": "Wrong behavior semantics",
@@ -111,12 +105,6 @@
       "model": "Gemini",
       "failure_type": "Inaccurate pShare syntax",
       "brief_explanation": "Used a nonstandard src_var/colon route form for pShare output in an exact syntax-oriented answer."
-    },
-    {
-      "prompt_id": "D10",
-      "model": "Claude",
-      "failure_type": "Non-answer",
-      "brief_explanation": "Declined to answer and asked for context despite the prompt naming pLogger, aloggrep, and alogview."
     },
     {
       "prompt_id": "D12",
@@ -233,18 +221,17 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 2,
-        "claude": 0,
+        "claude": 2,
         "gemini": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
+        "claude",
         "gemini"
       ],
-      "hard_failures": [
-        "Claude"
-      ],
-      "note": "NotebookLM, ChatGPT, and Gemini rejected the invented parameter and identified capture_radius/radius, slip_radius/nm_radius, and capture_line. Claude did not answer without an uploaded file."
+      "hard_failures": [],
+      "note": "All four final stored answers rejected the invented magic_arrival_radius parameter and identified real BHV_Waypoint arrival/capture parameters such as capture_radius/radius and slip_radius/nm_radius."
     },
     {
       "id": "D06",
@@ -334,18 +321,17 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 2,
-        "claude": 0,
+        "claude": 2,
         "gemini": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
+        "claude",
         "gemini"
       ],
-      "hard_failures": [
-        "Claude"
-      ],
-      "note": "NotebookLM, ChatGPT, and Gemini gave a usable alog/pLogger verification workflow. Claude declined to answer without additional context."
+      "hard_failures": [],
+      "note": "All four final stored answers gave a usable pLogger/aloggrep/alogview verification workflow."
     },
     {
       "id": "D11",

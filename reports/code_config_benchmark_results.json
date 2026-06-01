@@ -5,7 +5,7 @@
   "category": "code/config advice",
   "prompt_range": "K01-K15",
   "graded_at": "2026-06-01 expansion pass",
-  "status": "complete for K01-K15",
+  "status": "complete for K01-K15; user-approved recaptures are treated as primary stored answers",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
     "2": "good",

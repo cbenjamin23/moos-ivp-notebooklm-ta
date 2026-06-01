@@ -29,14 +29,14 @@ The most important entry point for human review is:
 
 The clean cross-model benchmark compares NotebookLM TA with the normal beginner-tier browser experience in ChatGPT, Claude, and Gemini. Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
 
-Current status: all 240 model outputs are captured and graded. NotebookLM D02 uses a user-approved retry replacement after an initial non-answer. Claude direct-answer retries for selected first-pass non-answers are stored separately and are not used as replacement scores.
+Current status: all 240 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive.
 
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
 | ChatGPT | 94.2% | 1.88 | 96.7% | 90.0% | 93.3% | 0 |
 | Gemini | 80.0% | 1.60 | 80.0% | 90.0% | 70.0% | 0 |
-| Claude | 65.8% | 1.32 | 60.0% | 60.0% | 83.3% | 0 |
+| Claude | 71.7% | 1.43 | 65.0% | 73.3% | 83.3% | 0 |
 
 Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. The repo should still position it as a conceptual TA, not as a standalone MOOS-IvP coding agent.
 

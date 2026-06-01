@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "conceptual_debugging",
   "prompt_range": "C01-C30",
-  "graded_at": "2026-06-01 hallucination-sensitive revision pass",
+  "graded_at": "2026-06-01 recapture normalization pass",
   "grading_method": "Manual Codex review against the simple rubric in BENCHMARKING.md, revised to penalize concrete hallucinations, invented MOOS-IvP details, wrong copy-pasteable config snippets, and unsupported product-specific claims even when the surrounding answer was useful.",
   "score_legend": {
     "0": "Bad: wrong, misleading, non-responsive, stale-context, invented/off-domain in a way likely to waste student time, or unsafe for the task.",
@@ -16,163 +16,147 @@
       "model": "NotebookLM TA",
       "prompt_count": 30,
       "total_score": 60,
-      "average_score": 2,
+      "max_score": 60,
+      "average_score": 2.0,
+      "score_percent": 100.0,
       "good_count": 30,
-      "good_percent": 100,
+      "good_percent": 100.0,
       "partial_count": 0,
-      "partial_percent": 0,
+      "partial_percent": 0.0,
       "bad_count": 0,
-      "bad_percent": 0,
-      "hard_failures": 0,
-      "hard_failure_percent": 0,
-      "top_tie_count": 30,
-      "score_percent": 100
+      "bad_percent": 0.0,
+      "pending_count": 0
     },
     "chatgpt": {
       "model": "ChatGPT",
       "prompt_count": 30,
       "total_score": 58,
+      "max_score": 60,
       "average_score": 1.933,
+      "score_percent": 96.7,
       "good_count": 28,
       "good_percent": 93.3,
       "partial_count": 2,
       "partial_percent": 6.7,
       "bad_count": 0,
-      "bad_percent": 0,
-      "hard_failures": 2,
-      "hard_failure_percent": 6.7,
-      "top_tie_count": 28,
-      "score_percent": 96.7
+      "bad_percent": 0.0,
+      "pending_count": 0
     },
     "claude": {
       "model": "Claude",
       "prompt_count": 30,
-      "total_score": 36,
-      "average_score": 1.2,
-      "good_count": 11,
-      "good_percent": 36.7,
-      "partial_count": 14,
-      "partial_percent": 46.7,
-      "bad_count": 5,
-      "bad_percent": 16.7,
-      "hard_failures": 9,
-      "hard_failure_percent": 30,
-      "top_tie_count": 11,
-      "score_percent": 60
+      "total_score": 39,
+      "max_score": 60,
+      "average_score": 1.3,
+      "score_percent": 65.0,
+      "good_count": 12,
+      "good_percent": 40.0,
+      "partial_count": 15,
+      "partial_percent": 50.0,
+      "bad_count": 3,
+      "bad_percent": 10.0,
+      "pending_count": 0
     },
     "gemini": {
       "model": "Gemini",
       "prompt_count": 30,
       "total_score": 48,
+      "max_score": 60,
       "average_score": 1.6,
+      "score_percent": 80.0,
       "good_count": 20,
       "good_percent": 66.7,
       "partial_count": 8,
       "partial_percent": 26.7,
       "bad_count": 2,
       "bad_percent": 6.7,
-      "hard_failures": 5,
-      "hard_failure_percent": 16.7,
-      "top_tie_count": 20,
-      "score_percent": 80
+      "pending_count": 0
     }
   },
   "hard_failures": [
     {
       "prompt_id": "C05",
       "model": "claude",
-      "type": "Wrong pAntler configuration block framing",
-      "explanation": "Suggested looking for ProcessConfig = pAntler around launch entries; the pAntler launch list is read from the ANTLER/Antler process configuration block."
+      "failure_type": "Wrong pAntler configuration block framing",
+      "brief_explanation": "Suggested looking for ProcessConfig = pAntler around launch entries; the pAntler launch list is read from the ANTLER/Antler process configuration block."
     },
     {
       "prompt_id": "C05",
       "model": "gemini",
-      "type": "Wrong pAntler configuration block framing",
-      "explanation": "Told the user to look for Run lines inside ProcessConfig = pAntler; the pAntler launch block should be ANTLER/Antler, making the answer useful but copy-paste risky."
+      "failure_type": "Wrong pAntler configuration block framing",
+      "brief_explanation": "Told the user to look for Run lines inside ProcessConfig = pAntler; the pAntler launch block should be ANTLER/Antler, making the answer useful but copy-paste risky."
     },
     {
       "prompt_id": "C15",
       "model": "claude",
-      "type": "Invented MOOS host variable",
-      "explanation": "Introduced MOOS_SERVER_HOST as if it were a mission-file setting; the relevant MOOS configuration field is ServerHost, so the answer was useful but contained a concrete wrong variable name."
+      "failure_type": "Invented MOOS host variable",
+      "brief_explanation": "Introduced MOOS_SERVER_HOST as if it were a mission-file setting; the relevant MOOS configuration field is ServerHost, so the answer was useful but contained a concrete wrong variable name."
     },
     {
       "prompt_id": "C06",
       "model": "gemini",
-      "type": "Off-domain framework drift",
-      "explanation": "Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files."
-    },
-    {
-      "prompt_id": "C16",
-      "model": "claude",
-      "type": "No substantive answer",
-      "explanation": "Asked clarifying questions instead of walking the NODE_MESSAGE_LOCAL delivery path."
+      "failure_type": "Off-domain framework drift",
+      "brief_explanation": "Answered as ROS/ArduPilot/PX4/Gazebo caching rather than MOOS launch/nsplug/generated mission files."
     },
     {
       "prompt_id": "C17",
       "model": "gemini",
-      "type": "Off-domain messaging model",
-      "explanation": "Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields."
+      "failure_type": "Off-domain messaging model",
+      "brief_explanation": "Answered as V2X/ROS/MQTT and missed MOOS NODE_MESSAGE fields."
     },
     {
       "prompt_id": "C21",
       "model": "claude",
-      "type": "Invented/uncertain MOOS-IvP app names",
-      "explanation": "Suggested iGPS/iIMU/pNavManager/iHeron/iActuationKF instead of the documented Heron/PABLO interface framing."
+      "failure_type": "Invented/uncertain MOOS-IvP app names",
+      "brief_explanation": "Suggested iGPS/iIMU/pNavManager/iHeron/iActuationKF instead of the documented Heron/PABLO interface framing."
     },
     {
       "prompt_id": "C21",
       "model": "gemini",
-      "type": "Invented/uncertain Heron interface app names",
-      "explanation": "Suggested iHeron/iClearpath as the physical Heron front-seat interface, which is not supported by the curated MOOS-IvP TA source set."
+      "failure_type": "Invented/uncertain Heron interface app names",
+      "brief_explanation": "Suggested iHeron/iClearpath as the physical Heron front-seat interface, which is not supported by the curated MOOS-IvP TA source set."
     },
     {
       "prompt_id": "C22",
       "model": "claude",
-      "type": "Off-domain deployment checklist",
-      "explanation": "Generic ROS/Gazebo/CARLA checklist with no MOOS-IvP variable/process specificity."
+      "failure_type": "Off-domain deployment checklist",
+      "brief_explanation": "Generic ROS/Gazebo/CARLA checklist with no MOOS-IvP variable/process specificity."
     },
     {
       "prompt_id": "C22",
       "model": "gemini",
-      "type": "Off-domain deployment checklist",
-      "explanation": "Generic drone/autopilot/PX4-style checklist, only partially transferable to a Heron/PABLO MOOS mission."
-    },
-    {
-      "prompt_id": "C25",
-      "model": "claude",
-      "type": "Off-domain clarification",
-      "explanation": "Treated uField as unknown and asked whether this was a game/competition instead of answering the MOOS-IvP setup."
-    },
-    {
-      "prompt_id": "C26",
-      "model": "claude",
-      "type": "Wrong prompt context",
-      "explanation": "Repeated the unrelated uField clarification instead of answering the alog diagnosis prompt."
+      "failure_type": "Off-domain deployment checklist",
+      "brief_explanation": "Generic drone/autopilot/PX4-style checklist, only partially transferable to a Heron/PABLO MOOS mission."
     },
     {
       "prompt_id": "C27",
       "model": "chatgpt",
-      "type": "Wrong pAntler configuration block example",
-      "explanation": "Used ProcessConfig = pAntler for Run lines; the pAntler launch block should use the ANTLER process configuration, so the answer was useful but copy-paste risky."
+      "failure_type": "Wrong pAntler configuration block example",
+      "brief_explanation": "Used ProcessConfig = pAntler for Run lines; the pAntler launch block should use the ANTLER process configuration, so the answer was useful but copy-paste risky."
     },
     {
       "prompt_id": "C27",
       "model": "claude",
-      "type": "Invented/imprecise pLogger filtering semantics",
-      "explanation": "Described pLogger as logging only subscribed variables and referred to LogAuxSrc/LOG=false filtering in a way not supported by the curated source set."
+      "failure_type": "Invented/imprecise pLogger filtering semantics",
+      "brief_explanation": "Described pLogger as logging only subscribed variables and referred to LogAuxSrc/LOG=false filtering in a way not supported by the curated source set."
     },
     {
       "prompt_id": "C29",
       "model": "claude",
-      "type": "Invented viewer parameters",
-      "explanation": "Used BackgroundFileX/BackgroundFileY/BackgroundFileScale style parameters rather than the MOOS-IvP TIFF/info/datum configuration model."
+      "failure_type": "Invented viewer parameters",
+      "brief_explanation": "Used BackgroundFileX/BackgroundFileY/BackgroundFileScale style parameters rather than the MOOS-IvP TIFF/info/datum configuration model."
     },
     {
       "prompt_id": "C30",
       "model": "chatgpt",
-      "type": "Wrong pAntler configuration block example",
-      "explanation": "Again used ProcessConfig = pAntler around Run lines, a plausible-looking but wrong MOOS configuration detail."
+      "failure_type": "Wrong pAntler configuration block example",
+      "brief_explanation": "Again used ProcessConfig = pAntler around Run lines, a plausible-looking but wrong MOOS configuration detail."
+    },
+    {
+      "prompt_id": "C16",
+      "model": "claude",
+      "failure_type": "Wrong NODE_MESSAGE_LOCAL semantics",
+      "brief_explanation": "The recaptured answer was substantive but incorrectly described NODE_MESSAGE_LOCAL as same-process/local-only rather than the MOOS-IvP local report that should be brokered through the uField messaging path."
     }
   ],
   "prompts": [
@@ -487,9 +471,9 @@
         "chatgpt"
       ],
       "hard_failures": [
-        "claude"
+        "Claude"
       ],
-      "note": "NotebookLM/ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path; Claude did not answer; Gemini gave a generic messaging pipeline with only partial MOOS value."
+      "note": "NotebookLM and ChatGPT gave the expected NODE_MESSAGE_LOCAL to uField path. The recaptured Claude answer was substantive but still wrong about NODE_MESSAGE_LOCAL scoping, so it remains bad. Gemini gave a generic messaging pipeline with only partial MOOS value."
     },
     {
       "id": "C17",
@@ -657,7 +641,7 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 2,
-        "claude": 0,
+        "claude": 1,
         "gemini": 2
       },
       "winners": [
@@ -665,10 +649,8 @@
         "chatgpt",
         "gemini"
       ],
-      "hard_failures": [
-        "claude"
-      ],
-      "note": "NotebookLM/ChatGPT/Gemini understood two-vehicle rescue/uField messaging; Claude asked for context and treated uField as unknown."
+      "hard_failures": [],
+      "note": "NotebookLM, ChatGPT, and Gemini understood two-vehicle rescue/uField messaging. The recaptured Claude answer was operationally useful but generic and weak on the uField-specific messaging path."
     },
     {
       "id": "C26",
@@ -678,18 +660,17 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 2,
-        "claude": 0,
+        "claude": 2,
         "gemini": 2
       },
       "winners": [
         "notebook",
         "chatgpt",
+        "claude",
         "gemini"
       ],
-      "hard_failures": [
-        "claude"
-      ],
-      "note": "NotebookLM/ChatGPT/Gemini gave aloggrep/alogview/aloghelm-style post-run debugging; Claude returned an unrelated uField clarification from a prior prompt."
+      "hard_failures": [],
+      "note": "All four final stored answers gave useful post-run diagnosis guidance; the recaptured Claude answer covered aloggrep, IVPHELM_SUMMARY, condition variables, and behavior-state tracing."
     },
     {
       "id": "C27",
@@ -774,7 +755,7 @@
       "note": "NotebookLM, Claude, and Gemini gave usable triage order. ChatGPT was useful overall but lost credit for repeating a wrong ProcessConfig = pAntler launch-block example."
     }
   ],
-  "summary_caveat": "This hallucination-sensitive revision pass penalizes plausible-looking but wrong MOOS-IvP details. Public tables report the average as a percentage of possible points. Hard/notable error flags are separate reliability flags and may overlap with partial or bad answers.",
+  "summary_caveat": "Recaptured answers requested by the user are treated as the regular stored answers. Scoring remains hallucination-sensitive, so a recaptured answer can still score poorly if it is substantive but wrong.",
   "notable_revision_changes": [
     {
       "prompt_id": "C04",

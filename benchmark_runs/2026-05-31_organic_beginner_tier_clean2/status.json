@@ -749,44 +749,364 @@
   "prompts": {
     "D13": {
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured"
     },
     "K11": {
       "chatgpt": "captured",
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "claude": "captured"
     },
     "K12": {
       "chatgpt": "captured",
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "claude": "captured"
     },
     "K13": {
       "chatgpt": "captured",
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "claude": "captured"
     },
     "K14": {
       "chatgpt": "captured",
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "claude": "captured"
     },
     "K15": {
       "chatgpt": "captured",
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "claude": "captured"
     },
     "D14": {
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured"
     },
     "D15": {
       "gemini": "captured",
-      "notebook": "captured"
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured"
     },
     "D11": {
+      "gemini": "captured",
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured"
+    },
+    "C01": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C02": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C03": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C04": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C05": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C06": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C07": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C08": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C09": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C10": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C11": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C12": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C13": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C14": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C15": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C16": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C17": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C18": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C19": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C20": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C21": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C22": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C23": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C24": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C25": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C26": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C27": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C28": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C29": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "C30": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D01": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D02": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D03": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D04": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D05": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D06": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D07": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D08": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D09": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D10": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "D12": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K01": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K02": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K03": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K04": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K05": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K06": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K07": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K08": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K09": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
+      "gemini": "captured"
+    },
+    "K10": {
+      "notebook": "captured",
+      "chatgpt": "captured",
+      "claude": "captured",
       "gemini": "captured"
     }
   },
-  "updated_at": "2026-06-01T18:57:33.679Z"
+  "updated_at": "2026-06-01Tcleanup-normalized-recaptures"
 }

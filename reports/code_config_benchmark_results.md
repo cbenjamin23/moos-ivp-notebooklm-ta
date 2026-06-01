@@ -1,6 +1,6 @@
 # Code / Config Benchmark Results
 
-Status: complete for K01-K15.
+Status: complete for K01-K15; user-approved recaptures are treated as primary stored answers.
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
@@ -17,7 +17,7 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; `Score %` is tot
 
 ## Interpretation
 
-NotebookLM TA remains first in the code/config stress section, but this result should still be treated as secondary to the conceptual TA claim. The expanded prompts were mostly beginner configuration-pattern questions rather than full coding tasks. Claude improved after K10 was captured, while Gemini continued to lose credit for fluent but wrong MOOS-IvP-specific implementation details.
+NotebookLM TA remains first in the code/config stress section, but this result should still be treated as secondary to the conceptual TA claim. The expanded prompts were mostly beginner configuration-pattern questions rather than full coding tasks.
 
 ## Hard/Notable Error Details
 
