@@ -493,10 +493,10 @@
       "category": "code_config_advice",
       "title": "`setParam()` Pattern",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "K09": {
@@ -520,14 +520,14 @@
       }
     }
   },
-  "last_updated_at": "2026-06-01T14:09:37Z",
+  "last_updated_at": "2026-06-01T14:15:07Z",
   "notes": [
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing.",
     "2026-06-01T02:33:36Z heartbeat retry: NotebookLM still reported daily chat limit on D03 after refresh. Automation should remain active for next two-hour retry."
   ],
   "stopped_at": null,
   "stop_reason": null,
-  "last_completed_prompt": "K07",
+  "last_completed_prompt": "K08",
   "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
@@ -609,11 +609,15 @@
     {
       "at": "2026-06-01T14:09:37Z",
       "result": "K07 completed for all four tools; next prompt is K08."
+    },
+    {
+      "at": "2026-06-01T14:15:07Z",
+      "result": "K08 completed for all four tools; Claude warned at 90% session limit but did not block. Next prompt is K09."
     }
   ],
-  "last_updated": "2026-06-01T14:09:37Z",
+  "last_updated": "2026-06-01T14:15:07Z",
   "counts": {
-    "captured": 188,
-    "not_started": 12
+    "captured": 192,
+    "not_started": 8
   }
 }
