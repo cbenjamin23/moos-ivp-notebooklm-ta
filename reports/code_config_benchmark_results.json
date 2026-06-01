@@ -1,0 +1,331 @@
+{
+  "benchmark": "MOOS-IvP NotebookLM TA code/config advice benchmark",
+  "run_id": "2026-05-31_organic_beginner_tier_clean2",
+  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "category": "code/config advice",
+  "prompt_range": "K01-K10",
+  "graded_at": "2026-06-01T12:00:00-04:00",
+  "status": "partial: K10 Claude pending",
+  "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
+  "score_legend": {
+    "2": "good",
+    "1": "partially useful",
+    "0": "bad",
+    "null": "pending/not captured"
+  },
+  "metrics": {
+    "notebook": {
+      "model": "NotebookLM TA",
+      "prompt_count": 10,
+      "total_score": 19,
+      "max_score": 20,
+      "average_score": 1.9,
+      "score_percent": 95.0,
+      "good_count": 9,
+      "good_percent": 90.0,
+      "partial_count": 1,
+      "partial_percent": 10.0,
+      "bad_count": 0,
+      "bad_percent": 0.0,
+      "pending_count": 0
+    },
+    "chatgpt": {
+      "model": "ChatGPT",
+      "prompt_count": 10,
+      "total_score": 18,
+      "max_score": 20,
+      "average_score": 1.8,
+      "score_percent": 90.0,
+      "good_count": 8,
+      "good_percent": 80.0,
+      "partial_count": 2,
+      "partial_percent": 20.0,
+      "bad_count": 0,
+      "bad_percent": 0.0,
+      "pending_count": 0
+    },
+    "claude": {
+      "model": "Claude",
+      "prompt_count": 9,
+      "total_score": 13,
+      "max_score": 18,
+      "average_score": 1.444,
+      "score_percent": 72.2,
+      "good_count": 5,
+      "good_percent": 55.6,
+      "partial_count": 3,
+      "partial_percent": 33.3,
+      "bad_count": 1,
+      "bad_percent": 11.1,
+      "pending_count": 1
+    },
+    "gemini": {
+      "model": "Gemini",
+      "prompt_count": 10,
+      "total_score": 12,
+      "max_score": 20,
+      "average_score": 1.2,
+      "score_percent": 60.0,
+      "good_count": 5,
+      "good_percent": 50.0,
+      "partial_count": 2,
+      "partial_percent": 20.0,
+      "bad_count": 3,
+      "bad_percent": 30.0,
+      "pending_count": 0
+    }
+  },
+  "hard_failures": [
+    {
+      "prompt_id": "K03",
+      "model": "Gemini",
+      "failure_type": "Nonstandard AppCasting API",
+      "brief_explanation": "Used RegisterConfigWarning-style wording rather than the AppCasting warning/reporting pattern and did not fix reconnect registration."
+    },
+    {
+      "prompt_id": "K06",
+      "model": "ChatGPT",
+      "failure_type": "Wrong pShare destination port model",
+      "brief_explanation": "Told the user to route to the destination MOOSDB ServerPort; pShare output should target the receiving pShare route/input port."
+    },
+    {
+      "prompt_id": "K07",
+      "model": "Claude",
+      "failure_type": "Wrong NODE_MESSAGE fields",
+      "brief_explanation": "Claimed string_val/double_val are not recognized and replaced them with moos_var/moos_string, which is wrong for the documented NODE_MESSAGE payload."
+    },
+    {
+      "prompt_id": "K07",
+      "model": "Gemini",
+      "failure_type": "Wrong inter-vehicle messaging pattern",
+      "brief_explanation": "Recommended Notify(\"VISIT_POINT\", ...) instead of using NODE_MESSAGE_LOCAL with var_name/string_val for the broker/message-handler path."
+    },
+    {
+      "prompt_id": "K08",
+      "model": "ChatGPT",
+      "failure_type": "Missing base-class delegation in code",
+      "brief_explanation": "The prose mentioned superclass parsing, but the actual correction returned false for unhandled parameters instead of delegating to IvPBehavior::setParam."
+    },
+    {
+      "prompt_id": "K09",
+      "model": "Claude",
+      "failure_type": "Wrong behavior lifecycle framing",
+      "brief_explanation": "Placed addInfoVars in an onSetParam/RegisterVariables-style flow and described MOOS app mail delivery rather than the helm InfoBuffer behavior pattern."
+    },
+    {
+      "prompt_id": "K09",
+      "model": "Gemini",
+      "failure_type": "Off-domain BehaviorTree.CPP answer",
+      "brief_explanation": "Answered with BehaviorTree.CPP ports, blackboard, getInput, and BT::NodeStatus rather than MOOS-IvP addInfoVars/InfoBuffer APIs."
+    },
+    {
+      "prompt_id": "K10",
+      "model": "Gemini",
+      "failure_type": "Invalid/incomplete ZAIC correction",
+      "brief_explanation": "Kept ZAIC_PEAK zaic(\"speed\") without the IvP domain, omitted setPWT(m_priority_wt), and introduced an unsupported setValueAtSummit method."
+    }
+  ],
+  "prompts": [
+    {
+      "id": "K01",
+      "category": "code_config_advice",
+      "title": "pOdometry Mail Handling",
+      "prompt": "I am writing a pOdometry-style MOOS app. This code is fragile. Correct the pattern conceptually and explain what belongs in `OnNewMail()` versus `Iterate()`:\n\n```cpp\nbool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)\n{\n  for(auto msg : NewMail) {\n    if(msg.GetKey() == \"NAV_X\")\n      m_x = msg.GetDouble();\n    if(msg.GetKey() == \"NAV_Y\")\n      m_y = msg.GetDouble();\n  }\n  m_total += hypot(m_x - m_prev_x, m_y - m_prev_y);\n  Notify(\"ODOM_DIST\", m_total);\n  return true;\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All four answers separated mail/state updates from Iterate-time publication well enough for a pOdometry-style app."
+    },
+    {
+      "id": "K02",
+      "category": "code_config_advice",
+      "title": "Missing Registration Pattern",
+      "prompt": "This pOdometry-style app sometimes receives no `NAV_X` or `NAV_Y` mail after reconnecting. Correct the pattern conceptually and explain where registration should happen:\n\n```cpp\nbool Odometry::OnStartUp()\n{\n  Register(\"NAV_X\", 0);\n  Register(\"NAV_Y\", 0);\n  return true;\n}\n\nbool Odometry::OnConnectToServer()\n{\n  return true;\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All four answers gave a usable reconnect-safe registration pattern, with registration repeated from OnConnectToServer or the local RegisterVariables helper."
+    },
+    {
+      "id": "K03",
+      "category": "code_config_advice",
+      "title": "AppCasting Config Warnings",
+      "prompt": "This `OnStartUp()` parser silently ignores typoed mission-file parameters, and the app sometimes never receives mail. Correct the pattern conceptually in MOOS-IvP/AppCasting style:\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  list<string> params;\n  m_MissionReader.GetConfiguration(GetAppName(), params);\n  for(string line : params) {\n    string param = biteStringX(line, '=');\n    if(param == \"threshold\")\n      m_threshold = atof(line.c_str());\n  }\n  return true;\n}\n```",
+      "scores": {
+        "notebook": 1,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 1
+      },
+      "winners": [
+        "chatgpt"
+      ],
+      "hard_failures": [
+        "Gemini"
+      ],
+      "note": "ChatGPT gave the cleanest AppCasting/startup pattern. NotebookLM, Claude, and Gemini were partially useful but missed or weakened the reconnect registration point or used nonstandard warning API language."
+    },
+    {
+      "id": "K04",
+      "category": "code_config_advice",
+      "title": "uTimerScript Trigger Setup",
+      "prompt": "This timer script is supposed to deploy the vehicle after launch, but it is fragile and hard to debug. Correct the setup conceptually and explain what should be checked in uXMS:\n\n```text\nProcessConfig = uTimerScript\n{\n  AppTick   = 4\n  CommsTick = 4\n  event = var=DEPLOY, val=true, time=10\n  event = var=MOOS_MANUAL_OVERRIDE, val=false, time=10\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 1
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [],
+      "note": "NotebookLM and ChatGPT gave robust timed-post/debugging advice. Claude and Gemini were useful but more generic and included less reliable trigger/config details."
+    },
+    {
+      "id": "K05",
+      "category": "code_config_advice",
+      "title": "Behavior Config File Boundary",
+      "prompt": "This mission tries to configure a behavior in the app config file. Correct the file-boundary mistake conceptually and explain where the behavior block belongs:\n\n```text\nProcessConfig = pHelmIvP\n{\n  AppTick = 4\n  CommsTick = 4\n\n  Behavior = BHV_Waypoint\n  {\n    name      = waypt_survey\n    condition = DEPLOY == true\n    points    = 0,0:50,0:50,50\n  }\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "chatgpt",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [],
+      "note": "All four correctly identified that behavior blocks belong in the .bhv behavior file, while pHelmIvP is launched/configured from the .moos mission file."
+    },
+    {
+      "id": "K06",
+      "category": "code_config_advice",
+      "title": "pShare Route Config",
+      "prompt": "This multi-community config is intended to get vehicle reports to the shoreside, but the data never appears there. Correct the pattern conceptually and explain what host, port, and variable details must match:\n\n```text\nProcessConfig = pShare\n{\n  AppTick   = 4\n  CommsTick = 4\n  output = src_name=NODE_REPORT, dest_name=NODE_REPORT, route=localhost:9200\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 1,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [
+        "ChatGPT"
+      ],
+      "note": "NotebookLM, Claude, and Gemini gave usable pShare host/port/name guidance. ChatGPT incorrectly framed the destination as the shoreside MOOSDB ServerPort rather than the receiving pShare port."
+    },
+    {
+      "id": "K07",
+      "category": "code_config_advice",
+      "title": "Inter-Vehicle Message Payload",
+      "prompt": "This app posts a message intended for another vehicle, but the receiver never sees the payload variable. Correct the message-format pattern conceptually and explain what names must match:\n\n```cpp\nNotify(\"NODE_MESSAGE_LOCAL\",\n       \"src_node=alpha,dest_node=bravo,var_name=VISIT_POINT,string_val=12,45\");\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 0,
+        "gemini": 0
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        "Claude",
+        "Gemini"
+      ],
+      "note": "NotebookLM and ChatGPT correctly used NODE_MESSAGE_LOCAL with src_node, dest_node, var_name, and quoted string_val. Claude replaced the documented field names with wrong moos_var/moos_string fields. Gemini recommended direct VISIT_POINT publishing rather than the inter-vehicle envelope."
+    },
+    {
+      "id": "K08",
+      "category": "code_config_advice",
+      "title": "`setParam()` Pattern",
+      "prompt": "This custom behavior `setParam()` is probably wrong. Correct it and explain the MOOS-IvP-specific reason:\n\n```cpp\nbool BHV_Survey::setParam(string param, string val)\n{\n  if(param == \"survey_radius\") {\n    m_radius = atof(val.c_str());\n    return true;\n  }\n  return false;\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 1,
+        "claude": 2,
+        "gemini": 2
+      },
+      "winners": [
+        "notebook",
+        "claude",
+        "gemini"
+      ],
+      "hard_failures": [
+        "ChatGPT"
+      ],
+      "note": "NotebookLM, Claude, and Gemini preserved base-class setParam delegation. ChatGPT validated the custom parameter but its code returned false instead of delegating to IvPBehavior::setParam for standard behavior parameters."
+    },
+    {
+      "id": "K09",
+      "category": "code_config_advice",
+      "title": "`addInfoVars()` / InfoBuffer",
+      "prompt": "My custom behavior reads `NAV_X` and `NAV_Y` in `onRunState()` but I never declared them in the constructor and I do not check whether they exist. What should I change?",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": 1,
+        "gemini": 0
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        "Claude",
+        "Gemini"
+      ],
+      "note": "NotebookLM and ChatGPT gave the normal addInfoVars plus getBufferDoubleVal ok-flag pattern. Claude had the right calls but wrong behavior lifecycle framing. Gemini answered as BehaviorTree.CPP, not MOOS-IvP."
+    },
+    {
+      "id": "K10",
+      "category": "code_config_advice",
+      "title": "ZAIC Speed Function",
+      "prompt": "This speed-only IvP function is wrong or incomplete. Correct it using the normal MOOS-IvP pattern:\n\n```cpp\nIvPFunction* BHV_HoldSpeed::onRunState()\n{\n  ZAIC_PEAK zaic(\"speed\");\n  zaic.setSummit(m_speed);\n  IvPFunction* ipf = zaic.extractIvPFunction();\n  return ipf;\n}\n```",
+      "scores": {
+        "notebook": 2,
+        "chatgpt": 2,
+        "claude": null,
+        "gemini": 0
+      },
+      "winners": [
+        "notebook",
+        "chatgpt"
+      ],
+      "hard_failures": [
+        "Gemini"
+      ],
+      "note": "NotebookLM and ChatGPT corrected the normal ZAIC_PEAK pattern with m_domain and setPWT. Gemini omitted the IvP domain and priority weight and invented an unsupported ZAIC method. Claude is still pending due quota."
+    }
+  ]
+}
