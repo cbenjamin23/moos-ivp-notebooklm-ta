@@ -1,0 +1,29 @@
+{
+  "prompt_id": "D03",
+  "category": "exact_docs_tools",
+  "title": "uTimerScript Usage",
+  "prompt": "What is uTimerScript useful for in a mission, what kinds of variables should it post, and what are common mistakes when using it to initialize or trigger autonomy?",
+  "captured_at": "2026-06-01T00:30:41.946Z",
+  "responses": {
+    "notebook": {
+      "status": "quota_or_block",
+      "text": "NotebookLM quota stop: You have reached your daily chat limit, come back later. Or upgrade. Benchmark stopped per instruction; no further prompts run on subset of tools.",
+      "method": "notebooklm_page_daily_chat_limit"
+    },
+    "chatgpt": {
+      "status": "not_started",
+      "text": "",
+      "method": "stopped_before_prompt_due_to_notebooklm_quota"
+    },
+    "claude": {
+      "status": "not_started",
+      "text": "",
+      "method": "stopped_before_prompt_due_to_notebooklm_quota"
+    },
+    "gemini": {
+      "status": "not_started",
+      "text": "",
+      "method": "stopped_before_prompt_due_to_notebooklm_quota"
+    }
+  }
+}

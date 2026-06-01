@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - conceptual category complete through C30
+Status: stopped - NotebookLM quota at D03
 
-Last updated: 2026-06-01T00:23:07.270Z
+Last updated: 2026-06-01T00:30:41.951Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":120,"not_started":80}
+Counts: {"captured":128,"quota_or_block":1,"not_started":71}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -42,9 +42,9 @@ Counts: {"captured":120,"not_started":80}
 | C28 | conceptual_debugging | Choosing Debugging Tools During A Mission Run | captured | captured | captured | captured |
 | C29 | conceptual_debugging | pMarineViewer Background / Geodesy | captured | captured | captured | captured |
 | C30 | conceptual_debugging | Mission Broke After Several Edits | captured | captured | captured | captured |
-| D01 | exact_docs_tools | pOdometry Variables | not_started | not_started | not_started | not_started |
-| D02 | exact_docs_tools | pAntler Process Launching | not_started | not_started | not_started | not_started |
-| D03 | exact_docs_tools | uTimerScript Usage | not_started | not_started | not_started | not_started |
+| D01 | exact_docs_tools | pOdometry Variables | captured | captured | captured | captured |
+| D02 | exact_docs_tools | pAntler Process Launching | captured | captured | captured | captured |
+| D03 | exact_docs_tools | uTimerScript Usage | quota_or_block | not_started | not_started | not_started |
 | D04 | exact_docs_tools | Helm Deploy Variables | not_started | not_started | not_started | not_started |
 | D05 | exact_docs_tools | BHV_Waypoint Params | not_started | not_started | not_started | not_started |
 | D06 | exact_docs_tools | BHV_OpRegionV24 Semantics | not_started | not_started | not_started | not_started |
@@ -63,6 +63,10 @@ Counts: {"captured":120,"not_started":80}
 | K09 | code_config_advice | `addInfoVars()` / InfoBuffer | not_started | not_started | not_started | not_started |
 | K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
 
+## Stop Reason
+
+NotebookLM reported: "You have reached your daily chat limit, come back later. Or upgrade." The run is stopped at D03 per instruction. D01-D02 are complete for all four tools. D03 has only the NotebookLM quota/block status; no ChatGPT, Claude, or Gemini D03 prompt was run.
+
 ## Progress Notes
 
-Claude quota reset was available on retry. C27-C30 are now complete for all four tools, finishing the conceptual/debugging category. Continuing from D01 next.
+C01-C30 are complete for all four tools, so the conceptual/debugging category is complete. D01-D02 are complete in the exact documentation/tool category. The benchmark should resume at D03 after NotebookLM quota resets.

@@ -323,27 +323,27 @@
       "category": "exact_docs_tools",
       "title": "pOdometry Variables",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D02": {
       "category": "exact_docs_tools",
       "title": "pAntler Process Launching",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "D03": {
       "category": "exact_docs_tools",
       "title": "uTimerScript Usage",
       "models": {
-        "notebook": "not_started",
+        "notebook": "quota_or_block",
         "chatgpt": "not_started",
         "claude": "not_started",
         "gemini": "not_started"
@@ -525,18 +525,19 @@
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing."
   ],
   "stopped_at": "2026-05-31T20:45:43.150Z",
-  "stop_reason": null,
-  "last_completed_prompt": "C30",
-  "partial_prompt_at_stop": null,
+  "stop_reason": "NotebookLM daily chat limit at D03. Benchmark stopped per instruction; no subset-only testing was performed after the block.",
+  "last_completed_prompt": "D02",
+  "partial_prompt_at_stop": "D03",
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
       "result": "Claude still quota-blocked after scheduled 7:50 PM retry; benchmark remains stopped at C27."
     }
   ],
-  "last_updated": "2026-06-01T00:23:07.270Z",
+  "last_updated": "2026-06-01T00:30:41.951Z",
   "counts": {
-    "captured": 120,
-    "not_started": 80
+    "captured": 128,
+    "quota_or_block": 1,
+    "not_started": 71
   }
 }
