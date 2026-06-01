@@ -285,7 +285,7 @@
       "models": {
         "notebook": "captured",
         "chatgpt": "captured",
-        "claude": "quota_or_block",
+        "claude": "captured",
         "gemini": "captured"
       }
     },
@@ -293,10 +293,10 @@
       "category": "conceptual_debugging",
       "title": "Choosing Debugging Tools During A Mission Run",
       "models": {
-        "notebook": "not_started",
-        "chatgpt": "not_started",
-        "claude": "not_started",
-        "gemini": "not_started"
+        "notebook": "captured",
+        "chatgpt": "captured",
+        "claude": "captured",
+        "gemini": "captured"
       }
     },
     "C29": {
@@ -525,13 +525,18 @@
     "C01 was captured successfully but initially written to the first run folder due to a stale helper run path; copied into this clean run folder and fixed helper path before continuing."
   ],
   "stopped_at": "2026-05-31T20:45:43.150Z",
-  "stop_reason": "Claude quota still active after scheduled 7:50 PM retry. Benchmark remains stopped per instruction; no further prompts run on subset of tools.",
-  "last_completed_prompt": "C26",
-  "partial_prompt_at_stop": "C27",
+  "stop_reason": null,
+  "last_completed_prompt": "C28",
+  "partial_prompt_at_stop": null,
   "resume_attempts": [
     {
       "at": "2026-05-31T23:55:17.834Z",
       "result": "Claude still quota-blocked after scheduled 7:50 PM retry; benchmark remains stopped at C27."
     }
-  ]
+  ],
+  "last_updated": "2026-06-01T00:13:56.238Z",
+  "counts": {
+    "captured": 112,
+    "not_started": 88
+  }
 }
