@@ -2,13 +2,13 @@
 
 Run ID: 2026-05-31_organic_beginner_tier_clean2
 
-Status: in progress - next prompt K07
+Status: in progress - next prompt K08
 
-Last updated: 2026-06-01T14:04:28Z
+Last updated: 2026-06-01T14:09:37Z
 
 Mode: same prompt text only; normal browser UI/default platform behavior; clean prompt context where practical.
 
-Counts: {"captured":184,"not_started":16}
+Counts: {"captured":188,"not_started":12}
 
 | Prompt | Category | Title | NotebookLM | ChatGPT | Claude | Gemini |
 |---|---|---|---|---|---|---|
@@ -58,15 +58,15 @@ Counts: {"captured":184,"not_started":16}
 | K04 | code_config_advice | uTimerScript Trigger Setup | captured | captured | captured | captured |
 | K05 | code_config_advice | Behavior Config File Boundary | captured | captured | captured | captured |
 | K06 | code_config_advice | pShare Route Config | captured | captured | captured | captured |
-| K07 | code_config_advice | Inter-Vehicle Message Payload | not_started | not_started | not_started | not_started |
+| K07 | code_config_advice | Inter-Vehicle Message Payload | captured | captured | captured | captured |
 | K08 | code_config_advice | `setParam()` Pattern | not_started | not_started | not_started | not_started |
 | K09 | code_config_advice | `addInfoVars()` / InfoBuffer | not_started | not_started | not_started | not_started |
 | K10 | code_config_advice | ZAIC Speed Function | not_started | not_started | not_started | not_started |
 
 ## Current Position
 
-C01-C30, D01-D10, and K01-K06 are complete for all four tools. The next prompt is K07 in the code/config advice category.
+C01-C30, D01-D10, and K01-K07 are complete for all four tools. The next prompt is K08 in the code/config advice category.
 
 ## Progress Notes
 
-Checkpoint at 2026-06-01T14:04:28Z: K06 completed for all four tools.
+Checkpoint at 2026-06-01T14:09:37Z: K07 completed for all four tools.
