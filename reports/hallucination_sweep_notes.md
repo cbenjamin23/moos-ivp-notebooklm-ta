@@ -46,3 +46,20 @@ D01-D02 were captured before NotebookLM quota stopped the exact-docs category, b
 | D01 | Gemini | Mixed MOOS-IvP with ROS/ROS2 odometry tooling. |
 
 These D-section observations should be reviewed again when the exact documentation/tool category is completed and graded.
+
+## 2026-06-01 Strict Source/Docs Audit Pass
+
+Ground truth for this pass was the local MOOS-IvP source tree plus upstream/curated MOOS-IvP documentation. The pass downgraded useful answers when they contained concrete copy-paste-risk MOOS-IvP errors such as wrong pShare syntax, wrong `NODE_REPORT_LOCAL` framing, wrong pAntler block names, or incorrect process responsibilities.
+
+| Prompt | Model | Counted Issue |
+|---|---|---|
+| C10 | Gemini | Nonstandard pShare output syntax: Gave the right unique-port/community mental model, but used arrow-style pShare output examples rather than the documented `output = src_name=..., dest_name=..., route=...` form. |
+| C11 | Claude | Nonstandard pShare/viewer config syntax: Used `SHARE = ...`/LISTEN-style pShare syntax and an uppercase `STALE_REPORT_THRESH`; source examples use pShare input/output routes and pMarineViewer `stale_report_thresh`. |
+| C11 | Gemini | Wrong pShare route syntax/port model: Used an arrow-style pShare output example and said the route port should match the shoreside MOOSDB `ServerPort`; it should target the receiving pShare input route port. |
+| C11 | ChatGPT 5.5 Low CLI | Wrong NODE_REPORT_LOCAL framing: Useful checklist, but repeatedly framed the vehicle-side source as `NODE_REPORT`; pNodeReporter normally publishes `NODE_REPORT_LOCAL`, which is then shared as `NODE_REPORT`. |
+| C12 | ChatGPT 5.5 Thinking | Wrong NODE_REPORT_LOCAL framing: Useful pShare boundary advice, but it repeatedly described the vehicle-local report as `NODE_REPORT` rather than the normal `NODE_REPORT_LOCAL -> NODE_REPORT` sharing pattern. |
+| C12 | Claude | Nonstandard pShare syntax and report-source framing: Used `[SHARE]`/arrow-style route examples and treated `NODE_REPORT` as the vehicle-side source instead of the normal `NODE_REPORT_LOCAL` source. |
+| C20 | Gemini | Wrong pNodeReporter output role: Mostly useful tracing workflow, but listed pNodeReporter as the tool to check `DESIRED_THRUST`, `DESIRED_RUDDER`, or `DESIRED_SPEED`; those are helm/PID/control-path variables, not pNodeReporter outputs. |
+| D11 | ChatGPT 5.5 Thinking | Wrong pAntler configuration block phrase: Correct stale-nsplug workflow overall, but told the user to inspect `ProcessConfig = pAntler`; pAntler launch `Run` lines live under the `ProcessConfig = ANTLER` block. |
+| K06 | Claude | Incomplete NODE_REPORT_LOCAL source correction: Correctly explained host/port matching to the receiving pShare input route, but left the source as `NODE_REPORT` instead of correcting the vehicle-side source to `NODE_REPORT_LOCAL`. |
+| K06 | Gemini | Incomplete NODE_REPORT_LOCAL source correction: Correctly targeted the receiving pShare input port, but left `src_name = NODE_REPORT` in the corrected line and only mentioned `NODE_REPORT_LOCAL` as a caveat. |

@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "exact documentation/tool",
   "prompt_range": "D01-D15",
-  "graded_at": "2026-06-01T22:09:43Z",
+  "graded_at": "2026-06-01 strict source/docs audit revision",
   "status": "complete for D01-D15; user-approved recaptures are treated as primary stored answers",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
@@ -30,48 +30,18 @@
       "pending_count": 0
     },
     "chatgpt": {
-      "model": "ChatGPT",
+      "model": "ChatGPT 5.5 Thinking",
       "prompt_count": 15,
-      "total_score": 27,
+      "total_score": 26,
       "max_score": 30,
-      "average_score": 1.8,
-      "score_percent": 90.0,
-      "good_count": 13,
-      "good_percent": 86.7,
-      "partial_count": 1,
-      "partial_percent": 6.7,
-      "bad_count": 1,
-      "bad_percent": 6.7,
-      "pending_count": 0
-    },
-    "claude": {
-      "model": "Claude",
-      "prompt_count": 15,
-      "total_score": 22,
-      "max_score": 30,
-      "average_score": 1.467,
-      "score_percent": 73.3,
-      "good_count": 8,
-      "good_percent": 53.3,
-      "partial_count": 6,
-      "partial_percent": 40.0,
-      "bad_count": 1,
-      "bad_percent": 6.7,
-      "pending_count": 0
-    },
-    "gemini": {
-      "model": "Gemini",
-      "prompt_count": 15,
-      "total_score": 27,
-      "max_score": 30,
-      "average_score": 1.8,
-      "score_percent": 90.0,
+      "average_score": 1.733,
+      "score_percent": 86.7,
       "good_count": 12,
       "good_percent": 80.0,
-      "partial_count": 3,
-      "partial_percent": 20.0,
-      "bad_count": 0,
-      "bad_percent": 0.0,
+      "partial_count": 2,
+      "partial_percent": 13.3,
+      "bad_count": 1,
+      "bad_percent": 6.7,
       "pending_count": 0
     },
     "chatgpt_55_instant": {
@@ -103,6 +73,36 @@
       "bad_count": 1,
       "bad_percent": 6.7,
       "pending_count": 0
+    },
+    "gemini": {
+      "model": "Gemini",
+      "prompt_count": 15,
+      "total_score": 27,
+      "max_score": 30,
+      "average_score": 1.8,
+      "score_percent": 90.0,
+      "good_count": 12,
+      "good_percent": 80.0,
+      "partial_count": 3,
+      "partial_percent": 20.0,
+      "bad_count": 0,
+      "bad_percent": 0.0,
+      "pending_count": 0
+    },
+    "claude": {
+      "model": "Claude",
+      "prompt_count": 15,
+      "total_score": 22,
+      "max_score": 30,
+      "average_score": 1.467,
+      "score_percent": 73.3,
+      "good_count": 8,
+      "good_percent": 53.3,
+      "partial_count": 6,
+      "partial_percent": 40.0,
+      "bad_count": 1,
+      "bad_percent": 6.7,
+      "pending_count": 0
     }
   },
   "hard_failures": [
@@ -120,7 +120,7 @@
     },
     {
       "prompt_id": "D06",
-      "model": "ChatGPT",
+      "model": "ChatGPT 5.5 Thinking",
       "failure_type": "Wrong behavior semantics",
       "brief_explanation": "Confidently described BHV_OpRegionV24 as only a safety monitor and denied the V24 recovery/steering objective behavior."
     },
@@ -138,7 +138,7 @@
     },
     {
       "prompt_id": "D12",
-      "model": "ChatGPT",
+      "model": "ChatGPT 5.5 Thinking",
       "failure_type": "Wrong pMarineViewer button syntax",
       "brief_explanation": "Used `action = ...` as the button syntax instead of the documented button_one/button_two action-button parameters."
     },
@@ -162,39 +162,45 @@
     },
     {
       "prompt_id": "D06",
-      "model": "chatgpt_55_instant",
+      "model": "ChatGPT 5.5 Instant",
       "failure_type": "Wrong behavior semantics",
       "brief_explanation": "Described BHV_OpRegionV24 as only a safety/constraint monitor and denied the V24 recovery/steering behavior."
     },
     {
       "prompt_id": "D02",
-      "model": "chatgpt_55_low_cli",
+      "model": "ChatGPT 5.5 Low CLI",
       "failure_type": "Invented/misspelled executable name",
       "brief_explanation": "Used `pNodeReport` in an exact pAntler launch example; the app is `pNodeReporter`."
     },
     {
       "prompt_id": "D05",
-      "model": "chatgpt_55_low_cli",
+      "model": "ChatGPT 5.5 Low CLI",
       "failure_type": "Invented BHV_Waypoint parameter",
       "brief_explanation": "Listed `capture_line_radius`, which is not parsed by BHV_Waypoint source."
     },
     {
       "prompt_id": "D06",
-      "model": "chatgpt_55_low_cli",
+      "model": "ChatGPT 5.5 Low CLI",
       "failure_type": "Wrong behavior semantics",
       "brief_explanation": "Described BHV_OpRegionV24 as only a constraint/watchdog and denied the documented V24 save-poly recovery objective function."
     },
     {
       "prompt_id": "D08",
-      "model": "chatgpt_55_low_cli",
+      "model": "ChatGPT 5.5 Low CLI",
       "failure_type": "Wrong pShare destination port model",
       "brief_explanation": "Said pShare remote host/port is usually the other community MOOSDB host/port; output routes should target the receiving pShare input/route port."
     },
     {
       "prompt_id": "D14",
-      "model": "chatgpt_55_low_cli",
+      "model": "ChatGPT 5.5 Low CLI",
       "failure_type": "Wrong pNodeReporter default output framing",
       "brief_explanation": "Said pNodeReporter normally publishes NODE_REPORT; source defaults to NODE_REPORT_LOCAL."
+    },
+    {
+      "prompt_id": "D11",
+      "model": "ChatGPT 5.5 Thinking",
+      "failure_type": "Wrong pAntler configuration block phrase",
+      "brief_explanation": "Correct stale-nsplug workflow overall, but told the user to inspect `ProcessConfig = pAntler`; pAntler launch `Run` lines live under the `ProcessConfig = ANTLER` block."
     }
   ],
   "prompts": [
@@ -238,14 +244,14 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "gemini"
       ],
       "hard_failures": [
         "Claude",
         "ChatGPT 5.5 Low CLI"
       ],
-      "note": "NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only “The system was unable to answer,” but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. ChatGPT 5.5 Low CLI: Partial: correctly explains ANTLER `Run = ...` launch lines and registration, but includes an invented/misspelled `pNodeReport` executable in the exact pAntler example."
+      "note": "NotebookLM retry replacement, ChatGPT, and Gemini correctly centered ProcessConfig = ANTLER and Run lines. The first NotebookLM pass returned only \u201cThe system was unable to answer,\u201d but the user requested treating the immediate retry as the primary result. Claude was useful but framed launch discovery around generic ProcessConfig = AppName blocks instead of the ANTLER launch block. ChatGPT 5.5 Low CLI: Partial: correctly explains ANTLER `Run = ...` launch lines and registration, but includes an invented/misspelled `pNodeReport` executable in the exact pAntler example."
     },
     {
       "id": "D03",
@@ -263,10 +269,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ],
       "hard_failures": [],
       "note": "All four answers gave a usable uTimerScript mental model: timed MOOS posts for initialization, triggers, simulation proxies, and checks in uXMS. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -287,10 +293,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ],
       "hard_failures": [],
       "note": "All four answers correctly described DEPLOY, MOOS_MANUAL_OVERRIDE, and helm state gating for autonomous behavior. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -311,9 +317,9 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
+        "chatgpt_55_instant",
         "gemini",
-        "chatgpt_55_instant"
+        "claude"
       ],
       "hard_failures": [
         "ChatGPT 5.5 Low CLI"
@@ -335,11 +341,11 @@
       },
       "winners": [
         "notebook",
-        "claude",
-        "gemini"
+        "gemini",
+        "claude"
       ],
       "hard_failures": [
-        "ChatGPT",
+        "ChatGPT 5.5 Thinking",
         "ChatGPT 5.5 Instant",
         "ChatGPT 5.5 Low CLI"
       ],
@@ -361,9 +367,9 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini"
       ],
       "hard_failures": [],
       "note": "NotebookLM and ChatGPT gave strong viewer/image/datum checks; Gemini was also usable. Claude identified the right general issue but placed datum settings in questionable app blocks and used imprecise viewer parameter framing. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -409,9 +415,9 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini"
       ],
       "hard_failures": [],
       "note": "NotebookLM, ChatGPT, and Gemini gave a usable comparison of brokers, pShare bridging, node comms, and message handling. Claude was broadly useful but overstated node reports and used imprecise bridge terminology. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -432,10 +438,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ],
       "hard_failures": [],
       "note": "All four final stored answers gave a usable pLogger/aloggrep/alogview verification workflow. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -447,21 +453,22 @@
       "prompt": "If I change a launch argument or edit a `meta_*.moos` template but the mission still behaves like it has the old value, what generated files should I inspect and what is the nsplug workflow?",
       "scores": {
         "notebook": 2,
-        "chatgpt": 2,
+        "chatgpt": 1,
         "claude": 2,
         "gemini": 2,
         "chatgpt_55_instant": 2,
         "chatgpt_55_low_cli": 2
       },
-      "hard_failures": [],
-      "note": "All four answers correctly identified the template-to-target-file workflow: inspect generated targ_/target .moos/.bhv files, rerun nsplug after template or launch-argument changes, and verify that pAntler is launching the regenerated file. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
+      "hard_failures": [
+        "ChatGPT 5.5 Thinking"
+      ],
+      "note": "NotebookLM, Claude, Gemini, GPT-5.5 Instant, and GPT-5.5 Low CLI correctly identified the template-to-target workflow. ChatGPT was useful overall but lost credit for the wrong `ProcessConfig = pAntler` inspection phrase; pAntler launch lines are under `ProcessConfig = ANTLER`.",
       "winners": [
         "notebook",
-        "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     },
     {
@@ -478,7 +485,7 @@
         "chatgpt_55_low_cli": 2
       },
       "hard_failures": [
-        "ChatGPT",
+        "ChatGPT 5.5 Thinking",
         "Claude",
         "Gemini"
       ],
@@ -507,10 +514,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     },
     {
@@ -534,8 +541,8 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "gemini",
-        "chatgpt_55_instant"
+        "chatgpt_55_instant",
+        "gemini"
       ]
     },
     {
@@ -556,10 +563,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     }
   ],
@@ -569,7 +576,7 @@
       "model": "NotebookLM TA",
       "first_pass_score": 0,
       "replacement_score": 2,
-      "reason": "First pass returned only “The system was unable to answer.” User requested treating immediate retry as replacement."
+      "reason": "First pass returned only \u201cThe system was unable to answer.\u201d User requested treating immediate retry as replacement."
     }
   ]
 }

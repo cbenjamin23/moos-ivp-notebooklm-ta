@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "category": "code/config advice",
   "prompt_range": "K01-K15",
-  "graded_at": "2026-06-01T22:24:23Z",
+  "graded_at": "2026-06-01 strict source/docs audit revision",
   "status": "complete for K01-K15; user-approved recaptures are treated as primary stored answers",
   "grading_method": "Manual hallucination-sensitive grading against the uploaded MOOS-IvP source packs and, for code/config, the local /Users/charlesbenjamin/moos-ivp source tree.",
   "score_legend": {
@@ -30,7 +30,7 @@
       "pending_count": 0
     },
     "chatgpt": {
-      "model": "ChatGPT",
+      "model": "ChatGPT 5.5 Thinking",
       "prompt_count": 15,
       "total_score": 27,
       "max_score": 30,
@@ -42,36 +42,6 @@
       "partial_percent": 20.0,
       "bad_count": 0,
       "bad_percent": 0.0,
-      "pending_count": 0
-    },
-    "claude": {
-      "model": "Claude",
-      "prompt_count": 15,
-      "total_score": 25,
-      "max_score": 30,
-      "average_score": 1.667,
-      "score_percent": 83.3,
-      "good_count": 11,
-      "good_percent": 73.3,
-      "partial_count": 3,
-      "partial_percent": 20.0,
-      "bad_count": 1,
-      "bad_percent": 6.7,
-      "pending_count": 0
-    },
-    "gemini": {
-      "model": "Gemini",
-      "prompt_count": 15,
-      "total_score": 21,
-      "max_score": 30,
-      "average_score": 1.4,
-      "score_percent": 70.0,
-      "good_count": 9,
-      "good_percent": 60.0,
-      "partial_count": 3,
-      "partial_percent": 20.0,
-      "bad_count": 3,
-      "bad_percent": 20.0,
       "pending_count": 0
     },
     "chatgpt_55_instant": {
@@ -103,6 +73,36 @@
       "bad_count": 0,
       "bad_percent": 0.0,
       "pending_count": 0
+    },
+    "gemini": {
+      "model": "Gemini",
+      "prompt_count": 15,
+      "total_score": 20,
+      "max_score": 30,
+      "average_score": 1.333,
+      "score_percent": 66.7,
+      "good_count": 8,
+      "good_percent": 53.3,
+      "partial_count": 4,
+      "partial_percent": 26.7,
+      "bad_count": 3,
+      "bad_percent": 20.0,
+      "pending_count": 0
+    },
+    "claude": {
+      "model": "Claude",
+      "prompt_count": 15,
+      "total_score": 24,
+      "max_score": 30,
+      "average_score": 1.6,
+      "score_percent": 80.0,
+      "good_count": 10,
+      "good_percent": 66.7,
+      "partial_count": 4,
+      "partial_percent": 26.7,
+      "bad_count": 1,
+      "bad_percent": 6.7,
+      "pending_count": 0
     }
   },
   "hard_failures": [
@@ -114,7 +114,7 @@
     },
     {
       "prompt_id": "K06",
-      "model": "ChatGPT",
+      "model": "ChatGPT 5.5 Thinking",
       "failure_type": "Wrong pShare destination port model",
       "brief_explanation": "Told the user to route to the destination MOOSDB ServerPort; pShare output should target the receiving pShare route/input port."
     },
@@ -132,7 +132,7 @@
     },
     {
       "prompt_id": "K08",
-      "model": "ChatGPT",
+      "model": "ChatGPT 5.5 Thinking",
       "failure_type": "Missing base-class delegation in code",
       "brief_explanation": "The prose mentioned superclass parsing, but the actual correction returned false for unhandled parameters instead of delegating to IvPBehavior::setParam."
     },
@@ -162,39 +162,51 @@
     },
     {
       "prompt_id": "K06",
-      "model": "chatgpt_55_instant",
+      "model": "ChatGPT 5.5 Instant",
       "failure_type": "Wrong pShare destination port model",
       "brief_explanation": "Told the user to route to the shoreside MOOSDB ServerPort; pShare output should target the receiving pShare route/input port."
     },
     {
       "prompt_id": "K07",
-      "model": "chatgpt_55_instant",
+      "model": "ChatGPT 5.5 Instant",
       "failure_type": "Wrong NODE_MESSAGE destination field",
       "brief_explanation": "Explicitly replaced the documented dest_node field with dests=bravo, which would break the message format."
     },
     {
       "prompt_id": "K08",
-      "model": "chatgpt_55_instant",
+      "model": "ChatGPT 5.5 Instant",
       "failure_type": "Missing base-class delegation in code",
       "brief_explanation": "Validated the custom parameter but returned false for unhandled parameters instead of delegating to IvPBehavior::setParam for standard behavior parameters."
     },
     {
       "prompt_id": "K10",
-      "model": "chatgpt_55_instant",
+      "model": "ChatGPT 5.5 Instant",
       "failure_type": "Invalid/incomplete ZAIC correction",
       "brief_explanation": "Added shaping and setPWT but kept ZAIC_PEAK zaic(\"speed\") without the IvP domain constructor argument."
     },
     {
       "prompt_id": "K09",
-      "model": "chatgpt_55_low_cli",
+      "model": "ChatGPT 5.5 Low CLI",
       "failure_type": "Wrong behavior lifecycle framing",
       "brief_explanation": "Put addInfoVars in onHelmStart/onIdleState instead of the normal constructor/config-time behavior pattern."
     },
     {
       "prompt_id": "K12",
-      "model": "chatgpt",
+      "model": "ChatGPT 5.5 Thinking",
       "failure_type": "Wrong pHelmIvP behavior-file parameter",
       "brief_explanation": "Included `behavior = targ_alpha.bhv` as a pHelmIvP-style behavior-file example; pHelmIvP parses `Behaviors = ...`, so the answer is useful but copy-paste risky."
+    },
+    {
+      "prompt_id": "K06",
+      "model": "Claude",
+      "failure_type": "Incomplete NODE_REPORT_LOCAL source correction",
+      "brief_explanation": "Correctly explained host/port matching to the receiving pShare input route, but left the source as `NODE_REPORT` instead of correcting the vehicle-side source to `NODE_REPORT_LOCAL`."
+    },
+    {
+      "prompt_id": "K06",
+      "model": "Gemini",
+      "failure_type": "Incomplete NODE_REPORT_LOCAL source correction",
+      "brief_explanation": "Correctly targeted the receiving pShare input port, but left `src_name = NODE_REPORT` in the corrected line and only mentioned `NODE_REPORT_LOCAL` as a caveat."
     }
   ],
   "prompts": [
@@ -214,10 +226,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ],
       "hard_failures": [],
       "note": "All four answers separated mail/state updates from Iterate-time publication well enough for a pOdometry-style app. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -238,10 +250,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ],
       "hard_failures": [],
       "note": "All four answers gave a usable reconnect-safe registration pattern, with registration repeated from OnConnectToServer or the local RegisterVariables helper. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -307,10 +319,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ],
       "hard_failures": [],
       "note": "All four correctly identified that behavior blocks belong in the .bhv behavior file, while pHelmIvP is launched/configured from the .moos mission file. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -323,22 +335,22 @@
       "scores": {
         "notebook": 2,
         "chatgpt": 1,
-        "claude": 2,
-        "gemini": 2,
+        "claude": 1,
+        "gemini": 1,
         "chatgpt_55_instant": 1,
         "chatgpt_55_low_cli": 2
       },
       "winners": [
         "notebook",
-        "claude",
-        "gemini",
         "chatgpt_55_low_cli"
       ],
       "hard_failures": [
-        "ChatGPT",
-        "ChatGPT 5.5 Instant"
+        "ChatGPT 5.5 Thinking",
+        "ChatGPT 5.5 Instant",
+        "Claude",
+        "Gemini"
       ],
-      "note": "NotebookLM, Claude, and Gemini gave usable pShare host/port/name guidance. ChatGPT incorrectly framed the destination as the shoreside MOOSDB ServerPort rather than the receiving pShare port. GPT-5.5 Instant: Partial: correctly identifies localhost/source-variable/name issues, but incorrectly says the route should target the shoreside MOOSDB ServerPort rather than the receiving pShare route/input port. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
+      "note": "NotebookLM and GPT-5.5 Low CLI gave the cleanest correction: vehicle `NODE_REPORT_LOCAL` to shoreside `NODE_REPORT`, routed to the receiving pShare input port. ChatGPT and GPT-5.5 Instant targeted the MOOSDB ServerPort; Claude and Gemini targeted the pShare port but did not fully correct the vehicle-side source variable."
     },
     {
       "id": "K07",
@@ -380,12 +392,12 @@
       },
       "winners": [
         "notebook",
-        "claude",
+        "chatgpt_55_low_cli",
         "gemini",
-        "chatgpt_55_low_cli"
+        "claude"
       ],
       "hard_failures": [
-        "ChatGPT",
+        "ChatGPT 5.5 Thinking",
         "ChatGPT 5.5 Instant"
       ],
       "note": "NotebookLM, Claude, and Gemini preserved base-class setParam delegation. ChatGPT validated the custom parameter but its code returned false instead of delegating to IvPBehavior::setParam for standard behavior parameters. GPT-5.5 Instant: Partial: lowercases and validates the custom parameter, but returns false for unhandled parameters instead of delegating to IvPBehavior::setParam for standard behavior parameters. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass."
@@ -431,8 +443,8 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "claude"
       ],
       "hard_failures": [
         "Gemini",
@@ -458,10 +470,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     },
     {
@@ -483,10 +495,10 @@
       "note": "All four answers correctly explained that pAntler reads the generated target file and that nsplug must be rerun after editing meta_ templates or launch arguments. ChatGPT 5.5 Low CLI: Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. ChatGPT 5.5 Thinking strict-pass revision: Partial because the answer includes `behavior = targ_alpha.bhv` as a pHelmIvP-style behavior-file example; source parses `Behaviors = ...`, so this is a copy-paste-risk config line despite good stale-nsplug advice.",
       "winners": [
         "notebook",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     },
     {
@@ -507,10 +519,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     },
     {
@@ -531,10 +543,10 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
-        "gemini",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "gemini",
+        "claude"
       ]
     },
     {
@@ -557,9 +569,9 @@
       "winners": [
         "notebook",
         "chatgpt",
-        "claude",
         "chatgpt_55_instant",
-        "chatgpt_55_low_cli"
+        "chatgpt_55_low_cli",
+        "claude"
       ]
     }
   ]

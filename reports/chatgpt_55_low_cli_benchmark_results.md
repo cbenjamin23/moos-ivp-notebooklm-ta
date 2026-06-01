@@ -12,8 +12,8 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; hallucinations a
 
 | Category | Prompt Count | Score % | Avg / 2 | Good | Partial | Bad |
 |---|---:|---:|---:|---:|---:|---:|
-| Overall | 60 | 90.8% | 1.82 | 50/60 (83.3%) | 9/60 (15.0%) | 1/60 (1.7%) |
-| Conceptual/debugging | 30 | 93.3% | 1.87 | 26/30 (86.7%) | 4/30 (13.3%) | 0/30 (0.0%) |
+| Overall | 60 | 90.0% | 1.80 | 49/60 (81.7%) | 10/60 (16.7%) | 1/60 (1.7%) |
+| Conceptual/debugging | 30 | 91.7% | 1.83 | 25/30 (83.3%) | 5/30 (16.7%) | 0/30 (0.0%) |
 | Exact docs/parameters/tools | 15 | 80.0% | 1.60 | 10/15 (66.7%) | 4/15 (26.7%) | 1/15 (6.7%) |
 | Code/config advice | 15 | 96.7% | 1.93 | 14/15 (93.3%) | 1/15 (6.7%) | 0/15 (0.0%) |
 
@@ -26,6 +26,7 @@ GPT-5.5 Low CLI was strong overall, especially on code/config prompts, but it lo
 | Prompt ID | Failure Type | Brief Explanation |
 |---|---|---|
 | C08 | Wrong pHelmIvP behavior-file parameter | Used singular `behavior = file.bhv`; pHelmIvP parses the `Behaviors = ...` parameter or `.bhv` command-line files. |
+| C11 | Wrong NODE_REPORT_LOCAL framing | Useful checklist, but repeatedly framed the vehicle-side source as `NODE_REPORT`; pNodeReporter normally publishes `NODE_REPORT_LOCAL`, which is then shared as `NODE_REPORT`. |
 | C16 | Wrong NODE_MESSAGE handling process | Named pNodeReporter as a common NODE_MESSAGE_LOCAL handler; the relevant path is uFldNodeBroker/uFldNodeComms/uFldMessageHandler style messaging. |
 | C19 | Wrong pHelmIvP behavior-file parameter | Correct file-boundary explanation but gave `behavior = filename.bhv` instead of `Behaviors = filename.bhv`. |
 | C25 | Imprecise uField message transport | Described scout reports moving through uField broker/handler plumbing without clearly requiring NODE_MESSAGE payloads or explicit pShare/uField routes. |
@@ -50,7 +51,7 @@ GPT-5.5 Low CLI was strong overall, especially on code/config prompts, but it lo
 | C08 | conceptual_debugging | No Desired Outputs | 1 | Partial: useful helm/nav/condition checks, but it says the pHelmIvP `.moos` setting is `behavior = your_file.bhv`; source and missions use the `Behaviors = ...` parameter, so the behavior-file check is copy-paste risky. |
 | C09 | conceptual_debugging | Vehicle Moves In Simulation But Autonomy Looks Wrong | 2 | Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
 | C10 | conceptual_debugging | Multi-Vehicle Ports | 2 | Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
-| C11 | conceptual_debugging | Shoreside Missing Vehicle | 2 | Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
+| C11 | conceptual_debugging | Shoreside Missing Vehicle | 1 | Partial: useful checklist, but it repeatedly frames the vehicle-side report as `NODE_REPORT`; pNodeReporter normally publishes `NODE_REPORT_LOCAL`, which is then shared outward as `NODE_REPORT`. |
 | C12 | conceptual_debugging | pShare Route Confusion | 2 | Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
 | C13 | conceptual_debugging | TSP App / Behavior Boundary | 2 | Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |
 | C14 | conceptual_debugging | Distributed Route Assignment Problem | 2 | Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass. |

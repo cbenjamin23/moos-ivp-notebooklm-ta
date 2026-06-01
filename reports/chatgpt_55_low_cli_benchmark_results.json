@@ -4,7 +4,7 @@
   "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
   "model_key": "chatgpt_55_low_cli",
   "model": "ChatGPT 5.5 Low CLI",
-  "graded_at": "2026-06-01T22:09:43Z",
+  "graded_at": "2026-06-01 strict source/docs audit revision",
   "status": "complete",
   "collection_method": "Temporary Codex CLI 0.136.0 installed under /tmp, run with isolated temporary CODEX_HOME, --ephemeral, --ignore-user-config, --ignore-rules, read-only sandbox, empty working directory, no skills/tools/web/local files by instruction, one fresh CLI turn per prompt.",
   "integrity_scan": "60/60 captured; stored CLI JSON event streams contained only thread/turn/agent-message/turn completion events; no suspicious local MOOS-IvP checkout path references found in answers or logs.",
@@ -18,14 +18,14 @@
     "overall": {
       "model": "ChatGPT 5.5 Low CLI",
       "prompt_count": 60,
-      "total_score": 109,
+      "total_score": 108,
       "max_score": 120,
-      "average_score": 1.817,
-      "score_percent": 90.8,
-      "good_count": 50,
-      "good_percent": 83.3,
-      "partial_count": 9,
-      "partial_percent": 15.0,
+      "average_score": 1.8,
+      "score_percent": 90.0,
+      "good_count": 49,
+      "good_percent": 81.7,
+      "partial_count": 10,
+      "partial_percent": 16.7,
       "bad_count": 1,
       "bad_percent": 1.7,
       "pending_count": 0
@@ -33,14 +33,14 @@
     "conceptual_debugging": {
       "model": "ChatGPT 5.5 Low CLI",
       "prompt_count": 30,
-      "total_score": 56,
+      "total_score": 55,
       "max_score": 60,
-      "average_score": 1.867,
-      "score_percent": 93.3,
-      "good_count": 26,
-      "good_percent": 86.7,
-      "partial_count": 4,
-      "partial_percent": 13.3,
+      "average_score": 1.833,
+      "score_percent": 91.7,
+      "good_count": 25,
+      "good_percent": 83.3,
+      "partial_count": 5,
+      "partial_percent": 16.7,
       "bad_count": 0,
       "bad_percent": 0.0,
       "pending_count": 0
@@ -79,61 +79,56 @@
   "hard_failures": [
     {
       "prompt_id": "C08",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong pHelmIvP behavior-file parameter",
       "brief_explanation": "Used singular `behavior = file.bhv`; pHelmIvP parses the `Behaviors = ...` parameter or `.bhv` command-line files."
     },
     {
+      "prompt_id": "C11",
+      "failure_type": "Wrong NODE_REPORT_LOCAL framing",
+      "brief_explanation": "Useful checklist, but repeatedly framed the vehicle-side source as `NODE_REPORT`; pNodeReporter normally publishes `NODE_REPORT_LOCAL`, which is then shared as `NODE_REPORT`."
+    },
+    {
       "prompt_id": "C16",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong NODE_MESSAGE handling process",
       "brief_explanation": "Named pNodeReporter as a common NODE_MESSAGE_LOCAL handler; the relevant path is uFldNodeBroker/uFldNodeComms/uFldMessageHandler style messaging."
     },
     {
       "prompt_id": "C19",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong pHelmIvP behavior-file parameter",
       "brief_explanation": "Correct file-boundary explanation but gave `behavior = filename.bhv` instead of `Behaviors = filename.bhv`."
     },
     {
       "prompt_id": "C25",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Imprecise uField message transport",
       "brief_explanation": "Described scout reports moving through uField broker/handler plumbing without clearly requiring NODE_MESSAGE payloads or explicit pShare/uField routes."
     },
     {
       "prompt_id": "D02",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Invented/misspelled executable name",
       "brief_explanation": "Used `pNodeReport` in an exact pAntler launch example; the app is `pNodeReporter`."
     },
     {
       "prompt_id": "D05",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Invented BHV_Waypoint parameter",
       "brief_explanation": "Listed `capture_line_radius`, which is not parsed by BHV_Waypoint source."
     },
     {
       "prompt_id": "D06",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong behavior semantics",
       "brief_explanation": "Described BHV_OpRegionV24 as only a constraint/watchdog and denied the documented V24 save-poly recovery objective function."
     },
     {
       "prompt_id": "D08",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong pShare destination port model",
       "brief_explanation": "Said pShare remote host/port is usually the other community MOOSDB host/port; output routes should target the receiving pShare input/route port."
     },
     {
       "prompt_id": "D14",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong pNodeReporter default output framing",
       "brief_explanation": "Said pNodeReporter normally publishes NODE_REPORT; source defaults to NODE_REPORT_LOCAL."
     },
     {
       "prompt_id": "K09",
-      "model": "chatgpt_55_low_cli",
       "failure_type": "Wrong behavior lifecycle framing",
       "brief_explanation": "Put addInfoVars in onHelmStart/onIdleState instead of the normal constructor/config-time behavior pattern."
     }
@@ -257,9 +252,12 @@
       "category": "conceptual_debugging",
       "title": "Shoreside Missing Vehicle",
       "prompt": "In a multi-vehicle mission, pMarineViewer shows one vehicle but not the other. What are the likely causes involving `NODE_REPORT`, pNodeReporter, shoreside subscriptions, pShare, and community naming?",
-      "score": 2,
-      "note": "Good: useful answer with no notable MOOS-IvP-specific error found in the hallucination-sensitive grading pass.",
-      "hard_failure": null,
+      "score": 1,
+      "note": "Partial: useful checklist, but it repeatedly frames the vehicle-side report as `NODE_REPORT`; pNodeReporter normally publishes `NODE_REPORT_LOCAL`, which is then shared outward as `NODE_REPORT`.",
+      "hard_failure": {
+        "failure_type": "Wrong NODE_REPORT_LOCAL framing",
+        "brief_explanation": "Useful checklist, but repeatedly framed the vehicle-side source as `NODE_REPORT`; pNodeReporter normally publishes `NODE_REPORT_LOCAL`, which is then shared as `NODE_REPORT`."
+      },
       "raw_status": "captured",
       "answer_length": 2206
     },
