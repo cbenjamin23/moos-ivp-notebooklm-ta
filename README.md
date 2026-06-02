@@ -1,21 +1,21 @@
 # MOOS-IvP NotebookLM TA
 
-This repository contains the source packs, benchmark captures, and evaluation reports for a NotebookLM-based MOOS-IvP virtual teaching assistant aimed at students working through the MIT/OceanAI MOOS-IvP labs.
+This project explores whether a curated NotebookLM notebook can serve as a practical MOOS-IvP virtual teaching assistant for students working through the MIT/OceanAI labs. The focus is documentation-grounded conceptual help: mission setup, autonomy concepts, tool usage, and beginner debugging workflows.
 
-The current NotebookLM notebook is named `MOOS-IvP Virtual TA` and was built from MIT/OceanAI MOOS-IvP documentation PDFs grouped into upload-friendly packs.
+The repository preserves the source packs, benchmark prompts, raw captures, and scoring reports needed to recreate and audit the notebook.
 
 ## Benchmark Results
 
-The benchmark uses 60 fixed, lab-grounded prompts across conceptual/debugging, exact documentation, and code/config categories. Scores use a `0/1/2` rubric where hallucinations and invalid MOOS-IvP-specific advice lose credit. The headline table averages the three ChatGPT rows: ChatGPT 5.5 Thinking, ChatGPT 5.5 Instant, and ChatGPT 5.5 Low CLI.
+The benchmark uses 60 fixed, lab-grounded prompts across conceptual/debugging, exact documentation, and code/config categories. Scores are out of 2: `2` means good, `1` means partially useful, and `0` means bad. `Score %` converts that average to a percentage.
 
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
-| ChatGPT average (3 runs) | 91.1% | 1.82 | 93.9% | 86.7% | 90.0% | 0 |
+| ChatGPT | 91.1% | 1.82 | 93.9% | 86.7% | 90.0% | 0 |
 | Gemini | 76.7% | 1.53 | 75.0% | 90.0% | 66.7% | 0 |
 | Claude | 69.2% | 1.38 | 61.7% | 73.3% | 80.0% | 0 |
 
-NotebookLM TA ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. The isolated GPT-5.5 Low CLI row is included in the ChatGPT average, but should be read as a Codex CLI run rather than a pure browser ChatGPT-low substitute.
+NotebookLM TA ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. Detailed reports preserve the individual model runs behind the headline rows.
 
 Detailed results:
 
