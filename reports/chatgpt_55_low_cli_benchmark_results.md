@@ -4,7 +4,7 @@ Status: complete for C01-C30, D01-D15, and K01-K15 as a separate isolated CLI mo
 
 Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
 
-Collection used a temporary updated Codex CLI, ephemeral/read-only execution, fresh turn per prompt, ignored user config/rules, and an empty working directory. The integrity scan found no tool-use events or local MOOS-IvP checkout path references in stored answers/logs.
+Collection used a temporary updated Codex CLI, ephemeral/read-only execution, fresh turn per prompt, ignored user config/rules, and an empty working directory. The retained raw JSON records contain answer text plus collection metadata, and the integrity scan found no suspicious events or local MOOS-IvP checkout path references in stored answers.
 
 Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; hallucinations and invalid MOOS-IvP-specific syntax are penalized.
 
@@ -19,7 +19,7 @@ Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; hallucinations a
 
 ## Interpretation
 
-GPT-5.5 Low CLI was strong overall, especially on code/config prompts, but it lost more ground on exact MOOS-IvP documentation details than the browser ChatGPT rows. The largest penalties were pHelmIvP behavior-file parameter naming, uField/NODE_MESSAGE process ownership, pShare port semantics, pNodeReporter report naming, and BHV_OpRegionV24 V24 recovery behavior.
+GPT-5.5 Low CLI was strong overall, especially on code/config prompts, but it lost more ground on exact MOOS-IvP documentation details than the browser ChatGPT rows. Since this was collected through Codex CLI, the code/config score should be interpreted as an isolated no-local-context Codex CLI result, not as a pure browser ChatGPT-low result. The largest penalties were pHelmIvP behavior-file parameter naming, uField/NODE_MESSAGE process ownership, pShare port semantics, pNodeReporter report naming, and BHV_OpRegionV24 V24 recovery behavior.
 
 ## Hard/Notable Error Details
 

@@ -30,7 +30,7 @@ The most important entry point for human review is:
 
 ## Benchmark Results
 
-The clean cross-model benchmark compares six rows: NotebookLM TA, ChatGPT 5.5 Thinking, ChatGPT 5.5 Instant, ChatGPT 5.5 Low CLI, Gemini, and Claude. The browser rows reflect the normal beginner-tier product experience available during collection; the CLI row is an isolated GPT-5.5 Low run without browser memory, Codex skills, local files, local tools, or web access.
+The clean cross-model benchmark compares six rows: NotebookLM TA, ChatGPT 5.5 Thinking, ChatGPT 5.5 Instant, ChatGPT 5.5 Low CLI, Gemini, and Claude. The browser rows reflect the normal beginner-tier product experience available during collection. The CLI row is an isolated GPT-5.5 Low run without browser memory, Codex skills, local files, local tools, or web access; it should still be read as a Codex CLI run rather than a pure browser ChatGPT-low substitute.
 
 Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Score %` is the average converted to a percentage.
 
@@ -45,7 +45,7 @@ Current status: all 360 model outputs are captured and graded. User-approved rec
 | Gemini | 76.7% | 1.53 | 75.0% | 90.0% | 66.7% | 0 |
 | Claude | 69.2% | 1.38 | 61.7% | 73.3% | 80.0% | 0 |
 
-Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. After the stricter source/docs audit, ChatGPT 5.5 Thinking and ChatGPT 5.5 Instant are tied overall, while the isolated GPT-5.5 Low CLI row remains useful as a cleaner non-RAG comparison that avoids browser memory and local Codex skills.
+Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. After the stricter source/docs audit, ChatGPT 5.5 Thinking and ChatGPT 5.5 Instant are tied overall. The isolated GPT-5.5 Low CLI row remains useful as a no-memory/no-local-context comparison, but Codex CLI's coding-agent wrapper may make its code/config score less directly comparable to the browser rows.
 
 Detailed results and rubric:
 
@@ -66,7 +66,6 @@ Yes, grading metadata is stored with the benchmark artifacts:
 - `RESULTS.md` gives the public summary plus per-prompt notes and hard/notable error examples.
 - `reports/*_benchmark_results.json` stores machine-readable scoring metadata, including fields such as `grading_method`, `score_legend`, `metrics`, `hard_failures`, per-prompt scores, winners, and notes.
 - `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/raw/` stores the raw model outputs used for scoring.
-- `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/cli_logs/` stores the isolated GPT-5.5 Low CLI event logs used for collection integrity checks.
 
 ## Validation Summary
 

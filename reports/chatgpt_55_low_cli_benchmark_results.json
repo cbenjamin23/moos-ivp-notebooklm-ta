@@ -7,7 +7,8 @@
   "graded_at": "2026-06-01 strict source/docs audit revision",
   "status": "complete",
   "collection_method": "Temporary Codex CLI 0.136.0 installed under /tmp, run with isolated temporary CODEX_HOME, --ephemeral, --ignore-user-config, --ignore-rules, read-only sandbox, empty working directory, no skills/tools/web/local files by instruction, one fresh CLI turn per prompt.",
-  "integrity_scan": "60/60 captured; stored CLI JSON event streams contained only thread/turn/agent-message/turn completion events; no suspicious local MOOS-IvP checkout path references found in answers or logs.",
+  "integrity_scan": "60/60 captured; retained raw JSON records contain answer text plus collection metadata, including return code, elapsed seconds, event count, and suspicious-event status; no suspicious local MOOS-IvP checkout path references found in stored answers.",
+  "collection_caveat": "This row was collected through Codex CLI, so it should be interpreted as an isolated no-local-context Codex CLI result rather than a pure browser ChatGPT-low substitute. The Codex CLI coding-agent wrapper may affect code/config performance.",
   "grading_method": "Manual hallucination-sensitive grading against the existing benchmark rubric, curated MOOS-IvP source packs, and local /Users/charlesbenjamin/moos-ivp source checks for exact/code/config details. Concrete hallucinations and invalid copy-pasteable MOOS-IvP details are penalized even when the surrounding answer is useful.",
   "score_legend": {
     "2": "good",

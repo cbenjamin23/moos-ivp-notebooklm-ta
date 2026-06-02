@@ -8,7 +8,7 @@ Scores use a `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. The public
 
 ## Summary
 
-NotebookLM TA remains first overall and strongest in the intended product lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. A stricter source/docs pass lowered several previously full-credit answers when they contained copy-paste-risk pShare syntax, wrong `NODE_REPORT_LOCAL` framing, or incorrect pAntler block names. The isolated ChatGPT 5.5 Low CLI run remains the cleanest non-RAG comparison because it avoids browser memory and local-skill concerns.
+NotebookLM TA remains first overall and strongest in the intended product lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. A stricter source/docs pass lowered several previously full-credit answers when they contained copy-paste-risk pShare syntax, wrong `NODE_REPORT_LOCAL` framing, or incorrect pAntler block names. The isolated ChatGPT 5.5 Low CLI run remains useful as a no-memory/no-local-context comparison, but it is a Codex CLI run and may benefit from Codex's coding-agent wrapper on code/config prompts.
 
 ## Overall Scores
 
@@ -31,7 +31,7 @@ NotebookLM TA remains first overall and strongest in the intended product lane: 
 
 ## Collection Notes
 
-User-approved recaptures are treated as the regular stored answers. NotebookLM D02 preserves the original non-answer in `raw/D02.json` replacement metadata, but the scored answer is the recapture. Claude C16, C25, C26, D05, and D10 are also stored as primary answers after direct-answer recapture. ChatGPT 5.5 Low CLI was collected separately through temporary Codex CLI 0.136.0 with isolated `CODEX_HOME`, ephemeral/read-only execution, fresh turn per prompt, ignored user config/rules, and no local files/tools/web/skills allowed in the tested prompt. Stored CLI event logs show only agent-message events and no local MOOS-IvP checkout path references.
+User-approved recaptures are treated as the regular stored answers. NotebookLM D02 preserves the original non-answer in `raw/D02.json` replacement metadata, but the scored answer is the recapture. Claude C16, C25, C26, D05, and D10 are also stored as primary answers after direct-answer recapture. ChatGPT 5.5 Low CLI was collected separately through temporary Codex CLI 0.136.0 with isolated `CODEX_HOME`, ephemeral/read-only execution, fresh turn per prompt, ignored user config/rules, and no local files/tools/web/skills allowed in the tested prompt. The retained raw JSON records preserve the answer text plus collection metadata, including return code, elapsed time, event count, and suspicious-event status.
 
 ## Hard/Notable Error Details
 

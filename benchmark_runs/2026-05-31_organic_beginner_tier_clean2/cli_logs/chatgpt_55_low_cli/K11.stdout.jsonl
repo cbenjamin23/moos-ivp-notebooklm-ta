@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019e8534-b3cb-7b10-9806-23c1232a2465"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Register for mail in `OnConnectToServer()`, not only in `OnStartUp()`. After a MOOSDB reconnect, subscriptions need to be re-established.\n\n```cpp\nbool MyApp::OnStartUp()\n{\n  return true;\n}\n\nbool MyApp::OnConnectToServer()\n{\n  Register(\"NAV_X\", 0);\n  return true;\n}\n```\n\nIf the app has multiple subscriptions, put them in a helper like `RegisterVariables()` and call it from `OnConnectToServer()`."}}
-{"type":"turn.completed","usage":{"input_tokens":10669,"cached_input_tokens":8576,"output_tokens":109,"reasoning_output_tokens":0}}
