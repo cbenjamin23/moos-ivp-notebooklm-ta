@@ -1,6 +1,6 @@
 # MOOS-IvP NotebookLM TA
 
-This project explores whether a curated NotebookLM notebook can serve as a practical MOOS-IvP virtual teaching assistant for students working through the MIT/OceanAI labs. The focus is documentation-grounded conceptual help: mission setup, autonomy concepts, tool usage, and beginner debugging workflows.
+This project explores whether a curated NotebookLM notebook can serve as a practical MOOS-IvP virtual teaching assistant for students working through the MIT 2.680 labs. The focus is documentation-grounded conceptual help: mission setup, autonomy concepts, tool usage, and beginner debugging workflows.
 
 The repository preserves the source packs, benchmark prompts, raw captures, and scoring reports needed to recreate and audit the notebook.
 
