@@ -36,16 +36,16 @@ Scores use a simple `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. `Sc
 
 Current status: all 360 model outputs are captured and graded. User-approved recaptures are treated as regular stored answers; scoring remains hallucination-sensitive and concrete MOOS-IvP hallucinations reduce the score.
 
+The headline table averages the three ChatGPT rows for a cleaner front-facing comparison. The averaged row combines ChatGPT 5.5 Thinking, ChatGPT 5.5 Instant, and ChatGPT 5.5 Low CLI; detailed individual rows remain in `RESULTS.md` and the report files.
+
 | Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
 |---|---:|---:|---:|---:|---:|---:|
 | NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
-| ChatGPT 5.5 Thinking | 91.7% | 1.83 | 95.0% | 86.7% | 90.0% | 0 |
-| ChatGPT 5.5 Instant | 91.7% | 1.83 | 95.0% | 93.3% | 83.3% | 0 |
-| ChatGPT 5.5 Low CLI | 90.0% | 1.80 | 91.7% | 80.0% | 96.7% | 0 |
+| ChatGPT average (3 runs) | 91.1% | 1.82 | 93.9% | 86.7% | 90.0% | 0 |
 | Gemini | 76.7% | 1.53 | 75.0% | 90.0% | 66.7% | 0 |
 | Claude | 69.2% | 1.38 | 61.7% | 73.3% | 80.0% | 0 |
 
-Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. After the stricter source/docs audit, ChatGPT 5.5 Thinking and ChatGPT 5.5 Instant are tied overall. The isolated GPT-5.5 Low CLI row remains useful as a no-memory/no-local-context comparison, but Codex CLI's coding-agent wrapper may make its code/config score less directly comparable to the browser rows.
+Interpretation: NotebookLM TA currently ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. The averaged ChatGPT row is strong but trails NotebookLM on the lab-grounded benchmark overall. The isolated GPT-5.5 Low CLI row remains useful as a no-memory/no-local-context comparison, but Codex CLI's coding-agent wrapper may make its code/config score less directly comparable to the browser rows.
 
 Detailed results and rubric:
 
