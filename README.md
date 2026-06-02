@@ -8,12 +8,12 @@ The repository preserves the source packs, benchmark prompts, raw captures, and 
 
 The benchmark uses 60 fixed, lab-grounded prompts across conceptual/debugging, exact documentation, and code/config categories. Scores are out of 2: `2` means good, `1` means partially useful, and `0` means bad. `Score %` converts that average to a percentage.
 
-| Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config | Pending |
-|---|---:|---:|---:|---:|---:|---:|
-| NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% | 0 |
-| ChatGPT | 91.1% | 1.82 | 93.9% | 86.7% | 90.0% | 0 |
-| Gemini | 76.7% | 1.53 | 75.0% | 90.0% | 66.7% | 0 |
-| Claude | 69.2% | 1.38 | 61.7% | 73.3% | 80.0% | 0 |
+| Model | Score % | Avg / 2 | Conceptual | Exact Docs | Code/Config |
+|---|---:|---:|---:|---:|---:|
+| NotebookLM TA | 99.2% | 1.98 | 100.0% | 100.0% | 96.7% |
+| ChatGPT | 91.1% | 1.82 | 93.9% | 86.7% | 90.0% |
+| Gemini | 76.7% | 1.53 | 75.0% | 90.0% | 66.7% |
+| Claude | 69.2% | 1.38 | 61.7% | 73.3% | 80.0% |
 
 NotebookLM TA ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. Students are generally encouraged to use the virtual TA as a conceptual aid and not a reliable code generation tool. Contact Charles Benjamin to inquire about developer-level MOOS-IvP code generation when you are proficient. Detailed reports preserve the individual model runs behind the headline rows and can be found in the sources below.
 
