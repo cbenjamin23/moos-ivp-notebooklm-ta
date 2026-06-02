@@ -2,7 +2,7 @@
 
 Status: complete. C01-C30, D01-D15, and K01-K15 are fully captured and graded for NotebookLM TA, ChatGPT 5.5 Thinking, ChatGPT 5.5 Instant, ChatGPT 5.5 Low CLI, Claude, and Gemini. User-approved recaptures are treated as the regular stored answers.
 
-Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
+Run folder: `benchmark_runs/main_benchmark`
 
 Scores use a `0/1/2` rubric: `2` good, `1` partially useful, `0` bad. The public score percentage is total points divided by total possible points. Hallucinations, wrong MOOS-IvP variable names, invalid copy-pasteable config/code, and off-domain toolchain advice reduce the score.
 

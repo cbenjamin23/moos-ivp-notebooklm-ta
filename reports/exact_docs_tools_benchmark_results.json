@@ -1,7 +1,7 @@
 {
   "benchmark": "MOOS-IvP NotebookLM TA exact documentation/tool benchmark",
-  "run_id": "2026-05-31_organic_beginner_tier_clean2",
-  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "run_id": "main_benchmark",
+  "run_folder": "benchmark_runs/main_benchmark",
   "category": "exact documentation/tool",
   "prompt_range": "D01-D15",
   "graded_at": "2026-06-01 strict source/docs audit revision",

@@ -2,7 +2,7 @@
 
 Status: complete for C01-C30, D01-D15, and K01-K15 as a separate isolated CLI model from browser ChatGPT rows.
 
-Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
+Run folder: `benchmark_runs/main_benchmark`
 
 Collection used a temporary updated Codex CLI, ephemeral/read-only execution, fresh turn per prompt, ignored user config/rules, and an empty working directory. The retained raw JSON records contain answer text plus collection metadata, and the integrity scan found no suspicious events or local MOOS-IvP checkout path references in stored answers.
 

@@ -1,6 +1,6 @@
 # Hallucination Sweep Notes
 
-Scope: captured raw outputs in `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/raw/`.
+Scope: captured raw outputs in `benchmark_runs/main_benchmark/raw/`.
 
 The sweep searched for wrong copy-pasteable MOOS config, invented MOOS/PABLO app names, off-domain robotics frameworks, unsupported viewer/geodesy parameters, questionable pLogger claims, and stale-context answers.
 

@@ -1,7 +1,7 @@
 {
   "benchmark": "MOOS-IvP NotebookLM TA code/config advice benchmark",
-  "run_id": "2026-05-31_organic_beginner_tier_clean2",
-  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "run_id": "main_benchmark",
+  "run_folder": "benchmark_runs/main_benchmark",
   "category": "code/config advice",
   "prompt_range": "K01-K15",
   "graded_at": "2026-06-01 strict source/docs audit revision",

@@ -1,7 +1,7 @@
 {
   "benchmark": "MOOS-IvP NotebookLM TA cross-model benchmark - GPT-5.5 Instant addendum",
-  "run_id": "2026-05-31_organic_beginner_tier_clean2",
-  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "run_id": "main_benchmark",
+  "run_folder": "benchmark_runs/main_benchmark",
   "model_key": "chatgpt_55_instant",
   "model": "ChatGPT 5.5 Instant",
   "graded_at": "2026-06-01T21:45:00.000Z",

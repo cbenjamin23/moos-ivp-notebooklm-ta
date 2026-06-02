@@ -1,6 +1,6 @@
 # Conceptual / Debugging Benchmark Results
 
-Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
+Run folder: `benchmark_runs/main_benchmark`
 
 Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; hallucinations and invalid MOOS-IvP-specific syntax are penalized.
 

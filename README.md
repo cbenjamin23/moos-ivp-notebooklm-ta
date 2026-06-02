@@ -44,7 +44,7 @@ The only large directory is `assets/packs/`; those PDFs are intentionally retain
 - `SCORING_RUBRIC.md` defines the scoring rules.
 - `RESULTS.md` gives per-prompt scores, notes, and hard/notable error examples.
 - `reports/*_benchmark_results.json` stores machine-readable scoring metadata, including fields such as `grading_method`, `score_legend`, `metrics`, `hard_failures`, per-prompt scores, winners, and notes.
-- `benchmark_runs/2026-05-31_organic_beginner_tier_clean2/raw/` stores the raw model outputs used for scoring.
+- `benchmark_runs/main_benchmark/raw/` stores the raw model outputs used for scoring.
 
 ## Benchmark Plan
 

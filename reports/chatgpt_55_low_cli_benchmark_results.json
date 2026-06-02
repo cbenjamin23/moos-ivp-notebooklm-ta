@@ -1,7 +1,7 @@
 {
   "benchmark": "MOOS-IvP NotebookLM TA cross-model benchmark - GPT-5.5 Low CLI addendum",
-  "run_id": "2026-05-31_organic_beginner_tier_clean2",
-  "run_folder": "benchmark_runs/2026-05-31_organic_beginner_tier_clean2",
+  "run_id": "main_benchmark",
+  "run_folder": "benchmark_runs/main_benchmark",
   "model_key": "chatgpt_55_low_cli",
   "model": "ChatGPT 5.5 Low CLI",
   "graded_at": "2026-06-01 strict source/docs audit revision",

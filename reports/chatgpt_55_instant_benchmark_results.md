@@ -2,7 +2,7 @@
 
 Status: complete for C01-C30, D01-D15, and K01-K15 as a separate model from the original ChatGPT Thinking row.
 
-Run folder: `benchmark_runs/2026-05-31_organic_beginner_tier_clean2`
+Run folder: `benchmark_runs/main_benchmark`
 
 Scores use the canonical `0/1/2` rubric in `SCORING_RUBRIC.md`; hallucinations and invalid MOOS-IvP-specific syntax are penalized.
 

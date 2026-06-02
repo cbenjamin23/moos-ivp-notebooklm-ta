@@ -1,6 +1,6 @@
 # Organic Beginner-Tier Benchmark Run
 
-Run ID: 2026-05-31_organic_beginner_tier_clean2
+Run ID: main_benchmark
 
 Status: partial K10 - only Claude remains
 
