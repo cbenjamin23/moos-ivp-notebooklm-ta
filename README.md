@@ -15,7 +15,7 @@ The benchmark uses 60 fixed, lab-grounded prompts across conceptual/debugging, e
 | Gemini | 76.7% | 1.53 | 75.0% | 90.0% | 66.7% | 0 |
 | Claude | 69.2% | 1.38 | 61.7% | 73.3% | 80.0% | 0 |
 
-NotebookLM TA ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. Detailed reports preserve the individual model runs behind the headline rows.
+NotebookLM TA ranks first overall and is strongest in its intended lane: source-grounded conceptual/debugging help for MOOS-IvP lab students. Students are generally encouraged to use the virtual TA as a conceptual aid and not a reliable code generation tool. Contact Charles Benjamin to inquire about developer-level MOOS-IvP code generation when you are proficient. Detailed reports preserve the individual model runs behind the headline rows and can be found in the sources below.
 
 Detailed results:
 
