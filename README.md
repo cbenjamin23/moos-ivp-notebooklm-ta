@@ -1,5 +1,7 @@
 # MOOS-IvP NotebookLM TA
 
+[Open the MOOS-IvP NotebookLM TA notebook](https://notebooklm.google.com/notebook/f752a51e-7042-4449-b000-c7650804f012)
+
 This project explores whether a curated NotebookLM notebook can serve as a practical MOOS-IvP virtual teaching assistant for students working through the MIT 2.680 labs. The focus is documentation-grounded conceptual help: mission setup, autonomy concepts, tool usage, and beginner debugging workflows.
 
 The repository preserves the source packs, benchmark prompts, raw captures, and scoring reports needed to recreate and audit the notebook.

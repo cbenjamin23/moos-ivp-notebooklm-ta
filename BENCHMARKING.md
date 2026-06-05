@@ -25,14 +25,6 @@ Completed comparison:
 - Claude in the normal signed-in browser UI
 - Gemini in the normal signed-in browser UI
 
-Potential future comparison:
-
-- Controlled no-web versions of the same systems, if the UI makes that easy and repeatable.
-- ChatGPT with uploaded PDFs
-- Claude Project with uploaded PDFs
-- Gemini/AI Studio with uploaded PDFs
-- Codex with local `moos-ivp` source and MOOS-IvP skills
-
 ## Benchmark Mode
 
 The primary benchmark mode is an organic beginner-tier test:
