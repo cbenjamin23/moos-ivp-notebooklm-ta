@@ -24,15 +24,19 @@
       "bytes": 906933
     },
     {
-      "slug": "02_example_mission_alpha",
-      "title": "Example Mission Alpha",
-      "description": "The first canonical MOOS-IvP example mission.",
-      "output": "/Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/02_example_mission_alpha.pdf",
+      "slug": "02_example_missions",
+      "title": "Example Missions",
+      "description": "Five canonical MOOS-IvP example missions covering loitering, depth-plane operation, dynamic behavior spawning, standby helm operation, and collision avoidance.",
+      "output": "/Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/02_example_missions.pdf",
       "files": [
-        "chap_alpha.pdf"
+        "chap_xmiss_charlie.pdf",
+        "chap_xmiss_delta.pdf",
+        "chap_xmiss_echo.pdf",
+        "chap_xmiss_kilo.pdf",
+        "chap_xmiss_berta.pdf"
       ],
-      "pages": 9,
-      "bytes": 5071585
+      "pages": 39,
+      "bytes": 18033523
     },
     {
       "slug": "03_helm_autonomy_behavior_properties",
@@ -571,6 +575,17 @@
       ],
       "pages": 26,
       "bytes": 17888809
+    },
+    {
+      "slug": "48_chap_helm_as_moos",
+      "title": "The IvP Helm as a MOOS Application",
+      "description": "pHelmIvP as a MOOS application, including helm state, configuration, publications, and subscriptions.",
+      "output": "/Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/48_chap_helm_as_moos.pdf",
+      "files": [
+        "chap_helm_as_moos.pdf"
+      ],
+      "pages": 17,
+      "bytes": 484991
     }
   ],
   "existing_notebook_source_to_keep": null,

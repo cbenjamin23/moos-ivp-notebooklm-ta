@@ -1,6 +1,6 @@
 /Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/00_moos_ivp_virtual_ta_guide.pdf
 /Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/01_core_design_moos_overview.pdf
-/Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/02_example_mission_alpha.pdf
+/Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/02_example_missions.pdf
 /Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/03_helm_autonomy_behavior_properties.pdf
 /Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/04_labs_01_2a_setup_git.pdf
 /Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/05_labs_02_03_moos_intro_programming.pdf

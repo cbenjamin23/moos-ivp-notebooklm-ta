@@ -32,10 +32,16 @@ PACKS_SPEC = [
         "files": ["chap_design.pdf", "chap_moos.pdf"],
     },
     {
-        "slug": "02_example_mission_alpha",
-        "title": "Example Mission Alpha",
-        "description": "The first canonical MOOS-IvP example mission.",
-        "files": ["chap_alpha.pdf"],
+        "slug": "02_example_missions",
+        "title": "Example Missions",
+        "description": "Five canonical MOOS-IvP example missions covering loitering, depth-plane operation, dynamic behavior spawning, standby helm operation, and collision avoidance.",
+        "files": [
+            "chap_xmiss_charlie.pdf",
+            "chap_xmiss_delta.pdf",
+            "chap_xmiss_echo.pdf",
+            "chap_xmiss_kilo.pdf",
+            "chap_xmiss_berta.pdf",
+        ],
     },
     {
         "slug": "03_helm_autonomy_behavior_properties",
@@ -175,6 +181,16 @@ PACKS_SPEC = [
 ]
 
 
+RAW_PACKS_SPEC = [
+    {
+        "slug": "48_chap_helm_as_moos",
+        "title": "The IvP Helm as a MOOS Application",
+        "description": "pHelmIvP as a MOOS application, including helm state, configuration, publications, and subscriptions.",
+        "files": ["chap_helm_as_moos.pdf"],
+    },
+]
+
+
 TA_GUIDE_TEXT = """
 MOOS-IvP Virtual TA Guide
 
@@ -280,6 +296,22 @@ def merge_pack(spec: dict) -> dict:
     }
 
 
+def record_raw_pack(spec: dict) -> dict:
+    out = PACKS / f"{spec['slug']}.pdf"
+    if not out.exists():
+        raise FileNotFoundError(f"raw pack missing: {out}")
+    reader = PdfReader(str(out))
+    return {
+        "slug": spec["slug"],
+        "title": spec["title"],
+        "description": spec["description"],
+        "output": str(out),
+        "files": spec["files"],
+        "pages": len(reader.pages),
+        "bytes": out.stat().st_size,
+    }
+
+
 def main() -> None:
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
     PACKS.mkdir(parents=True, exist_ok=True)
@@ -287,6 +319,8 @@ def main() -> None:
     results = []
     for spec in PACKS_SPEC:
         results.append(merge_pack(spec))
+    for spec in RAW_PACKS_SPEC:
+        results.append(record_raw_pack(spec))
 
     manifest = {
         "base_url": BASE_URL,
