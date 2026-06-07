@@ -34,8 +34,9 @@ PACKS_SPEC = [
     {
         "slug": "02_example_missions",
         "title": "Example Missions",
-        "description": "Five canonical MOOS-IvP example missions covering loitering, depth-plane operation, dynamic behavior spawning, standby helm operation, and collision avoidance.",
+        "description": "Six canonical MOOS-IvP example missions covering the Alpha introductory mission, loitering, depth-plane operation, dynamic behavior spawning, standby helm operation, and collision avoidance.",
         "files": [
+            "chap_alpha.pdf",
             "chap_xmiss_charlie.pdf",
             "chap_xmiss_delta.pdf",
             "chap_xmiss_echo.pdf",

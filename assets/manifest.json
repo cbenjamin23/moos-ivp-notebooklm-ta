@@ -26,17 +26,18 @@
     {
       "slug": "02_example_missions",
       "title": "Example Missions",
-      "description": "Five canonical MOOS-IvP example missions covering loitering, depth-plane operation, dynamic behavior spawning, standby helm operation, and collision avoidance.",
+      "description": "Six canonical MOOS-IvP example missions covering the Alpha introductory mission, loitering, depth-plane operation, dynamic behavior spawning, standby helm operation, and collision avoidance.",
       "output": "/Users/charlesbenjamin/moos-ivp-notebooklm-ta/assets/packs/02_example_missions.pdf",
       "files": [
+        "chap_alpha.pdf",
         "chap_xmiss_charlie.pdf",
         "chap_xmiss_delta.pdf",
         "chap_xmiss_echo.pdf",
         "chap_xmiss_kilo.pdf",
         "chap_xmiss_berta.pdf"
       ],
-      "pages": 39,
-      "bytes": 18033523
+      "pages": 47,
+      "bytes": 23102353
     },
     {
       "slug": "03_helm_autonomy_behavior_properties",
